@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+
+const comparativeData = [
+  {
+    name: "Closed-Loop Data Center",
+    subtitle: "(hyperscale facility)",
+    value: 5,
+    unit: "Million Gal.",
+    percent: 4.3,
+    color: "bg-tech-blue/90 border-tech-blue hover:bg-tech-blue",
+    shadow: "shadow-tech-blue/30"
+  },
+  {
+    name: "Residential Lawns",
+    subtitle: "(1,000 homes)",
+    value: 50,
+    unit: "Million Gal.",
+    percent: 43.8,
+    color: "bg-slate-300 border-slate-400 hover:bg-slate-400",
+    shadow: "shadow-slate-300/30"
+  },
+  {
+    name: "Housing Tract",
+    subtitle: "(1,000 homes indoor+outdoor)",
+    value: 110,
+    unit: "Million Gal.",
+    percent: 96.5,
+    color: "bg-slate-400 border-slate-500 hover:bg-slate-500",
+    shadow: "shadow-slate-400/30"
+  },
+  {
+    name: "Golf Course",
+    subtitle: "(typical 18-hole)",
+    value: 114,
+    unit: "Million Gal.",
+    percent: 100,
+    color: "bg-amber-500 border-amber-600 hover:bg-amber-600",
+    shadow: "shadow-amber-500/30"
+  },
+  {
+    name: "Almond Farming",
+    subtitle: "(100 acres)",
+    value: 114,
+    unit: "Million Gal.",
+    percent: 100,
+    color: "bg-pine-green/80 border-pine-green hover:bg-pine-green",
+    shadow: "shadow-pine-green/30"
+  }
+];
+
+const broaderContextData = [
+  { name: "All U.S. Data Centers", value: "17 Billion", note: "(mostly traditional open-loop)" },
+  { name: "U.S. Golf Courses", value: "500 Billion", note: "" },
+  { name: "California Almonds", value: "1.5 Trillion", note: "(1,500 billion)" },
+  { name: "U.S. Residential Lawns", value: "Thousands of Billions", note: "" },
+  { name: "Agriculture Overall", value: "Tens of Trillions", note: "(largest user by far)" }
+];
+---
+
+<BaseLayout 
+    title="Annual Water Usage | Interactive Comparison"
+    description="Explore interactive data comparing the minimal water requirements of modern, closed-loop data centers against traditional heavy users."
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/80 to-tech-blue/80 z-0 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('/images/hero-bg.png')] bg-cover bg-center z-0 opacity-20 mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-tech-blue/20 text-blue-200 font-bold tracking-widest uppercase text-sm mb-6 border border-tech-blue/30 backdrop-blur-sm">Interactive Data</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">Putting Water Usage In Perspective</h1>
+            <p class="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light">
+                Modern closed-loop data centers require almost zero evaporative cooling. See how their annual usage compares to other large-scale developments.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="py-16 lg:py-24 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 mb-6">Annual Water Consumption</h2>
+                <p class="text-lg text-slate-600">
+                    This interactive chart compares water consumption for a large closed-loop data center against scaled examples of other high-water activities. Numbers are approximate averages drawn from public industry reports, USGA data, and EPA household estimates.
+                </p>
+            </div>
+
+            <!-- The Bar Chart Container -->
+            <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-10 mb-20 overflow-hidden">
+                <h3 class="text-xl font-bold text-slate-800 mb-8 border-b border-slate-100 pb-4">
+                    Comparison by Facility Scale (Million Gallons per Year)
+                </h3>
+                
+                <!-- Desktop/Tablet Vertical Chart -->
+                <div class="relative h-96 w-full hidden sm:flex items-end justify-between gap-4 pt-10 px-2 lg:px-10">
+                    <!-- Background Grid Lines -->
+                    <div class="absolute inset-0 pointer-events-none flex flex-col justify-between pt-10 border-l border-b border-slate-200 pb-[10%]">
+                        <div class="w-full border-t border-slate-100 dashed flex-1 relative"><span class="absolute -left-10 -top-3 text-xs text-slate-400 font-medium">100</span></div>
+                        <div class="w-full border-t border-slate-100 dashed flex-1 relative"><span class="absolute -left-8 -top-3 text-xs text-slate-400 font-medium">75</span></div>
+                        <div class="w-full border-t border-slate-100 dashed flex-1 relative"><span class="absolute -left-8 -top-3 text-xs text-slate-400 font-medium">50</span></div>
+                        <div class="w-full border-t border-slate-100 dashed flex-1 relative"><span class="absolute -left-8 -top-3 text-xs text-slate-400 font-medium">25</span></div>
+                        <div class="w-full absolute bottom-[10%] border-t border-slate-200"></div>
+                        <span class="absolute -left-6 bottom-[10%] -translate-y-[50%] text-xs text-slate-400 font-medium">0</span>
+                    </div>
+
+                    <!-- Bars -->
+                    <div class="relative w-full h-full pb-[10%] flex items-end justify-around z-10 px-4">
+                        {comparativeData.map((item) => (
+                            <div class="w-16 lg:w-24 group flex flex-col items-center justify-end relative h-full">
+                                <!-- Tooltip -->
+                                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none absolute -top-16 bg-slate-900 text-white text-xs rounded-lg py-2 px-3 shadow-xl whitespace-nowrap z-50">
+                                    <span class="block font-bold text-sm">{item.value} {item.unit}</span>
+                                    <span class="text-slate-300">{item.name}</span>
+                                    <!-- Tooltip Triangle -->
+                                    <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-900 rotate-45"></div>
+                                </div>
+                                
+                                <!-- Bar -->
+                                <div 
+                                    class={`w-full rounded-t-lg transition-all duration-700 ease-in-out border-t-2 border-l-2 border-r-2 ${item.color} ${item.shadow} group-hover:-translate-y-1`}
+                                    style={`height: ${item.percent}%;`}
+                                >
+                                    <div class="w-full h-full bg-gradient-to-t from-black/20 to-transparent rounded-t-lg"></div>
+                                </div>
+                                
+                                <!-- Label -->
+                                <div class="absolute -bottom-[50px] w-32 text-center flex flex-col items-center justify-start">
+                                    <span class="text-xs font-bold text-slate-800 leading-tight">{item.name}</span>
+                                    <span class="text-[10px] text-slate-500 leading-tight mt-0.5">{item.subtitle}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <!-- Mobile Horizontal Chart -->
+                <div class="sm:hidden space-y-8 mt-4">
+                    {comparativeData.map((item) => (
+                        <div class="relative pt-6">
+                            <!-- Mobile Label above bar -->
+                            <div class="absolute top-0 left-0 text-sm font-bold text-slate-800">{item.name}</div>
+                            <div class="absolute top-0 right-0 text-sm font-bold text-slate-900">{item.value}M</div>
+                            
+                            <!-- Track -->
+                            <div class="w-full h-8 bg-slate-100 rounded-lg overflow-hidden relative">
+                                <!-- Fill -->
+                                <div 
+                                    class={`h-full rounded-lg transition-all duration-1000 ease-in-out ${item.color} flex items-center justify-end px-3`}
+                                    style={`width: ${item.percent}%;`}
+                                >
+                                </div>
+                            </div>
+                            <div class="text-[10px] text-slate-500 mt-1">{item.subtitle}</div>
+                        </div>
+                    ))}
+                </div>
+
+                <!-- Chart Takeaway Box -->
+                <div class="mt-20 sm:mt-24 p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-2 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-pine-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        The Key Takeaway
+                    </h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Closed-loop data centers use dramatically less water than a single golf course, an equivalent almond orchard, or an entire housing development of the same scale. Traditional evaporative-cooled data centers historically used far more, but modern closed-loop design eliminates massive consumption by strictly circulating a permanent internal liquid cooling system.
+                    </p>
+                </div>
+            </div>
+
+            <!-- National Context Totals -->
+            <div class="max-w-4xl mx-auto mb-16 px-4 sm:px-0">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4">Broader National Context</h2>
+                    <p class="text-lg text-slate-600">To fully comprehend the scale, we must look at the overall national impact of different sectors.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+                    {broaderContextData.map((stat, i) => (
+                        <div class={`p-8 bg-white rounded-2xl border shadow-sm flex flex-col justify-center items-center text-center hover:shadow-md transition-shadow ${i === 2 || i === 4 ? 'border-amber-500/30' : 'border-slate-100'} ${(i === broaderContextData.length - 1 && broaderContextData.length % 2 !== 0) ? 'md:col-span-2' : ''}`}>
+                            <span class="text-sm font-bold tracking-widest uppercase text-slate-400 mb-3">{stat.name}</span>
+                            <span class={`text-3xl md:text-4xl font-extrabold mb-2 ${i === 0 ? 'text-tech-blue' : 'text-slate-800'}`}>
+                                {stat.value}
+                            </span>
+                            {stat.note && (
+                                <span class="text-sm text-slate-500 italic mt-1">{stat.note}</span>
+                            )}
+                        </div>
+                    ))}
+                </div>
+                
+                <p class="text-center text-sm text-slate-500 mt-10 italic max-w-2xl mx-auto">
+                    Data reflects 2023–2025 public reports and averages; actual usage varies by location, climate, and exact design.
+                </p>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="/myth-vs-reality" class="inline-flex items-center justify-center px-8 py-4 text-white bg-slate-900 hover:bg-tech-blue font-bold rounded-xl shadow-md transition-colors duration-300 tracking-wide">
+                    Return to Myth vs. Reality
+                </a>
+            </div>
+        </div>
+    </section>
+
+</BaseLayout>
