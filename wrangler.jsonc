@@ -1,6 +1,8 @@
 {
 	"compatibility_date": "2026-03-17",
-	"compatibility_flags": ["global_fetch_strictly_public"],
+	"compatibility_flags": [
+		"global_fetch_strictly_public"
+	],
 	"name": "tomorrowbeginshere-com",
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
@@ -9,5 +11,9 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	"routes": [
+		{ "pattern": "tomorrowbeginshere.com", "custom_domain": true },
+		{ "pattern": "www.tomorrowbeginshere.com", "custom_domain": true }
+	]
 }
