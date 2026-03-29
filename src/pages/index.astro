@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="Tomorrow Begins Here — Data Centers & Rural Prosperity"
+    description="Discover how data centers are transforming rural communities like Bastrop County, Texas, with jobs, tax revenue, and next-generation infrastructure."
+>
+    <!-- Hero Section -->
+    <section class="relative bg-slate-900 overflow-hidden">
+        <!-- Background elements indicating nature + tech -->
+        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/90 to-tech-blue/90 z-10 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=2669&auto=format&fit=crop')] bg-cover bg-center z-0 opacity-60"></div>
+        
+        <!-- Tech grid overlay -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wIDBINDBWMHoiIGZpbGw9Im5vbmUiLz4KPHBhdGggZD0iTTAgNDBMMCAwTDQwIDBMMCAwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPgo8L3N2Zz4=')] z-10 opacity-40"></div>
+        
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-40 lg:pt-48 lg:pb-56">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+                    The Future Isn't Happening Somewhere Else—<span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-300">It's Beginning Right Here.</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-100 mb-10 leading-relaxed font-light max-w-2xl">
+                    When built thoughtfully in rural areas, data centers represent one of the most significant economic and technological opportunities a community can receive. We know that questions and concerns about new development are natural. That is why this site exists: to answer them honestly, and to empower you with the facts about what this historic investment means for our future.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="/advancing-mankind" class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-bold rounded-md shadow-lg text-tech-blue bg-white hover:bg-slate-50 transition-all duration-300 hover:scale-105">
+                        Discover the Future
+                    </a>
+                    <a href="/myth-vs-reality" class="inline-flex justify-center items-center px-8 py-4 border border-white/30 text-base font-bold rounded-md shadow-sm text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300">
+                        Read the Facts
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-0 w-full z-20">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" class="w-full h-auto text-slate-50">
+                <path fill="currentColor" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,74.7C640,64,800,32,960,26.7C1120,21,1280,43,1360,53.3L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- Quick Intro -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-4">Empowering the Modern World</h2>
+                <p class="text-lg text-slate-600">The infrastructure of tomorrow is taking root today. Explore how data centers are transforming our lives and driving unprecedented progress.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-tech-blue/10 rounded-xl flex items-center justify-center mb-6 text-tech-blue">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">The Engine of Progress</h3>
+                    <p class="text-slate-600 mb-6">Data centers are the essential foundation of the 21st century, powering everything from healthcare to artificial intelligence.</p>
+                    <a href="/what-is-a-data-center" class="text-tech-blue font-semibold flex items-center group">
+                        Learn the Basics
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-pine-green/10 rounded-xl flex items-center justify-center mb-6 text-pine-green">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Myth vs. Reality</h3>
+                    <p class="text-slate-600 mb-6">Get the honest, verifiable facts about water usage and power grid impacts. The truth might surprise you.</p>
+                    <a href="/myth-vs-reality" class="text-pine-green font-semibold flex items-center group">
+                        See the Facts
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-14 h-14 bg-amber-500/10 rounded-xl flex items-center justify-center mb-6 text-amber-600">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Local Opportunity</h3>
+                    <p class="text-slate-600 mb-6">Discover how the Bastrop County boom is creating generational wealth, fully funded schools, and vast new careers.</p>
+                    <a href="/bastrop-county-story" class="text-amber-600 font-semibold flex items-center group">
+                        Explore Our Future
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

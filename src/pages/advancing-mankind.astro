@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="How Data Centers Advance Humanity"
+    description="Explore how data centers enable breakthroughs in medicine, climate science, and artificial intelligence that improve lives worldwide."
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/80 to-tech-blue/80 z-0 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center z-0 opacity-40 mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">Advancing Mankind<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-teal-300 block mt-3">Why Data Centers Matter</span></h1>
+            <p class="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light">
+                Every major scientific, medical, and technological breakthrough of the last two decades has been powered by data centers. The massive computing power housed within these facilities is fundamentally advancing humanity.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="py-20 lg:py-28 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                
+                <!-- Healthcare & Medicine -->
+                <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-rose-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mb-8 text-rose-600 shadow-sm border border-rose-200">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Healthcare & Medicine</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                        Data centers are dramatically accelerating the pace of medical discovery and saving lives. Pharmaceutical companies use cloud computing platforms to analyze billions of molecular combinations in the search for new life-saving drugs. What once took decades of manual lab work is now compressed into years or even months.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        Genomic sequencing—mapping the complete DNA of a patient to identify specific disease risks and tailor treatments—requires enormous computational resources that only large-scale data centers can provide. Precision medicine is rapidly becoming a reality because of these facilities.
+                    </p>
+                </div>
+
+                <!-- Climate & Scientific Research -->
+                <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-8 text-emerald-600 shadow-sm border border-emerald-200">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Climate & Science</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                        The supercomputers required to model global climate systems, forecast extreme weather events, and simulate the behavior of the Earth's atmosphere all live inside data centers. 
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        The remarkable accuracy of a five-day weather forecast, a tool that saves countless lives during hurricanes, tornadoes, and severe storms, depends entirely on the computational power of these facilities. Climate scientists rely on data center resources to run complex models that help governments, farmers, and communities prepare for the long-term impacts of our changing world.
+                    </p>
+                </div>
+
+                <!-- Artificial Intelligence -->
+                <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-violet-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                    <div class="w-16 h-16 bg-violet-100 rounded-2xl flex items-center justify-center mb-8 text-violet-600 shadow-sm border border-violet-200">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Artificial Intelligence</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                        Artificial intelligence, which is trained and deployed directly from data centers, is already being actively applied to solve some of humanity's most complex and persistent challenges. AI systems are optimizing agricultural yields by analyzing satellite imagery and soil data, helping farmers grow more food with less water.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        These systems are being used to detect diseases in medical scans earlier than humanly possible, route emergency vehicles more efficiently through traffic, and identify subtle patterns in financial data that help prevent fraud.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="mt-16 pt-10 border-t border-slate-200 flex justify-center">
+                <a href="/the-global-race" class="inline-flex items-center justify-center px-8 py-4 text-white bg-tech-blue hover:bg-slate-900 font-bold rounded-xl shadow-md transition-all duration-300 hover:shadow-xl text-lg group">
+                    Next: Explore the Global Race
+                    <svg class="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>

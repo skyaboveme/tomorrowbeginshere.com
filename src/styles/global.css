@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tech-blue: #0A369D; /* Deep modern tech blue */
+  --color-tech-blue-light: #F0F4F8; /* Light blue tech background */
+  --color-pine-green: #1A4D2E; /* Texas rural pine green */
+  --color-pine-green-light: #E8F5E9; /* Light green background */
+  
+  --font-sans: 'Outfit', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-slate-800 antialiased font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-slate-900;
+  }
+}

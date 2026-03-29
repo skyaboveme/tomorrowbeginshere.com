@@ -1,0 +1,63 @@
+---
+---
+<header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="/" class="flex flex-col">
+                    <span class="text-2xl font-bold tracking-tight text-tech-blue">TomorrowBeginsHere<span class="text-pine-green">.com</span></span>
+                    <span class="text-[0.65rem] uppercase tracking-widest text-slate-500 font-semibold mt-0.5">Empowering Rural Prosperity</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:ml-6 lg:flex lg:space-x-8 items-center">
+                <a href="/what-is-a-data-center" class="text-slate-600 hover:text-tech-blue font-medium transition-colors text-sm">Fundamentals</a>
+                <a href="/advancing-mankind" class="text-slate-600 hover:text-tech-blue font-medium transition-colors text-sm">Human Impact</a>
+                <a href="/myth-vs-reality" class="text-slate-600 hover:text-tech-blue font-medium transition-colors text-sm">Myth vs. Fact</a>
+                <a href="/bastrop-county-story" class="text-slate-600 hover:text-tech-blue font-medium transition-colors text-sm">The Bastrop Story</a>
+                <a href="/faq" class="text-slate-600 hover:text-tech-blue font-medium transition-colors text-sm">FAQ</a>
+                <a href="/about" class="text-slate-600 hover:text-tech-blue font-medium transition-colors text-sm">About</a>
+                <a href="/myth-vs-reality" class="ml-4 bg-tech-blue text-white px-5 py-2.5 rounded-md font-medium text-sm hover:!bg-tech-blue/90 transition-colors shadow-sm">Read the Facts</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <div class="flex items-center lg:hidden">
+                <button type="button" class="text-slate-500 hover:text-slate-900 focus:outline-none" aria-label="Toggle menu" id="mobile-menu-btn">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu Container -->
+    <div class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full" id="mobile-menu">
+        <div class="px-4 pt-2 pb-6 space-y-1 shadow-lg border-b border-slate-200">
+            <a href="/what-is-a-data-center" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-tech-blue hover:bg-slate-50">Fundamentals</a>
+            <a href="/advancing-mankind" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-tech-blue hover:bg-slate-50">Human Impact</a>
+            <a href="/myth-vs-reality" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-tech-blue hover:bg-slate-50">Myth vs. Fact</a>
+            <a href="/bastrop-county-story" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-tech-blue hover:bg-slate-50">The Bastrop Story</a>
+            <a href="/faq" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-tech-blue hover:bg-slate-50">FAQ</a>
+            <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-tech-blue hover:bg-slate-50">About</a>
+            <div class="pt-4 pb-2">
+                <a href="/myth-vs-reality" class="block w-full text-center bg-tech-blue text-white px-5 py-3 rounded-md font-bold text-base hover:bg-tech-blue/90 transition-colors shadow-sm">Read the Facts</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        }
+    });
+</script>

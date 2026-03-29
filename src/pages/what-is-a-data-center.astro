@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="What Is a Data Center? The Engine of the Modern World"
+    description="Learn how data centers power everyday life, from healthcare to AI, and why they are the essential infrastructure of the 21st century."
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/80 to-tech-blue/80 z-0 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2668&auto=format&fit=crop')] bg-cover bg-center z-0 opacity-40 mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">What Is a Data Center? <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-teal-300 block mt-3">The Engine of the Modern World</span></h1>
+            <p class="text-xl text-slate-200 max-w-3xl leading-relaxed font-light">
+                Demystifying the incredible facilities that act as the true backbone of our modern, interconnected lives.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="prose prose-lg prose-slate max-w-none mb-16">
+                <p class="text-2xl leading-relaxed mb-10 text-slate-700 font-medium">
+                    A data center is the physical facility that stores, processes, and transmits the data that powers the modern world. It is the home of the cloud, the backbone of the internet, and the engine of artificial intelligence. Every time you stream a movie, attend a telehealth appointment, check the weather, use GPS navigation, send an email, or work remotely, you are relying on a data center to process and deliver that information to you in milliseconds.
+                </p>
+
+                <p class="leading-relaxed text-slate-600">
+                    Inside a data center are thousands of specialized computers called servers, alongside the networking equipment, cooling systems, and power infrastructure required to keep them running continuously, 24 hours a day, 365 days a year. Because our modern lives depend on these systems, data centers are built to be extraordinarily reliable. They often achieve what the industry calls "five nines" uptime — meaning they are operational <strong class="text-slate-900 font-bold bg-tech-blue/10 px-2 py-1 rounded">99.999% of the time</strong>.
+                </p>
+            </div>
+
+            <!-- Infographic Placeholder Section -->
+            <div class="my-20 bg-slate-50 border border-slate-200 rounded-[2rem] p-8 lg:p-16 shadow-lg text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-tech-blue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-pine-green/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+                
+                <div class="relative z-10">
+                    <div class="w-20 h-20 bg-white shadow-md rounded-2xl flex items-center justify-center mx-auto mb-8 text-tech-blue ring-1 ring-slate-100">
+                        <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 tracking-tight">The Invisible Flow of Innovation</h3>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-12">
+                        Data travels continuously from your device, across vast fiber optic networks, directly into the servers housed in secure data centers, and back again—in a fraction of a second.
+                    </p>
+                    
+                    <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-6">
+                        <!-- Workflow visualization -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 w-full flex-1">
+                            <span class="block text-5xl mb-4">📱</span>
+                            <h4 class="font-bold text-slate-900 text-lg">Your Devices</h4>
+                            <p class="text-sm text-slate-500 mt-2">Streaming, Banking, Medical</p>
+                        </div>
+                        
+                        <div class="text-tech-blue/40 flex flex-col items-center">
+                            <svg class="w-10 h-10 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                            <span class="text-xs font-bold tracking-widest uppercase my-2 text-slate-400">Milliseconds</span>
+                            <svg class="w-10 h-10 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                            </svg>
+                            
+                            <svg class="w-8 h-8 md:hidden my-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                            </svg>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-tech-blue to-blue-800 p-8 rounded-2xl shadow-lg border border-transparent w-full flex-1 text-white relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                            <span class="block text-5xl mb-4 relative z-10">🏢</span>
+                            <h4 class="font-bold text-white text-lg relative z-10">Secure Data Center</h4>
+                            <p class="text-sm text-blue-200 mt-2 relative z-10">Instant Processing & Storage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prose prose-lg prose-slate max-w-none">
+                <h2 class="text-3xl font-bold mb-6 text-slate-900 tracking-tight">The Infrastructure of the 21st Century</h2>
+                <p class="leading-relaxed mb-6 text-slate-600">
+                    Throughout history, new infrastructure has consistently unlocked new eras of prosperity. Data centers are the essential infrastructure of the 21st century in the exact same way that railroads were the essential infrastructure of the 19th century, and the interstate highway system was the essential infrastructure of the 20th century. 
+                </p>
+                <p class="leading-relaxed mb-8 text-slate-600">
+                    Just as those historic investments transformed rural economies and connected communities to national prosperity, data centers are doing the same today, ensuring that the technology of tomorrow is rooted right here in our communities.
+                </p>
+            </div>
+            
+            <div class="mt-16 pt-10 border-t border-slate-200 flex justify-center">
+                <a href="/advancing-mankind" class="inline-flex items-center justify-center px-8 py-4 text-white bg-tech-blue hover:bg-slate-900 font-bold rounded-xl shadow-md transition-all duration-300 hover:shadow-xl text-lg group">
+                    Next: Read How This Advances Humanity
+                    <svg class="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>
