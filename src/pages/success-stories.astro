@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+
+const caseStudies = [
+  {
+    name: "Prineville, Oregon",
+    population: "~10,500",
+    company: "Meta (Facebook)",
+    arrived: "2010",
+    tagline: "From timber town decline to economic powerhouse",
+    accent: "tech-blue",
+    accentBg: "bg-tech-blue/10",
+    accentBorder: "border-tech-blue/20",
+    accentText: "text-tech-blue",
+    stats: [
+      { label: "Average Wage Impact", value: "Top in State", note: "Moved from among the lowest county wages to among the highest in Oregon" },
+      { label: "Construction Jobs", value: "Hundreds", note: "Sustained, multi-year high-wage construction employment" },
+      { label: "Infrastructure", value: "Upgraded", note: "Water, wastewater, power systems, and fiber optic connectivity" }
+    ],
+    story: "When Meta announced its first data center in Prineville, the town was reeling from the collapse of the timber industry. Unemployment was high, wages were among the lowest in the state, and the future looked bleak. Today, Crook County's average wages have risen from among the lowest to among the top in Oregon. The continuous construction phases have provided sustained, high-wage work for electricians, engineers, and heavy equipment operators, while the completed facilities employ hundreds in permanent, high-paying operational roles.",
+    quote: "Local officials credit the data center investment with helping to diversify and stabilize the regional economy after decades of decline.",
+    communityImpacts: [
+      "Grants for local schools, non-profits, and community projects",
+      "Major upgrades to water and wastewater infrastructure",
+      "Long-haul fiber optic connectivity brought to the region",
+      "Economic diversification away from seasonal and timber work"
+    ]
+  },
+  {
+    name: "Quincy, Washington",
+    population: "~8,000",
+    company: "Microsoft",
+    arrived: "2007",
+    tagline: "An agricultural town that built a new high school, hospital, and library",
+    accent: "pine-green",
+    accentBg: "bg-pine-green/10",
+    accentBorder: "border-pine-green/20",
+    accentText: "text-pine-green",
+    stats: [
+      { label: "Funded by DC Taxes", value: "New High School", note: "Plus a new library, police station, and city hall" },
+      { label: "Workforce Program", value: "Datacenter Academy", note: "Partnership with Big Bend Community College" },
+      { label: "Water Innovation", value: "Reuse Facility", note: "Industrial water reuse reduces groundwater reliance" }
+    ],
+    story: "Microsoft arrived in this small agricultural community in 2007 and the transformation has been remarkable. The massive increase in property tax revenue allowed Quincy to fund an entirely new high school, a modern city hall, a public library, a new police station, and a hospital. Microsoft also partnered with Big Bend Community College to create a 'Datacenter Academy' that trains local residents for IT and data center careers through hands-on internships.",
+    quote: "Microsoft has committed to not accepting local tax incentives or subsidies for new projects, and to ensuring power infrastructure upgrades do not raise prices for existing residents.",
+    communityImpacts: [
+      "New high school fully funded by data center tax revenue",
+      "Datacenter Academy at Big Bend Community College",
+      "Industrial water reuse facility reducing groundwater impact",
+      "Commitments to avoid raising utility rates for residents"
+    ]
+  },
+  {
+    name: "New Albany, Ohio",
+    population: "~12,000",
+    company: "Amazon, Google, Meta",
+    arrived: "2015",
+    tagline: "Billions in investment driving the 'Silicon Heartland'",
+    accent: "amber-500",
+    accentBg: "bg-amber-500/10",
+    accentBorder: "border-amber-500/20",
+    accentText: "text-amber-600",
+    stats: [
+      { label: "Amazon GDP Impact", value: "$1.4 Billion", note: "Contribution to Licking County GDP (2015-2024)" },
+      { label: "Permanent Salaries", value: "$85K-$100K+", note: "High-paying operational roles at each campus" },
+      { label: "Community Programs", value: "STEM Grants", note: "'Think Big Spaces' in schools, fiber training programs" }
+    ],
+    story: "What began with Amazon's early investment has grown into one of the nation's most prominent data center corridors. Amazon, Google, and Meta have collectively invested billions into the New Albany International Business Park. Amazon alone contributed approximately $1.4 billion to Licking County's GDP between 2015 and 2024. The permanent operational roles at these facilities are high-paying, often ranging from $85,000 to $100,000+ annually.",
+    quote: "Revenue collected from data centers has been used to fund a police station expansion, recreation centers, and critical public amenities across the community.",
+    communityImpacts: [
+      "'Think Big Spaces' STEM labs funded in local schools",
+      "Fiber splicing training programs for workforce development",
+      "Community Action Grants for local non-profits",
+      "Police station expansion and recreation center funding"
+    ]
+  }
+];
+---
+
+<BaseLayout 
+    title="Success Stories | Rural Communities Transformed by Data Centers"
+    description="See the real-world results: how rural towns like Prineville, Quincy, and New Albany were transformed by data center investment with new schools, hospitals, and high-paying jobs."
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/80 to-tech-blue/80 z-0 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('/images/hero-bg.png')] bg-cover bg-center z-0 opacity-20 mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-300 font-bold tracking-widest uppercase text-sm mb-6 border border-amber-500/30 backdrop-blur-sm">Proof, Not Promises</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">They Had the Same <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-300">Questions</span></h1>
+            <p class="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light">
+                Every community that has welcomed a data center started with the same concerns: water, noise, jobs, and taxes. Here is what actually happened in three rural towns across America.
+            </p>
+        </div>
+    </div>
+
+    <!-- Case Studies -->
+    <section class="py-20 lg:py-28 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            {caseStudies.map((study, index) => (
+                <div class={`mb-24 last:mb-0 ${index > 0 ? 'pt-24 border-t border-slate-200' : ''}`}>
+                    
+                    <!-- Case Study Header -->
+                    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class={`inline-block w-3 h-3 rounded-full bg-${study.accent}`}></span>
+                                <span class="text-sm font-bold tracking-widest uppercase text-slate-400">{study.company} | Since {study.arrived}</span>
+                            </div>
+                            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight">{study.name}</h2>
+                            <p class="text-lg text-slate-500 mt-2 font-medium italic">{study.tagline}</p>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-slate-500 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-sm self-start md:self-auto">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            Population: {study.population}
+                        </div>
+                    </div>
+
+                    <!-- Stats Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                        {study.stats.map(stat => (
+                            <div class={`bg-white rounded-2xl p-6 border ${study.accentBorder} shadow-sm hover:shadow-lg transition-shadow duration-300`}>
+                                <div class="text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">{stat.label}</div>
+                                <div class={`text-2xl md:text-3xl font-bold ${study.accentText} mb-2`}>{stat.value}</div>
+                                <div class="text-sm text-slate-500 leading-relaxed">{stat.note}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <!-- Story + Community Impacts -->
+                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                        <!-- Story (3/5) -->
+                        <div class="lg:col-span-3 bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-slate-200">
+                            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center">
+                                <svg class="w-6 h-6 mr-3 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                                The Story
+                            </h3>
+                            <p class="text-slate-600 leading-relaxed text-base mb-8">{study.story}</p>
+                            
+                            <!-- Quote -->
+                            <div class={`${study.accentBg} rounded-2xl p-6 border ${study.accentBorder}`}>
+                                <svg class={`w-8 h-8 ${study.accentText} opacity-40 mb-3`} fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
+                                <p class="text-slate-700 font-medium leading-relaxed italic">{study.quote}</p>
+                            </div>
+                        </div>
+
+                        <!-- Community Impacts (2/5) -->
+                        <div class="lg:col-span-2 bg-slate-900 rounded-3xl p-8 md:p-10 shadow-xl relative overflow-hidden">
+                            <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+                            <div class="relative z-10">
+                                <h3 class="text-xl font-bold text-white mb-8 flex items-center">
+                                    <svg class="w-6 h-6 mr-3 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    Community Wins
+                                </h3>
+                                <ul class="space-y-5">
+                                    {study.communityImpacts.map(impact => (
+                                        <li class="flex items-start gap-3">
+                                            <div class={`w-2 h-2 rounded-full bg-${study.accent} mt-2 flex-shrink-0`}></div>
+                                            <span class="text-slate-300 leading-relaxed">{impact}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            ))}
+
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">The Pattern is Clear</h2>
+            <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                In every case, the communities that welcomed responsible data center development saw their schools funded, their infrastructure modernized, and their economies stabilized for a generation.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/economic-impact" class="inline-flex items-center justify-center px-8 py-4 text-white bg-tech-blue hover:bg-tech-blue/90 font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-0.5 text-lg">
+                    See the Local Impact
+                    <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+                <a href="/careers" class="inline-flex items-center justify-center px-8 py-4 text-slate-700 bg-slate-100 hover:bg-slate-200 font-bold rounded-xl transition-all duration-300 text-lg border border-slate-200">
+                    Explore Career Pathways
+                </a>
+            </div>
+        </div>
+    </section>
+
+</BaseLayout>

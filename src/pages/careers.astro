@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+
+const careerTracks = [
+  {
+    title: "Data Center Technician",
+    icon: "server",
+    salary: "$55,000 - $95,000",
+    seniorSalary: "Up to $110,000+",
+    degree: "Not Required",
+    description: "Maintain and troubleshoot the servers, storage arrays, and networking equipment that keep the facility running 24/7.",
+    skills: ["Hardware troubleshooting", "Server maintenance", "Cable management", "Basic networking"],
+    certifications: ["CompTIA A+", "CompTIA Server+", "Cisco CCNA"],
+    pathways: ["Help desk experience", "Military tech training", "Technical bootcamp"],
+    color: "tech-blue",
+    colorBg: "bg-tech-blue/10",
+    colorBorder: "border-tech-blue/20",
+    colorText: "text-tech-blue"
+  },
+  {
+    title: "HVAC / Cooling Specialist",
+    icon: "cooling",
+    salary: "$50,000 - $75,000",
+    seniorSalary: "Up to $90,000+",
+    degree: "Not Required",
+    description: "Operate and maintain the advanced cooling systems that keep thousands of servers at optimal temperature. These facilities use cutting-edge closed-loop technology.",
+    skills: ["Cooling system maintenance", "Chiller operations", "Environmental monitoring", "Preventative maintenance"],
+    certifications: ["EPA Section 608", "HVAC/R License", "OSHA Safety"],
+    pathways: ["HVAC apprenticeship", "Trade school program", "Commercial HVAC experience"],
+    color: "pine-green",
+    colorBg: "bg-pine-green/10",
+    colorBorder: "border-pine-green/20",
+    colorText: "text-pine-green"
+  },
+  {
+    title: "Electrical Technician",
+    icon: "electrical",
+    salary: "$55,000 - $85,000",
+    seniorSalary: "Up to $100,000+",
+    degree: "Not Required",
+    description: "Manage the critical power distribution, backup generators, and uninterruptible power supply (UPS) systems that ensure 99.999% uptime.",
+    skills: ["Power distribution", "UPS systems", "Generator maintenance", "Electrical safety"],
+    certifications: ["Journeyman Electrician License", "NFPA 70E", "OSHA 30"],
+    pathways: ["Electrical apprenticeship", "Military electrician", "Industrial maintenance"],
+    color: "amber-500",
+    colorBg: "bg-amber-500/10",
+    colorBorder: "border-amber-500/20",
+    colorText: "text-amber-600"
+  },
+  {
+    title: "Security Operations",
+    icon: "security",
+    salary: "$42,000 - $65,000",
+    seniorSalary: "Up to $80,000+",
+    degree: "Not Required",
+    description: "Monitor physical and cybersecurity systems, manage access control, and ensure the safety of one of the most secure facility types in existence.",
+    skills: ["Access control systems", "Surveillance monitoring", "Incident response", "Emergency procedures"],
+    certifications: ["Security+ (CompTIA)", "CPP or PSP (ASIS)", "First Aid/CPR"],
+    pathways: ["Military or law enforcement", "Private security experience", "Criminal justice coursework"],
+    color: "red-500",
+    colorBg: "bg-red-500/10",
+    colorBorder: "border-red-500/20",
+    colorText: "text-red-600"
+  },
+  {
+    title: "Network Engineer",
+    icon: "network",
+    salary: "$70,000 - $110,000",
+    seniorSalary: "Up to $140,000+",
+    degree: "Preferred, Not Required",
+    description: "Design, implement, and maintain the high-speed network infrastructure connecting the data center to the global internet backbone.",
+    skills: ["Network architecture", "Firewall management", "Load balancing", "Fiber optic systems"],
+    certifications: ["Cisco CCNA / CCNP", "Juniper JNCIA", "CompTIA Network+"],
+    pathways: ["IT networking experience", "Cisco academy graduate", "Associate degree in IT"],
+    color: "purple-500",
+    colorBg: "bg-purple-500/10",
+    colorBorder: "border-purple-500/20",
+    colorText: "text-purple-600"
+  },
+  {
+    title: "Construction Trades",
+    icon: "construction",
+    salary: "$55,000 - $95,000",
+    seniorSalary: "Up to $120,000+",
+    degree: "Not Required",
+    description: "During the multi-year construction phase, thousands of skilled tradespeople are needed: electricians, plumbers, ironworkers, concrete specialists, and heavy equipment operators.",
+    skills: ["Structural steel", "Concrete work", "Heavy equipment", "Blueprint reading"],
+    certifications: ["Trade-specific journeyman license", "OSHA 30", "Crane/equipment certifications"],
+    pathways: ["Union apprenticeship", "Trade school graduate", "Construction experience"],
+    color: "orange-500",
+    colorBg: "bg-orange-500/10",
+    colorBorder: "border-orange-500/20",
+    colorText: "text-orange-600"
+  }
+];
+
+const localResources = [
+  { name: "Austin Community College (ACC)", url: "https://www.austincc.edu", description: "HVAC, electrical, and IT certification programs" },
+  { name: "Texas State Technical College (TSTC)", url: "https://www.tstc.edu", description: "Industrial systems, electrical, and cybersecurity programs" },
+  { name: "CompTIA Certifications", url: "https://www.comptia.org", description: "Industry-standard IT certifications (A+, Network+, Security+)" },
+  { name: "Cisco Networking Academy", url: "https://www.netacad.com", description: "Free and low-cost networking training and CCNA prep" }
+];
+---
+
+<BaseLayout 
+    title="Career Pathways | High-Paying Data Center Jobs"
+    description="Explore the high-paying careers created by data centers, from HVAC technicians to network engineers. Most roles require no four-year degree."
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-tech-blue/80 to-pine-green/80 z-0 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('/images/hero-bg.png')] bg-cover bg-center z-0 opacity-20 mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-pine-green/20 text-green-300 font-bold tracking-widest uppercase text-sm mb-6 border border-pine-green/30 backdrop-blur-sm">Workforce Development</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">Careers That <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-300">Stay Local</span></h1>
+            <p class="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light">
+                Data centers create hundreds of high-paying, permanent careers in the communities where they are built. The best part? Most of these roles do not require a four-year college degree.
+            </p>
+        </div>
+    </div>
+
+    <!-- Salary Highlight Banner -->
+    <div class="bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div>
+                    <div class="text-3xl font-bold text-tech-blue">$55K - $140K+</div>
+                    <div class="text-sm text-slate-500 font-medium mt-1">Salary Range for Permanent Roles</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-pine-green">No Degree</div>
+                    <div class="text-sm text-slate-500 font-medium mt-1">Required for Most Positions</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-amber-600">2,000-5,000</div>
+                    <div class="text-sm text-slate-500 font-medium mt-1">Construction Phase Jobs Per Campus</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Career Cards -->
+    <section class="py-20 lg:py-28 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 mb-6">Explore Career Paths</h2>
+                <p class="text-lg text-slate-600">
+                    Each role below represents an in-demand career at modern data center facilities. Click any card to see salary details, required certifications, and how to get started.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {careerTracks.map((career) => (
+                    <div class={`bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden group`}>
+                        
+                        <!-- Card Header -->
+                        <div class={`px-8 pt-8 pb-4`}>
+                            <div class={`w-14 h-14 ${career.colorBg} rounded-2xl flex items-center justify-center mb-6 ${career.colorText} shadow-sm border ${career.colorBorder}`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-7">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">{career.title}</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-4">{career.description}</p>
+                        </div>
+
+                        <!-- Salary Block -->
+                        <div class="px-8 pb-4">
+                            <div class="flex items-baseline gap-2 mb-1">
+                                <span class={`text-2xl font-bold ${career.colorText}`}>{career.salary}</span>
+                            </div>
+                            <div class="text-xs text-slate-400 font-medium">Senior: {career.seniorSalary}</div>
+                            <div class={`inline-block mt-3 px-3 py-1 rounded-full text-xs font-bold ${career.colorBg} ${career.colorText} border ${career.colorBorder}`}>
+                                Degree: {career.degree}
+                            </div>
+                        </div>
+
+                        <!-- Details -->
+                        <div class="px-8 pb-8 pt-4 border-t border-slate-100 mt-4">
+                            <div class="mb-4">
+                                <div class="text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Key Certifications</div>
+                                <div class="flex flex-wrap gap-2">
+                                    {career.certifications.map(cert => (
+                                        <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full font-medium">{cert}</span>
+                                    ))}
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">How to Get Started</div>
+                                <ul class="space-y-1.5">
+                                    {career.pathways.map(path => (
+                                        <li class="flex items-center text-sm text-slate-600">
+                                            <svg class={`w-4 h-4 mr-2 flex-shrink-0 ${career.colorText}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                            {path}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Training Resources -->
+    <section class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-pine-green font-bold tracking-widest uppercase text-sm mb-2 block">Get Started Today</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Local Training Resources</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">These institutions offer programs that can prepare you or your family for a high-paying data center career, often in under 12 months.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {localResources.map(resource => (
+                    <a href={resource.url} target="_blank" rel="noopener noreferrer" class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-tech-blue/30 hover:shadow-lg transition-all duration-300 group block">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 group-hover:text-tech-blue transition-colors mb-2">{resource.name}</h3>
+                                <p class="text-sm text-slate-500">{resource.description}</p>
+                            </div>
+                            <svg class="w-5 h-5 text-slate-400 group-hover:text-tech-blue transition-colors flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="py-20 bg-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">The Future of Work is Being Built Right Here</h2>
+            <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                These are not distant, big-city careers. These are jobs for your neighbors, your children, and your community, paying well above the median income without requiring you to leave home.
+            </p>
+            <a href="/success-stories" class="inline-flex items-center justify-center px-8 py-4 text-slate-900 bg-white hover:bg-slate-100 font-bold rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-0.5 text-lg">
+                See Communities That Thrived
+                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+        </div>
+    </section>
+
+</BaseLayout>
