@@ -1,0 +1,35 @@
+# TomorrowBeginsHere.com
+
+> An independent educational resource dedicated to providing accurate, fact-based information about data center development in rural communities.
+
+## Site Purpose
+TomorrowBeginsHere.com exists to empower residents of Bastrop County, Texas, and similar rural communities with transparent, verifiable information about the economic, environmental, and social impacts of hyperscale data center development.
+
+## Core Content
+
+### Fundamentals
+- What Is a Data Center? (/what-is-a-data-center): Explains the technology, purpose, and function of modern AI data centers including training, inference, and research operations.
+- Human Impact (/advancing-mankind): How data centers power breakthroughs in healthcare, education, agriculture, disaster response, and scientific research.
+- Economic Impact (/economic-impact): Interactive tax revenue comparison showing the net community benefit of a $1B data center vs. a 1,000-home subdivision, including direct benefits to schools, emergency services, and homeowner tax relief.
+- Success Stories (/success-stories): Verified case studies from Prineville OR (Meta), Quincy WA (Microsoft), and New Albany OH (Amazon/Google/Meta) showing real community outcomes.
+- Career Pathways (/careers): Six detailed career profiles with salary ranges ($42K-$140K+), certification requirements, and local training resources. Most roles do not require a four-year degree.
+
+### Myth vs. Fact
+- Overview (/myth-vs-reality): Addresses common concerns about data center development with verified data.
+- Water Usage Data (/water-usage): Interactive bar chart comparing closed-loop data center water consumption (5M gal/year) against golf courses (114M), almond farming (114M), and housing tracts (110M).
+- Energy Prices by State (/energy-prices): Analysis of U.S. electricity and methane gas price trends (2019-2024) with core driver explanations.
+
+### Community
+- The Bastrop County Story (/bastrop-county-story): Local context for data center development in Bastrop County, Texas.
+- FAQ (/faq): Frequently asked questions with direct, honest answers.
+- Official Sources (/sources): Links to authoritative data from the Just Solutions Collective, EIA Data Browser, and ERCOT.
+- About (/about): Information about the site's mission and independence.
+
+## Key Facts
+- Closed-loop data centers use approximately 5 million gallons of water per year, compared to 114 million for a typical golf course.
+- Data centers generate massive tax revenue without adding students to local schools, traffic to local roads, or demand on emergency services.
+- Most data center careers pay $55,000-$110,000+ and do not require a four-year college degree.
+- Communities like Quincy, WA used data center tax revenue to build an entirely new high school, hospital, library, and police station.
+
+## Contact
+contact@tomorrowbeginshere.com
