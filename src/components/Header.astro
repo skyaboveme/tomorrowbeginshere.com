@@ -13,9 +13,17 @@
             
             <!-- Desktop Navigation -->
             <nav class="hidden lg:ml-6 lg:flex lg:space-x-8 items-center">
-                <a href="/what-is-a-data-center" class="text-slate-600 hover:text-tech-blue font-medium transition-colors text-sm">Fundamentals</a>
-                <a href="/advancing-mankind" class="text-slate-600 hover:text-tech-blue font-medium transition-colors text-sm">Human Impact</a>
-                <a href="/economic-impact" class="text-slate-600 hover:text-tech-blue font-medium transition-colors text-sm">Economic Impact</a>
+                <div class="relative group pt-4 pb-4 -my-4">
+                    <a href="/what-is-a-data-center" class="text-slate-600 hover:text-tech-blue font-medium transition-colors text-sm flex items-center">
+                        Fundamentals
+                        <svg class="w-4 h-4 ml-1 opacity-50 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                    <div class="absolute left-0 top-full w-56 bg-white border border-slate-200 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden translate-y-2 group-hover:translate-y-0 text-left">
+                        <a href="/what-is-a-data-center" class="block px-4 py-3 text-sm text-slate-800 font-bold hover:bg-slate-50 border-b border-slate-100">Overview</a>
+                        <a href="/advancing-mankind" class="block px-4 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-tech-blue transition-colors">Human Impact</a>
+                        <a href="/economic-impact" class="block px-4 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-tech-blue transition-colors">Economic Impact</a>
+                    </div>
+                </div>
                 <div class="relative group pt-4 pb-4 -my-4">
                     <a href="/myth-vs-reality" class="text-slate-600 hover:text-tech-blue font-medium transition-colors text-sm flex items-center">
                         Myth vs. Fact
@@ -57,8 +65,10 @@
     <div class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full" id="mobile-menu">
         <div class="px-4 pt-2 pb-6 space-y-1 shadow-lg border-b border-slate-200">
             <a href="/what-is-a-data-center" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-tech-blue hover:bg-slate-50">Fundamentals</a>
-            <a href="/advancing-mankind" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-tech-blue hover:bg-slate-50">Human Impact</a>
-            <a href="/economic-impact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-tech-blue hover:bg-slate-50">Economic Impact</a>
+            <div class="pl-4 ml-2 border-l-2 border-slate-100 my-1 pb-1">
+                <a href="/advancing-mankind" class="block px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-tech-blue hover:bg-slate-50">Human Impact</a>
+                <a href="/economic-impact" class="block px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-tech-blue hover:bg-slate-50">Economic Impact</a>
+            </div>
             <a href="/myth-vs-reality" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-tech-blue hover:bg-slate-50">Myth vs. Fact</a>
             <div class="pl-4 ml-2 border-l-2 border-slate-100 my-1 pb-1">
                 <a href="/water-usage" class="block px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-tech-blue hover:bg-slate-50">Water Usage Data</a>
