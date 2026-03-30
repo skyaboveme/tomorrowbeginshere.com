@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+
+const impactData = [
+  {
+    name: "1,000-Home Subdivision",
+    subtitle: "(~$300M Property Value)",
+    netBenefit: 15,
+    taxRevenue: "Moderate",
+    impacts: [
+      "+ ~1,500 new students to ISD",
+      "+ Massive daily traffic increase",
+      "+ High demand on emergency services",
+      "+ Deep strain on water infrastructure"
+    ],
+    color: "bg-slate-400 border-slate-500",
+    shadow: "shadow-slate-400/30"
+  },
+  {
+    name: "$1 Billion Data Center",
+    subtitle: "(Hyper-Efficient Commercial Space)",
+    netBenefit: 95,
+    taxRevenue: "Massive",
+    impacts: [
+      "0 new students added to ISD",
+      "Minimal daily car traffic",
+      "Self-contained security & fire systems",
+      "Privately funded infrastructure upgrades"
+    ],
+    color: "bg-texas-pine border-pine-green",
+    shadow: "shadow-pine-green/30"
+  }
+];
+
+---
+
+<BaseLayout 
+    title="Local Economic Impact | Financial Benefits for Our Community"
+    description="Discover the massive financial value and tax relief modern data centers bring to local communities, schools, and emergency services without straining municipal resources."
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/80 to-tech-blue/80 z-0 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('/images/hero-bg.png')] bg-cover bg-center z-0 opacity-20 mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-300 font-bold tracking-widest uppercase text-sm mb-6 border border-amber-500/30 backdrop-blur-sm">The Financial Engine</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">The Community Impact</h1>
+            <p class="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light">
+                To build a resilient future, a county needs a commercial tax base that pays far more into the system than it takes out. Hyperscale data centers are the ultimate financial engine for rural prosperity.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="py-20 lg:py-28 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 mb-6">The Real Math Behind Growth</h2>
+                <p class="text-lg text-slate-600">
+                    Not all development impacts a county equally. When local governments assess new projects, they must calculate the <strong>Net Community Benefit:</strong> the new tax revenue generated versus the cost of new services required to support it. 
+                </p>
+            </div>
+
+            <!-- The Bar Chart Container -->
+            <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-10 mb-20 overflow-hidden relative">
+                
+                <h3 class="text-2xl font-bold text-slate-800 mb-8 border-b border-slate-100 pb-4 text-center sm:text-left">
+                    Net Community Benefit Comparison
+                </h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Left: The Visual Chart -->
+                    <div class="space-y-10 pt-4">
+                        {impactData.map((item) => (
+                            <div class="relative pt-6 pr-4">
+                                <!-- Label -->
+                                <div class="absolute top-0 left-0 text-sm md:text-base font-bold text-slate-800">{item.name}</div>
+                                <div class="absolute top-0 right-4 text-xs tracking-wider uppercase font-bold text-slate-500">{item.taxRevenue} Impact</div>
+                                
+                                <!-- Track -->
+                                <div class="w-full h-12 bg-slate-100 rounded-xl overflow-hidden relative border border-slate-200/50 shadow-inner">
+                                    <!-- Fill -->
+                                    <div 
+                                        class={`h-full rounded-r-xl transition-all duration-1000 ease-out ${item.color} flex items-center justify-end px-4 relative overflow-hidden`}
+                                        style={`width: ${item.netBenefit}%;`}
+                                    >
+                                        <!-- Overlay gradient for depth -->
+                                        <div class="absolute inset-0 bg-gradient-to-r from-transparent to-black/10"></div>
+                                        <div class="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.1)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.1)_50%,rgba(255,255,255,0.1)_75%,transparent_75%,transparent)] bg-[length:20px_20px]"></div>
+                                    </div>
+                                </div>
+                                <div class="text-[11px] md:text-sm text-slate-500 mt-2 font-medium">{item.subtitle}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <!-- Right: The Impacts Breakdown -->
+                    <div class="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200 h-full flex flex-col justify-center shadow-inner">
+                        <div class="space-y-8">
+                            {impactData.map((item, index) => (
+                                <div>
+                                    <h4 class={`font-bold text-lg mb-3 ${index === 1 ? 'text-pine-green' : 'text-slate-700'}`}>
+                                        The Reality of {item.name}:
+                                    </h4>
+                                    <ul class="space-y-2">
+                                        {item.impacts.map(impact => (
+                                            <li class="flex items-start">
+                                                <svg class={`w-5 h-5 flex-shrink-0 mr-2 ${index === 1 ? 'text-amber-500' : 'text-red-400 opacity-70'} mt-0.5`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    {index === 1 
+                                                        ? <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                        : <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                                    }
+                                                </svg>
+                                                <span class="text-slate-600 text-sm leading-relaxed">{impact}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Chart Takeaway Box -->
+                <div class="mt-12 p-6 bg-blue-50/50 rounded-2xl border border-tech-blue/10">
+                    <h4 class="font-bold text-tech-blue mb-2 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        The Key Takeaway
+                    </h4>
+                    <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                        A typical large housing development requires staggering millions in new municipal services (schools, police, road expansions, water capacity). In stark contrast, a data center provides a $1,000,000,000+ taxable asset that requires almost zero ongoing county services—creating a massive financial surplus that lowers the burden on everyone else.
+                    </p>
+                </div>
+            </div>
+
+            <!-- The Direct Benefits Grid -->
+            <div class="mt-32">
+                <div class="text-center mb-16">
+                    <span class="text-amber-500 font-bold tracking-widest uppercase text-sm mb-2 block">Direct Benefits</span>
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Where The Money Goes</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Column 1: Schools -->
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-[100px] -z-0 transition-transform group-hover:scale-110 duration-500"></div>
+                        <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-8 text-amber-600 relative z-10 shadow-sm border border-amber-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-7">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">Transforming Local Schools</h3>
+                        <p class="text-slate-600 leading-relaxed font-medium mb-4 relative z-10">
+                            ISDs are historically underfunded in rural areas. Data centers inject millions of dollars directly into the local school district. 
+                        </p>
+                        <p class="text-slate-500 text-sm leading-relaxed relative z-10">
+                            Because they do not add families to the community, <strong class="text-slate-700">zero new students</strong> are added to the classroom, meaning 100% of the new tax revenue goes toward raising teacher pay, building modern facilities, and upgrading technology.
+                        </p>
+                    </div>
+
+                    <!-- Column 2: Emergency Services -->
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-red-50 rounded-bl-[100px] -z-0 transition-transform group-hover:scale-110 duration-500"></div>
+                        <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mb-8 text-red-600 relative z-10 shadow-sm border border-red-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-7">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">Emergency Services</h3>
+                        <p class="text-slate-600 leading-relaxed font-medium mb-4 relative z-10">
+                            With extreme growth, counties struggle to afford the police cars, fire engines, and EMS stations required to keep people safe.
+                        </p>
+                        <p class="text-slate-500 text-sm leading-relaxed relative z-10">
+                            The massive commercial tax base from a single data center campus provides the liquidity needed to buy new Fire/EMS equipment and hire the best first responders, keeping response times low without passing the cost to residents.
+                        </p>
+                    </div>
+
+                    <!-- Column 3: Property Tax Relief -->
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-tech-blue/10 rounded-bl-[100px] -z-0 transition-transform group-hover:scale-110 duration-500"></div>
+                        <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-8 text-tech-blue relative z-10 shadow-sm border border-blue-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-7">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">Homeowner Tax Relief</h3>
+                        <p class="text-slate-600 leading-relaxed font-medium mb-4 relative z-10">
+                            When a county's budget runs short due to booming residential populations, property taxes go up on individual homeowners.
+                        </p>
+                        <p class="text-slate-500 text-sm leading-relaxed relative z-10">
+                            A billion-dollar commercial asset shoulders a massive percentage of the county's total tax burden. Without this commercial buffer, the entire financial weight of county infrastructure falls directly onto the shoulders of local, hard-working families through rising property taxes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conclusion CTA -->
+            <div class="mt-24 text-center">
+                <a href="/bastrop-county-story" class="inline-flex items-center justify-center px-8 py-4 text-white bg-slate-900 hover:bg-tech-blue font-bold rounded-xl shadow-md transition-colors duration-300 tracking-wide text-lg">
+                    See How This Applies to Bastrop County
+                    <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+</BaseLayout>
