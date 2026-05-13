@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+
+const topics = [
+  {
+    title: "Water Consumption",
+    items: [
+      {
+        claim: "Data centers are “waterhogs” that will drain local aquifers and drive up water bills. A mid-size data center uses 300,000 gallons per day — equivalent to 1,000 homes.",
+        truth: "Modern data centers use closed-loop and air-cooling systems that reduce water use by 80–95% compared to older designs. Google, Microsoft, and Meta have all committed to being water-positive by 2030, meaning they will replenish more water than they consume. Compare: a single 18-hole golf course uses 312,000 gallons per day. A data center on the same acreage generates billions in economic value. Moreover, leading operators invest in watershed restoration, aquifer recharge, and municipal water infrastructure as part of their host community agreements."
+      },
+      {
+        claim: "Even “closed loop” systems use a tremendous amount of water. Tucker claims operators have been “lying to Americans” about usage.",
+        truth: "Water consumption data is publicly reported by all major hyperscalers in their annual sustainability reports. Google’s 2024 Environmental Report disclosed water usage for every campus. The claim that the industry is “hiding” data doesn’t hold up — the question is whether communities are choosing to look at publicly available information or relying on opposition talking points."
+      }
+    ]
+  },
+  {
+    title: "Energy and Grid Strain",
+    items: [
+      {
+        claim: "Data centers will consume 12% of all U.S. electricity by 2030 and will drive up electricity prices for residential customers. Tucker claims prices rose 70% in some areas.",
+        truth: "ERCOT and major grid operators require large loads to secure their own generation capacity or purchase behind-the-meter power. Texas SB 6 (2025) specifically gives ERCOT authority to cut power to large facilities during emergencies. Data centers in ERCOT territory are increasingly building their own solar, wind, and natural gas generation, adding net new capacity to the grid rather than drawing from it. The 70% price claim needs context — electricity costs are driven by fuel markets, grid investment, and weather events, not any single customer class."
+      },
+      {
+        claim: "Diesel backup generators cause massive pollution. SWU calls them a major health threat.",
+        truth: "Backup generators run only during grid outages, typically less than 100 hours per year, and are required by code for any critical infrastructure (hospitals, water treatment plants, etc.). New EPA Tier 4 standards have reduced diesel particulate emissions by 90%+. Leading operators are transitioning to battery storage, natural gas, and hydrogen fuel cells as backup, making this a rapidly diminishing concern."
+      }
+    ]
+  },
+  {
+    title: "Jobs and Economic Impact",
+    items: [
+      {
+        claim: "Data centers don’t create long-term jobs. NAACP’s “Fact or Fiction” sheet asks if data centers are “creating long-term jobs.” Tucker says they are “net negative for job creation” because automation destroys more jobs than are created.",
+        truth: "A typical hyperscale data center employs 30–50 full-time operations staff and generates 1,000–3,000 construction jobs over 2–3 years. But the bigger story is the ecosystem effect: data centers anchor tech clusters that attract software companies, managed service providers, fiber providers, and specialized contractors. Northern Virginia’s data center corridor supports 50,000+ jobs across the ecosystem. The AI services these centers enable are creating entirely new job categories and industries."
+      },
+      {
+        claim: "Tax abatements mean communities don’t actually benefit financially. They’re getting “shorted.”",
+        truth: "Even with abatements, a single hyperscale campus typically generates $10–50 million in annual tax revenue to its host county, because the assessed value of a $1B+ facility is enormous even at reduced rates. The NAACP’s own CBA template implicitly acknowledges this by negotiating for community benefits — which means the economic pie exists. The question is fair distribution, not whether there is value. Developers should proactively propose robust CBAs, host community funds, and infrastructure investments before opposition groups set the terms."
+      }
+    ]
+  },
+  {
+    title: "Agricultural Land and Rural Character",
+    items: [
+      {
+        claim: "Tucker says data centers should not be placed on prime farmland. Texas Ag Commissioner Sid Miller supports “Agriculture Freedom Zones.”",
+        truth: "Responsible siting is a legitimate concern. Industry best practice is to prioritize brownfield sites, existing industrial parks, and land without active agricultural use. However, the idea that data centers convert more agricultural land than residential subdivision, solar farms, or oil and gas development is not supported by the data. A data center’s physical footprint is dramatically smaller per dollar of economic output than almost any other industrial use."
+      },
+      {
+        claim: "Data centers produce a low-frequency hum that causes health issues for five or more miles. Tucker cites risks to children and the elderly.",
+        truth: "Noise from data centers is primarily generated by cooling systems and is governed by local noise ordinances. Modern designs achieve 50–60 dB at the property line — comparable to a quiet conversation. Claims of health effects from “low-frequency vibration” traveling five miles lack peer-reviewed scientific support. Developers should proactively commission independent acoustic assessments and share them publicly."
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout 
+    title="Data Center Answers | Myth vs Fact"
+    description="Explore transparent answers to the most common opposition claims regarding data center development."
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/80 to-tech-blue/80 z-0 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=2669&auto=format&fit=crop')] bg-cover bg-center z-0 opacity-20 mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">Data Center Answers</h1>
+            <p class="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light">
+                Direct, fact-based responses to the most common opposition claims and concerns about data center development.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- Main Content -->
+    <section class="py-16 lg:py-24 bg-slate-50 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 mb-6">Accusation vs Reality</h2>
+                <p class="text-lg text-slate-600">
+                    We believe transparency is the best policy. Below, we address frequent arguments raised by opposition groups and contrast them with verified industry data and operational reality.
+                </p>
+            </div>
+
+            <div class="space-y-16">
+                {topics.map((topic, index) => (
+                    <div class="relative">
+                        <div class="flex items-center mb-8">
+                            <span class="flex-shrink-0 w-12 h-12 rounded-full bg-tech-blue text-white flex items-center justify-center font-bold text-xl mr-4 shadow-md">
+                                {index + 1}
+                            </span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">{topic.title}</h3>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 gap-y-12">
+                            {topic.items.map((item) => (
+                                <div class="col-span-1 lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-0 shadow-lg rounded-2xl overflow-hidden border border-slate-200 group transition-all duration-300 hover:shadow-xl">
+                                    
+                                    <!-- The Claim (Red) -->
+                                    <div class="bg-red-50/50 p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-red-100 flex flex-col justify-start relative">
+                                        <div class="absolute top-0 right-0 p-4 opacity-10">
+                                            <svg class="w-24 h-24 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="inline-flex items-center text-red-600 font-bold uppercase tracking-widest text-xs mb-4">
+                                            <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5" />
+                                            </svg>
+                                            Their Claim
+                                        </div>
+                                        <p class="text-lg text-slate-800 leading-relaxed relative z-10 italic">
+                                            "{item.claim}"
+                                        </p>
+                                    </div>
+
+                                    <!-- The Truth (Green/Blue) -->
+                                    <div class="bg-white p-8 lg:p-10 flex flex-col justify-start relative">
+                                        <div class="absolute top-0 right-0 p-4 opacity-5">
+                                            <svg class="w-24 h-24 text-pine-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </div>
+                                        <div class="inline-flex items-center text-pine-green font-bold uppercase tracking-widest text-xs mb-4">
+                                            <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            The Truth
+                                        </div>
+                                        <p class="text-[1.05rem] text-slate-700 leading-relaxed font-medium relative z-10">
+                                            {item.truth}
+                                        </p>
+                                    </div>
+                                    
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <!-- Call to Action -->
+            <div class="mt-20 text-center bg-slate-900 rounded-[2rem] p-10 lg:p-16 border shadow-xl relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-tr from-tech-blue/20 to-transparent z-0"></div>
+                <div class="relative z-10">
+                    <h3 class="text-3xl font-bold mb-4 text-white tracking-tight">Got More Questions?</h3>
+                    <p class="text-slate-300 mb-8 max-w-2xl mx-auto text-lg">
+                        We actively track all community discussions and provide direct, transparent responses. Check out our FAQ or reach out to us with any remaining concerns.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="/faq" class="inline-flex items-center justify-center px-8 py-3.5 text-tech-blue bg-white font-bold rounded-xl shadow-md transition-colors duration-300 hover:bg-slate-50 text-lg">
+                            Read the FAQ
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+</BaseLayout>

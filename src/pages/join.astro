@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import LeadCaptureForm from '../components/LeadCaptureForm.astro';
+
+// Check if success parameter is in URL
+const isSuccess = Astro.url.searchParams.get('success') === 'true';
+---
+
+<BaseLayout 
+    title="Join the Coalition | TomorrowBeginsHere.com"
+    description="Join the coalition of local residents, business owners, and taxpayers supporting infrastructure, tax relief, and progress in Bastrop County."
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/80 to-tech-blue/80 z-0 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('/images/hero-bg.png')] bg-cover bg-center z-0 opacity-20 mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-300 font-bold tracking-widest uppercase text-sm mb-6 border border-amber-500/30 backdrop-blur-sm">Take Action</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">Join the Coalition</h1>
+            <p class="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light">
+                Stand up for rural prosperity, massive tax relief, and modern infrastructure. Don't let loud activists decide your future.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="py-20 lg:py-28 bg-slate-50 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {isSuccess ? (
+                <div class="max-w-3xl mx-auto text-center bg-white rounded-3xl shadow-xl border border-emerald-200 p-12 lg:p-16 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-50 rounded-bl-[150px] -z-0"></div>
+                    <div class="w-24 h-24 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-8 relative z-10">
+                        <svg class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <h2 class="text-4xl font-black text-slate-900 mb-4 relative z-10">Welcome to the Coalition!</h2>
+                    <p class="text-xl text-slate-600 relative z-10 mb-10">
+                        Thank you for standing up for facts and progress. We will keep you updated on critical votes and new fact-checks.
+                    </p>
+                    <a href="/" class="inline-flex items-center justify-center px-8 py-4 text-white bg-slate-900 hover:bg-tech-blue font-bold rounded-xl shadow-md transition-colors duration-300 tracking-wide text-lg relative z-10">
+                        Return Home
+                    </a>
+                </div>
+            ) : (
+                <div class="max-w-5xl mx-auto">
+                    <LeadCaptureForm />
+                </div>
+            )}
+            
+        </div>
+    </section>
+
+</BaseLayout>

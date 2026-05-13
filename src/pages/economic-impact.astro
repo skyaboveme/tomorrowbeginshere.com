@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../components/BaseLayout.astro';
+import TaxCalculator from '../components/TaxCalculator.astro';
 
 const impactData = [
   {
@@ -136,16 +137,14 @@ const impactData = [
                         A typical large housing development requires staggering millions in new municipal services (schools, police, road expansions, water capacity). In stark contrast, a data center provides a $1,000,000,000+ taxable asset that requires almost zero ongoing county services—creating a massive financial surplus that lowers the burden on everyone else.
                     </p>
                 </div>
-            </div>
-
-            <!-- The Direct Benefits Grid -->
+            </div>            <!-- The Direct Benefits Grid -->
             <div class="mt-32">
                 <div class="text-center mb-16">
                     <span class="text-amber-500 font-bold tracking-widest uppercase text-sm mb-2 block">Direct Benefits</span>
                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Where The Money Goes</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
                     <!-- Column 1: Schools -->
                     <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-[100px] -z-0 transition-transform group-hover:scale-110 duration-500"></div>
@@ -197,10 +196,12 @@ const impactData = [
                         </p>
                     </div>
                 </div>
+
+                <TaxCalculator />
             </div>
 
             <!-- Conclusion CTA -->
-            <div class="mt-24 text-center">
+            <div class="mt-24 text-center">">
                 <a href="/bastrop-county-story" class="inline-flex items-center justify-center px-8 py-4 text-white bg-slate-900 hover:bg-tech-blue font-bold rounded-xl shadow-md transition-colors duration-300 tracking-wide text-lg">
                     See How This Applies to Bastrop County
                     <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>

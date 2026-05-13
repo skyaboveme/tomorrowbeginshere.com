@@ -27,11 +27,25 @@ const faqs = [
     answer: "A billion-dollar data center campus generates an incredible amount of property tax revenue that flows directly into the local school district. This provides massive, stable funding that can be used for hiring teachers, upgrading facilities, and expanding educational programs, all without requiring painful tax increases on local homeowners."
   }
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
 <BaseLayout 
     title="Data Center FAQ | Your Questions Answered"
     description="Honest answers to the most common questions about data centers in rural communities, from water use to property values."
+    schema={schema}
 >
     <!-- Page Header -->
     <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">

@@ -1,0 +1,214 @@
+---
+// FacilityExplorer.astro
+// Interactive campus map component explaining modern data center infrastructure.
+---
+
+<div class="bg-slate-900 rounded-3xl shadow-2xl border border-slate-700/50 overflow-hidden my-12" id="facility-explorer">
+    <div class="grid grid-cols-1 lg:grid-cols-3">
+        
+        <!-- Interactive Map Area -->
+        <div class="lg:col-span-2 relative aspect-[4/3] lg:aspect-auto bg-slate-800 border-b lg:border-b-0 lg:border-r border-slate-700/50 flex items-center justify-center p-4 sm:p-8">
+            <!-- Background grid pattern -->
+            <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+            
+            <svg viewBox="0 0 800 600" class="w-full h-full drop-shadow-2xl z-10" id="campus-svg">
+                <!-- Base Ground / Landscaping Buffer -->
+                <g class="interactive-zone cursor-pointer transition-all duration-300 hover:brightness-110 group" data-zone="landscaping">
+                    <rect x="50" y="50" width="700" height="500" rx="30" fill="#0f2922" stroke="#10b981" stroke-width="2" class="opacity-80 group-hover:opacity-100 transition-opacity" />
+                    <!-- Trees / Berms (Abstract circles) -->
+                    <circle cx="100" cy="100" r="25" fill="#065f46" />
+                    <circle cx="160" cy="80" r="20" fill="#047857" />
+                    <circle cx="220" cy="90" r="25" fill="#065f46" />
+                    <circle cx="680" cy="120" r="30" fill="#047857" />
+                    <circle cx="720" cy="180" r="20" fill="#065f46" />
+                    <circle cx="90" cy="480" r="25" fill="#047857" />
+                    <circle cx="140" cy="510" r="20" fill="#065f46" />
+                    <circle cx="690" cy="500" r="25" fill="#047857" />
+                    <!-- Zone Label -->
+                    <text x="350" y="80" fill="#10b981" font-family="sans-serif" font-weight="bold" font-size="14" letter-spacing="2" opacity="0.7">LANDSCAPING BUFFER (100ft+)</text>
+                </g>
+
+                <!-- Substation -->
+                <g class="interactive-zone cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:brightness-125" data-zone="substation">
+                    <rect x="90" y="250" width="120" height="180" fill="#1e293b" stroke="#94a3b8" stroke-width="2" />
+                    <!-- Substation details -->
+                    <rect x="110" y="270" width="30" height="30" fill="#334155" />
+                    <rect x="150" y="270" width="30" height="30" fill="#334155" />
+                    <rect x="110" y="320" width="30" height="30" fill="#334155" />
+                    <rect x="150" y="320" width="30" height="30" fill="#334155" />
+                    <path d="M125 360 L125 410 M165 360 L165 410" stroke="#94a3b8" stroke-width="4" />
+                    <circle cx="125" cy="410" r="8" fill="#e2e8f0" />
+                    <circle cx="165" cy="410" r="8" fill="#e2e8f0" />
+                    <!-- Zone Label -->
+                    <text x="150" y="235" fill="#94a3b8" font-family="sans-serif" font-weight="bold" font-size="12" letter-spacing="1" text-anchor="middle">SUBSTATION</text>
+                </g>
+
+                <!-- Main Server Halls -->
+                <g class="interactive-zone cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:brightness-125" data-zone="servers">
+                    <rect x="250" y="150" width="400" height="300" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="3" />
+                    <!-- Roof details (abstract server aisles) -->
+                    <rect x="280" y="180" width="150" height="240" fill="#1e293b" />
+                    <rect x="470" y="180" width="150" height="240" fill="#1e293b" />
+                    <!-- Glowing tech accents -->
+                    <line x1="280" y1="300" x2="430" y2="300" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5,5" opacity="0.5" />
+                    <line x1="470" y1="300" x2="620" y2="300" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5,5" opacity="0.5" />
+                    <!-- Entry structure -->
+                    <rect x="250" y="270" width="30" height="60" fill="#3b82f6" opacity="0.8" />
+                    <!-- Zone Label -->
+                    <text x="450" y="135" fill="#3b82f6" font-family="sans-serif" font-weight="bold" font-size="16" letter-spacing="2" text-anchor="middle">MAIN DATA HALLS</text>
+                </g>
+
+                <!-- Cooling Plant -->
+                <g class="interactive-zone cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:brightness-125" data-zone="cooling">
+                    <rect x="670" y="200" width="60" height="200" fill="#164e63" stroke="#06b6d4" stroke-width="2" />
+                    <!-- Chiller fans -->
+                    <circle cx="700" cy="230" r="20" fill="#083344" stroke="#06b6d4" stroke-width="1" />
+                    <circle cx="700" cy="280" r="20" fill="#083344" stroke="#06b6d4" stroke-width="1" />
+                    <circle cx="700" cy="330" r="20" fill="#083344" stroke="#06b6d4" stroke-width="1" />
+                    <circle cx="700" cy="380" r="20" fill="#083344" stroke="#06b6d4" stroke-width="1" />
+                    <!-- Pipes -->
+                    <path d="M650 250 L670 250 M650 350 L670 350" stroke="#06b6d4" stroke-width="4" />
+                    <!-- Zone Label -->
+                    <text x="700" y="185" fill="#06b6d4" font-family="sans-serif" font-weight="bold" font-size="12" letter-spacing="1" text-anchor="middle">COOLING PLANT</text>
+                </g>
+
+                <!-- Generator Yard -->
+                <g class="interactive-zone cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:brightness-125" data-zone="generators">
+                    <rect x="300" y="470" width="300" height="60" fill="#451a03" stroke="#f59e0b" stroke-width="2" />
+                    <!-- Generators -->
+                    <rect x="320" y="480" width="30" height="40" fill="#78350f" />
+                    <rect x="370" y="480" width="30" height="40" fill="#78350f" />
+                    <rect x="420" y="480" width="30" height="40" fill="#78350f" />
+                    <rect x="470" y="480" width="30" height="40" fill="#78350f" />
+                    <rect x="520" y="480" width="30" height="40" fill="#78350f" />
+                    <!-- Zone Label -->
+                    <text x="450" y="550" fill="#f59e0b" font-family="sans-serif" font-weight="bold" font-size="12" letter-spacing="1" text-anchor="middle">BACKUP GENERATOR YARD (ENCLOSED)</text>
+                </g>
+            </svg>
+            
+            <!-- Mobile overlay instruction -->
+            <div class="absolute bottom-4 right-4 bg-slate-900/80 backdrop-blur text-white text-xs font-medium px-3 py-1.5 rounded-full border border-slate-600 lg:hidden">
+                Tap map areas to explore
+            </div>
+        </div>
+
+        <!-- Information Panel -->
+        <div class="bg-slate-900 p-8 lg:p-10 flex flex-col justify-center relative min-h-[300px]">
+            <div id="info-default" class="text-center absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300 z-10">
+                <svg class="w-12 h-12 text-slate-500 mb-4 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                </svg>
+                <h3 class="text-xl font-bold text-white mb-2">Interactive Campus Map</h3>
+                <p class="text-slate-400 text-sm">Hover over or tap the highlighted zones on the facility map to learn the facts about modern data center infrastructure.</p>
+            </div>
+
+            <!-- Content panels (hidden by default) -->
+            <div id="info-content" class="opacity-0 invisible transition-all duration-300 relative z-20 transform translate-y-4">
+                <span id="zone-badge" class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full mb-4">Zone</span>
+                <h3 id="zone-title" class="text-2xl font-bold text-white mb-4">Title</h3>
+                <p id="zone-description" class="text-slate-300 leading-relaxed text-sm mb-6">Description goes here.</p>
+                <div id="zone-fact" class="bg-white/5 border border-white/10 rounded-xl p-4 flex gap-3">
+                    <span class="text-xl">💡</span>
+                    <div>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Key Fact</p>
+                        <p id="zone-fact-text" class="text-white text-sm font-medium">Fact goes here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Data content for each zone
+        const zoneData = {
+            'cooling': {
+                badge: 'Cooling Systems',
+                badgeColor: 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30',
+                title: 'Closed-Loop Cooling',
+                description: 'Modern facilities use closed-loop air chilling systems. Water is contained within sealed pipes and recirculated constantly to remove heat from the server halls. It is not evaporated into the air or continuously drained.',
+                fact: 'Many new facilities are "water-zero," meaning they consume no fresh water from municipal supplies for daily operations.'
+            },
+            'generators': {
+                badge: 'Backup Power',
+                badgeColor: 'bg-amber-500/20 text-amber-300 border border-amber-500/30',
+                title: 'Generator Yard',
+                description: 'Backup generators are required to ensure 100% uptime, but they only run during emergencies or scheduled testing. Modern generators are housed in advanced acoustic enclosures specifically engineered to dampen noise.',
+                fact: 'At the property line, the noise from a modern generator yard is roughly equivalent to a residential HVAC unit (45-55 dB).'
+            },
+            'servers': {
+                badge: 'Core Infrastructure',
+                badgeColor: 'bg-blue-500/20 text-blue-300 border border-blue-500/30',
+                title: 'The Server Halls',
+                description: 'This is where the actual computing happens. The building is designed to be highly secure, low-profile, and strictly temperature-controlled. There are no smokestacks, and no industrial manufacturing takes place here.',
+                fact: 'This single building can represent a $1B+ capital investment, making it one of the highest tax-yielding properties per acre possible.'
+            },
+            'substation': {
+                badge: 'Power Delivery',
+                badgeColor: 'bg-slate-500/20 text-slate-300 border border-slate-500/30',
+                title: 'Dedicated Substation',
+                description: 'Data centers require massive amounts of power, so they fund and build their own dedicated electrical substations. This infrastructure is paid for by the technology company, not the local residential ratepayers.',
+                fact: 'The power lines and infrastructure upgrades required for the data center actually increase the reliability of the local grid.'
+            },
+            'landscaping': {
+                badge: 'Site Integration',
+                badgeColor: 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30',
+                title: 'Landscaping Buffer',
+                description: 'Modern campus designs include 100 to 300+ foot buffers composed of mature trees, earthen berms, and native plantings. The goal is to make the facility completely invisible and inaudible from the public right-of-way.',
+                fact: 'Tech companies often exceed local zoning requirements for greenery, frequently adding solar arrays and preserving natural wetlands.'
+            }
+        };
+
+        const zones = document.querySelectorAll('.interactive-zone');
+        const defaultPanel = document.getElementById('info-default');
+        const contentPanel = document.getElementById('info-content');
+        
+        const badge = document.getElementById('zone-badge');
+        const title = document.getElementById('zone-title');
+        const description = document.getElementById('zone-description');
+        const factText = document.getElementById('zone-fact-text');
+
+        let activeZone = null;
+
+        zones.forEach(zone => {
+            const handleInteract = () => {
+                const zoneId = zone.getAttribute('data-zone');
+                if (!zoneId || !zoneData[zoneId]) return;
+                
+                const data = zoneData[zoneId];
+                activeZone = zoneId;
+
+                // Update content
+                if (badge) {
+                    badge.textContent = data.badge;
+                    badge.className = `inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full mb-4 ${data.badgeColor}`;
+                }
+                if (title) title.textContent = data.title;
+                if (description) description.textContent = data.description;
+                if (factText) factText.textContent = data.fact;
+
+                // UI State Swap
+                if (defaultPanel && contentPanel) {
+                    defaultPanel.classList.add('opacity-0', 'invisible');
+                    defaultPanel.classList.remove('z-10');
+                    
+                    contentPanel.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+                    contentPanel.classList.add('opacity-100', 'translate-y-0');
+                }
+            };
+
+            // Support both hover and touch
+            zone.addEventListener('mouseenter', handleInteract);
+            zone.addEventListener('click', handleInteract);
+        });
+        
+        // Optional: click outside map to reset (good for mobile)
+        document.getElementById('facility-explorer')?.addEventListener('mouseleave', () => {
+            if (activeZone) {
+                // We keep the last viewed content active rather than resetting to default,
+                // it provides a better UX so reading doesn't get abruptly cut off.
+            }
+        });
+    });
+</script>

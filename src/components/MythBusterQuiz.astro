@@ -1,0 +1,323 @@
+---
+// MythBusterQuiz.astro
+// Interactive "Fact or Fiction" quiz that challenges visitor assumptions about data centers.
+---
+
+<section class="py-20 bg-slate-900 relative overflow-hidden" id="myth-quiz">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 32px 32px;"></div>
+    <div class="absolute -top-40 -right-40 w-[500px] h-[500px] bg-tech-blue/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-pine-green/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-12" id="quiz-header">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-amber-500/20 text-amber-300 font-bold tracking-widest uppercase text-xs border border-amber-500/30 mb-6">Interactive Challenge</span>
+            <h2 class="text-3xl lg:text-5xl font-bold tracking-tight text-white mb-4">Fact or Fiction?</h2>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">Test what you think you know about data centers. You might be surprised by the answers.</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="mb-10">
+            <div class="flex items-center justify-between text-sm font-bold text-slate-400 mb-3">
+                <span>Question <span id="quiz-current-num">1</span> of <span id="quiz-total-num">5</span></span>
+                <span id="quiz-score-display" class="text-emerald-400 opacity-0 transition-opacity duration-300">Score: 0/0</span>
+            </div>
+            <div class="w-full bg-slate-700/50 rounded-full h-2.5 overflow-hidden">
+                <div id="quiz-progress-bar" class="h-full rounded-full bg-gradient-to-r from-tech-blue to-cyan-400 transition-all duration-700 ease-out" style="width: 20%"></div>
+            </div>
+        </div>
+
+        <!-- Quiz Card Container -->
+        <div id="quiz-card" class="bg-slate-800/80 backdrop-blur-sm border border-slate-700/60 rounded-[2rem] shadow-2xl overflow-hidden transition-all duration-500">
+            
+            <!-- Question Area -->
+            <div class="p-8 lg:p-12">
+                <div class="flex items-start gap-4 mb-8">
+                    <div class="w-10 h-10 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                        <svg class="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h3 id="quiz-question" class="text-xl lg:text-2xl font-bold text-white leading-snug"></h3>
+                </div>
+
+                <!-- Answer Buttons -->
+                <div class="grid grid-cols-2 gap-4" id="quiz-buttons">
+                    <button id="btn-fact" class="quiz-answer-btn group relative px-6 py-5 rounded-2xl border-2 border-emerald-500/30 bg-emerald-500/5 text-emerald-300 font-bold text-lg transition-all duration-300 hover:bg-emerald-500/20 hover:border-emerald-400/60 hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+                        <span class="flex items-center justify-center gap-3">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                            FACT
+                        </span>
+                    </button>
+                    <button id="btn-fiction" class="quiz-answer-btn group relative px-6 py-5 rounded-2xl border-2 border-red-500/30 bg-red-500/5 text-red-300 font-bold text-lg transition-all duration-300 hover:bg-red-500/20 hover:border-red-400/60 hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+                        <span class="flex items-center justify-center gap-3">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+                            FICTION
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Answer Reveal Area (hidden by default) -->
+            <div id="quiz-reveal" class="border-t border-slate-700/50 p-8 lg:p-12 hidden">
+                <div class="flex items-start gap-5">
+                    <div id="reveal-icon-container" class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 text-2xl font-bold">
+                        <!-- Dynamically set -->
+                    </div>
+                    <div>
+                        <p id="reveal-verdict" class="text-sm font-bold uppercase tracking-widest mb-2"></p>
+                        <p id="reveal-explanation" class="text-slate-300 leading-relaxed mb-5"></p>
+                        <a id="reveal-link" href="#" class="inline-flex items-center text-sm font-bold group/link transition-colors">
+                            Read the Full Analysis
+                            <svg class="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Button Area (hidden by default) -->
+            <div id="quiz-next-area" class="px-8 lg:px-12 pb-8 lg:pb-12 hidden">
+                <button id="btn-next" class="w-full py-4 rounded-2xl bg-gradient-to-r from-tech-blue to-cyan-500 text-white font-bold text-lg shadow-lg hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 cursor-pointer">
+                    Next Question →
+                </button>
+            </div>
+        </div>
+
+        <!-- Final Results (hidden by default) -->
+        <div id="quiz-results" class="hidden">
+            <div class="bg-slate-800/80 backdrop-blur-sm border border-slate-700/60 rounded-[2rem] shadow-2xl p-10 lg:p-16 text-center">
+                <div id="results-emoji" class="text-7xl mb-6">🎯</div>
+                <h3 id="results-title" class="text-3xl lg:text-4xl font-bold text-white mb-4"></h3>
+                <p id="results-score-text" class="text-xl text-slate-300 mb-3"></p>
+                <p id="results-message" class="text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed"></p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button id="btn-retake" class="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-white font-bold hover:bg-white/20 transition-all duration-300 cursor-pointer">
+                        Retake Quiz
+                    </button>
+                    <a href="/data-center-answers" class="px-8 py-4 rounded-xl bg-gradient-to-r from-tech-blue to-cyan-500 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center">
+                        Explore All Answers
+                        <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Quiz questions data
+    const questions = [
+        {
+            question: "Data centers drain the municipal water supply, competing directly with residents for drinking water.",
+            answer: "fiction",
+            explanation: "Modern data centers increasingly use closed-loop or air-cooled systems that consume zero fresh water. Even facilities that do use water account for less than 0.5% of total U.S. freshwater consumption. Many new builds use reclaimed wastewater, not municipal supply.",
+            link: "/closed-loop-cooling",
+            linkText: "How Closed-Loop Cooling Works"
+        },
+        {
+            question: "A single data center campus can generate $30–50 million per year in local property tax revenue.",
+            answer: "fact",
+            explanation: "A hyperscale data center represents a $1–5 billion capital investment. At standard commercial tax rates, this translates to tens of millions in annual property tax revenue for local school districts, counties, and emergency services — revenue that directly offsets residential tax burdens.",
+            link: "/your-tax-bill",
+            linkText: "See the Tax Revenue Math"
+        },
+        {
+            question: "Data centers are louder than a busy highway and create constant industrial noise for nearby residents.",
+            answer: "fiction",
+            explanation: "At the property line — typically 100+ feet from the building — a modern data center produces 45–55 dB of noise, roughly equivalent to a residential HVAC unit. Acoustic enclosures, landscaping berms, and buffer zones make most facilities quieter than the nearest road.",
+            link: "/inside-a-modern-facility",
+            linkText: "See Real Noise Comparisons"
+        },
+        {
+            question: "Data centers only create about 50 permanent jobs, making them a poor use of land compared to other development.",
+            answer: "fiction",
+            explanation: "The '50 jobs' claim omits 1,000–3,000+ construction jobs (2–4 years), 200–500+ indirect ecosystem jobs (security, catering, fiber, landscaping), and the fact those 30–150 permanent positions pay $75K–$130K — 2–3x the local median income. No 1,000-home subdivision generates comparable tax revenue per acre.",
+            link: "/economic-impact",
+            linkText: "Full Economic Impact Breakdown"
+        },
+        {
+            question: "Major tech companies like Microsoft, Google, and Meta have committed to returning more water to communities than they consume by 2030.",
+            answer: "fact",
+            explanation: "All three companies have publicly committed to being 'water positive' by 2030 — meaning they will replenish more freshwater than their global operations consume through watershed restoration, aquifer recharge projects, and advanced recycling infrastructure.",
+            link: "/water-usage",
+            linkText: "Water Positive Commitments"
+        }
+    ];
+
+    let currentIndex = 0;
+    let score = 0;
+    let answered = false;
+
+    // DOM elements
+    const questionEl = document.getElementById('quiz-question');
+    const btnFact = document.getElementById('btn-fact');
+    const btnFiction = document.getElementById('btn-fiction');
+    const buttonsArea = document.getElementById('quiz-buttons');
+    const revealArea = document.getElementById('quiz-reveal');
+    const nextArea = document.getElementById('quiz-next-area');
+    const btnNext = document.getElementById('btn-next');
+    const progressBar = document.getElementById('quiz-progress-bar');
+    const currentNum = document.getElementById('quiz-current-num');
+    const totalNum = document.getElementById('quiz-total-num');
+    const scoreDisplay = document.getElementById('quiz-score-display');
+    const quizCard = document.getElementById('quiz-card');
+    const quizResults = document.getElementById('quiz-results');
+
+    const revealIconContainer = document.getElementById('reveal-icon-container');
+    const revealVerdict = document.getElementById('reveal-verdict');
+    const revealExplanation = document.getElementById('reveal-explanation');
+    const revealLink = document.getElementById('reveal-link');
+
+    const resultsEmoji = document.getElementById('results-emoji');
+    const resultsTitle = document.getElementById('results-title');
+    const resultsScoreText = document.getElementById('results-score-text');
+    const resultsMessage = document.getElementById('results-message');
+    const btnRetake = document.getElementById('btn-retake');
+
+    if (totalNum) totalNum.textContent = String(questions.length);
+
+    function loadQuestion() {
+        answered = false;
+        const q = questions[currentIndex];
+        if (!q || !questionEl) return;
+
+        questionEl.textContent = q.question;
+        if (currentNum) currentNum.textContent = String(currentIndex + 1);
+        if (progressBar) progressBar.style.width = `${((currentIndex + 1) / questions.length) * 100}%`;
+
+        // Reset UI
+        if (revealArea) revealArea.classList.add('hidden');
+        if (nextArea) nextArea.classList.add('hidden');
+
+        // Reset button styles
+        [btnFact, btnFiction].forEach(btn => {
+            if (!btn) return;
+            btn.disabled = false;
+            btn.classList.remove(
+                'opacity-40', 'pointer-events-none', 'scale-95',
+                '!border-emerald-400', '!bg-emerald-500/30', 'ring-4', 'ring-emerald-500/30',
+                '!border-red-400', '!bg-red-500/30', 'ring-red-500/30'
+            );
+        });
+    }
+
+    function handleAnswer(userAnswer) {
+        if (answered) return;
+        answered = true;
+
+        const q = questions[currentIndex];
+        const isCorrect = userAnswer === q.answer;
+
+        if (isCorrect) score++;
+
+        // Show score
+        if (scoreDisplay) {
+            scoreDisplay.textContent = `Score: ${score}/${currentIndex + 1}`;
+            scoreDisplay.classList.remove('opacity-0');
+        }
+
+        // Highlight buttons
+        const correctBtn = q.answer === 'fact' ? btnFact : btnFiction;
+        const wrongBtn = q.answer === 'fact' ? btnFiction : btnFact;
+
+        if (correctBtn) {
+            correctBtn.classList.add('!border-emerald-400', '!bg-emerald-500/30', 'ring-4', 'ring-emerald-500/30');
+        }
+        if (wrongBtn) {
+            wrongBtn.classList.add('opacity-40', 'pointer-events-none', 'scale-95');
+        }
+        if (btnFact) btnFact.disabled = true;
+        if (btnFiction) btnFiction.disabled = true;
+
+        // Populate reveal
+        if (revealIconContainer) {
+            if (isCorrect) {
+                revealIconContainer.className = 'w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 text-2xl font-bold bg-emerald-500/20';
+                revealIconContainer.innerHTML = '<span class="text-emerald-400">✓</span>';
+            } else {
+                revealIconContainer.className = 'w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 text-2xl font-bold bg-red-500/20';
+                revealIconContainer.innerHTML = '<span class="text-red-400">✗</span>';
+            }
+        }
+        if (revealVerdict) {
+            revealVerdict.textContent = isCorrect ? 'Correct!' : `Incorrect — the answer is ${q.answer.toUpperCase()}`;
+            revealVerdict.className = `text-sm font-bold uppercase tracking-widest mb-2 ${isCorrect ? 'text-emerald-400' : 'text-red-400'}`;
+        }
+        if (revealExplanation) revealExplanation.textContent = q.explanation;
+        if (revealLink) {
+            revealLink.href = q.link;
+            revealLink.textContent = '';
+            revealLink.innerHTML = `${q.linkText} <svg class="w-4 h-4 ml-2 inline group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>`;
+            revealLink.className = `inline-flex items-center text-sm font-bold group/link transition-colors ${isCorrect ? 'text-emerald-400 hover:text-emerald-300' : 'text-red-400 hover:text-red-300'}`;
+        }
+
+        // Show reveal
+        if (revealArea) revealArea.classList.remove('hidden');
+
+        // Show next or finish
+        const isLast = currentIndex >= questions.length - 1;
+        if (nextArea && btnNext) {
+            nextArea.classList.remove('hidden');
+            btnNext.textContent = isLast ? 'See Your Results →' : 'Next Question →';
+        }
+    }
+
+    function showResults() {
+        if (quizCard) quizCard.classList.add('hidden');
+        if (quizResults) quizResults.classList.remove('hidden');
+
+        const pct = Math.round((score / questions.length) * 100);
+
+        if (resultsScoreText) resultsScoreText.textContent = `You got ${score} out of ${questions.length} correct (${pct}%)`;
+
+        if (pct === 100) {
+            if (resultsEmoji) resultsEmoji.textContent = '🏆';
+            if (resultsTitle) resultsTitle.textContent = 'Perfect Score!';
+            if (resultsMessage) resultsMessage.textContent = 'You clearly know your stuff. Share this quiz with someone who might learn something new.';
+        } else if (pct >= 60) {
+            if (resultsEmoji) resultsEmoji.textContent = '👏';
+            if (resultsTitle) resultsTitle.textContent = 'Well Informed!';
+            if (resultsMessage) resultsMessage.textContent = "You've got a strong grasp of the facts. Dive deeper into the articles below to fill in the gaps.";
+        } else {
+            if (resultsEmoji) resultsEmoji.textContent = '💡';
+            if (resultsTitle) resultsTitle.textContent = "Now You Know!";
+            if (resultsMessage) resultsMessage.textContent = "Most people get these wrong — that's exactly why misinformation spreads so easily. Explore the articles below to get the full picture.";
+        }
+    }
+
+    // Event listeners
+    if (btnFact) btnFact.addEventListener('click', () => handleAnswer('fact'));
+    if (btnFiction) btnFiction.addEventListener('click', () => handleAnswer('fiction'));
+
+    if (btnNext) {
+        btnNext.addEventListener('click', () => {
+            if (currentIndex >= questions.length - 1) {
+                showResults();
+            } else {
+                currentIndex++;
+                loadQuestion();
+            }
+        });
+    }
+
+    if (btnRetake) {
+        btnRetake.addEventListener('click', () => {
+            currentIndex = 0;
+            score = 0;
+            if (scoreDisplay) {
+                scoreDisplay.textContent = 'Score: 0/0';
+                scoreDisplay.classList.add('opacity-0');
+            }
+            if (quizCard) quizCard.classList.remove('hidden');
+            if (quizResults) quizResults.classList.add('hidden');
+            loadQuestion();
+        });
+    }
+
+    // Initialize
+    loadQuestion();
+});
+</script>

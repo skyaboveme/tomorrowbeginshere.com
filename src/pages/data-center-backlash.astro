@@ -1,0 +1,440 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="Inside the Data Center Backlash | TomorrowBeginsHere.com"
+    description="A movement that went from background noise to national flashpoint. Anatomy of an organized opposition to data center construction across America."
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-red-900/80 to-slate-900/90 z-0 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=2669&auto=format&fit=crop')] bg-cover bg-center z-0 opacity-20 mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-center">
+            <span class="inline-block bg-red-500/20 text-red-300 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-red-400/30 mb-6">Deep Analysis</span>
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight max-w-4xl mx-auto">Inside the Data Center Backlash: <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-300 to-amber-300">Anatomy of an Organized Opposition</span></h1>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light">A movement that went from background noise to national flashpoint</p>
+            <div class="mt-8 flex items-center justify-center gap-6 text-sm text-slate-400">
+                <span>May 7, 2026</span>
+                <span class="w-1 h-1 bg-slate-600 rounded-full"></span>
+                <span>25 min read</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Body -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="prose prose-lg prose-slate max-w-none">
+
+                <p class="text-xl leading-relaxed text-slate-700 font-medium">Three years ago, data center construction was the kind of infrastructure story that lived in trade publications and zoning agendas. Today it is one of the most consequential land-use fights in America, and it has begun reshaping local politics, state legislatures, and the financial outlook of the largest technology companies in the world.</p>
+
+                <p>The numbers tell the story. According to Data Center Watch, an industry-aligned tracking project, <strong class="text-slate-900">$64 billion in U.S. data center projects have been blocked or delayed</strong> by a wave of local, bipartisan opposition. Heatmap Pro, an energy intelligence platform, puts the cumulative number even higher. At least $85 billion in data center projects have been canceled over the past three years, and the pace is accelerating. In the first three months of 2026 alone, at least 20 proposed projects representing more than $41.7 billion in investment and 3.5 gigawatts of electricity demand were canceled after local pushback.</p>
+
+                <p>What was once a quiet permitting question is now a kitchen table issue, a midterm election issue, and increasingly, a federal policy issue.</p>
+            </div>
+
+            <!-- Table of Contents -->
+            <nav class="my-12 bg-slate-50 border border-slate-200 rounded-2xl p-8">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4">In This Article</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+                    <a href="#polling" class="text-sm text-slate-700 hover:text-tech-blue py-1.5 border-b border-slate-100 flex items-center group"><span class="w-1.5 h-1.5 rounded-full bg-red-400 mr-3 flex-shrink-0"></span>The Polling Collapse</a>
+                    <a href="#fear" class="text-sm text-slate-700 hover:text-tech-blue py-1.5 border-b border-slate-100 flex items-center group"><span class="w-1.5 h-1.5 rounded-full bg-red-400 mr-3 flex-shrink-0"></span>The Fear Industry</a>
+                    <a href="#arguments" class="text-sm text-slate-700 hover:text-tech-blue py-1.5 border-b border-slate-100 flex items-center group"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-3 flex-shrink-0"></span>Core Arguments</a>
+                    <a href="#math" class="text-sm text-slate-700 hover:text-tech-blue py-1.5 border-b border-slate-100 flex items-center group"><span class="w-1.5 h-1.5 rounded-full bg-pine-green mr-3 flex-shrink-0"></span>The Math Behind It</a>
+                    <a href="#bipartisan" class="text-sm text-slate-700 hover:text-tech-blue py-1.5 border-b border-slate-100 flex items-center group"><span class="w-1.5 h-1.5 rounded-full bg-tech-blue mr-3 flex-shrink-0"></span>Bipartisan Coalition</a>
+                    <a href="#sb6" class="text-sm text-slate-700 hover:text-tech-blue py-1.5 border-b border-slate-100 flex items-center group"><span class="w-1.5 h-1.5 rounded-full bg-tech-blue mr-3 flex-shrink-0"></span>Texas SB 6</a>
+                    <a href="#anatomy" class="text-sm text-slate-700 hover:text-tech-blue py-1.5 border-b border-slate-100 flex items-center group"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-3 flex-shrink-0"></span>Four-Part Anatomy</a>
+                    <a href="#funding" class="text-sm text-slate-700 hover:text-tech-blue py-1.5 border-b border-slate-100 flex items-center group"><span class="w-1.5 h-1.5 rounded-full bg-red-400 mr-3 flex-shrink-0"></span>Funding Architecture</a>
+                    <a href="#midterms" class="text-sm text-slate-700 hover:text-tech-blue py-1.5 border-b border-slate-100 flex items-center group"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-3 flex-shrink-0"></span>2026 Midterms</a>
+                    <a href="#forward" class="text-sm text-slate-700 hover:text-tech-blue py-1.5 border-b border-slate-100 flex items-center group"><span class="w-1.5 h-1.5 rounded-full bg-pine-green mr-3 flex-shrink-0"></span>Going Forward</a>
+                </div>
+            </nav>
+
+            <!-- Key Stats Strip -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 my-12">
+                <div class="bg-red-50 border border-red-100 rounded-xl p-5 text-center"><span class="block text-2xl lg:text-3xl font-black text-red-700">$85B</span><span class="text-xs text-red-600/80 uppercase tracking-wider font-semibold">Projects Canceled</span></div>
+                <div class="bg-amber-50 border border-amber-100 rounded-xl p-5 text-center"><span class="block text-2xl lg:text-3xl font-black text-amber-700">-30pts</span><span class="text-xs text-amber-600/80 uppercase tracking-wider font-semibold">Polling Swing</span></div>
+                <div class="bg-blue-50 border border-blue-100 rounded-xl p-5 text-center"><span class="block text-2xl lg:text-3xl font-black text-tech-blue">27</span><span class="text-xs text-tech-blue/80 uppercase tracking-wider font-semibold">States w/ Bills</span></div>
+                <div class="bg-slate-100 border border-slate-200 rounded-xl p-5 text-center"><span class="block text-2xl lg:text-3xl font-black text-slate-800">360K</span><span class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Organized Opponents</span></div>
+            </div>
+
+            <div class="prose prose-lg prose-slate max-w-none">
+                <hr class="border-slate-200 my-12">
+
+                <h2 id="polling" class="text-3xl font-bold text-slate-900 tracking-tight scroll-mt-24">The Polling Collapse</h2>
+
+                <p>The most striking data point is not the dollar figure of canceled projects. It is how quickly public opinion turned.</p>
+
+                <p>Change Research, a national polling firm, has been tracking voter sentiment on data centers since early 2025. The trajectory is unmistakable. In March 2025, 65% of voters supported building data centers across the United States, with just 14% opposed. By December 2025, national support had fallen to 45%, and opposition had risen to 42%. By April 2026, roughly 36% of voters supported national data center construction, with 53% opposed.</p>
+
+                <p>Support collapses further the closer you get to home. In March 2025, 51% of voters supported building data centers in their local area. By April 2026, just 25 to 26% supported local construction, with 65% opposed. For construction near respondents' own homes, opposition reached 73 to 74%.</p>
+
+            </div>
+
+            <!-- Polling Data Visualization -->
+            <div class="my-12 bg-slate-50 border border-slate-200 rounded-2xl p-8 lg:p-10">
+                <h3 class="text-lg font-bold text-slate-900 mb-6 text-center">National Voter Sentiment on Data Centers</h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-sm mb-2"><span class="font-medium text-slate-700">March 2025 — Support</span><span class="font-bold text-pine-green">65%</span></div>
+                        <div class="w-full bg-slate-200 rounded-full h-3"><div class="bg-pine-green rounded-full h-3 transition-all" style="width: 65%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-2"><span class="font-medium text-slate-700">Dec 2025 — Support</span><span class="font-bold text-amber-600">45%</span></div>
+                        <div class="w-full bg-slate-200 rounded-full h-3"><div class="bg-amber-500 rounded-full h-3 transition-all" style="width: 45%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-2"><span class="font-medium text-slate-700">April 2026 — Support</span><span class="font-bold text-red-600">36%</span></div>
+                        <div class="w-full bg-slate-200 rounded-full h-3"><div class="bg-red-500 rounded-full h-3 transition-all" style="width: 36%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-2"><span class="font-medium text-slate-700">April 2026 — Oppose</span><span class="font-bold text-red-700">53%</span></div>
+                        <div class="w-full bg-slate-200 rounded-full h-3"><div class="bg-red-700 rounded-full h-3 transition-all" style="width: 53%"></div></div>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 mt-4 text-center">Source: Change Research national polling, 2025–2026</p>
+            </div>
+
+            <div class="prose prose-lg prose-slate max-w-none">
+                <p>Consumer Reports found similar attitudes in its own surveying. A November 2025 nationally representative survey of 2,146 U.S. adults found that <strong class="text-slate-900">78 percent of Americans are somewhat or very concerned that new data centers will make their energy bills go up</strong>.</p>
+
+                <p>This is not a fringe sentiment. It is the median voter.</p>
+
+                <hr class="border-slate-200 my-12">
+
+                <h2 id="fear" class="text-3xl font-bold text-slate-900 tracking-tight scroll-mt-24">The Fear Industry: How a 30-Point Swing Actually Happened</h2>
+
+                <p>A 30-point collapse in support over twelve months does not happen organically. Public opinion does not move that fast on infrastructure questions without an active, well-funded, well-crafted persuasion campaign behind it. That is exactly what has happened with data centers, and it is worth being honest about how it works.</p>
+
+                <p><strong class="text-slate-900">The opposition has been running a near-perfect playbook in a near-perfect environment.</strong></p>
+
+                <p>Start with the environment. Few Americans understand what a data center actually does. Most could not distinguish a hyperscale AI training facility from a cryptocurrency mining operation, and most have no mental model for why the cloud requires physical infrastructure at all. When a category is invisible to the average voter, it is trivially easy to define it for them. Whoever speaks first, speaks loudest, and speaks scariest, wins the framing war. The opposition figured this out early. The industry, broadly, did not.</p>
+
+                <p>Now layer the playbook on top of that vacuum. Fear is the easiest product to sell in American politics, and the organizations running the anti-data center campaign are masters of it. The messaging architecture follows a consistent pattern. Take a real but containable concern, like cooling water draw or backup generator emissions, and inflate it into an existential community threat. Pair it with selectively cropped statistics that conflate direct facility water use with upstream power generation water, or that compare modern closed-loop facilities to decade-old designs. Wrap the whole thing in environmental justice language so opposing it sounds like opposing the community itself. Then push it through a national network of nonprofits, social media groups, and friendly local press until the average resident believes the project will poison their water, blackout their grid, and bankrupt their household.</p>
+
+                <p>What makes this campaign so effective is not that the underlying concerns are entirely fabricated. Some are legitimate, and pretending otherwise concedes the moral high ground. What makes it effective is that the opposition has succeeded at <strong class="text-slate-900">ideologically possessing thousands of otherwise reasonable people</strong>. Once a resident has been convinced that a data center is a moral threat rather than a policy question, no engineering brief, no impact study, and no economic analysis will move them. The fight is no longer about facts. It is about identity.</p>
+
+                <p>This is the central reason public opinion swung 30 points in a year while the actual technology got cleaner, more efficient, and more transparent than ever. The reality of data centers improved. The narrative about them got dramatically worse. That gap is not an accident. It is a campaign.</p>
+            </div>
+
+            <!-- Pull Quote -->
+            <blockquote class="my-14 border-l-4 border-red-500 bg-red-50/50 rounded-r-2xl py-8 px-8 lg:px-12">
+                <p class="text-xl lg:text-2xl font-semibold text-slate-800 leading-relaxed italic">"The reality of data centers improved. The narrative about them got dramatically worse. That gap is not an accident. It is a campaign."</p>
+            </blockquote>
+
+            <div class="prose prose-lg prose-slate max-w-none">
+                <hr class="border-slate-200 my-12">
+
+                <h2 id="arguments" class="text-3xl font-bold text-slate-900 tracking-tight scroll-mt-24">The Core Arguments Driving the Backlash</h2>
+
+                <p>Opposition rhetoric varies by region and ideology, but the substantive concerns cluster around a consistent set of issues.</p>
+
+            </div>
+
+            <!-- Core Arguments as Cards -->
+            <div class="space-y-6 my-10">
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Electricity Costs and Grid Strain</h3>
+                            <p class="text-slate-600 leading-relaxed mb-3">The dominant concern, by a wide margin, is what data centers do to power bills. A Bloomberg analysis found that areas with high concentrations of data centers saw electricity prices jump <strong class="text-slate-900">267 percent</strong> over the past five years.</p>
+                            <p class="text-slate-600 leading-relaxed mb-3">The Environmental and Energy Study Institute reports that utilities received data center requests for at least <strong class="text-slate-900">700 gigawatts</strong> of power connection development in 2025, more than the 477 GW the United States consumed in all of 2023. In Texas, ERCOT was tracking approximately 410 GW of large load requests—about 87% from data centers.</p>
+                            <p class="text-slate-600 leading-relaxed">Utilities requested more than $29 billion in rate increases in the first half of 2025, double 2024, and residential electricity prices rose 11.5% in 2025, with prices projected to increase by up to 40% by 2030.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Water Consumption</h3>
+                            <p class="text-slate-600 leading-relaxed mb-3">Water concerns are particularly potent in the South and Southwest. Industry analysts at HyperFRAME Research argue that roughly 80% of a data center's total water footprint comes from the power grid, not the facility itself, and that direct U.S. data center water use is approximately 17 billion gallons per year, about 0.3% of public water supply.</p>
+                            <p class="text-slate-600 leading-relaxed">Opposition groups counter that local impacts are concentrated, not averaged. In Louisiana, where Meta is building its Hyperion campus, residents have complained that their water is brown or like rust since construction began.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Noise Pollution and Aesthetics</h3>
+                            <p class="text-slate-600 leading-relaxed">Industrial-scale cooling generates constant low-frequency noise beyond property lines. Hyperscale facilities cover hundreds of acres. Meta's Hyperion campus in Louisiana covers <strong class="text-slate-900">3,650 acres</strong>—twice the size of New Orleans' main airport and four times the size of Central Park.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-4"><svg class="w-5 h-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Public Health Costs</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Emissions from a single Northern Virginia data center may cost <strong class="text-slate-900">$53M–$99M annually</strong> in health damages, per a Piedmont Environmental Council study.</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4"><svg class="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Tax Abatements</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Georgia is projected to waive <strong class="text-slate-900">$296 million</strong> in sales tax revenue this year. Both left and right critics see it as a race to the bottom.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-slate-200 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Secrecy and NDAs</h3>
+                            <p class="text-slate-600 leading-relaxed">Residents often learn about proposed facilities only after key approvals have been quietly secured. This perceived secrecy has done more to galvanize opposition than almost any single substantive argument.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prose prose-lg prose-slate max-w-none">
+
+                <hr class="border-slate-200 my-12">
+
+                <h2 id="math" class="text-3xl font-bold text-slate-900 tracking-tight scroll-mt-24">The Math Behind the Rhetoric</h2>
+
+                <p class="text-xl leading-relaxed text-slate-700 font-medium">The arguments above are how the opposition frames the issue. The empirical picture is meaningfully different, and the gap between rhetoric and reality is the single most important thing for any honest reader to understand.</p>
+
+                <h3 class="text-2xl font-bold text-slate-800 mt-10">Water: Less Than 0.5% of National Use</h3>
+
+                <p>The water case is the cleanest example of how scale gets distorted in opposition messaging.</p>
+            </div>
+
+            <!-- Water Usage Table -->
+            <div class="my-10 overflow-x-auto">
+                <table class="w-full text-left border border-slate-200 rounded-xl overflow-hidden">
+                    <thead class="bg-slate-100">
+                        <tr>
+                            <th class="px-6 py-4 text-sm font-bold text-slate-800 uppercase tracking-wider">Consumer</th>
+                            <th class="px-6 py-4 text-sm font-bold text-slate-800 uppercase tracking-wider">Annual Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr class="bg-white"><td class="px-6 py-4 text-slate-700 font-medium">Agricultural irrigation</td><td class="px-6 py-4 text-slate-600">~50% of total U.S. freshwater</td></tr>
+                        <tr class="bg-slate-50"><td class="px-6 py-4 text-slate-700 font-medium">Municipal leaky pipes (lost)</td><td class="px-6 py-4 text-slate-600">~3 trillion gallons/year</td></tr>
+                        <tr class="bg-white"><td class="px-6 py-4 text-slate-700 font-medium">U.S. residential lawn care</td><td class="px-6 py-4 text-slate-600">~9 billion gallons/day (~3.3 trillion gal/year)</td></tr>
+                        <tr class="bg-slate-50"><td class="px-6 py-4 text-slate-700 font-medium">U.S. golf courses (~16,000)</td><td class="px-6 py-4 text-slate-600">~2.08 billion gallons/day (~760B gal/year)</td></tr>
+                        <tr class="bg-white"><td class="px-6 py-4 text-slate-700 font-medium">All U.S. data centers (2023)</td><td class="px-6 py-4 text-slate-600 font-bold text-pine-green">Under 0.5% of total</td></tr>
+                        <tr class="bg-slate-50"><td class="px-6 py-4 text-slate-700 font-medium">Training largest AI model (Grok 4)</td><td class="px-6 py-4 text-slate-600">Less than 1 sq mi of farmland/year</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="prose prose-lg prose-slate max-w-none">
+                <p>Agricultural irrigation uses more than <strong class="text-slate-900">100 times</strong> what data centers use. The United States loses roughly <strong class="text-slate-900">15 times more water</strong> through leaky municipal pipes than data centers consume nationwide.</p>
+
+                <p>Modern facilities are designed to minimize water use. Closed-loop cooling systems recirculate the same water rather than evaporating it. Air cooling and liquid immersion cooling systems require little to no water. Many new facilities use reclaimed wastewater rather than drawing from local freshwater supplies.</p>
+
+                <h3 class="text-2xl font-bold text-slate-800 mt-10">Power: Behind-the-Meter Generation and Bidirectional Flow</h3>
+
+                <p>The narrative says data centers will simply take electricity without giving anything back. The reality is that modern facilities are increasingly generating their own power and feeding the grid during stress events.</p>
+
+                <p><strong class="text-slate-900">Behind-the-meter generation</strong> means data centers install solar arrays, wind turbines, large-scale battery storage, and in some cases small modular reactors directly at the facility site. <strong class="text-slate-900">Bidirectional power flow</strong> goes further—because data centers invest heavily in battery storage, that storage can discharge back to the grid during severe weather, peak demand, or grid emergencies.</p>
+
+                <p>Pair that with the Ratepayer Protection Pledge signed by major operators in March 2026, the cost-causation requirements in SB 6 and similar laws across 27 states, and the wave of direct power purchase agreements like Microsoft's 20-year deal with Three Mile Island, and the picture is not data centers freeloading on residential ratepayers. It is data centers paying for, building, and in some cases stabilizing the very infrastructure they depend on.</p>
+
+                <hr class="border-slate-200 my-12">
+
+                <h2 id="bipartisan" class="text-3xl font-bold text-slate-900 tracking-tight scroll-mt-24">The Bipartisan Coalition</h2>
+
+                <p>What separates this movement from earlier infrastructure fights is its political composition. Data Center Watch found that <strong class="text-slate-900">55% of politicians who took public positions against data center projects were Republicans, and 45% were Democrats</strong>.</p>
+
+                <p>Twenty-seven states are advancing data center legislation that requires developers to cover energy costs and report usage. Maine is poised to become the first state to implement a data center construction moratorium, pausing new projects until November 2027.</p>
+
+                <hr class="border-slate-200 my-12">
+
+                <h2 id="sb6" class="text-3xl font-bold text-slate-900 tracking-tight scroll-mt-24">The Texas Case Study: SB 6</h2>
+
+                <p>Texas SB 6 is the most consequential piece of state-level data center regulation in the country. It establishes a framework for large loads—electricity customers with peak demand of 75 megawatts or more at a single site.</p>
+
+                <p>The most controversial provision is the so-called <strong class="text-slate-900">kill switch</strong>. SB 6 empowers ERCOT to order large-load customers to curtail operations, switch to on-site backup generators, or completely cut power remotely if the grid is under extreme stress.</p>
+
+                <p>In March 2026, the Public Utility Commission of Texas proposed non-refundable fees of $50,000 to $100,000 per MW, substantial financial security with potential forfeiture for delays, site control documentation, and disclosures of parallel or affiliate projects.</p>
+
+                <hr class="border-slate-200 my-12">
+
+                <h2 id="anatomy" class="text-3xl font-bold text-slate-900 tracking-tight scroll-mt-24">Who Is Actually Opposed: A Four-Part Anatomy</h2>
+            </div>
+
+            <!-- Four-Part Anatomy as Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+                <div class="relative bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 shadow-sm">
+                    <span class="absolute -top-3 left-6 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">1</span>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 mt-2">Environmental Groups & Activists</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">The NAACP's "Stop Dirty Data Centers" campaign, MediaJustice's "The People Say No" report, and the Climate Justice Alliance funder network are clear examples of how environmental justice framing has been institutionalized at the national level.</p>
+                </div>
+                <div class="relative bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 shadow-sm">
+                    <span class="absolute -top-3 left-6 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">2</span>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 mt-2">NIMBY Residents</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">This group is typically not ideological. They want their concerns addressed and their property values protected. With genuine engagement and real mitigation commitments, <strong class="text-pine-green">this group is persuadable</strong>.</p>
+                </div>
+                <div class="relative bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 shadow-sm">
+                    <span class="absolute -top-3 left-6 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full">3</span>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 mt-2">Misinformation Campaigners</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Hyperscale closed-loop facilities at &lt;0.2 L/kWh are routinely compared to decade-old cooling tower designs. Direct facility water draw is combined with upstream power generation water. These are not honest mistakes. They are talking points.</p>
+                </div>
+                <div class="relative bg-white border border-slate-200 rounded-2xl p-6 lg:p-8 shadow-sm">
+                    <span class="absolute -top-3 left-6 bg-slate-600 text-white text-xs font-bold px-3 py-1 rounded-full">4</span>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 mt-2">Competing Developers</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Competing land developers view data centers as competition for prime real estate, water rights, or grid capacity. This opposition rarely shows up under its own name—it tends to be quietly funded through more sympathetic-sounding civic groups.</p>
+                </div>
+            </div>
+
+            <div class="prose prose-lg prose-slate max-w-none">
+                <hr class="border-slate-200 my-12">
+
+                <h2 id="funding" class="text-3xl font-bold text-slate-900 tracking-tight scroll-mt-24">The Funding Architecture</h2>
+
+                <p>A joint study found that as of April 2026, more than <strong class="text-slate-900">360,000 Americans had joined 268 Facebook groups</strong> opposing AI data centers across 37 states. Membership quadrupled between December 2025 and April 2026. In Virginia alone, the Data Center Reform Coalition coordinates 41 organizations under a single umbrella.</p>
+
+                <p>The institutional players providing research, legal support, and messaging infrastructure include the AI Now Institute, the Athena Coalition, the Sierra Club, MediaJustice, the Southern Environmental Law Center, the Southwest Workers Union, the NAACP, and the Climate Justice Alliance.</p>
+
+                <p>Power the Future flagged that the New Venture Fund, the Sierra Club Foundation, and the Sixteen Thirty Fund collectively received over $13 million from pro-environmental donors.</p>
+
+                <p>The honest reading is that both characterizations are partially true. There is a real grassroots backlash. There is also a real, well-funded, professionally staffed national infrastructure helping to organize, train, and amplify them. The local fights look organic at the surface level because at the surface level, they are.</p>
+            </div>
+
+            <!-- PTF Report Callout -->
+            <div class="my-12 bg-slate-900 rounded-2xl p-8 lg:p-10 relative overflow-hidden">
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-red-500/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="bg-red-500/20 text-red-400 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-red-500/30">Investigation</span>
+                        <span class="text-slate-500 text-sm">May 4, 2026</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">"Manufactured Outrage"</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Power the Future's report — as <a href="https://www.foxnews.com/politics/top-energy-group-warns-wealthy-foreigners-potentially-bankrolling-anti-data-center-campaigns-across-us" target="_blank" rel="noopener noreferrer" class="text-red-400 underline hover:text-red-300">first reported by Fox News</a> — exposes what it describes as a coordinated, billionaire-funded, and potentially foreign-backed campaign to obstruct data center and AI infrastructure development across the United States. PTF has sent a letter to Congress calling for an investigation into whether foreign nationals or governments have funded organizations working to obstruct American infrastructure.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                            <span class="block text-2xl font-black text-red-400">$98B</span>
+                            <span class="text-xs text-slate-500 uppercase tracking-wider">Investment Disrupted in Q2 2025</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                            <span class="block text-2xl font-black text-amber-400">$150M+</span>
+                            <span class="text-xs text-slate-500 uppercase tracking-wider">Spent to Elect Democrats in 2024</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                            <span class="block text-2xl font-black text-white">~$1B</span>
+                            <span class="text-xs text-slate-500 uppercase tracking-wider">Arabella Network Grants (2023)</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-8">
+                        <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Key Findings</h4>
+                        <div class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 flex-shrink-0"></span>
+                            <p class="text-slate-300 text-sm leading-relaxed">A coordinated campaign led by the Sierra Club, Food & Water Watch, Earthjustice, and the Southern Environmental Law Center, backed by dark money networks to stop data center projects nationwide.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 flex-shrink-0"></span>
+                            <p class="text-slate-300 text-sm leading-relaxed">The Arabella/Sunflower network disbursed approximately <strong class="text-white">$1 billion in grants in 2023</strong>, funding advocacy campaigns while shielding donor identities.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 flex-shrink-0"></span>
+                            <p class="text-slate-300 text-sm leading-relaxed">The <strong class="text-white">$24.7 billion Prince William Digital Gateway</strong> project was halted after coordinated legal and activist pressure — one of the largest infrastructure losses cited.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 flex-shrink-0"></span>
+                            <p class="text-slate-300 text-sm leading-relaxed">Virginia alone has seen <strong class="text-white">$45.8 billion</strong> in data center projects disrupted.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 flex-shrink-0"></span>
+                            <p class="text-slate-300 text-sm leading-relaxed">More than <strong class="text-white">300 anti-data-center bills</strong> were filed across 30+ states in just six weeks.</p>
+                        </div>
+                    </div>
+
+                    <blockquote class="border-l-3 border-amber-500/50 pl-5 mb-6">
+                        <p class="text-slate-300 text-sm italic leading-relaxed">"Imagine if foreign powers were funding anti-rocket technology activists during the race to the moon in the 1960s, because that is what we are witnessing today. This is not about protecting rural America or local communities — it is a coordinated, partisan effort designed to stop President Trump's agenda and hand an advantage to China."</p>
+                        <cite class="text-slate-500 text-xs mt-2 block not-italic">— Daniel Turner, Founder & Executive Director, Power the Future</cite>
+                    </blockquote>
+
+                    <a href="https://www.powerthefuture.com/ptf-uncovers-billionaire-funded-campaign-to-sabotage-americas-ai-and-technology-boom/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-red-400 hover:text-red-300 transition-colors group">
+                        Read the Full Report
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pull Quote -->
+            <blockquote class="my-14 border-l-4 border-amber-500 bg-amber-50/50 rounded-r-2xl py-8 px-8 lg:px-12">
+                <p class="text-xl lg:text-2xl font-semibold text-slate-800 leading-relaxed italic">"What is not organic is the playbook, the talking points, the funding pipeline, and the coordination across states."</p>
+            </blockquote>
+
+            <div class="prose prose-lg prose-slate max-w-none">
+                <hr class="border-slate-200 my-12">
+
+                <h2 id="midterms" class="text-3xl font-bold text-slate-900 tracking-tight scroll-mt-24">The 2026 Midterm Dimension</h2>
+
+                <p>Both NPR and the Washington Post have reported that data center opposition is becoming a genuine voting issue. In Cascade Locks, Oregon, voters recalled two Port Authority officials in June 2023 for supporting a $100 million data center project. In Warrenton, Virginia, residents voted out all town council members who supported Amazon's proposed data center in November 2024. Florida Governor DeSantis publicly opposed unregulated build-out. Maine's Democratic legislature approved a construction pause.</p>
+
+                <p>For 2026 candidates running in districts with proposed or operational facilities, taking a position on data centers is no longer optional.</p>
+
+                <hr class="border-slate-200 my-12">
+
+                <h2 id="forward" class="text-3xl font-bold text-slate-900 tracking-tight scroll-mt-24">What This Means Going Forward</h2>
+
+                <p>Three things are clear from the current landscape.</p>
+
+                <p><strong class="text-slate-900">First, the opposition is not going away.</strong> With 360,000 Americans in organized Facebook groups, a national coordinating coalition, growing legal capacity, and majority public opinion behind them, the activist infrastructure is now a permanent feature.</p>
+
+                <p><strong class="text-slate-900">Second, the legislative response is moving faster than industry expected.</strong> With more than 300 bills introduced across more than 30 states in 2026 alone, the era of unconditional incentives and quiet permitting is closing.</p>
+
+                <p><strong class="text-slate-900">Third, the underlying economic and infrastructure pressures are real.</strong> Nearly half of all U.S. data centers planned for 2026—approximately 7 GW out of 12 GW—have been canceled or delayed.</p>
+            </div>
+
+            <!-- Key Takeaway -->
+            <div class="my-12 bg-gradient-to-br from-tech-blue to-pine-green rounded-2xl p-8 lg:p-10 text-white relative overflow-hidden">
+                <div class="absolute -top-16 -right-16 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <h3 class="text-2xl font-bold mb-4">The Deeper Lesson</h3>
+                    <p class="text-lg leading-relaxed text-white/90">The technology side of this fight has won every empirical argument and lost the persuasion war anyway. Closed-loop cooling is a solved problem. Ratepayer protections are now law. Modern facilities are vastly cleaner and more efficient than what opposition materials describe. None of that has slowed the polling collapse, because the opposition is not selling facts. It is selling fear, and fear travels faster than facts in a permitting hearing.</p>
+                    <p class="text-lg leading-relaxed text-white/90 mt-4 font-medium">Winning back the conversation requires meeting the fear campaign with an equally well-organized, equally clear counter-narrative grounded in what these facilities actually do, who they employ, and what they make possible.</p>
+                </div>
+            </div>
+
+            <!-- Sources -->
+            <div class="mt-16 border-t border-slate-200 pt-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">Sources</h2>
+                <ul class="space-y-2 text-sm text-slate-600">
+                    <li>Data Center Watch: $64B in blocked or delayed projects</li>
+                    <li>Heatmap News: Q1 2026 cancellation surge analysis</li>
+                    <li>Change Research: Voter sentiment polling 2025–2026</li>
+                    <li>Consumer Reports: Energy bill concern survey</li>
+                    <li>The Washington Post: National backlash and midterm dynamics</li>
+                    <li>NPR: Bipartisan opposition coverage</li>
+                    <li>Mayer Brown / Greenberg Traurig: Texas SB 6 analysis</li>
+                    <li>Carbon Direct: State legislative tracking</li>
+                    <li>MultiState Insider: 27-state policy tracker</li>
+                    <li>Fortune: NBER paper on health and environmental costs</li>
+                    <li>Lincoln Institute of Land Policy: Land and water impacts</li>
+                    <li>Belfer Center for Science and International Affairs: Grid analysis</li>
+                    <li>Fox News: Power the Future congressional investigation request</li>
+                    <li>TechPolicy.Press: Activist organizing infrastructure</li>
+                    <li>Oklahoma Energy Today: Facebook group membership data</li>
+                    <li>VPM / WUNC: North Carolina opposition coverage</li>
+                    <li>Truthout: Southern environmental justice framing</li>
+                    <li>Sierra Club: 2026 state policy recommendations</li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div class="mt-16 pt-10 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <a href="/who-is-opposed" class="inline-flex items-center text-tech-blue font-semibold hover:underline group">
+                    <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                    Who Is Opposed?
+                </a>
+                <a href="/myth-vs-reality" class="inline-flex items-center justify-center px-8 py-4 text-white bg-pine-green hover:bg-slate-900 font-bold rounded-xl shadow-md transition-all duration-300 hover:shadow-xl text-lg group">
+                    Read: Myth vs. Reality
+                    <svg class="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>

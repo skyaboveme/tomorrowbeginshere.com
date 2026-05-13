@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../components/BaseLayout.astro';
+import LeadCaptureForm from '../../components/LeadCaptureForm.astro';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const updates = await getCollection('updates');
+  return updates.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout 
+    title={`${post.data.title} | TomorrowBeginsHere.com`}
+    description={post.data.description}
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/80 to-tech-blue/80 z-0 mix-blend-multiply"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-center">
+            <div class="flex items-center justify-center gap-3 mb-6">
+                {post.data.tags.map(tag => (
+                    <span class={`text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full ${
+                        tag.toLowerCase().includes('fact check') 
+                        ? 'bg-red-500 text-white' 
+                        : 'bg-white/20 text-white border border-white/30'
+                    }`}>
+                        {tag}
+                    </span>
+                ))}
+                <span class="text-sm font-medium text-slate-300">
+                    {post.data.pubDate.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                    })}
+                </span>
+            </div>
+            
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+                {post.data.title}
+            </h1>
+            
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto font-medium">
+                By {post.data.author}
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="py-16 bg-white relative">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <article class="prose prose-lg prose-slate max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-tech-blue prose-a:no-underline hover:prose-a:underline mb-20">
+                <Content />
+            </article>
+
+            <div class="border-t border-slate-200 pt-10 text-center mb-16">
+                <a href="/updates" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 font-bold rounded-lg text-slate-700 bg-white hover:bg-slate-50 transition-colors">
+                    <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to All Updates
+                </a>
+            </div>
+
+            <!-- Join Form -->
+            <LeadCaptureForm />
+
+        </div>
+    </section>
+</BaseLayout>

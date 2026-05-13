@@ -1,0 +1,182 @@
+---
+// TaxCalculator.astro
+---
+
+<div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 sm:p-12 mb-20 relative overflow-hidden" id="tax-calculator">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-tech-blue/10 to-transparent rounded-bl-full pointer-events-none"></div>
+    
+    <div class="text-center max-w-2xl mx-auto mb-10 relative z-10">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-tech-blue/10 text-tech-blue font-bold tracking-widest uppercase text-xs mb-4">Interactive Tool</span>
+        <h3 class="text-3xl font-bold text-slate-900 mb-4">Calculate The Impact</h3>
+        <p class="text-slate-600">See how commercial investment directly offsets the residential tax burden in your county.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+        
+        <!-- Controls -->
+        <div class="space-y-8 bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-inner">
+            
+            <!-- Investment Value Slider -->
+            <div class="space-y-4">
+                <div class="flex justify-between items-end">
+                    <label for="investment-slider" class="block text-sm font-bold text-slate-700 uppercase tracking-wide">Data Center Investment Value</label>
+                    <span class="text-2xl font-black text-pine-green" id="investment-display">$1.0 Billion</span>
+                </div>
+                <input 
+                    type="range" 
+                    id="investment-slider" 
+                    min="100" 
+                    max="5000" 
+                    step="100" 
+                    value="1000" 
+                    class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-pine-green hover:accent-pine-green/80 transition-all"
+                >
+                <div class="flex justify-between text-xs font-semibold text-slate-400">
+                    <span>$100M</span>
+                    <span>$5B+</span>
+                </div>
+            </div>
+
+            <!-- Estimated Commercial Tax Rate Slider -->
+            <div class="space-y-4">
+                <div class="flex justify-between items-end">
+                    <label for="tax-rate-slider" class="block text-sm font-bold text-slate-700 uppercase tracking-wide">County & ISD Tax Rate</label>
+                    <span class="text-2xl font-black text-tech-blue" id="tax-rate-display">1.50%</span>
+                </div>
+                <p class="text-xs text-slate-500 mb-2 leading-relaxed">The combined local tax rate. A typical rural Texas rate is ~1.5% to 2.5%.</p>
+                <input 
+                    type="range" 
+                    id="tax-rate-slider" 
+                    min="0.5" 
+                    max="3.0" 
+                    step="0.05" 
+                    value="1.50" 
+                    class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-tech-blue hover:accent-tech-blue/80 transition-all"
+                >
+                <div class="flex justify-between text-xs font-semibold text-slate-400">
+                    <span>0.5%</span>
+                    <span>3.0%</span>
+                </div>
+            </div>
+            
+            <!-- Average Home Value (Input) -->
+            <div class="space-y-2">
+                 <label for="home-value-input" class="block text-sm font-bold text-slate-700 uppercase tracking-wide">Average Local Home Value</label>
+                 <div class="relative">
+                     <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 font-bold">$</span>
+                     <input type="number" id="home-value-input" value="350000" class="w-full pl-8 pr-4 py-3 bg-white border border-slate-300 rounded-xl font-semibold text-slate-700 focus:ring-2 focus:ring-tech-blue focus:border-tech-blue outline-none transition-all shadow-sm">
+                 </div>
+            </div>
+
+        </div>
+
+        <!-- Results Display -->
+        <div class="space-y-6">
+            
+            <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden">
+                <!-- Decorative background elements -->
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-pine-green/20 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-tech-blue/20 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10">
+                    <p class="text-sm font-bold text-slate-300 uppercase tracking-widest mb-2 opacity-80">Estimated Annual Tax Revenue</p>
+                    <div class="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300 mb-6 tracking-tight drop-shadow-sm" id="revenue-display">
+                        $15,000,000
+                    </div>
+                    
+                    <div class="w-full h-px bg-white/10 my-6"></div>
+                    
+                    <p class="text-sm font-bold text-slate-300 uppercase tracking-widest mb-3 opacity-80">What this pays for locally:</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4 border border-white/10">
+                            <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-white" id="homes-offset-display">2,857</div>
+                                <div class="text-xs font-semibold text-slate-400">Equivalent Homeowners' Tax Bills Offset</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4 border border-white/10">
+                            <div class="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-red-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1v1H9V7zm5 0h1v1h-1V7zm-5 4h1v1H9v-1zm5 0h1v1h-1v-1zm-3 4H2v-1h9v1z"/></svg>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-white" id="teachers-display">250</div>
+                                <div class="text-xs font-semibold text-slate-400">New Teachers Funded (at $60k/yr)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <p class="text-xs text-slate-500 text-center px-4">
+                * This is a simplified estimate. Actual revenue depends on specific abatements, depreciation schedules, and negotiated Chapter 313/312 agreements.
+            </p>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const investmentSlider = document.getElementById('investment-slider') as HTMLInputElement;
+        const taxRateSlider = document.getElementById('tax-rate-slider') as HTMLInputElement;
+        const homeValueInput = document.getElementById('home-value-input') as HTMLInputElement;
+        
+        const investmentDisplay = document.getElementById('investment-display');
+        const taxRateDisplay = document.getElementById('tax-rate-display');
+        const revenueDisplay = document.getElementById('revenue-display');
+        const homesOffsetDisplay = document.getElementById('homes-offset-display');
+        const teachersDisplay = document.getElementById('teachers-display');
+        
+        function formatCurrency(num: number) {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+        }
+        
+        function formatBillion(millions: number) {
+            if (millions >= 1000) {
+                return '$' + (millions / 1000).toFixed(1) + ' Billion';
+            }
+            return '$' + millions + ' Million';
+        }
+
+        function calculate() {
+            if (!investmentSlider || !taxRateSlider || !homeValueInput || !revenueDisplay || !homesOffsetDisplay || !teachersDisplay) return;
+
+            const investmentM = parseFloat(investmentSlider.value);
+            const taxRate = parseFloat(taxRateSlider.value) / 100;
+            const homeValue = parseFloat(homeValueInput.value) || 350000;
+            
+            // Calculate revenue
+            // Convert investment from millions to actual dollars
+            const investmentActual = investmentM * 1000000;
+            const annualRevenue = investmentActual * taxRate;
+            
+            // Calculate equivalents
+            const avgHomeTaxBill = homeValue * taxRate;
+            const homesOffset = Math.floor(annualRevenue / avgHomeTaxBill);
+            const teachersFunded = Math.floor(annualRevenue / 60000);
+            
+            // Update UI
+            if (investmentDisplay) investmentDisplay.textContent = formatBillion(investmentM);
+            if (taxRateDisplay) taxRateDisplay.textContent = parseFloat(taxRateSlider.value).toFixed(2) + '%';
+            
+            // Animate revenue counter (simple immediate update for now, can be enhanced)
+            revenueDisplay.textContent = formatCurrency(annualRevenue);
+            homesOffsetDisplay.textContent = new Intl.NumberFormat('en-US').format(homesOffset);
+            teachersDisplay.textContent = new Intl.NumberFormat('en-US').format(teachersFunded);
+        }
+
+        // Add event listeners
+        if (investmentSlider) investmentSlider.addEventListener('input', calculate);
+        if (taxRateSlider) taxRateSlider.addEventListener('input', calculate);
+        if (homeValueInput) homeValueInput.addEventListener('input', calculate);
+        
+        // Initial calculation
+        calculate();
+    });
+</script>

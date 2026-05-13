@@ -118,10 +118,12 @@ const broaderContextData = [
                                 
                                 <!-- Bar -->
                                 <div 
-                                    class={`w-full rounded-t-lg transition-all duration-700 ease-in-out border-t-2 border-l-2 border-r-2 ${item.color} ${item.shadow} group-hover:-translate-y-1`}
+                                    class={`w-full rounded-t-lg transition-all duration-700 ease-in-out border-t-2 border-l-2 border-r-2 relative ${item.color} ${item.shadow} group-hover:-translate-y-1`}
                                     style={`height: ${item.percent}%;`}
                                 >
-                                    <div class="w-full h-full bg-gradient-to-t from-black/20 to-transparent rounded-t-lg"></div>
+                                    <!-- Permanent Column Label -->
+                                    <div class="absolute -top-7 left-0 right-0 text-center text-sm font-extrabold text-slate-700 drop-shadow-sm">{item.value}M</div>
+                                    <div class="w-full h-full absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-t-lg pointer-events-none"></div>
                                 </div>
                                 
                                 <!-- Label -->
