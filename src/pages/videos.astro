@@ -3,6 +3,13 @@ import BaseLayout from '../components/BaseLayout.astro';
 
 const videos = [
   {
+    id: "riz-ILPrsVo",
+    start: 14,
+    title: "Data Centers: Depleting Water & Electricity? The Truth Revealed",
+    description: "Robby Soave of Rising examines the facts behind the panic over data center development. Contrary to populist narratives from both the left and right, he breaks down why concerns about energy grids and water usage are heavily overstated—and explains how these facilities actually benefit local economies and help lower utility rates.",
+    tag: "Grid & Water Reality"
+  },
+  {
     id: "rUgooIHuDC8",
     title: "Watt's the Problem with Data Centers?",
     description: "Activists are angry about data centers. They call them \"uniquely evil.\" This video breaks down the truth about energy use, costs, and the panic over progress.",
@@ -66,7 +73,7 @@ const videos = [
                                     {video.poster ? (
                                         <div 
                                             class="absolute inset-0 w-full h-full cursor-pointer overflow-hidden" 
-                                            onclick={`this.innerHTML='<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/${video.id}?autoplay=1${video.start !== undefined ? `&amp;start=${video.start}&amp;end=${video.end}` : ''}" title="${video.title.replace(/'/g, "\\'")}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'`}
+                                            onclick={`this.innerHTML='<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/${video.id}?autoplay=1${video.start !== undefined ? `&amp;start=${video.start}` : ''}${video.end !== undefined ? `&amp;end=${video.end}` : ''}" title="${video.title.replace(/'/g, "\\'")}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'`}
                                         >
                                             <img src={video.poster} alt={video.title} class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/video:scale-105" />
                                             <div class="absolute inset-0 bg-black/20 group-hover/video:bg-black/10 transition-colors duration-300"></div>
@@ -79,7 +86,7 @@ const videos = [
                                     ) : (
                                         <iframe 
                                             class="absolute inset-0 w-full h-full"
-                                            src={`https://www.youtube.com/embed/${video.id}${video.start !== undefined ? `?start=${video.start}&end=${video.end}` : ''}`}
+                                            src={`https://www.youtube.com/embed/${video.id}${video.start !== undefined ? `?start=${video.start}` : ''}${video.end !== undefined ? `&end=${video.end}` : ''}`}
                                             title={video.title}
                                             frameborder="0" 
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
