@@ -1,0 +1,361 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="'Where Does Your Click Go?' Interactive Journey | TomorrowBeginsHere.com"
+    description="Trace the physical, split-second journey of a single internet tap. Watch data packets travel down fiber cables, enter cooling loops, and return in milliseconds."
+>
+    <!-- Navigation Back Link -->
+    <div class="bg-slate-900 pt-8 pb-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="/interactive" class="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Simulators Hub
+            </a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-violet-600/50 to-slate-900 z-0"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-violet-500/20 text-violet-300 font-bold tracking-widest uppercase text-xs mb-3 border border-violet-500/30">Latency & Speed Simulator</span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">"Where Does Your Click Go?" Interactive Journey</h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                Send a live test request and follow the high-speed pathway of data packets through fiber lines, substation networks, cooling grids, and server processors.
+            </p>
+        </div>
+    </div>
+
+    <!-- Simulator Body -->
+    <section class="py-12 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Controls Column (4 cols) -->
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        
+                        <!-- Step 1: Select Request Task -->
+                        <div class="space-y-4">
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">1. Choose Digital Action</label>
+                            
+                            <div class="grid grid-cols-1 gap-3">
+                                <button type="button" class="task-btn p-4 rounded-xl border-2 border-slate-200 hover:border-violet-400 bg-slate-50 transition-all text-left flex items-center gap-4 active-task" data-task="stream" data-bytes="12.4 MB" data-fact="A single HD stream routes 10,000 frames of data.">
+                                    <div class="w-10 h-10 rounded-lg bg-violet-50 text-violet-500 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-slate-800 text-sm">Stream HD Video</div>
+                                        <div class="text-[9px] text-slate-500">Buffering a high-definition 4K clip</div>
+                                    </div>
+                                </button>
+
+                                <button type="button" class="task-btn p-4 rounded-xl border-2 border-slate-200 hover:border-violet-400 bg-slate-50 transition-all text-left flex items-center gap-4" data-task="ai" data-bytes="180 KB" data-fact="AI neural networks compute trillions of operations.">
+                                    <div class="w-10 h-10 rounded-lg bg-violet-50 text-violet-500 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-slate-800 text-sm">Ask AI Assistant</div>
+                                        <div class="text-[9px] text-slate-500">Generating structured neural calculations</div>
+                                    </div>
+                                </button>
+
+                                <button type="button" class="task-btn p-4 rounded-xl border-2 border-slate-200 hover:border-violet-400 bg-slate-50 transition-all text-left flex items-center gap-4" data-task="map" data-bytes="1.2 MB" data-fact="GPS maps overlay real-time spatial databases.">
+                                    <div class="w-10 h-10 rounded-lg bg-violet-50 text-violet-500 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-slate-800 text-sm">Load Satellite Map</div>
+                                        <div class="text-[9px] text-slate-500">Pulling geographical vector coordinates</div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Trigger Action Button -->
+                        <div class="pt-4 border-t border-slate-100 space-y-4">
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">2. Transmit Signal</label>
+                            
+                            <button type="button" id="trigger-journey-btn" class="w-full py-4 text-white bg-slate-900 hover:bg-slate-800 font-bold rounded-xl transition-all duration-200 text-base shadow-md flex items-center justify-center gap-2 group">
+                                <span id="btn-text">Send Data Request</span>
+                                <svg class="w-5 h-5 text-violet-400 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Outputs and Visualizations Column (8 cols) -->
+                <div class="lg:col-span-8 space-y-6">
+                    
+                    <!-- Latency Timer Screen -->
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-violet-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        
+                        <div class="z-10 text-center sm:text-left">
+                            <span class="inline-block px-2.5 py-0.5 rounded bg-violet-500/20 text-violet-300 font-bold uppercase text-[9px] tracking-wider mb-1.5 border border-violet-500/30">Local Latency Round-Trip</span>
+                            <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-300 tracking-tight" id="latency-counter">
+                                0.0 ms
+                            </div>
+                        </div>
+
+                        <div class="h-px w-full sm:w-px sm:h-12 bg-white/10"></div>
+
+                        <div class="z-10 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-white/5 rounded-xl px-4 py-2 border border-white/5">
+                                <div class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Distant Server</div>
+                                <div class="text-lg font-black text-red-400 mt-0.5">85.0 ms</div>
+                            </div>
+                            <div class="bg-white/5 rounded-xl px-4 py-2 border border-white/5">
+                                <div class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Local Server</div>
+                                <div class="text-lg font-black text-green-400 mt-0.5">12.0 ms</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Steps Timeline -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-8">
+                        
+                        <!-- Timeline Bar Layout -->
+                        <div class="relative flex justify-between items-center" id="timeline-row">
+                            <!-- Progress Bar line -->
+                            <div class="absolute left-4 right-4 h-1.5 bg-slate-100 rounded-full z-0 top-1/2 -translate-y-1/2 overflow-hidden">
+                                <div class="h-full bg-violet-500 transition-all duration-300" id="timeline-progress" style="width: 0%;"></div>
+                            </div>
+                            
+                            <!-- Node 1 -->
+                            <div class="timeline-node z-10 w-9 h-9 rounded-full bg-slate-100 border-2 border-slate-200 flex items-center justify-center font-bold text-xs text-slate-400 transition-all duration-300" data-step="1">1</div>
+                            <!-- Node 2 -->
+                            <div class="timeline-node z-10 w-9 h-9 rounded-full bg-slate-100 border-2 border-slate-200 flex items-center justify-center font-bold text-xs text-slate-400 transition-all duration-300" data-step="2">2</div>
+                            <!-- Node 3 -->
+                            <div class="timeline-node z-10 w-9 h-9 rounded-full bg-slate-100 border-2 border-slate-200 flex items-center justify-center font-bold text-xs text-slate-400 transition-all duration-300" data-step="3">3</div>
+                            <!-- Node 4 -->
+                            <div class="timeline-node z-10 w-9 h-9 rounded-full bg-slate-100 border-2 border-slate-200 flex items-center justify-center font-bold text-xs text-slate-400 transition-all duration-300" data-step="4">4</div>
+                            <!-- Node 5 -->
+                            <div class="timeline-node z-10 w-9 h-9 rounded-full bg-slate-100 border-2 border-slate-200 flex items-center justify-center font-bold text-xs text-slate-400 transition-all duration-300" data-step="5">5</div>
+                        </div>
+
+                        <!-- Step Card (Dynamic Content) -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 relative overflow-hidden min-h-36 flex flex-col justify-center transition-all duration-300" id="step-detail-card">
+                            
+                            <div id="default-card-state" class="text-center space-y-2">
+                                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
+                                    <svg class="w-6 h-6 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+                                <h5 class="font-bold text-slate-700">Awaiting Request Transmission</h5>
+                                <p class="text-xs text-slate-500">Click the button on the left to fire a test request down the lines.</p>
+                            </div>
+
+                            <div id="active-card-state" class="hidden space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="inline-block px-2.5 py-0.5 rounded bg-violet-100 text-violet-700 font-bold uppercase text-[9px] tracking-wider" id="active-step-badge">Step 1</span>
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest" id="active-task-detail">HD STREAM • 12.4 MB</span>
+                                </div>
+                                <h5 class="font-black text-slate-800 text-lg leading-tight" id="active-step-title">Initial Transmit</h5>
+                                <p class="text-xs text-slate-600 leading-relaxed" id="active-step-desc">
+                                    The signal starts as a series of electric pulses on your screen.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+    .timeline-node.node-active {
+        border-color: #8b5cf6; /* violet-500 */
+        background-color: #8b5cf6;
+        color: white;
+        box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+    }
+    
+    .timeline-node.node-completed {
+        border-color: #8b5cf6;
+        background-color: white;
+        color: #8b5cf6;
+    }
+
+    .task-btn.active-task {
+        border-color: #8b5cf6;
+        background-color: #f5f3ff; /* violet-50 */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const triggerBtn = document.getElementById('trigger-journey-btn');
+        const btnText = document.getElementById('btn-text');
+        const latencyCounter = document.getElementById('latency-counter');
+        const timelineProgress = document.getElementById('timeline-progress') as HTMLDivElement;
+        
+        const defaultCard = document.getElementById('default-card-state');
+        const activeCard = document.getElementById('active-card-state');
+        
+        const activeStepBadge = document.getElementById('active-step-badge');
+        const activeTaskDetail = document.getElementById('active-task-detail');
+        const activeStepTitle = document.getElementById('active-step-title');
+        const activeStepDesc = document.getElementById('active-step-desc');
+        const nodes = document.querySelectorAll('.timeline-node');
+        
+        let currentTaskType = 'stream';
+        let currentBytes = '12.4 MB';
+        let currentFact = 'A single HD stream routes 10,000 frames of data.';
+        let inProgress = false;
+
+        const stepsData = [
+            {
+                badge: "Step 1: The Screen Tap",
+                title: "Launching data packet from your device",
+                desc: "Your action (tapping 'Play' or submitting an AI prompt) triggers your device's motherboard to encode a binary request into electrical voltages, passing it to your router."
+            },
+            {
+                badge: "Step 2: The Fiber Highway",
+                title: "Speeding under county roads at 124,000 miles/second",
+                desc: "Your home router converts electrical pulses into light signals, firing lasers down thin glass strands of underground fiber optic cables. It crosses miles of local territory in less than a single millisecond."
+            },
+            {
+                badge: "Step 3: Facility Inflow & Power",
+                title: "Routing into high-voltage secure substations",
+                desc: "The light beam arrives at the local data center's utility routing room. Redundant commercial power supplies step down substation voltages, keeping routers online with backup battery reserves."
+            },
+            {
+                badge: "Step 4: Rack Compute & Closed-Loop Cooling",
+                title: "Microchip computation and cooling plates",
+                desc: "The router delivers your request to a specific rack server. The CPU heats up as it calculates the response. Instantly, a closed-loop liquid plate absorbs the heat, keeping chips at a cool 78°F with zero water loss."
+            },
+            {
+                badge: "Step 5: The Millisecond Return",
+                title: "Lightning-fast trip back to your device",
+                desc: "The computed response is transformed back into a light packet, shooting along the same underground fiber pipe directly back to your home, displaying the video or response on your screen."
+            }
+        ];
+
+        // Task Selection
+        const taskBtns = document.querySelectorAll('.task-btn');
+        taskBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (inProgress) return;
+                
+                taskBtns.forEach(b => b.classList.remove('active-task'));
+                btn.classList.add('active-task');
+                
+                currentTaskType = btn.getAttribute('data-task') || 'stream';
+                currentBytes = btn.getAttribute('data-bytes') || '12.4 MB';
+                currentFact = btn.getAttribute('data-fact') || '';
+                
+                resetSimulator();
+            });
+        });
+
+        function resetSimulator() {
+            if (timelineProgress) timelineProgress.style.width = '0%';
+            nodes.forEach(n => {
+                n.classList.remove('node-active', 'node-completed');
+            });
+            if (latencyCounter) latencyCounter.textContent = '0.0 ms';
+            if (defaultCard && activeCard) {
+                defaultCard.classList.remove('hidden');
+                activeCard.classList.add('hidden');
+            }
+        }
+
+        if (triggerBtn) {
+            triggerBtn.addEventListener('click', () => {
+                if (inProgress) return;
+                runJourney();
+            });
+        }
+
+        function runJourney() {
+            inProgress = true;
+            if (triggerBtn && btnText) {
+                triggerBtn.style.opacity = '0.6';
+                btnText.textContent = "Transmitting...";
+            }
+            
+            resetSimulator();
+            
+            if (defaultCard && activeCard) {
+                defaultCard.classList.add('hidden');
+                activeCard.classList.remove('hidden');
+            }
+
+            let currentStep = 0;
+            const stepDuration = 1200; // time in ms per step
+
+            // Rapidly count up latency
+            let currentLatency = 0.0;
+            const latencyInterval = setInterval(() => {
+                currentLatency += 0.3;
+                if (latencyCounter) {
+                    latencyCounter.textContent = currentLatency.toFixed(1) + " ms";
+                }
+            }, 30);
+
+            function executeStep() {
+                if (currentStep >= 5) {
+                    // Complete journey
+                    clearInterval(latencyInterval);
+                    if (latencyCounter) latencyCounter.textContent = "12.0 ms";
+                    
+                    if (triggerBtn && btnText) {
+                        triggerBtn.style.opacity = '1.0';
+                        btnText.textContent = "Re-Transmit Signal";
+                    }
+                    inProgress = false;
+                    return;
+                }
+
+                // Update Timeline Nodes
+                nodes.forEach((n, idx) => {
+                    n.classList.remove('node-active');
+                    if (idx < currentStep) {
+                        n.classList.add('node-completed');
+                    } else if (idx === currentStep) {
+                        n.classList.add('node-active');
+                    }
+                });
+
+                // Update progress bar width
+                if (timelineProgress) {
+                    const widthPercent = (currentStep / 4) * 100;
+                    timelineProgress.style.width = widthPercent + "%";
+                }
+
+                // Update Step Detail Card content
+                const data = stepsData[currentStep];
+                if (activeStepBadge && activeTaskDetail && activeStepTitle && activeStepDesc) {
+                    activeStepBadge.textContent = data.badge;
+                    activeTaskDetail.textContent = `${currentTaskType.toUpperCase()} • ${currentBytes}`;
+                    activeStepTitle.textContent = data.title;
+                    activeStepDesc.textContent = data.desc;
+                }
+
+                currentStep++;
+                setTimeout(executeStep, stepDuration);
+            }
+
+            executeStep();
+        }
+    });
+</script>

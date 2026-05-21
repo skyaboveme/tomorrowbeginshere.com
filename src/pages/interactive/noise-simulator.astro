@@ -1,0 +1,425 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="Noise & Distance Simulator | TomorrowBeginsHere.com"
+    description="Calculate property-line noise decay using physical acoustic equations, including the impact of sound walls, heavy landscaping, and earthen berms."
+>
+    <!-- Navigation Back Link -->
+    <div class="bg-slate-900 pt-8 pb-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="/interactive" class="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Simulators Hub
+            </a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-amber-600/50 to-slate-900 z-0"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-amber-500/20 text-amber-300 font-bold tracking-widest uppercase text-xs mb-3 border border-amber-500/30">Physics Simulator</span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Noise & Distance Simulator</h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                Test the physical drop-off of sound waves using the acoustic Inverse Square Law. See how structures, walls, and landscaping mitigate noise at your property line.
+            </p>
+        </div>
+    </div>
+
+    <!-- Simulator Body -->
+    <section class="py-12 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Controls Column (5 cols) -->
+                <div class="lg:col-span-5 space-y-6">
+                    
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-8">
+                        
+                        <!-- Step 1: Distance Slider -->
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-end">
+                                <label for="distance-slider" class="block text-sm font-bold text-slate-700 uppercase tracking-wider">Property-Line Distance</label>
+                                <span class="text-2xl font-black text-amber-600" id="distance-display">100 feet</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="distance-slider" 
+                                min="10" 
+                                max="3000" 
+                                step="10" 
+                                value="250" 
+                                class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-500 hover:accent-amber-500/80 transition-all"
+                            >
+                            <div class="flex justify-between text-xs font-semibold text-slate-400">
+                                <span>10 ft</span>
+                                <span>1,500 ft</span>
+                                <span>3,000 ft</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Acoustic Mitigations -->
+                        <div class="space-y-4">
+                            <label class="block text-sm font-bold text-slate-700 uppercase tracking-wider">Acoustic Mitigation Measures</label>
+                            <div class="grid grid-cols-1 gap-3">
+                                
+                                <button type="button" class="mitigation-btn flex items-center justify-between p-4 rounded-xl border-2 border-slate-200 hover:border-amber-400 bg-slate-50 transition-all text-left group active-mitigation" data-value="0">
+                                    <div>
+                                        <div class="font-bold text-slate-800">No Mitigation</div>
+                                        <div class="text-xs text-slate-500">Free field hemispherical sound propagation</div>
+                                    </div>
+                                    <span class="text-xs font-bold px-2.5 py-1 rounded bg-slate-200 text-slate-600">0 dB</span>
+                                </button>
+
+                                <button type="button" class="mitigation-btn flex items-center justify-between p-4 rounded-xl border-2 border-slate-200 hover:border-amber-400 bg-slate-50 transition-all text-left group" data-value="15">
+                                    <div>
+                                        <div class="font-bold text-slate-800">15-ft Acoustical Wall / Shroud</div>
+                                        <div class="text-xs text-slate-500">Acoustic panel barriers shielding cooling arrays</div>
+                                    </div>
+                                    <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-100 text-amber-700">-15 dB</span>
+                                </button>
+
+                                <button type="button" class="mitigation-btn flex items-center justify-between p-4 rounded-xl border-2 border-slate-200 hover:border-amber-400 bg-slate-50 transition-all text-left group" data-value="18">
+                                    <div>
+                                        <div class="font-bold text-slate-800">Earthen Berm</div>
+                                        <div class="text-xs text-slate-500">Sloped landscape soil barrier deflecting noise</div>
+                                    </div>
+                                    <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-100 text-amber-700">-18 dB</span>
+                                </button>
+
+                                <button type="button" class="mitigation-btn flex items-center justify-between p-4 rounded-xl border-2 border-slate-200 hover:border-amber-400 bg-slate-50 transition-all text-left group" data-value="5">
+                                    <div>
+                                        <div class="font-bold text-slate-800">Heavy Landscaping / Vegetative Buffer</div>
+                                        <div class="text-xs text-slate-500">Dense trees and shrub belts absorbing higher frequencies</div>
+                                    </div>
+                                    <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-100 text-amber-700">-5 dB</span>
+                                </button>
+
+                                <button type="button" class="mitigation-btn flex items-center justify-between p-4 rounded-xl border-2 border-slate-200 hover:border-amber-400 bg-slate-50 transition-all text-left group" data-value="23">
+                                    <div>
+                                        <div class="font-bold text-slate-800">Combined Wall & Earthen Berm</div>
+                                        <div class="text-xs text-slate-500">Max engineering deflection, wall, berm, and tree belt</div>
+                                    </div>
+                                    <span class="text-xs font-bold px-2.5 py-1 rounded bg-green-100 text-green-700">-23 dB</span>
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Ambient Overlays -->
+                        <div class="space-y-4 pt-4 border-t border-slate-100">
+                            <label class="block text-sm font-bold text-slate-700 uppercase tracking-wider">Compare with Ambient Environments</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button type="button" class="ambient-toggle p-3 rounded-lg border border-slate-200 font-semibold text-xs hover:border-slate-400 transition-all text-center flex flex-col items-center gap-1 text-slate-600" data-value="35">
+                                    <span class="font-black text-sm text-slate-800">35 dBA</span>
+                                    <span>Rural Nighttime</span>
+                                </button>
+                                <button type="button" class="ambient-toggle p-3 rounded-lg border border-slate-200 font-semibold text-xs hover:border-slate-400 transition-all text-center flex flex-col items-center gap-1 text-slate-600" data-value="45">
+                                    <span class="font-black text-sm text-slate-800">45 dBA</span>
+                                    <span>Rural Daytime</span>
+                                </button>
+                                <button type="button" class="ambient-toggle p-3 rounded-lg border border-slate-200 font-semibold text-xs hover:border-slate-400 transition-all text-center flex flex-col items-center gap-1 text-slate-600" data-value="40">
+                                    <span class="font-black text-sm text-slate-800">40 dBA</span>
+                                    <span>Quiet Library</span>
+                                </button>
+                                <button type="button" class="ambient-toggle p-3 rounded-lg border border-slate-200 font-semibold text-xs hover:border-slate-400 transition-all text-center flex flex-col items-center gap-1 text-slate-600" data-value="50">
+                                    <span class="font-black text-sm text-slate-800">50 dBA</span>
+                                    <span>Refrigerator Hum</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Outputs and Visualizations Column (7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Dynamic Schematic Animation Card -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm overflow-hidden relative">
+                        <h4 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Live Propagation Visualization</h4>
+                        
+                        <div class="h-60 bg-slate-950 rounded-2xl relative border border-slate-800 flex items-center justify-center p-4">
+                            <!-- SVG Grid Background -->
+                            <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+                            
+                            <!-- Left: Data Center -->
+                            <div class="absolute left-6 bottom-6 flex flex-col items-center z-10 text-center">
+                                <div class="w-16 h-16 bg-slate-800 rounded-xl border border-slate-700 flex flex-col justify-end p-2 relative overflow-hidden">
+                                    <div class="absolute top-2 left-2 text-[0.4rem] text-slate-500 font-bold uppercase tracking-widest">DATA CENTER</div>
+                                    <!-- Fan SVG that rotates -->
+                                    <div class="w-8 h-8 rounded-full border border-slate-600 bg-slate-900 mx-auto flex items-center justify-center relative overflow-hidden">
+                                        <svg class="w-6 h-6 text-slate-400 animate-spin" style="animation-duration: 2s;" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <span class="text-[0.6rem] font-bold text-slate-400 mt-2 tracking-widest">SOURCE: 95 dBA</span>
+                            </div>
+
+                            <!-- Animated Sound Waves (SVG layers) -->
+                            <div class="absolute inset-0 flex items-center justify-start overflow-hidden pointer-events-none" id="waves-container">
+                                <!-- Sound waves added programmatically or styled with CSS -->
+                                <div class="sound-wave border-r border-amber-500/20 rounded-full h-80 w-80 absolute -left-12 opacity-50 scale-50"></div>
+                                <div class="sound-wave border-r border-amber-500/10 rounded-full h-80 w-80 absolute -left-12 opacity-30 scale-75"></div>
+                                <div class="sound-wave border-r border-amber-500/5 rounded-full h-80 w-80 absolute -left-12 opacity-15 scale-100"></div>
+                            </div>
+
+                            <!-- Interactive Acoustic Wall (renders if selected) -->
+                            <div id="barrier-visual" class="absolute w-2.5 h-24 bg-gradient-to-b from-slate-600 to-slate-800 border border-slate-500 rounded-full z-20 left-1/3 shadow-lg opacity-0 transition-opacity duration-300"></div>
+
+                            <!-- Right: House -->
+                            <div class="absolute right-10 bottom-6 flex flex-col items-center z-10 text-center" id="house-visual">
+                                <div class="w-12 h-12 flex items-center justify-center text-slate-400 relative">
+                                    <svg class="w-10 h-10 text-slate-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="house-svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                    </svg>
+                                </div>
+                                <span class="text-[0.6rem] font-bold text-slate-400 mt-2 tracking-widest">YOUR HOME</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Calculated Noise Output Display -->
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-white shadow-2xl relative overflow-hidden">
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-tech-blue/15 rounded-full blur-3xl pointer-events-none"></div>
+                        
+                        <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                            
+                            <!-- Gauge -->
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 opacity-80">Sound Level at Property Line</p>
+                                <div class="flex items-baseline gap-2">
+                                    <div class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-300 mb-2 tracking-tighter" id="decibel-value">
+                                        42 dB
+                                    </div>
+                                    <span class="text-lg font-bold text-slate-400 uppercase tracking-wider">dBA</span>
+                                </div>
+                                <div class="h-2 w-full bg-white/10 rounded-full overflow-hidden mt-4 mb-2">
+                                    <div class="h-full bg-gradient-to-r from-green-400 via-yellow-400 to-red-500 transition-all duration-300" id="gauge-bar" style="width: 42%;"></div>
+                                </div>
+                                <div class="flex justify-between text-[0.65rem] font-bold text-slate-500 uppercase tracking-wide">
+                                    <span>Safe (0)</span>
+                                    <span>EPA limit (55)</span>
+                                    <span>Loud (90+)</span>
+                                </div>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="bg-white/5 rounded-2xl p-6 border border-white/10 space-y-4">
+                                <h5 class="text-xs font-bold text-slate-300 uppercase tracking-widest opacity-80">Comparative Benchmark:</h5>
+                                <div class="text-xl font-bold text-white leading-snug" id="sound-comparator">
+                                    Sounds like a quiet residential neighborhood.
+                                </div>
+                                <div class="text-xs text-slate-400 leading-relaxed" id="ambient-comparison-text">
+                                    This is quieter than typical daytime ambient levels (45 dBA).
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Informational Box -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm prose prose-slate max-w-none">
+                        <h4 class="text-slate-900 font-bold mb-2">How this Math works:</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            Sound travels as energy in spherical waves. In a free space environment, every doubling of distance from the source reduces sound intensity by approximately <strong>6 decibels</strong>.
+                        </p>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            This simulator uses the standard hemispherical acoustic decay model: <code class="bg-slate-100 px-1.5 py-0.5 rounded text-amber-700 font-mono text-xs">dB = dB<sub>source</sub> - 20 log<sub>10</sub>(distance)</code>. Acoustic buffers (like physical sound walls or earthen soil berms) physically deflect and absorb sound waves, adding an additional direct mathematical reduction (attenuation) before the waves reach surrounding property lines.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+    /* Styling for animating waves */
+    .sound-wave {
+        transition: all 0.3s ease;
+    }
+    
+    .mitigation-btn.active-mitigation {
+        border-color: #f59e0b; /* bg-amber-500 equivalent */
+        background-color: #fffbeb; /* bg-amber-50 equivalent */
+    }
+
+    .ambient-toggle.active-ambient {
+        border-color: #f59e0b;
+        background-color: #fffbeb;
+        color: #b45309; /* amber-700 */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slider = document.getElementById('distance-slider') as HTMLInputElement;
+        const distDisplay = document.getElementById('distance-display');
+        const dbDisplay = document.getElementById('decibel-value');
+        const gaugeBar = document.getElementById('gauge-bar');
+        const houseSvg = document.getElementById('house-svg');
+        const soundComparator = document.getElementById('sound-comparator');
+        const comparisonText = document.getElementById('ambient-comparison-text');
+        const barrierVisual = document.getElementById('barrier-visual');
+        const houseVisual = document.getElementById('house-visual');
+        const wavesContainer = document.getElementById('waves-container');
+        
+        let mitigationValue = 0;
+        let ambientCompareVal: number | null = null;
+        
+        // Mitigation buttons
+        const mitButtons = document.querySelectorAll('.mitigation-btn');
+        mitButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                mitButtons.forEach(b => b.classList.remove('active-mitigation'));
+                btn.classList.add('active-mitigation');
+                mitigationValue = parseInt(btn.getAttribute('data-value') || '0');
+                
+                // Show/hide wall in visualizer
+                if (barrierVisual) {
+                    if (mitigationValue > 0) {
+                        barrierVisual.classList.remove('opacity-0');
+                        barrierVisual.classList.add('opacity-100');
+                    } else {
+                        barrierVisual.classList.remove('opacity-100');
+                        barrierVisual.classList.add('opacity-0');
+                    }
+                }
+                
+                calculate();
+            });
+        });
+        
+        // Ambient toggle buttons
+        const ambToggles = document.querySelectorAll('.ambient-toggle');
+        ambToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const isActive = toggle.classList.contains('active-ambient');
+                ambToggles.forEach(t => t.classList.remove('active-ambient'));
+                
+                if (isActive) {
+                    ambientCompareVal = null;
+                } else {
+                    toggle.classList.add('active-ambient');
+                    ambientCompareVal = parseInt(toggle.getAttribute('data-value') || '0');
+                }
+                
+                calculate();
+            });
+        });
+
+        function getSoundComparison(db: number) {
+            if (db <= 25) return "Completely silent bedroom / soft breeze.";
+            if (db <= 35) return "Quiet rural library / whisper at 5 feet.";
+            if (db <= 45) return "Quiet residential street / modern refrigerator hum.";
+            if (db <= 55) return "Standard conversational speech / quiet suburban yard.";
+            if (db <= 65) return "Standard office background sound / light city traffic.";
+            if (db <= 75) return "Vacuum cleaner at 10 feet / loud highway noise.";
+            return "Lawnmower at close range. Loud.";
+        }
+
+        function calculate() {
+            if (!slider || !distDisplay || !dbDisplay || !gaugeBar || !soundComparator || !comparisonText) return;
+            
+            const distance = parseInt(slider.value);
+            
+            // Physical formula: dB = 95 - 20 * log10(R) - mitigation
+            let db = 95 - 20 * Math.log10(distance) - mitigationValue;
+            db = Math.round(db);
+            
+            // Floor decibels at typical absolute silent threshold
+            if (db < 15) db = 15;
+            
+            // Update Slider Text
+            distDisplay.textContent = distance + " feet";
+            
+            // Update Decibel output
+            dbDisplay.textContent = db + " dB";
+            
+            // Update gauge percentage
+            const percentage = Math.min(Math.max((db / 95) * 100, 10), 100);
+            gaugeBar.style.width = percentage + "%";
+            
+            // Visual indicators of house warning color
+            if (houseSvg) {
+                houseSvg.classList.remove('text-green-500', 'text-yellow-400', 'text-red-500', 'text-slate-300');
+                if (db < 40) {
+                    houseSvg.classList.add('text-green-500');
+                } else if (db < 55) {
+                    houseSvg.classList.add('text-yellow-400');
+                } else {
+                    houseSvg.classList.add('text-red-500');
+                }
+            }
+
+            // Move house distance in visualizer
+            if (houseVisual) {
+                // Map distance from 10-3000 to right-aligned percentage: from 10% right to 40% right
+                const maxShift = 45; // Max percent movement
+                const shift = maxShift - ((distance - 10) / 2990) * 35;
+                houseVisual.style.right = shift + "%";
+            }
+
+            // Adjust animated waves intensity
+            if (wavesContainer) {
+                wavesContainer.innerHTML = '';
+                const maxWaves = Math.min(5, Math.ceil(db / 15));
+                for (let i = 0; i < maxWaves; i++) {
+                    const wave = document.createElement('div');
+                    wave.className = 'sound-wave border-r border-amber-500/20 rounded-full h-80 w-80 absolute -left-12 pointer-events-none';
+                    
+                    // Wave size and scaling
+                    const scale = 0.3 + (i * 0.2);
+                    const opacity = Math.max(0.02, 0.4 - (i * 0.08) - (mitigationValue / 50));
+                    
+                    wave.style.transform = `scale(${scale})`;
+                    wave.style.opacity = opacity.toString();
+                    wave.style.animation = `pulse 2s infinite ease-in-out`;
+                    wave.style.animationDelay = `${i * 0.4}s`;
+                    
+                    wavesContainer.appendChild(wave);
+                }
+            }
+
+            // Update Comparator Text
+            soundComparator.textContent = getSoundComparison(db);
+            
+            // Update Compare description
+            if (ambientCompareVal !== null) {
+                const diff = db - ambientCompareVal;
+                if (diff < 0) {
+                    comparisonText.textContent = `This is ${Math.abs(diff)} dB quieter than your selected ambient comparison benchmark (${ambientCompareVal} dBA).`;
+                } else if (diff > 0) {
+                    comparisonText.textContent = `This is ${diff} dB louder than your selected ambient comparison benchmark (${ambientCompareVal} dBA).`;
+                } else {
+                    comparisonText.textContent = `This is exactly matching your selected ambient comparison benchmark (${ambientCompareVal} dBA).`;
+                }
+            } else {
+                // Standard default EPA reference
+                if (db <= 45) {
+                    comparisonText.textContent = `This falls below the federal EPA daytime outdoor target of 45-55 dBA.`;
+                } else {
+                    comparisonText.textContent = `This meets rural industrial limits but stands out above nighttime thresholds unless sound mitigation is increased.`;
+                }
+            }
+        }
+        
+        // Listener
+        slider.addEventListener('input', calculate);
+        
+        // Initialize
+        calculate();
+    });
+</script>

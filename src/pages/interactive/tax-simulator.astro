@@ -1,0 +1,328 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="Tax & School Budget Simulator | TomorrowBeginsHere.com"
+    description="Simulate the direct impact of commercial data center tax investment. Project funding increases for local schools, teachers, road repairs, and county safety assets."
+>
+    <!-- Navigation Back Link -->
+    <div class="bg-slate-900 pt-8 pb-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="/interactive" class="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Simulators Hub
+            </a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/50 to-slate-900 z-0"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold tracking-widest uppercase text-xs mb-3 border border-emerald-500/30">Economic Simulator</span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Tax & School Budget Simulator</h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                Toggle capital investment values and local rates to see how commercial development directly offsets homeowners' taxes while funding school improvements and county services.
+            </p>
+        </div>
+    </div>
+
+    <!-- Simulator Body -->
+    <section class="py-12 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Controls Column (5 cols) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        
+                        <!-- Step 1: Capital Valuation -->
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-end">
+                                <label for="valuation-slider" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Data Center Asset Valuation</label>
+                                <span class="text-xl font-black text-emerald-600 animate-pulse-subtle" id="valuation-display">$1.0 Billion</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="valuation-slider" 
+                                min="200" 
+                                max="5000" 
+                                step="100" 
+                                value="1000" 
+                                class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-500 hover:accent-emerald-500/80 transition-all"
+                            >
+                            <div class="flex justify-between text-[10px] font-bold text-slate-400">
+                                <span>$200M</span>
+                                <span>$2.5 Billion</span>
+                                <span>$5.0B+</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: ISD Tax Rate -->
+                        <div class="space-y-3 pt-3 border-t border-slate-100">
+                            <div class="flex justify-between items-end">
+                                <label for="isd-slider" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">School District (ISD) Rate</label>
+                                <span class="text-lg font-black text-slate-800" id="isd-display">1.10%</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-snug">Tax share going strictly to local public schools and ISD bonds.</p>
+                            <input 
+                                type="range" 
+                                id="isd-slider" 
+                                min="0.5" 
+                                max="2.0" 
+                                step="0.05" 
+                                value="1.10" 
+                                class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-800 hover:accent-slate-700 transition-all"
+                            >
+                            <div class="flex justify-between text-[10px] font-bold text-slate-400">
+                                <span>0.5%</span>
+                                <span>1.25%</span>
+                                <span>2.0%</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: County Tax Rate -->
+                        <div class="space-y-3 pt-3 border-t border-slate-100">
+                            <div class="flex justify-between items-end">
+                                <label for="county-slider" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">County & City Tax Rate</label>
+                                <span class="text-lg font-black text-slate-800" id="county-display">0.45%</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-snug">Tax share funding county services, road repairs, and police/fire crews.</p>
+                            <input 
+                                type="range" 
+                                id="county-slider" 
+                                min="0.1" 
+                                max="1.0" 
+                                step="0.05" 
+                                value="0.45" 
+                                class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-800 hover:accent-slate-700 transition-all"
+                            >
+                            <div class="flex justify-between text-[10px] font-bold text-slate-400">
+                                <span>0.1%</span>
+                                <span>0.5%</span>
+                                <span>1.0%</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Average Home Value -->
+                        <div class="space-y-2 pt-3 border-t border-slate-100">
+                            <label for="home-input" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">County Average Home Value</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">$</span>
+                                <input 
+                                    type="number" 
+                                    id="home-input" 
+                                    value="350000" 
+                                    class="w-full pl-8 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all text-sm"
+                                >
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-snug">Used to calculate how many standard families' property taxes are offset.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Outputs and Visualizations Column (7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Grand Total Banner -->
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div>
+                                <span class="inline-block px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold uppercase text-[10px] tracking-wider mb-2 border border-emerald-500/30">Total Annual Revenue</span>
+                                <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 tracking-tight" id="total-revenue-value">
+                                    $15,500,000
+                                </div>
+                                <p class="text-slate-400 text-xs mt-1">Paid directly by the facility operator into local treasuries.</p>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl p-4 border border-white/10 text-center flex-shrink-0">
+                                <div class="text-3xl font-black text-emerald-400" id="homes-offset-val">2,857</div>
+                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Household Taxes Covered</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Split Distribution: ISD vs. County -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Local Schools (ISD) Card -->
+                        <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 space-y-6 shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-500">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm uppercase tracking-wider">Local ISD Allocation</h4>
+                                    <div class="text-2xl font-black text-indigo-600 mt-0.5" id="isd-share-display">$11,000,000</div>
+                                </div>
+                            </div>
+
+                            <div class="w-full h-px bg-slate-100"></div>
+
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-semibold text-slate-500">New Teachers Funded ($65k/yr)</span>
+                                    <span class="text-base font-black text-slate-800" id="teachers-val">169</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-semibold text-slate-500">Classroom Tech Kits ($5k/each)</span>
+                                    <span class="text-base font-black text-slate-800" id="tech-val">2,200</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-semibold text-slate-500">Added Support Per Student (3,500 kids)</span>
+                                    <span class="text-base font-black text-slate-800" id="pupil-val">$3,142/yr</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- County & Roads Card -->
+                        <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 space-y-6 shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-teal-50 flex items-center justify-center text-teal-500">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1v1H9V7zm5 0h1v1h-1V7zm-5 4h1v1H9v-1zm5 0h1v1h-1v-1zm-3 4H2v-1h9v1z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm uppercase tracking-wider">County Services Allocation</h4>
+                                    <div class="text-2xl font-black text-teal-600 mt-0.5" id="county-share-display">$4,500,000</div>
+                                </div>
+                            </div>
+
+                            <div class="w-full h-px bg-slate-100"></div>
+
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-semibold text-slate-500">County Road Miles Paved ($100k/mi)</span>
+                                    <span class="text-base font-black text-slate-800" id="roads-val">45.0 miles</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-semibold text-slate-500">Fire Engines Funded ($350k/each)</span>
+                                    <span class="text-base font-black text-slate-800" id="fire-val">12</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-semibold text-slate-500">Ambulance Vans Funded ($150k/each)</span>
+                                    <span class="text-base font-black text-slate-800" id="ambulance-val">30</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Footnote -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm text-center">
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            * Simulative projections are based on basic industrial valuations without deprecation schedules or Chapter 312/313/381 abatement adjustments. Actual tax distributions depend on county commissioner voting outcomes and regional bond covenants.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const valSlider = document.getElementById('valuation-slider') as HTMLInputElement;
+        const isdSlider = document.getElementById('isd-slider') as HTMLInputElement;
+        const countySlider = document.getElementById('county-slider') as HTMLInputElement;
+        const homeInput = document.getElementById('home-input') as HTMLInputElement;
+        
+        const valDisplay = document.getElementById('valuation-display');
+        const isdDisplay = document.getElementById('isd-display');
+        const countyDisplay = document.getElementById('county-display');
+        const revenueDisplay = document.getElementById('total-revenue-value');
+        const offsetDisplay = document.getElementById('homes-offset-val');
+        
+        const isdShareDisplay = document.getElementById('isd-share-display');
+        const countyShareDisplay = document.getElementById('county-share-display');
+        
+        const teachersVal = document.getElementById('teachers-val');
+        const techVal = document.getElementById('tech-val');
+        const pupilVal = document.getElementById('pupil-val');
+        
+        const roadsVal = document.getElementById('roads-val');
+        const fireVal = document.getElementById('fire-val');
+        const ambulanceVal = document.getElementById('ambulance-val');
+
+        function formatCurrency(num: number) {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+        }
+
+        function formatBillion(val: number) {
+            if (val >= 1000) {
+                return "$" + (val / 1000).toFixed(1) + " Billion";
+            }
+            return "$" + val + " Million";
+        }
+
+        function calculate() {
+            if (!valSlider || !isdSlider || !countySlider || !homeInput || !revenueDisplay || !offsetDisplay || !isdShareDisplay || !countyShareDisplay || !teachersVal || !techVal || !pupilVal || !roadsVal || !fireVal || !ambulanceVal) return;
+
+            const valMillions = parseFloat(valSlider.value);
+            const isdRate = parseFloat(isdSlider.value) / 100;
+            const countyRate = parseFloat(countySlider.value) / 100;
+            const homeVal = parseFloat(homeInput.value) || 350000;
+
+            const totalRate = isdRate + countyRate;
+            const valuationDollars = valMillions * 1000000;
+
+            // Revenues
+            const totalRevenue = valuationDollars * totalRate;
+            const isdRevenue = valuationDollars * isdRate;
+            const countyRevenue = valuationDollars * countyRate;
+
+            // Calculations
+            const avgHomeTax = homeVal * totalRate;
+            const homesOffset = Math.floor(totalRevenue / avgHomeTax);
+
+            // School variables (3,500 students)
+            const teachers = Math.floor(isdRevenue / 65000);
+            const techKits = Math.floor(isdRevenue / 5000);
+            const perPupil = Math.round(isdRevenue / 3500);
+
+            // County variables
+            const roadMiles = (countyRevenue / 100000).toFixed(1);
+            const fireTrucks = Math.floor(countyRevenue / 350000);
+            const ambulances = Math.floor(countyRevenue / 150000);
+
+            // UI updates
+            if (valDisplay) valDisplay.textContent = formatBillion(valMillions);
+            if (isdDisplay) isdDisplay.textContent = parseFloat(isdSlider.value).toFixed(2) + "%";
+            if (countyDisplay) countyDisplay.textContent = parseFloat(countySlider.value).toFixed(2) + "%";
+
+            revenueDisplay.textContent = formatCurrency(totalRevenue);
+            offsetDisplay.textContent = new Intl.NumberFormat('en-US').format(homesOffset);
+
+            isdShareDisplay.textContent = formatCurrency(isdRevenue);
+            countyShareDisplay.textContent = formatCurrency(countyRevenue);
+
+            teachersVal.textContent = new Intl.NumberFormat('en-US').format(teachers);
+            techVal.textContent = new Intl.NumberFormat('en-US').format(techKits);
+            pupilVal.textContent = formatCurrency(perPupil) + "/yr";
+
+            roadsVal.textContent = roadMiles + " miles";
+            fireVal.textContent = new Intl.NumberFormat('en-US').format(fireTrucks);
+            ambulanceVal.textContent = new Intl.NumberFormat('en-US').format(ambulances);
+        }
+
+        // Listeners
+        valSlider.addEventListener('input', calculate);
+        isdSlider.addEventListener('input', calculate);
+        countySlider.addEventListener('input', calculate);
+        homeInput.addEventListener('input', calculate);
+
+        // Init
+        calculate();
+    });
+</script>
