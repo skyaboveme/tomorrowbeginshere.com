@@ -22,3 +22,12 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# temporary analysis files
+aei_report.pdf
+aei_text.txt
+
+# wrangler temporary files
+.wrangler/
+
+

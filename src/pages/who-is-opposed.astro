@@ -55,6 +55,40 @@ import BaseLayout from '../components/BaseLayout.astro';
                     <p class="leading-relaxed text-slate-600 mb-6">
                         Occasionally, opposition is quietly funded or supported by competing land developers or interests who wish to utilize large tracts of land for alternative commercial or residential purposes, viewing data centers as competition for prime real estate and resources.
                     </p>
+
+                    <hr class="border-slate-200 my-8">
+
+                    <h3 class="text-2xl font-bold text-slate-800 mt-4 mb-4">The Funding of Coordinated Campaigns</h3>
+                    <p class="leading-relaxed text-slate-600 mb-4">
+                        While many individual residents have sincere questions, much of the organized, state-level opposition and congressional lobbying is coordinated by a network of well-funded national advocacy groups rather than being strictly local, grassroots efforts.
+                    </p>
+                    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 my-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-xl pointer-events-none"></div>
+                        <div class="flex items-start gap-4">
+                            <span class="bg-amber-100 text-amber-800 rounded-full p-2.5 flex-shrink-0">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <h4 class="font-bold text-slate-900 mb-1 text-base uppercase tracking-wider text-amber-800">Report Spotlight: Foreign Funding Uncovered</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed mb-3">
+                                    A landmark April 2026 report by the **American Energy Institute (AEI)** titled <em class="font-semibold">"Foreign-Funded Opposition to U.S. Data Center Expansion"</em> revealed that 12 U.S. organizations actively campaigning against U.S. data center development—including demanding a national moratorium from Congress—have collectively received over **$39 million** from foreign foundations and billionaires based in Switzerland, the United Kingdom, and Denmark.
+                                </p>
+                                <a 
+                                    href="https://americanenergyinstitute.com/docs/aei_data-center_report_v2.pdf" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    class="inline-flex items-center text-xs font-bold text-amber-700 hover:text-amber-900 hover:underline gap-1 group"
+                                >
+                                    Read the Full AEI Report (PDF)
+                                    <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -103,6 +137,10 @@ import BaseLayout from '../components/BaseLayout.astro';
                     <div>
                         <h4 class="font-bold text-slate-800 mb-4 uppercase tracking-wider text-sm text-tech-blue">Additional News & Reports</h4>
                         <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="bg-amber-100 text-amber-600 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg></span>
+                                <a href="https://americanenergyinstitute.com/docs/aei_data-center_report_v2.pdf" target="_blank" rel="noopener noreferrer" class="text-slate-700 hover:text-tech-blue text-sm"><strong>American Energy Institute:</strong> “Foreign-Funded Opposition to U.S. Data Center Expansion” (April 2026)</a>
+                            </li>
                             <li class="flex items-start">
                                 <span class="bg-amber-100 text-amber-600 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg></span>
                                 <span class="text-slate-700 text-sm"><strong>Texas Tribune:</strong> “Texans are demanding their local governments push pause on data centers” (February 2026)</span>
