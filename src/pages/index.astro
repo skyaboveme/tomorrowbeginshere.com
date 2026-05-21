@@ -103,53 +103,65 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
         </div>
     </section>
 
-    <!-- Featured Article -->
+    <!-- Featured Articles -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <span class="inline-block bg-red-500/10 text-red-600 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-red-200 mb-4">Featured Analysis</span>
-                <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Latest from Our Research</h2>
+                <span class="inline-block bg-red-500/10 text-red-600 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-red-200 mb-4">Latest Research & Fact-Checks</span>
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Featured Analysis</h2>
             </div>
             
-            <a href="/data-center-backlash" class="group block bg-slate-900 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 max-w-5xl mx-auto relative">
-                <div class="absolute inset-0 bg-gradient-to-r from-red-900/60 to-slate-900/80 z-10"></div>
-                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=2669&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
-                
-                <div class="relative z-20 p-10 lg:p-16 flex flex-col lg:flex-row items-center gap-10">
-                    <div class="flex-1">
-                        <span class="inline-block bg-red-500/20 text-red-300 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-red-400/30 mb-4">Deep Analysis</span>
-                        <h3 class="text-2xl lg:text-3xl font-bold text-white mb-4 tracking-tight group-hover:text-red-200 transition-colors">Inside the Data Center Backlash: Anatomy of an Organized Opposition</h3>
-                        <p class="text-slate-300 leading-relaxed mb-6 font-light">A movement that went from background noise to national flashpoint. $85 billion in canceled projects, a 30-point polling collapse, and the funding architecture behind it all.</p>
-                        <div class="flex items-center gap-4 text-sm text-slate-400">
-                            <span>May 7, 2026</span>
-                            <span class="w-1 h-1 bg-slate-600 rounded-full"></span>
-                            <span>25 min read</span>
-                        </div>
-                    </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Card 1: Inside the Data Center Backlash -->
+                <a href="/data-center-backlash" class="group block bg-slate-900 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 relative h-full flex flex-col justify-between">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-950/70 to-slate-950/90 z-10"></div>
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=2669&auto=format&fit=crop')] bg-cover bg-center opacity-25"></div>
                     
-                    <div class="flex-shrink-0 hidden lg:flex flex-col items-center gap-4">
-                        <div class="bg-white/10 backdrop-blur border border-white/20 rounded-xl px-6 py-4 text-center">
-                            <span class="block text-3xl font-black text-white">$85B</span>
-                            <span class="text-xs text-slate-400 uppercase tracking-wider font-medium">Projects Canceled</span>
+                    <div class="relative z-20 p-8 sm:p-10 flex flex-col justify-between h-full flex-grow">
+                        <div>
+                            <span class="inline-block bg-red-500/20 text-red-300 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-red-400/30 mb-4">Deep Analysis</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-red-200 transition-colors">Inside the Data Center Backlash: Anatomy of an Organized Opposition</h3>
+                            <p class="text-slate-300 leading-relaxed mb-6 font-light text-sm">A movement that went from background noise to national flashpoint. $85 billion in canceled projects, a 30-point polling collapse, and the funding architecture behind it all.</p>
                         </div>
-                        <div class="bg-white/10 backdrop-blur border border-white/20 rounded-xl px-6 py-4 text-center">
-                            <span class="block text-3xl font-black text-red-400">-30pts</span>
-                            <span class="text-xs text-slate-400 uppercase tracking-wider font-medium">Polling Collapse</span>
+                        <div>
+                            <div class="flex items-center gap-4 text-xs text-slate-400 mb-4">
+                                <span>May 7, 2026</span>
+                                <span class="w-1 h-1 bg-slate-600 rounded-full"></span>
+                                <span>25 min read</span>
+                            </div>
+                            <span class="inline-flex items-center text-white text-sm font-semibold group-hover:translate-x-1 transition-transform">
+                                Read Article
+                                <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                            </span>
                         </div>
-                        <span class="inline-flex items-center text-white font-semibold group-hover:translate-x-1 transition-transform mt-2">
-                            Read Article
-                            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
                     </div>
+                </a>
+
+                <!-- Card 2: Refuting EHP "The Dangers of Data Centers" -->
+                <a href="/refuting-ehp-dangers-of-data-centers" class="group block bg-slate-900 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 relative h-full flex flex-col justify-between">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-950/70 to-slate-950/90 z-10"></div>
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop')] bg-cover bg-center opacity-25"></div>
                     
-                    <div class="lg:hidden">
-                        <span class="inline-flex items-center text-white font-semibold group-hover:translate-x-1 transition-transform">
-                            Read Full Article
-                            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </span>
+                    <div class="relative z-20 p-8 sm:p-10 flex flex-col justify-between h-full flex-grow">
+                        <div>
+                            <span class="inline-block bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-emerald-400/30 mb-4">Point-by-Point Fact-Check</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-emerald-200 transition-colors">Refuting EHP's "The Dangers of Data Centers"</h3>
+                            <p class="text-slate-300 leading-relaxed mb-6 font-light text-sm">Separating Pennsylvania-centric rate projections and old evaporative water figures from the modern realities of Texas Senate Bill 6 and air-cooled closed-loop infrastructure.</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-4 text-xs text-slate-400 mb-4">
+                                <span>May 21, 2026</span>
+                                <span class="w-1 h-1 bg-slate-600 rounded-full"></span>
+                                <span>12 min read</span>
+                            </div>
+                            <span class="inline-flex items-center text-white text-sm font-semibold group-hover:translate-x-1 transition-transform">
+                                Read Article
+                                <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
     </section>
 
