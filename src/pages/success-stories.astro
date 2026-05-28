@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../components/BaseLayout.astro';
-import InteractiveMap from '../components/InteractiveMap.astro';
 
 const caseStudies = [
   {
@@ -98,8 +97,6 @@ const caseStudies = [
     <!-- Case Studies -->
     <section class="py-20 lg:py-28 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <InteractiveMap />
 
             {caseStudies.map((study, index) => (
                 <div class={`mb-24 last:mb-0 ${index > 0 ? 'pt-24 border-t border-slate-200' : ''}`}>
