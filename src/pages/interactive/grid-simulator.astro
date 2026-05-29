@@ -1,0 +1,471 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="ERCOT Grid Load-Balancing Simulator | TomorrowBeginsHere.com"
+    description="Simulate real-time grid load balancing and demand-response. See how data centers act as interruptible loads to protect local communities from power blackouts."
+>
+    <!-- Navigation Back Link -->
+    <div class="bg-slate-900 pt-8 pb-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="/interactive" class="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Simulators Hub
+            </a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-700/40 to-slate-900 z-0"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-blue-500/20 text-blue-300 font-bold tracking-widest uppercase text-xs mb-3 border border-blue-500/30">Grid Integration Simulator</span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">ERCOT Grid Load-Balancing Simulator</h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                Experience how data centers act as virtual shock-absorbers for the Texas electrical grid. Toggle extreme summer loads and trigger curtailments to see grid protection in action.
+            </p>
+        </div>
+    </div>
+
+    <!-- Simulator Body -->
+    <section class="py-12 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Controls Column (5 cols) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        
+                        <!-- Step 1: Grid State Selector -->
+                        <div class="space-y-3">
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Grid Load Scenario</label>
+                            <div class="grid grid-cols-3 gap-2 p-1 bg-slate-100 rounded-2xl">
+                                <button 
+                                    type="button" 
+                                    id="btn-grid-normal" 
+                                    class="py-2.5 px-3 rounded-xl font-bold text-[11px] sm:text-xs transition-all duration-300 bg-white text-slate-800 shadow-sm border border-slate-200/50"
+                                >
+                                    🟢 Normal
+                                </button>
+                                <button 
+                                    type="button" 
+                                    id="btn-grid-alert" 
+                                    class="py-2.5 px-3 rounded-xl font-bold text-[11px] sm:text-xs transition-all duration-300 text-slate-500 hover:text-slate-800"
+                                >
+                                    🟡 Alert
+                                </button>
+                                <button 
+                                    type="button" 
+                                    id="btn-grid-emergency" 
+                                    class="py-2.5 px-3 rounded-xl font-bold text-[11px] sm:text-xs transition-all duration-300 text-slate-500 hover:text-slate-800"
+                                >
+                                    🔴 Emergency
+                                </button>
+                            </div>
+                            <p class="text-[11px] text-slate-500 leading-snug" id="grid-scenario-desc">
+                                Normal operations: Generous reserves are available. The data center runs at 100% capacity to process high-intensity workloads.
+                            </p>
+                        </div>
+
+                        <!-- Step 2: Demand-Response Toggle -->
+                        <div class="space-y-3 pt-3 border-t border-slate-100">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Automated Curtailment</label>
+                                    <p class="text-[10px] text-slate-400 leading-snug mt-0.5">Allow data center to shed load during emergency alerts.</p>
+                                </div>
+                                <button 
+                                    type="button" 
+                                    id="toggle-curtailment"
+                                    class="w-14 h-8 flex items-center bg-emerald-500 rounded-full p-1 cursor-pointer transition-colors duration-300"
+                                >
+                                    <div class="bg-white w-6 h-6 rounded-full shadow-md transform translate-x-6 transition-transform duration-300" id="toggle-knob"></div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Solar Generation Slider -->
+                        <div class="space-y-3 pt-3 border-t border-slate-100">
+                            <div class="flex justify-between items-end">
+                                <label for="solar-slider" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">On-Site Solar Co-Generation</label>
+                                <span class="text-lg font-black text-slate-800" id="solar-display">50 MW</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-snug">Solar panels on data center roofs feeding direct green energy back into the county substation.</p>
+                            <input 
+                                type="range" 
+                                id="solar-slider" 
+                                min="0" 
+                                max="100" 
+                                step="10" 
+                                value="50" 
+                                class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-500 hover:accent-blue-400 transition-all"
+                            >
+                            <div class="flex justify-between text-[10px] font-bold text-slate-400">
+                                <span>0 MW (Off)</span>
+                                <span>50 MW (Partial)</span>
+                                <span>100 MW (Full Solar)</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Outputs and Visualizations Column (7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Grand Total Banner -->
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden" id="grid-banner">
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div>
+                                <span class="inline-block px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold uppercase text-[10px] tracking-wider mb-2 border border-emerald-500/30" id="grid-status-badge">Grid Stabilized</span>
+                                <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-300 tracking-tight" id="reserve-display-val">
+                                    Reserve: +15,000 MW
+                                </div>
+                                <p class="text-slate-400 text-xs mt-1" id="grid-status-desc">Generous supply margins insulate the regional grid from fluctuating loads.</p>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl p-4 border border-white/10 text-center flex-shrink-0">
+                                <div class="text-3xl font-black text-blue-400" id="curtailed-val">0 MW</div>
+                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Data Center Curtailment</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schematic Diagram Card -->
+                    <div class="bg-white rounded-[2rem] border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col items-center">
+                        <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-6 self-start">ERCOT Energy Flow Schematic</h4>
+                        
+                        <!-- Visual Schematic Container -->
+                        <div class="relative w-full max-w-lg aspect-[4/3] border border-slate-100 bg-slate-50 rounded-2xl overflow-hidden p-4">
+                            <svg viewBox="0 0 400 300" class="w-full h-full">
+                                <!-- Power Generator Station (Supply) -->
+                                <rect x="20" y="100" width="80" height="90" rx="10" fill="none" stroke="#94a3b8" stroke-width="3" />
+                                <text x="60" y="125" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">ERCOT Supply</text>
+                                <path d="M 40 170 L 40 150 L 55 150 L 55 170 M 65 170 L 65 140 L 80 140 L 80 170" fill="none" stroke="#64748b" stroke-width="2" />
+                                <circle cx="60" cy="180" r="2" fill="#3b82f6" />
+
+                                <!-- County Substation (Hub) -->
+                                <circle cx="200" cy="145" r="25" fill="#f8fafc" stroke="#64748b" stroke-width="3" />
+                                <text x="200" y="149" text-anchor="middle" font-size="10" font-weight="extrabold" fill="#334155">HUB</text>
+                                
+                                <!-- Flows from Supply to Substation -->
+                                <path d="M 100 145 L 175 145" fill="none" stroke="#94a3b8" stroke-width="4" id="svg-flow-supply" stroke-dasharray="8 6" />
+
+                                <!-- Data Center (Consumer 1) -->
+                                <rect x="270" y="30" width="110" height="90" rx="10" fill="none" stroke="#94a3b8" stroke-width="3" />
+                                <text x="325" y="55" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">Data Center</text>
+                                <rect x="285" y="70" width="80" height="40" rx="4" fill="#334155" id="svg-dc-box" class="transition-colors duration-500" />
+                                <text x="325" y="94" text-anchor="middle" font-size="10" font-weight="black" fill="#10b981" id="svg-dc-status-text">100 MW</text>
+
+                                <!-- Residential Neighborhood (Consumer 2) -->
+                                <rect x="270" y="180" width="110" height="90" rx="10" fill="none" stroke="#94a3b8" stroke-width="3" />
+                                <text x="325" y="205" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">County Homes</text>
+                                
+                                <!-- Animated House drawings inside neighborhood -->
+                                <g id="svg-neighborhood-houses">
+                                    <!-- House 1 -->
+                                    <polygon points="290,250 300,240 310,250" fill="#f5a623" id="house-roof-1" class="transition-colors duration-500" />
+                                    <rect x="292" y="250" width="16" height="15" fill="#f8e71c" id="house-body-1" class="transition-colors duration-500" />
+                                    
+                                    <!-- House 2 -->
+                                    <polygon points="340,250 350,240 360,250" fill="#f5a623" id="house-roof-2" class="transition-colors duration-500" />
+                                    <rect x="342" y="250" width="16" height="15" fill="#f8e71c" id="house-body-2" class="transition-colors duration-500" />
+                                </g>
+
+                                <!-- Flows from Hub to Consumers -->
+                                <path d="M 215 130 Q 240 75 270 75" fill="none" stroke="#94a3b8" stroke-width="3" id="svg-flow-dc" stroke-dasharray="6 4" />
+                                <path d="M 215 160 Q 240 225 270 225" fill="none" stroke="#94a3b8" stroke-width="3" id="svg-flow-homes" stroke-dasharray="6 4" />
+
+                                <!-- Warning flash panel -->
+                                <text x="200" y="290" text-anchor="middle" font-size="12" font-weight="extrabold" fill="#ef4444" id="svg-warning-text" class="animate-pulse opacity-0">⚠️ LOCAL POWER CRITICALLY UNDER-SUPPLIED!</text>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                    <!-- Footnote -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm text-center">
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            * ERCOT load-balancing is a real-world demand-response structure. Standard commercial data centers execute contractual clauses allowing grid operators to remotely "cut" their energy allocation to near-zero within seconds, freeing up massive megawatts for residential homes.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+    @keyframes flow {
+        to {
+            stroke-dashoffset: -20;
+        }
+    }
+    .flow-active {
+        animation: flow 0.8s linear infinite;
+    }
+    .flow-fast {
+        animation: flow 0.4s linear infinite;
+    }
+    .flow-reverse {
+        animation: flow 0.8s linear infinite reverse;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btnNormal = document.getElementById('btn-grid-normal');
+        const btnAlert = document.getElementById('btn-grid-alert');
+        const btnEmergency = document.getElementById('btn-grid-emergency');
+        const toggleCurtailment = document.getElementById('toggle-curtailment');
+        const toggleKnob = document.getElementById('toggle-knob');
+        const solarSlider = document.getElementById('solar-slider') as HTMLInputElement;
+
+        const scenarioDesc = document.getElementById('grid-scenario-desc');
+        const solarDisplay = document.getElementById('solar-display');
+        
+        const gridBanner = document.getElementById('grid-banner');
+        const statusBadge = document.getElementById('grid-status-badge');
+        const reserveDisplayVal = document.getElementById('reserve-display-val');
+        const statusDesc = document.getElementById('grid-status-desc');
+        const curtailedVal = document.getElementById('curtailed-val');
+
+        // SVG elements
+        const svgFlowSupply = document.getElementById('svg-flow-supply');
+        const svgFlowDC = document.getElementById('svg-flow-dc');
+        const svgFlowHomes = document.getElementById('svg-flow-homes');
+        const svgDCBox = document.getElementById('svg-dc-box');
+        const svgDCStatusText = document.getElementById('svg-dc-status-text');
+        
+        const houseRoof1 = document.getElementById('house-roof-1');
+        const houseBody1 = document.getElementById('house-body-1');
+        const houseRoof2 = document.getElementById('house-roof-2');
+        const houseBody2 = document.getElementById('house-body-2');
+        const svgWarningText = document.getElementById('svg-warning-text');
+
+        let gridScenario = 'normal'; // 'normal', 'alert', 'emergency'
+        let curtailmentActive = true;
+
+        function setGridScenario(scenario: string) {
+            gridScenario = scenario;
+            
+            // Toggle active classes on scenario buttons
+            [btnNormal, btnAlert, btnEmergency].forEach(btn => {
+                btn?.classList.remove('bg-white', 'text-slate-800', 'shadow-sm', 'border', 'border-slate-200/50');
+                btn?.classList.add('text-slate-500');
+            });
+
+            let activeBtn = btnNormal;
+            if (scenario === 'alert') activeBtn = btnAlert;
+            if (scenario === 'emergency') activeBtn = btnEmergency;
+            
+            activeBtn?.classList.add('bg-white', 'text-slate-800', 'shadow-sm', 'border', 'border-slate-200/50');
+            activeBtn?.classList.remove('text-slate-500');
+
+            // Apply labels
+            if (scenario === 'normal') {
+                if (scenarioDesc) scenarioDesc.textContent = "Normal operations: Generous reserves are available. The data center runs at 100% capacity to process high-intensity workloads.";
+            } else if (scenario === 'alert') {
+                if (scenarioDesc) scenarioDesc.textContent = "Alert scenario: High summer heat spikes consumer AC usage. Grid reserve margins drop significantly. Curtailment alert is dispatched.";
+            } else {
+                if (scenarioDesc) scenarioDesc.textContent = "Emergency scenario: Consumer demand exceeds total supply. Grid stability is threatened. Immediate curtailment is required to prevent blackouts.";
+            }
+
+            calculate();
+        }
+
+        function toggleDR() {
+            curtailmentActive = !curtailmentActive;
+            
+            if (curtailmentActive) {
+                toggleCurtailment?.classList.add('bg-emerald-500');
+                toggleCurtailment?.classList.remove('bg-slate-400');
+                toggleKnob?.classList.add('translate-x-6');
+            } else {
+                toggleCurtailment?.classList.remove('bg-emerald-500');
+                toggleCurtailment?.classList.add('bg-slate-400');
+                toggleKnob?.classList.remove('translate-x-6');
+            }
+
+            calculate();
+        }
+
+        function calculate() {
+            if (!solarSlider || !curtailedVal || !reserveDisplayVal || !statusBadge || !gridBanner || !statusDesc || !svgFlowSupply || !svgFlowDC || !svgFlowHomes) return;
+
+            const solarMW = parseInt(solarSlider.value);
+            if (solarDisplay) solarDisplay.textContent = solarMW + " MW";
+
+            // Grid variables
+            let reserveMW = 15000; // Normal baseline
+            let dcLoad = 100; // Base data center draw in MW
+            let totalDCAllocation = dcLoad - solarMW; // Reduce by solar generation
+            if (totalDCAllocation < 0) totalDCAllocation = 0;
+
+            // Scenario modification
+            if (gridScenario === 'normal') {
+                reserveMW = 15000;
+                svgWarningText?.classList.add('opacity-0');
+                
+                // Color homes bright yellow
+                houseRoof1?.setAttribute('fill', '#f5a623');
+                houseBody1?.setAttribute('fill', '#f8e71c');
+                houseRoof2?.setAttribute('fill', '#f5a623');
+                houseBody2?.setAttribute('fill', '#f8e71c');
+
+                // Normal flows
+                svgFlowSupply.className.baseVal = "flow-active";
+                svgFlowDC.className.baseVal = "flow-active";
+                svgFlowHomes.className.baseVal = "flow-active";
+                
+                svgFlowSupply.setAttribute('stroke', '#3b82f6');
+                svgFlowDC.setAttribute('stroke', '#ef4444');
+                svgFlowHomes.setAttribute('stroke', '#3b82f6');
+
+                // DC active normal
+                if (svgDCBox) svgDCBox.style.fill = '#334155';
+                if (svgDCStatusText) {
+                    svgDCStatusText.textContent = `${dcLoad} MW`;
+                    svgDCStatusText.setAttribute('fill', '#10b981');
+                }
+
+                // Banner
+                gridBanner.className = "bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden";
+                statusBadge.textContent = "Grid Stabilized";
+                statusBadge.className = "inline-block px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold uppercase text-[10px] tracking-wider mb-2 border border-emerald-500/30";
+                reserveDisplayVal.textContent = `Reserve: +15,000 MW`;
+                reserveDisplayVal.className = "text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-300 tracking-tight";
+                statusDesc.textContent = "Generous supply margins insulate the regional grid from fluctuating loads.";
+                curtailedVal.textContent = "0 MW";
+
+            } else if (gridScenario === 'alert') {
+                reserveMW = 4500;
+                svgWarningText?.classList.add('opacity-0');
+
+                // Color homes yellow
+                houseRoof1?.setAttribute('fill', '#f5a623');
+                houseBody1?.setAttribute('fill', '#f8e71c');
+                houseRoof2?.setAttribute('fill', '#f5a623');
+                houseBody2?.setAttribute('fill', '#f8e71c');
+
+                // Alert flows (faster flows due to load)
+                svgFlowSupply.className.baseVal = "flow-fast";
+                svgFlowDC.className.baseVal = "flow-active";
+                svgFlowHomes.className.baseVal = "flow-fast";
+                
+                svgFlowSupply.setAttribute('stroke', '#f59e0b');
+                svgFlowDC.setAttribute('stroke', '#ef4444');
+                svgFlowHomes.setAttribute('stroke', '#f59e0b');
+
+                // DC normal draw
+                if (svgDCBox) svgDCBox.style.fill = '#334155';
+                if (svgDCStatusText) {
+                    svgDCStatusText.textContent = `${dcLoad} MW`;
+                    svgDCStatusText.setAttribute('fill', '#f59e0b');
+                }
+
+                // Banner
+                gridBanner.className = "bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden";
+                statusBadge.textContent = "Grid Alert";
+                statusBadge.className = "inline-block px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold uppercase text-[10px] tracking-wider mb-2 border border-amber-500/30";
+                reserveDisplayVal.textContent = `Reserve: +4,500 MW`;
+                reserveDisplayVal.className = "text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-300 tracking-tight";
+                statusDesc.textContent = "Grid reserve margins are thin. Operator prepares demand-response triggers.";
+                curtailedVal.textContent = "0 MW";
+
+            } else {
+                // Emergency (Red Alert)
+                if (curtailmentActive) {
+                    // Grid saved by curtailing
+                    reserveMW = 1800; // Stabilized
+                    svgWarningText?.classList.add('opacity-0');
+
+                    // Homes stay powered!
+                    houseRoof1?.setAttribute('fill', '#f5a623');
+                    houseBody1?.setAttribute('fill', '#f8e71c');
+                    houseRoof2?.setAttribute('fill', '#f5a623');
+                    houseBody2?.setAttribute('fill', '#f8e71c');
+
+                    // Flow lines: Data center flow drops to zero/slow. Power routed to homes.
+                    svgFlowSupply.className.baseVal = "flow-active";
+                    svgFlowDC.className.baseVal = "";
+                    svgFlowDC.style.opacity = '0.2';
+                    svgFlowDC.setAttribute('stroke', '#cbd5e1');
+                    svgFlowHomes.className.baseVal = "flow-fast";
+                    svgFlowHomes.setAttribute('stroke', '#10b981'); // Safe green flow to homes
+
+                    // DC curtailed to 5 MW
+                    if (svgDCBox) svgDCBox.style.fill = '#1e293b'; // Greyed out
+                    if (svgDCStatusText) {
+                        svgDCStatusText.textContent = "5 MW";
+                        svgDCStatusText.setAttribute('fill', '#94a3b8');
+                    }
+
+                    // Banner
+                    gridBanner.className = "bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden";
+                    statusBadge.textContent = "Grid Stabilized (Curtailment Active)";
+                    statusBadge.className = "inline-block px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold uppercase text-[10px] tracking-wider mb-2 border border-emerald-500/30";
+                    reserveDisplayVal.textContent = `Reserve: +1,800 MW`;
+                    reserveDisplayVal.className = "text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 tracking-tight";
+                    statusDesc.textContent = "Data center immediately curtailed 95% of server power load. Grid stabilized successfully.";
+                    curtailedVal.textContent = "95 MW";
+
+                } else {
+                    // Local brownouts / blackouts!
+                    reserveMW = -2500;
+                    svgWarningText?.classList.remove('opacity-0');
+
+                    // Homes turn dark!
+                    houseRoof1?.setAttribute('fill', '#475569');
+                    houseBody1?.setAttribute('fill', '#1e293b');
+                    houseRoof2?.setAttribute('fill', '#475569');
+                    houseBody2?.setAttribute('fill', '#1e293b');
+
+                    // Flows crash/fail
+                    svgFlowSupply.className.baseVal = "";
+                    svgFlowSupply.setAttribute('stroke', '#ef4444');
+                    svgFlowDC.className.baseVal = "flow-fast";
+                    svgFlowDC.style.opacity = '1';
+                    svgFlowDC.setAttribute('stroke', '#ef4444'); // Data center keeps drawing!
+                    svgFlowHomes.className.baseVal = "";
+                    svgFlowHomes.setAttribute('stroke', '#475569'); // Dead line to homes
+
+                    // DC still drawing 100 MW
+                    if (svgDCBox) svgDCBox.style.fill = '#991b1b'; // Hostile red draw
+                    if (svgDCStatusText) {
+                        svgDCStatusText.textContent = `${dcLoad} MW`;
+                        svgDCStatusText.setAttribute('fill', '#f87171');
+                    }
+
+                    // Banner
+                    gridBanner.className = "bg-gradient-to-br from-red-950 to-slate-900 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden";
+                    statusBadge.textContent = "Critical Overload (Blackout)";
+                    statusBadge.className = "inline-block px-2.5 py-0.5 rounded bg-red-500/20 text-red-400 font-bold uppercase text-[10px] tracking-wider mb-2 border border-red-500/30";
+                    reserveDisplayVal.textContent = `Deficit: -2,500 MW`;
+                    reserveDisplayVal.className = "text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-300 tracking-tight";
+                    statusDesc.textContent = "Grid overload triggers regional protective relays, causing immediate local blackouts in nearby neighborhoods.";
+                    curtailedVal.textContent = "0 MW";
+                }
+            }
+        }
+
+        // Toggles
+        btnNormal?.addEventListener('click', () => setGridScenario('normal'));
+        btnAlert?.addEventListener('click', () => setGridScenario('alert'));
+        btnEmergency?.addEventListener('click', () => setGridScenario('emergency'));
+        toggleCurtailment?.addEventListener('click', toggleDR);
+
+        // Sliders
+        solarSlider.addEventListener('input', calculate);
+
+        // Initial setup
+        setGridScenario('normal');
+    });
+</script>

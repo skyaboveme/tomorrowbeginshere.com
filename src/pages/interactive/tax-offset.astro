@@ -1,0 +1,333 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="Residential Tax Offset Calculator | TomorrowBeginsHere.com"
+    description="Calculate your personal property tax savings from commercial data center investments. View pre- and post-development side-by-side receipts."
+>
+    <!-- Navigation Back Link -->
+    <div class="bg-slate-900 pt-8 pb-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="/interactive" class="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Simulators Hub
+            </a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal-700/40 to-slate-900 z-0"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold tracking-widest uppercase text-xs mb-3 border border-emerald-500/30">Personal Savings Calculator</span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Residential Property Tax Offset Calculator</h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                See exactly how adding massive commercial property valuation to the local tax rolls compresses tax rates and keeps money in your pocket.
+            </p>
+        </div>
+    </div>
+
+    <!-- Calculator Body -->
+    <section class="py-12 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Controls Column (5 cols) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        
+                        <!-- Step 1: Personal Home Valuation -->
+                        <div class="space-y-2">
+                            <label for="home-valuation" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Your Home Valuation</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">$</span>
+                                <input 
+                                    type="number" 
+                                    id="home-valuation" 
+                                    value="350000" 
+                                    class="w-full pl-8 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all text-sm"
+                                >
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-snug">Used to calculate your personal annual tax savings and rate reductions.</p>
+                        </div>
+
+                        <!-- Step 2: Current Annual Tax Bill -->
+                        <div class="space-y-2 pt-3 border-t border-slate-100">
+                            <label for="current-tax" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Current Annual Property Tax Bill</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">$</span>
+                                <input 
+                                    type="number" 
+                                    id="current-tax" 
+                                    value="5250" 
+                                    class="w-full pl-8 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all text-sm"
+                                >
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-snug">Your total current annual local taxes (combining ISD, County, City, and ESD).</p>
+                        </div>
+
+                        <!-- Step 3: Planned Data Center Investment -->
+                        <div class="space-y-3 pt-3 border-t border-slate-100">
+                            <div class="flex justify-between items-end">
+                                <label for="dc-inv-slider" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Planned Data Center Capital Investment</label>
+                                <span class="text-lg font-black text-slate-800" id="dc-inv-display">$1.5 Billion</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-snug">The commercial value added directly to the local tax registry.</p>
+                            <input 
+                                type="range" 
+                                id="dc-inv-slider" 
+                                min="250" 
+                                max="3000" 
+                                step="250" 
+                                value="1500" 
+                                class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-500 hover:accent-emerald-400 transition-all"
+                            >
+                            <div class="flex justify-between text-[10px] font-bold text-slate-400">
+                                <span>$250M</span>
+                                <span>$1.5 Billion</span>
+                                <span>$3.0 Billion</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Outputs and Visualizations Column (7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Grand Total Banner -->
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div>
+                                <span class="inline-block px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold uppercase text-[10px] tracking-wider mb-2 border border-emerald-500/30">Your Estimated Annual Savings</span>
+                                <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 tracking-tight" id="annual-savings-val">
+                                    $945 Saved / yr
+                                </div>
+                                <p class="text-slate-400 text-xs mt-1" id="savings-pct-display">Equivalent to an 18.0% reduction in your property tax bill.</p>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl p-4 border border-white/10 text-center flex-shrink-0">
+                                <div class="text-3xl font-black text-emerald-400" id="rate-reduction-val">1.23%</div>
+                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Compressed Tax Rate</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tax Receipts Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Receipt 1: Without Data Center -->
+                        <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 space-y-6 shadow-sm relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-full -mr-8 -mt-8 pointer-events-none"></div>
+                            
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider">Before DC Development</h4>
+                                    <div class="text-2xl font-black text-slate-900 mt-0.5" id="before-rate-display">1.50% Total Rate</div>
+                                </div>
+                            </div>
+
+                            <div class="w-full h-px bg-slate-100"></div>
+
+                            <div class="space-y-4 font-mono text-xs text-slate-600">
+                                <div class="flex justify-between">
+                                    <span>School ISD Share (1.05%):</span>
+                                    <span class="font-bold text-slate-800" id="before-isd-val">$3,675</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>County Share (0.35%):</span>
+                                    <span class="font-bold text-slate-800" id="before-county-val">$1,225</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>City/ESD Share (0.10%):</span>
+                                    <span class="font-bold text-slate-800" id="before-city-val">$350</span>
+                                </div>
+                                <div class="w-full h-px bg-dashed border-t border-slate-200 my-2"></div>
+                                <div class="flex justify-between text-sm font-bold text-slate-900">
+                                    <span>TOTAL ANNUAL TAX:</span>
+                                    <span id="before-total-val">$5,250</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Receipt 2: With Data Center (Savings) -->
+                        <div class="bg-emerald-950 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl relative overflow-hidden text-emerald-100">
+                            <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full -mr-8 -mt-8 pointer-events-none"></div>
+                            
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-emerald-400 text-xs uppercase tracking-wider">With DC Development</h4>
+                                    <div class="text-2xl font-black text-white mt-0.5" id="after-rate-display">1.23% Compressed</div>
+                                </div>
+                            </div>
+
+                            <div class="w-full h-px bg-emerald-900"></div>
+
+                            <div class="space-y-4 font-mono text-xs text-emerald-200/90">
+                                <div class="flex justify-between">
+                                    <span>School ISD Share (0.86%):</span>
+                                    <span class="font-bold text-white" id="after-isd-val">$3,013</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>County Share (0.27%):</span>
+                                    <span class="font-bold text-white" id="after-county-val">$945</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>City/ESD Share (0.10%):</span>
+                                    <span class="font-bold text-white" id="after-city-val">$347</span>
+                                </div>
+                                <div class="w-full h-px bg-dashed border-t border-emerald-800 my-2"></div>
+                                <div class="flex justify-between text-sm font-bold text-white">
+                                    <span>TOTAL ANNUAL TAX:</span>
+                                    <span id="after-total-val">$4,305</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-emerald-900/60 border border-emerald-500/30 rounded-2xl p-4 text-center mt-4">
+                                <div class="text-2xl font-black text-emerald-400 animate-pulse" id="receipt-savings-val">$945 Saved!</div>
+                                <div class="text-[9px] font-bold text-emerald-300 uppercase tracking-widest mt-1">Compressed Property Tax</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Direct Community Equivalent Items -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+                        <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider">What Your Savings Equivalent Buys For Your Family</h4>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-slate-50 rounded-2xl p-4 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center text-2xl flex-shrink-0">💻</div>
+                                <div>
+                                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">School Chromebooks</div>
+                                    <div class="text-base font-black text-slate-800" id="item-chromebooks">2.7 Devices</div>
+                                </div>
+                            </div>
+                            <div class="bg-slate-50 rounded-2xl p-4 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-500 flex items-center justify-center text-2xl flex-shrink-0">🛣️</div>
+                                <div>
+                                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">County Road Paving</div>
+                                    <div class="text-base font-black text-slate-800" id="item-paving">9.5 Yards</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footnote -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm text-center">
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            * Projections illustrate properties of compressed local tax bases. Addition of hundreds of millions of dollars in net commercial capital value lowers the required individual millage rate (rate compression) required to meet school and county service bond payments.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const homeValInput = document.getElementById('home-valuation') as HTMLInputElement;
+        const currentTaxInput = document.getElementById('current-tax') as HTMLInputElement;
+        const dcInvSlider = document.getElementById('dc-inv-slider') as HTMLInputElement;
+
+        const dcInvDisplay = document.getElementById('dc-inv-display');
+        const annualSavingsVal = document.getElementById('annual-savings-val');
+        const savingsPctDisplay = document.getElementById('savings-pct-display');
+        const rateReductionVal = document.getElementById('rate-reduction-val');
+
+        // Without DC Receipt variables
+        const beforeRateDisplay = document.getElementById('before-rate-display');
+        const beforeISDVal = document.getElementById('before-isd-val');
+        const beforeCountyVal = document.getElementById('before-county-val');
+        const beforeCityVal = document.getElementById('before-city-val');
+        const beforeTotalVal = document.getElementById('before-total-val');
+
+        // With DC Receipt variables
+        const afterRateDisplay = document.getElementById('after-rate-display');
+        const afterISDVal = document.getElementById('after-isd-val');
+        const afterCountyVal = document.getElementById('after-county-val');
+        const afterCityVal = document.getElementById('after-city-val');
+        const afterTotalVal = document.getElementById('after-total-val');
+        const receiptSavingsVal = document.getElementById('receipt-savings-val');
+
+        // Equivalents
+        const itemChromebooks = document.getElementById('item-chromebooks');
+        const itemPaving = document.getElementById('item-paving');
+
+        function formatCurrency(num: number) {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+        }
+
+        function calculate() {
+            if (!homeValInput || !currentTaxInput || !dcInvSlider || !annualSavingsVal || !savingsPctDisplay || !rateReductionVal) return;
+
+            const homeVal = parseFloat(homeValInput.value) || 350000;
+            const currentTax = parseFloat(currentTaxInput.value) || 5250;
+            const dcValMillions = parseFloat(dcInvSlider.value);
+
+            if (dcInvDisplay) {
+                if (dcValMillions >= 1000) {
+                    dcInvDisplay.textContent = "$" + (dcValMillions / 1000).toFixed(1) + " Billion";
+                } else {
+                    dcInvDisplay.textContent = "$" + dcValMillions + " Million";
+                }
+            }
+
+            // Derive current total tax rate from input
+            const baseTaxRate = currentTax / homeVal;
+            const isdRate = baseTaxRate * 0.70; // school district is generally 70% of tax bill
+            const countyRate = baseTaxRate * 0.23; // county is generally 23%
+            const cityRate = baseTaxRate * 0.07; // city/ESD is generally 7%
+
+            if (beforeRateDisplay) beforeRateDisplay.textContent = (baseTaxRate * 100).toFixed(2) + "% Total Rate";
+            if (beforeISDVal) beforeISDVal.textContent = formatCurrency(homeVal * isdRate);
+            if (beforeCountyVal) beforeCountyVal.textContent = formatCurrency(homeVal * countyRate);
+            if (beforeCityVal) beforeCityVal.textContent = formatCurrency(homeVal * cityRate);
+            if (beforeTotalVal) beforeTotalVal.textContent = formatCurrency(currentTax);
+
+            // Compress rates based on added Commercial Valuation
+            // Multiplier curve based on investment scale
+            const compressionScale = (dcValMillions / 3000) * 0.22; // up to 22% rate compression at $3B
+            const compressedISDRate = isdRate * (1 - compressionScale * 0.85); // ISD compresses strongly
+            const compressedCountyRate = countyRate * (1 - compressionScale * 0.90); // County compresses strongly
+            const compressedCityRate = cityRate * (1 - compressionScale * 0.20); // City compresses slightly
+
+            const newTotalRate = compressedISDRate + compressedCountyRate + compressedCityRate;
+            const newTotalTax = homeVal * newTotalRate;
+            const savings = currentTax - newTotalTax;
+            const savingsPct = (savings / currentTax) * 100;
+
+            // UI updates
+            annualSavingsVal.textContent = formatCurrency(savings) + " Saved / yr";
+            savingsPctDisplay.textContent = `Equivalent to an ${savingsPct.toFixed(1)}% reduction in your property tax bill.`;
+            if (rateReductionVal) rateReductionVal.textContent = (newTotalRate * 100).toFixed(2) + "%";
+
+            if (afterRateDisplay) afterRateDisplay.textContent = (newTotalRate * 100).toFixed(2) + "% Compressed";
+            if (afterISDVal) afterISDVal.textContent = formatCurrency(homeVal * compressedISDRate);
+            if (afterCountyVal) afterCountyVal.textContent = formatCurrency(homeVal * compressedCountyRate);
+            if (afterCityVal) afterCityVal.textContent = formatCurrency(homeVal * compressedCityRate);
+            if (afterTotalVal) afterTotalVal.textContent = formatCurrency(newTotalTax);
+            if (receiptSavingsVal) receiptSavingsVal.textContent = formatCurrency(savings) + " Saved!";
+
+            // Direct family equivalents (e.g. Chromebooks at $350, road paving at $100 per yard)
+            if (itemChromebooks) itemChromebooks.textContent = (savings / 350).toFixed(1) + " Chromebooks";
+            if (itemPaving) itemPaving.textContent = (savings / 100).toFixed(1) + " Yards";
+        }
+
+        // Listeners
+        homeValInput.addEventListener('input', calculate);
+        currentTaxInput.addEventListener('input', calculate);
+        dcInvSlider.addEventListener('input', calculate);
+
+        // Initial setup
+        calculate();
+    });
+</script>

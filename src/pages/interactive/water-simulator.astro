@@ -1,0 +1,383 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="Aquifer & Zero-Water Cooling Simulator | TomorrowBeginsHere.com"
+    description="Simulate the water consumption of data center cooling models. Compare Legacy Evaporative systems against modern Zero-Water Closed-Loop dry cooling."
+>
+    <!-- Navigation Back Link -->
+    <div class="bg-slate-900 pt-8 pb-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="/interactive" class="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Simulators Hub
+            </a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-emerald-700/40 to-slate-900 z-0"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold tracking-widest uppercase text-xs mb-3 border border-emerald-500/30">Ecological Simulator</span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Aquifer & Cooling Water Simulator</h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                Compare legacy evaporative cooling with modern zero-water closed-loop technology. Toggle configurations and temperatures to see how the local Carrizo-Wilcox aquifer remains protected.
+            </p>
+        </div>
+    </div>
+
+    <!-- Simulator Body -->
+    <section class="py-12 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Controls Column (5 cols) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        
+                        <!-- Step 1: Cooling Type Toggle -->
+                        <div class="space-y-3">
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Cooling Architecture</label>
+                            <div class="grid grid-cols-2 gap-3 p-1 bg-slate-100 rounded-2xl">
+                                <button 
+                                    type="button" 
+                                    id="btn-evaporative" 
+                                    class="py-3 px-4 rounded-xl font-bold text-sm transition-all duration-300 bg-white text-slate-800 shadow-sm border border-slate-200/50"
+                                >
+                                    💧 Evaporative
+                                </button>
+                                <button 
+                                    type="button" 
+                                    id="btn-closedloop" 
+                                    class="py-3 px-4 rounded-xl font-bold text-sm transition-all duration-300 text-slate-500 hover:text-slate-800"
+                                >
+                                    🛡️ Closed-Loop
+                                </button>
+                            </div>
+                            <p class="text-[11px] text-slate-500 leading-snug" id="cooling-desc">
+                                Evaporative systems consume millions of gallons of groundwater by boiling/evaporating water in massive cooling towers to drop server temps.
+                            </p>
+                        </div>
+
+                        <!-- Step 2: Compute Load Slider -->
+                        <div class="space-y-3 pt-3 border-t border-slate-100">
+                            <div class="flex justify-between items-end">
+                                <label for="load-slider" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Server Compute Load</label>
+                                <span class="text-lg font-black text-slate-800" id="load-display">60%</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-snug">Represents facility computational workload and heat generation.</p>
+                            <input 
+                                type="range" 
+                                id="load-slider" 
+                                min="20" 
+                                max="100" 
+                                step="10" 
+                                value="60" 
+                                class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-500 hover:accent-emerald-400 transition-all"
+                            >
+                            <div class="flex justify-between text-[10px] font-bold text-slate-400">
+                                <span>20% (Idle)</span>
+                                <span>60% (Medium)</span>
+                                <span>100% (Maximum)</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Outdoor Temperature Slider -->
+                        <div class="space-y-3 pt-3 border-t border-slate-100">
+                            <div class="flex justify-between items-end">
+                                <label for="temp-slider" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Outdoor Ambient Temp</label>
+                                <span class="text-lg font-black text-slate-800" id="temp-display">95°F</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-snug">Texas summer heat directly impacts cooling efficiency and evaporation rates.</p>
+                            <input 
+                                type="range" 
+                                id="temp-slider" 
+                                min="60" 
+                                max="110" 
+                                step="5" 
+                                value="95" 
+                                class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-800 hover:accent-slate-700 transition-all"
+                            >
+                            <div class="flex justify-between text-[10px] font-bold text-slate-400">
+                                <span>60°F</span>
+                                <span>90°F</span>
+                                <span>110°F (Peak Summer)</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Outputs and Visualizations Column (7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Grand Total Banner -->
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div>
+                                <span class="inline-block px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold uppercase text-[10px] tracking-wider mb-2 border border-emerald-500/30">Annual Water Consumption</span>
+                                <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 tracking-tight" id="water-use-val">
+                                    125,000,000 Gallons
+                                </div>
+                                <p class="text-slate-400 text-xs mt-1" id="comparison-footnote">Equivalent to municipal usage of approx. 1,142 local homes.</p>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl p-4 border border-white/10 text-center flex-shrink-0">
+                                <div class="text-3xl font-black text-emerald-400" id="aquifer-status-val">Moderate Draw</div>
+                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Aquifer Impact Level</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schematic Diagram Card -->
+                    <div class="bg-white rounded-[2rem] border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col items-center">
+                        <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-6 self-start">Dynamic Cooling Cycle Schematic</h4>
+                        
+                        <!-- Visual Schematic Container -->
+                        <div class="relative w-full max-w-lg aspect-[4/3] border border-slate-100 bg-slate-50 rounded-2xl overflow-hidden p-4">
+                            <svg viewBox="0 0 400 300" class="w-full h-full">
+                                <!-- Aquifer Layer -->
+                                <rect x="10" y="240" width="380" height="50" rx="10" fill="#e2e8f0" class="transition-colors duration-500" id="svg-aquifer-layer" />
+                                <text x="200" y="270" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748b" id="svg-aquifer-text">Carrizo-Wilcox Aquifer</text>
+                                
+                                <!-- Groundwater Waves inside Aquifer -->
+                                <path d="M 15 250 Q 30 245 45 250 T 75 250 T 105 250 T 135 250 T 165 250 T 195 250 T 225 250 T 255 250 T 285 250 T 315 250 T 345 250 T 375 250" fill="none" stroke="#60a5fa" stroke-width="2" class="transition-opacity duration-500" id="svg-water-wave" />
+
+                                <!-- Water Pump & Pipe to Data Center -->
+                                <path d="M 50 250 L 50 160 L 120 160" fill="none" stroke="#cbd5e1" stroke-width="4" id="svg-pump-pipe" class="transition-colors duration-500" />
+                                <circle cx="50" cy="220" r="10" fill="#94a3b8" id="svg-pump-body" class="transition-colors duration-500" />
+                                <polygon points="47,224 53,224 50,216" fill="white" id="svg-pump-arrow" class="transition-opacity duration-500" />
+
+                                <!-- Data Center Server Room -->
+                                <rect x="120" y="100" width="100" height="110" rx="15" fill="none" stroke="#94a3b8" stroke-width="3" />
+                                <text x="170" y="125" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569">Server Room</text>
+                                
+                                <!-- Servers -->
+                                <rect x="135" y="135" width="70" height="15" rx="3" fill="#334155" />
+                                <rect x="135" y="155" width="70" height="15" rx="3" fill="#334155" />
+                                <rect x="135" y="175" width="70" height="15" rx="3" fill="#334155" />
+                                <!-- Server status LED pings -->
+                                <circle cx="145" cy="142.5" r="2" fill="#10b981" class="animate-pulse" />
+                                <circle cx="145" cy="162.5" r="2" fill="#10b981" class="animate-pulse" style="animation-delay: 0.2s;" />
+                                <circle cx="145" cy="182.5" r="2" fill="#10b981" class="animate-pulse" style="animation-delay: 0.4s;" />
+
+                                <!-- Cooling Loop inside Server Room -->
+                                <path d="M 180 135 L 180 190" fill="none" stroke="#ef4444" stroke-width="3" id="svg-hot-loop" class="transition-colors duration-500" />
+                                <path d="M 195 135 L 195 190" fill="none" stroke="#3b82f6" stroke-width="3" id="svg-cold-loop" class="transition-colors duration-500" />
+
+                                <!-- External Cooling Mechanism Box (Tower or Closed Heat Exchanger) -->
+                                <rect x="270" y="80" width="100" height="120" rx="15" fill="none" stroke="#94a3b8" stroke-width="3" />
+                                <text x="320" y="105" text-anchor="middle" font-size="10" font-weight="bold" fill="#475569" id="svg-ext-title">Cooling Tower</text>
+
+                                <!-- Steam/Evaporation clouds -->
+                                <g id="svg-steam-group" class="transition-opacity duration-500 opacity-80">
+                                    <path d="M 300 70 Q 290 55 305 45 T 320 35 T 335 45" fill="none" stroke="#e2e8f0" stroke-width="3" class="animate-pulse" />
+                                    <path d="M 325 70 Q 315 50 330 40 T 345 30 T 360 40" fill="none" stroke="#e2e8f0" stroke-width="3" class="animate-pulse" style="animation-delay: 0.3s;" />
+                                </g>
+
+                                <!-- Closed loop fan (spinning blades) -->
+                                <g id="svg-fan-group" class="transition-opacity duration-500 opacity-0 transform origin-[320px_140px]">
+                                    <circle cx="320" cy="140" r="20" fill="none" stroke="#94a3b8" stroke-dasharray="8 4" stroke-width="3" id="svg-fan-blades" />
+                                    <circle cx="320" cy="140" r="4" fill="#64748b" />
+                                </g>
+
+                                <!-- Connective Loop Pipes to External Unit -->
+                                <path d="M 220 150 L 270 150" fill="none" stroke="#ef4444" stroke-width="4" id="svg-loop-pipe-hot" />
+                                <path d="M 220 180 L 270 180" fill="none" stroke="#3b82f6" stroke-width="4" id="svg-loop-pipe-cold" />
+                            </svg>
+                        </div>
+
+                    </div>
+
+                    <!-- Footnote -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm text-center">
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            * Projections illustrate physical thermodynamics: Legacy evaporative cooling uses massive cooling towers that actively boil and vent groundwater. Modern zero-water closed-loop systems circulate food-grade eco-coolant inside air-cooled radiators, requiring zero operational groundwater draw.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .fan-spinning {
+        animation: spin 1s linear infinite;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btnEvap = document.getElementById('btn-evaporative');
+        const btnClosed = document.getElementById('btn-closedloop');
+        const loadSlider = document.getElementById('load-slider') as HTMLInputElement;
+        const tempSlider = document.getElementById('temp-slider') as HTMLInputElement;
+        
+        const coolingDesc = document.getElementById('cooling-desc');
+        const loadDisplay = document.getElementById('load-display');
+        const tempDisplay = document.getElementById('temp-display');
+        const waterUseVal = document.getElementById('water-use-val');
+        const comparisonFootnote = document.getElementById('comparison-footnote');
+        const aquiferStatusVal = document.getElementById('aquifer-status-val');
+
+        // SVG elements
+        const svgAquiferLayer = document.getElementById('svg-aquifer-layer');
+        const svgAquiferText = document.getElementById('svg-aquifer-text');
+        const svgWaterWave = document.getElementById('svg-water-wave');
+        const svgPumpPipe = document.getElementById('svg-pump-pipe');
+        const svgPumpBody = document.getElementById('svg-pump-body');
+        const svgPumpArrow = document.getElementById('svg-pump-arrow');
+        const svgExtTitle = document.getElementById('svg-ext-title');
+        const svgSteamGroup = document.getElementById('svg-steam-group');
+        const svgFanGroup = document.getElementById('svg-fan-group');
+        const svgFanBlades = document.getElementById('svg-fan-blades');
+        const svgHotLoop = document.getElementById('svg-hot-loop');
+        const svgColdLoop = document.getElementById('svg-cold-loop');
+
+        let isClosedLoop = false;
+
+        function setCoolingMode(closed: boolean) {
+            isClosedLoop = closed;
+            
+            if (isClosedLoop) {
+                // UI styles
+                btnClosed?.classList.add('bg-white', 'text-slate-800', 'shadow-sm', 'border', 'border-slate-200/50');
+                btnClosed?.classList.remove('text-slate-500');
+                btnEvap?.classList.remove('bg-white', 'text-slate-800', 'shadow-sm', 'border', 'border-slate-200/50');
+                btnEvap?.classList.add('text-slate-500');
+
+                if (coolingDesc) {
+                    coolingDesc.textContent = "Zero-Water Closed-Loop systems run eco-coolant in sealed loops, cooled purely by large radiator fans. Aquifer consumption is absolute zero.";
+                }
+
+                // SVG state updates
+                svgAquiferLayer?.setAttribute('fill', '#dbeafe'); // Light blue safe state
+                if (svgAquiferText) {
+                    svgAquiferText.textContent = "Carrizo-Wilcox Aquifer (Protected)";
+                    svgAquiferText.setAttribute('fill', '#1e3a8a');
+                }
+                if (svgWaterWave) svgWaterWave.style.opacity = '1';
+                
+                // Cut off groundwater pump visual
+                svgPumpPipe?.setAttribute('stroke', '#cbd5e1');
+                svgPumpBody?.setAttribute('fill', '#94a3b8');
+                if (svgPumpArrow) svgPumpArrow.style.opacity = '0';
+
+                // Setup external unit to radiator fan style
+                if (svgExtTitle) svgExtTitle.textContent = "Air Heat Exchanger";
+                if (svgSteamGroup) svgSteamGroup.style.opacity = '0';
+                if (svgFanGroup) {
+                    svgFanGroup.style.opacity = '1';
+                    svgFanBlades?.classList.add('fan-spinning');
+                }
+
+                // Green/Cyan Eco-coolant loops
+                svgHotLoop?.setAttribute('stroke', '#14b8a6');
+                svgColdLoop?.setAttribute('stroke', '#06b6d4');
+
+            } else {
+                // UI styles
+                btnEvap?.classList.add('bg-white', 'text-slate-800', 'shadow-sm', 'border', 'border-slate-200/50');
+                btnEvap?.classList.remove('text-slate-500');
+                btnClosed?.classList.remove('bg-white', 'text-slate-800', 'shadow-sm', 'border', 'border-slate-200/50');
+                btnClosed?.classList.add('text-slate-500');
+
+                if (coolingDesc) {
+                    coolingDesc.textContent = "Evaporative systems consume millions of gallons of groundwater by boiling/evaporating water in massive cooling towers to drop server temps.";
+                }
+
+                // SVG state updates
+                svgAquiferLayer?.setAttribute('fill', '#e2e8f0'); // Standard grey
+                if (svgAquiferText) {
+                    svgAquiferText.textContent = "Carrizo-Wilcox Aquifer";
+                    svgAquiferText.setAttribute('fill', '#64748b');
+                }
+                
+                // Show groundwater pump visual
+                svgPumpPipe?.setAttribute('stroke', '#60a5fa');
+                svgPumpBody?.setAttribute('fill', '#3b82f6');
+                if (svgPumpArrow) svgPumpArrow.style.opacity = '1';
+
+                // Setup external unit to evaporative cooling tower style
+                if (svgExtTitle) svgExtTitle.textContent = "Cooling Tower";
+                if (svgSteamGroup) svgSteamGroup.style.opacity = '0.8';
+                if (svgFanGroup) {
+                    svgFanGroup.style.opacity = '0';
+                    svgFanBlades?.classList.remove('fan-spinning');
+                }
+
+                // Standard red/blue cooling loop
+                svgHotLoop?.setAttribute('stroke', '#ef4444');
+                svgColdLoop?.setAttribute('stroke', '#3b82f6');
+            }
+            calculate();
+        }
+
+        function calculate() {
+            if (!loadSlider || !tempSlider || !waterUseVal || !comparisonFootnote || !aquiferStatusVal) return;
+
+            const load = parseInt(loadSlider.value);
+            const temp = parseInt(tempSlider.value);
+
+            if (loadDisplay) loadDisplay.textContent = load + "%";
+            if (tempDisplay) tempDisplay.textContent = temp + "°F";
+
+            if (isClosedLoop) {
+                waterUseVal.textContent = "0 Gallons";
+                waterUseVal.className = "text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 tracking-tight";
+                comparisonFootnote.textContent = "Zero operational groundwater draw. 100% independent of aquifer resources.";
+                aquiferStatusVal.textContent = "Protected";
+                aquiferStatusVal.className = "text-3xl font-black text-emerald-400";
+            } else {
+                // Legacy evaporative model: water scale based on compute load & weather temperature
+                const multiplier = 1 + (temp - 60) * 0.05; // 60F is baseline, goes up 5% per degree
+                const loadFactor = load / 100;
+                
+                // Baseline: 100M gallons per year at 60% load & 75F temp
+                const annualGallons = Math.round(150000000 * loadFactor * multiplier);
+                
+                waterUseVal.textContent = new Intl.NumberFormat('en-US').format(annualGallons) + " Gallons";
+                waterUseVal.className = "text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-sky-300 tracking-tight";
+                
+                const housesEquivalent = Math.round(annualGallons / 110000);
+                comparisonFootnote.textContent = `Equivalent to municipal water usage of approximately ${new Intl.NumberFormat('en-US').format(housesEquivalent)} local households.`;
+
+                // Set aquifer status impact
+                if (annualGallons < 50000000) {
+                    aquiferStatusVal.textContent = "Low Draw";
+                    aquiferStatusVal.className = "text-3xl font-black text-emerald-400";
+                } else if (annualGallons < 150000000) {
+                    aquiferStatusVal.textContent = "Moderate Draw";
+                    aquiferStatusVal.className = "text-3xl font-black text-amber-400";
+                } else {
+                    aquiferStatusVal.textContent = "High Draw";
+                    aquiferStatusVal.className = "text-3xl font-black text-red-500";
+                }
+            }
+        }
+
+        // Toggles
+        btnEvap?.addEventListener('click', () => setCoolingMode(false));
+        btnClosed?.addEventListener('click', () => setCoolingMode(true));
+
+        // Sliders
+        loadSlider.addEventListener('input', calculate);
+        tempSlider.addEventListener('input', calculate);
+
+        // Initial setup
+        setCoolingMode(false);
+    });
+</script>

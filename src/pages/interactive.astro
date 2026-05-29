@@ -96,6 +96,78 @@ import BaseLayout from '../components/BaseLayout.astro';
                     </div>
                 </div>
 
+                <!-- Card 5: Aquifer & Zero-Water Cooling -->
+                <div class="bg-white rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col group">
+                    <div class="h-4 bg-gradient-to-r from-cyan-400 to-emerald-500"></div>
+                    <div class="p-8 sm:p-10 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-cyan-50 flex items-center justify-center border border-cyan-100/60 mb-6 text-cyan-500 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3 tracking-tight">Aquifer & Zero-Water Cooling</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed">
+                                Worried about data centers draining local aquifers? Compare legacy evaporative towers against zero-water closed-loop air cooling. Toggle workloads and outdoor heat index to see groundwater conservation in action.
+                            </p>
+                        </div>
+                        <a href="/interactive/water-simulator/" class="inline-flex items-center justify-center w-full px-6 py-4 text-white bg-slate-900 hover:bg-slate-800 font-bold rounded-xl transition-all duration-200 text-base group/btn">
+                            Enter Cooling Simulator
+                            <svg class="ml-2 w-5 h-5 text-cyan-400 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 6: ERCOT Grid Load-Balancing -->
+                <div class="bg-white rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col group">
+                    <div class="h-4 bg-gradient-to-r from-blue-400 to-indigo-500"></div>
+                    <div class="p-8 sm:p-10 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center border border-blue-100/60 mb-6 text-blue-500 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3 tracking-tight">ERCOT Grid Load-Balancing</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed">
+                                See how data centers act as demand-response partners. Simulate peak summer power spikes and trigger automated curtailments to watch how data centers shut down servers within seconds to protect residential power grids.
+                            </p>
+                        </div>
+                        <a href="/interactive/grid-simulator/" class="inline-flex items-center justify-center w-full px-6 py-4 text-white bg-slate-900 hover:bg-slate-800 font-bold rounded-xl transition-all duration-200 text-base group/btn">
+                            Enter Grid Simulator
+                            <svg class="ml-2 w-5 h-5 text-blue-400 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 7: Personal Property Tax Offset -->
+                <div class="bg-white rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col group">
+                    <div class="h-4 bg-gradient-to-r from-teal-400 to-emerald-500"></div>
+                    <div class="p-8 sm:p-10 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-teal-50 flex items-center justify-center border border-teal-100/60 mb-6 text-teal-500 group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3 tracking-tight">Personal Tax Offset Calculator</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed">
+                                Enter your home's valuation and current property taxes to see how massive commercial capital investments compress local tax rates and lower your individual bill, while funding school expansions and municipal upgrades.
+                            </p>
+                        </div>
+                        <a href="/interactive/tax-offset/" class="inline-flex items-center justify-center w-full px-6 py-4 text-white bg-slate-900 hover:bg-slate-800 font-bold rounded-xl transition-all duration-200 text-base group/btn">
+                            Enter Savings Calculator
+                            <svg class="ml-2 w-5 h-5 text-teal-400 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
