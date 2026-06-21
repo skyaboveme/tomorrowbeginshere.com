@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://tomorrowbeginshere.com/sitemap-index.xml
+
+# AI Agent Resources
+# See https://llmstxt.org for the llms.txt standard
+# llm.txt provides full context for AI agents
+# llms.txt provides a directory index

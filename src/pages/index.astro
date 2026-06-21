@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../components/BaseLayout.astro';
 import LeadCaptureForm from '../components/LeadCaptureForm.astro';
+import DataCenter100Things from '../components/100ThingsSlideshow.astro';
 ---
 
 <BaseLayout 
@@ -9,16 +10,30 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
 >
     <!-- Hero Section -->
     <section class="relative bg-slate-900 overflow-hidden">
-        <!-- Background elements indicating nature + tech -->
-        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/90 to-tech-blue/90 z-10 mix-blend-multiply"></div>
-        <div class="absolute inset-0 bg-[url('/images/hero-bg.png')] bg-cover bg-center z-0 opacity-60"></div>
+        <!-- Animated background (Ken Burns zoom) -->
+        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/90 to-tech-blue/90 z-10 mix-blend-multiply hero-overlay-animated"></div>
+        <div class="absolute inset-0 bg-[url('/images/hero-bg.png')] bg-cover bg-center z-0 opacity-60 hero-bg-animated"></div>
         
         <!-- Tech grid overlay -->
         <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wIDBINDBWMHoiIGZpbGw9Im5vbmUiLz4KPHBhdGggZD0iTTAgNDBMMCAwTDQwIDBMMCAwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPgo8L3N2Zz4=')] z-10 opacity-40"></div>
         
+        <!-- Floating particles -->
+        <div class="absolute inset-0 z-10 overflow-hidden pointer-events-none">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
         <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-40 lg:pt-48 lg:pb-56">
             <div class="max-w-3xl">
-                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+                <h1 class="heading-display text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                     Tomorrow <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-300">Begins Here</span>
                 </h1>
                 <p class="text-lg sm:text-xl text-slate-100 mb-10 leading-relaxed font-light max-w-2xl">
@@ -46,13 +61,13 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
     <!-- Quick Intro -->
     <section class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-4">Empowering the Modern World</h2>
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="heading-display text-3xl font-bold text-slate-900 sm:text-4xl mb-4">Empowering the Modern World</h2>
                 <p class="text-lg text-slate-600">The infrastructure of tomorrow is taking root today. Explore how data centers are transforming our lives and driving unprecedented progress.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger">
+                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm card-glow hover:-translate-y-1 transition-all duration-300">
                     <div class="w-14 h-14 bg-tech-blue/10 rounded-xl flex items-center justify-center mb-6 text-tech-blue">
                         <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
@@ -68,7 +83,7 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
                     </a>
                 </div>
                 
-                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm card-glow hover:-translate-y-1 transition-all duration-300">
                     <div class="w-14 h-14 bg-pine-green/10 rounded-xl flex items-center justify-center mb-6 text-pine-green">
                         <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -84,7 +99,7 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
                     </a>
                 </div>
                 
-                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm card-glow hover:-translate-y-1 transition-all duration-300">
                     <div class="w-14 h-14 bg-amber-500/10 rounded-xl flex items-center justify-center mb-6 text-amber-600">
                         <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -103,19 +118,53 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
         </div>
     </section>
 
+    <!-- 100 Everyday Moments Section -->
+    <DataCenter100Things />
+
     <!-- Featured Articles -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 reveal">
                 <span class="inline-block bg-red-500/10 text-red-600 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-red-200 mb-4">Latest Research & Fact-Checks</span>
-                <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Featured Analysis</h2>
+                <h2 class="heading-display text-3xl font-bold text-slate-900 sm:text-4xl">Featured Analysis</h2>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <!-- Card 1: Inside the Data Center Backlash -->
-                <a href="/data-center-backlash" class="group block bg-slate-900 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 relative h-full flex flex-col justify-between">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto reveal-stagger">
+                <!-- Card 1: OpenAI PRC-Linked Influence Operations -->
+                <a href="https://openai.com/index/prc-linked-influence-operations-ai-debates/" target="_blank" rel="noopener noreferrer" class="no-external-icon group block bg-slate-900 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl card-glow transition-all duration-500 hover:-translate-y-1 relative h-full flex flex-col justify-between">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amber-950/70 to-slate-950/90 z-10"></div>
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-20 group-hover:scale-105 transition-transform duration-700"></div>
+                    
+                    <div class="relative z-20 p-8 sm:p-10 flex flex-col justify-between h-full flex-grow">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="inline-block bg-amber-500/20 text-amber-300 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-amber-400/30">National Security</span>
+                                <span class="inline-block bg-red-500/20 text-red-300 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-red-400/30">NEW</span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-amber-200 transition-colors">OpenAI: PRC-Linked Influence Operations Are Targeting AI Debates in the U.S.</h3>
+                            <p class="text-slate-300 leading-relaxed mb-6 font-light text-sm">OpenAI's own threat report reveals two Chinese-linked operations — "Data Center Bandwagon" and "Tech and Tariffs" — that used ChatGPT to generate anti–data center propaganda and manufacture domestic outrage against American AI infrastructure.</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-4 text-xs text-slate-400 mb-4">
+                                <span>Jun 2026</span>
+                                <span class="w-1 h-1 bg-slate-600 rounded-full"></span>
+                                <span>OpenAI Threat Report</span>
+                                <span class="w-1 h-1 bg-slate-600 rounded-full"></span>
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                <span>openai.com</span>
+                            </div>
+                            <span class="inline-flex items-center text-white text-sm font-semibold group-hover:translate-x-1 transition-transform">
+                                Read Full Report
+                                <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 2: Inside the Data Center Backlash -->
+                <a href="/data-center-backlash" class="group block bg-slate-900 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl card-glow transition-all duration-500 hover:-translate-y-1 relative h-full flex flex-col justify-between">
                     <div class="absolute inset-0 bg-gradient-to-br from-red-950/70 to-slate-950/90 z-10"></div>
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=2669&auto=format&fit=crop')] bg-cover bg-center opacity-25"></div>
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544085311-11a028465b03?q=80&w=2669&auto=format&fit=crop')] bg-cover bg-center opacity-25 group-hover:scale-105 transition-transform duration-700"></div>
                     
                     <div class="relative z-20 p-8 sm:p-10 flex flex-col justify-between h-full flex-grow">
                         <div>
@@ -137,10 +186,10 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
                     </div>
                 </a>
 
-                <!-- Card 2: Refuting EHP "The Dangers of Data Centers" -->
-                <a href="/refuting-ehp-dangers-of-data-centers" class="group block bg-slate-900 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 relative h-full flex flex-col justify-between">
+                <!-- Card 3: Refuting EHP "The Dangers of Data Centers" -->
+                <a href="/refuting-ehp-dangers-of-data-centers" class="group block bg-slate-900 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl card-glow transition-all duration-500 hover:-translate-y-1 relative h-full flex flex-col justify-between">
                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-950/70 to-slate-950/90 z-10"></div>
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop')] bg-cover bg-center opacity-25"></div>
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop')] bg-cover bg-center opacity-25 group-hover:scale-105 transition-transform duration-700"></div>
                     
                     <div class="relative z-20 p-8 sm:p-10 flex flex-col justify-between h-full flex-grow">
                         <div>
@@ -161,6 +210,31 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
                         </div>
                     </div>
                 </a>
+
+                <!-- Card 4: West Texas Data Center Project Horizon -->
+                <a href="https://www.forbes.com/sites/davidblackmon/2026/06/02/west-texas-data-center-project-addresses-activist-concerns-head-on/" target="_blank" rel="noopener noreferrer" class="no-external-icon group block bg-slate-900 rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl card-glow transition-all duration-500 hover:-translate-y-1 relative h-full flex flex-col justify-between">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-950/70 to-slate-950/90 z-10"></div>
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2672&auto=format&fit=crop')] bg-cover bg-center opacity-25 group-hover:scale-105 transition-transform duration-700"></div>
+                    
+                    <div class="relative z-20 p-8 sm:p-10 flex flex-col justify-between h-full flex-grow">
+                        <div>
+                            <span class="inline-block bg-tech-blue/20 text-blue-300 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-tech-blue/40 mb-4">Case Study Spotlight</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-blue-200 transition-colors">West Texas Data Center Project Horizon</h3>
+                            <p class="text-slate-300 leading-relaxed mb-6 font-light text-sm">How Poolside Infrastructure's 1.2 GW Project Horizon near Fort Stockton solves grid and water constraints through behind-the-meter generation and closed-loop liquid-to-chip cooling.</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-4 text-xs text-slate-400 mb-4">
+                                <span>Jun 2, 2026</span>
+                                <span class="w-1 h-1 bg-slate-600 rounded-full"></span>
+                                <span>8 min read</span>
+                            </div>
+                            <span class="inline-flex items-center text-white text-sm font-semibold group-hover:translate-x-1 transition-transform">
+                                Read Article
+                                <svg class="w-4 h-4 ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                            </span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -173,7 +247,7 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
         <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-tech-blue/10 rounded-full blur-3xl z-0"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 reveal">
                 <div>
                     <span class="inline-flex items-center gap-1.5 bg-red-500/15 text-red-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-red-500/30 mb-4">
                         <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
@@ -188,7 +262,7 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
                     href="https://www.youtube.com/@TomorrowBeginsHere" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    class="mt-4 md:mt-0 inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition-all duration-300 shadow-lg hover:shadow-red-600/20 hover:scale-105"
+                    class="no-external-icon mt-4 md:mt-0 inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition-all duration-300 shadow-lg hover:shadow-red-600/20 hover:scale-105"
                 >
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -213,12 +287,12 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
                     class="flex gap-6 overflow-x-auto pb-6 scroll-smooth scroll-snap-x snap-mandatory"
                     style="scrollbar-width: none; -ms-overflow-style: none;"
                 >
-                    <!-- Loading Skeletons -->
+                    <!-- Loading Skeletons (Shimmer) -->
                     {Array.from({ length: 5 }).map(() => (
-                        <div class="flex-shrink-0 w-[240px] sm:w-[260px] aspect-[9/16] rounded-3xl bg-slate-900 animate-pulse border border-slate-800 flex flex-col justify-end p-6">
-                            <div class="w-12 h-12 rounded-full bg-slate-800 mb-4 mx-auto"></div>
-                            <div class="h-4 bg-slate-800 rounded w-3/4 mb-2 mx-auto"></div>
-                            <div class="h-3 bg-slate-800 rounded w-1/2 mx-auto"></div>
+                        <div class="flex-shrink-0 w-[240px] sm:w-[260px] aspect-[9/16] rounded-3xl border border-slate-800 flex flex-col justify-end p-6 skeleton-shimmer">
+                            <div class="w-12 h-12 rounded-full bg-slate-700/50 mb-4 mx-auto"></div>
+                            <div class="h-4 bg-slate-700/50 rounded w-3/4 mb-2 mx-auto"></div>
+                            <div class="h-3 bg-slate-700/50 rounded w-1/2 mx-auto"></div>
                         </div>
                     ))}
                 </div>
@@ -251,7 +325,7 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('astro:page-load', () => {
             const reelsContainer = document.getElementById('reels-container');
             const prevBtn = document.getElementById('scroll-prev-btn');
             const nextBtn = document.getElementById('scroll-next-btn');
@@ -374,7 +448,7 @@ import LeadCaptureForm from '../components/LeadCaptureForm.astro';
 
     <!-- Join The Coalition Section -->
     <section class="py-20 bg-white relative">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
             <LeadCaptureForm />
         </div>
     </section>
