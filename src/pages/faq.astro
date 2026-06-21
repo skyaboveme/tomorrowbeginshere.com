@@ -58,15 +58,87 @@ const schema = {
         </div>
     </div>
 
+    <!-- Search Bar Section -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-30">
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-200/80 p-4">
+            <div class="relative">
+                <input 
+                    type="text" 
+                    id="faq-search-input" 
+                    placeholder="Search FAQs or ask a question (e.g., 'Will they drain our water?' or 'What is SB 6?')..." 
+                    class="w-full pl-12 pr-12 py-4 bg-slate-50 hover:bg-slate-100/50 focus:bg-white rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-tech-blue focus:border-transparent text-slate-800 transition-all text-base sm:text-lg"
+                    autocomplete="off"
+                />
+                <!-- Search Glass SVG Icon on left -->
+                <div class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+                <!-- Clear Button on right -->
+                <button 
+                    id="faq-clear-btn" 
+                    class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 hidden cursor-pointer focus:outline-none"
+                    aria-label="Clear search"
+                >
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <section class="py-16 lg:py-24 bg-slate-50 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="space-y-6">
+            <!-- AI Answer Engine Output -->
+            <div 
+                id="ai-response-box" 
+                class="hidden bg-slate-900 border border-tech-blue/30 rounded-3xl p-6 sm:p-8 shadow-xl text-white relative overflow-hidden mb-10 transition-all duration-300 transform scale-95 opacity-0"
+            >
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-tech-blue/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-pine-green/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border border-amber-500/20">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                            AI Answer Engine
+                        </span>
+                    </div>
+
+                    <h3 id="ai-response-question" class="text-lg sm:text-xl font-bold text-white mb-3"></h3>
+                    <p id="ai-response-answer" class="text-slate-300 font-light leading-relaxed text-sm sm:text-base mb-6"></p>
+
+                    <div id="ai-response-citation" class="flex items-center gap-2 text-xs sm:text-sm text-slate-400 border-t border-slate-800/80 pt-4">
+                        <span>Source:</span>
+                        <a id="ai-response-link" href="#" class="text-amber-400 hover:underline font-bold inline-flex items-center gap-1">
+                            <span id="ai-response-link-text"></span>
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Results Panel -->
+            <div id="no-results-box" class="hidden text-center py-12 bg-white border border-slate-200 shadow-sm rounded-2xl p-8 mb-10">
+                <svg class="w-12 h-12 text-slate-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">No matching questions found</h4>
+                <p class="text-sm text-slate-500">Try searching for keywords like "water", "electricity", "taxes", or "jobs".</p>
+            </div>
+
+            <!-- Accordion List -->
+            <div class="space-y-6" id="faq-accordion-list">
                 {faqs.map((faq, index) => (
-                    <details class="group bg-white border border-slate-200 shadow-sm rounded-2xl [&_summary::-webkit-details-marker]:hidden open:shadow-md transition-all duration-300">
-                        <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 lg:p-8 text-slate-900">
-                            <h2 class="font-bold text-xl lg:text-2xl pr-8">{faq.question}</h2>
+                    <details class="faq-details-item group bg-white border border-slate-200 shadow-sm rounded-2xl [&_summary::-webkit-details-marker]:hidden open:shadow-md transition-all duration-300">
+                        <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 lg:p-8 text-slate-900 select-none">
+                            <h2 class="faq-question-text font-bold text-xl lg:text-2xl pr-8">{faq.question}</h2>
 
                             <span class="relative size-6 shrink-0 bg-tech-blue/5 rounded-full flex items-center justify-center text-tech-blue">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 m-auto size-5 opacity-100 group-open:opacity-0 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -78,8 +150,8 @@ const schema = {
                             </span>
                         </summary>
 
-                        <div class="px-6 pb-8 lg:px-8 bg-slate-50/50 rounded-b-2xl border-t border-slate-100">
-                            <p class="mt-4 leading-relaxed text-slate-600 text-lg">
+                        <div class="faq-answer-container px-6 pb-8 lg:px-8 bg-slate-50/50 rounded-b-2xl border-t border-slate-100">
+                            <p class="faq-answer-text mt-4 leading-relaxed text-slate-600 text-lg">
                                 {faq.answer}
                             </p>
                         </div>
@@ -121,3 +193,763 @@ const schema = {
         }
     }
 </style>
+
+<script>
+  // Complete local Q&A knowledge base aligned with TomorrowBot
+  const KNOWLEDGE_BASE = [
+    {
+      id: 'water-usage',
+      keywords: ['water', 'drain', 'supply', 'aquifer', 'groundwater', 'drinking water', 'water usage', 'thirsty', 'water table', 'depletion', 'dry up', 'well water', 'use water', 'consume water', 'water consumption', 'gallons', 'waste water', 'water resources', 'freshwater', 'reservoir', 'lake', 'river', 'creek', 'wells', 'well', 'springs', 'drought'],
+      question: 'Will the data center drain our water?',
+      answer: `<strong>No — data centers do not drain local water supplies.</strong> All U.S. data centers combined use <strong>less than 0.5%</strong> of national freshwater. Modern facilities use closed-loop cooling systems that continuously recycle water with near-zero evaporation. A single 18-hole golf course uses about <strong>114 million gallons/year</strong> — more than 20x what a modern data center uses (~5 million gal/year).`,
+      pageLink: '/water-usage',
+      pageName: 'Water Usage Data'
+    },
+    {
+      id: 'closed-loop-cooling',
+      keywords: ['cooling', 'closed loop', 'evaporation', 'coolant', 'heat', 'cooling tower', 'evaporative', 'air cooling', 'liquid cooling', 'immersion', 'temperature', 'hot', 'cold', 'thermal', 'hvac', 'chiller', 'refrigerant', 'heat exchange', 'radiator'],
+      question: 'How does data center cooling work?',
+      answer: `Modern data centers use <strong>closed-loop cooling</strong> — a sealed system where water is continuously recycled, not consumed. Heat generated by servers is absorbed by coolant, run through heat exchangers, and recirculated. Modern closed-loop architectures reduce water consumption by <strong>95%+</strong> compared to old-style evaporative towers.`,
+      pageLink: '/closed-loop-cooling',
+      pageName: 'Closed-Loop Cooling'
+    },
+    {
+      id: 'water-comparison',
+      keywords: ['golf course', 'subdivision', 'agriculture', 'irrigation', 'compared', 'comparison', 'more water', 'less water', 'how much water', 'versus', 'vs', 'farm', 'farming', 'housing development', 'swimming pool'],
+      question: 'How does water use compare to other things?',
+      answer: `Data centers are among the <strong>lowest</strong> industrial water users. Compare annual usage:<br>• Modern data center: <strong>~5 million gal</strong><br>• 18-hole golf course: <strong>~114 million gal</strong><br>• 1,000-home subdivision: <strong>~110 million gal</strong><br>• U.S. agricultural irrigation: <strong>50% of all freshwater</strong> (100x data centers).`,
+      pageLink: '/water-usage',
+      pageName: 'Water Usage Data'
+    },
+    {
+      id: 'energy-bills',
+      keywords: ['electric', 'electricity', 'bill', 'bills', 'rates', 'utility', 'power bill', 'energy cost', 'expensive', 'rate increase', 'electric bill', 'energy prices', 'energy bill', 'utility bill', 'utility rates', 'price', 'prices', 'cost', 'costs', 'my bill', 'higher rates', 'rate hike', 'higher bill', 'electricity cost', 'power cost', 'electric rate', 'kilowatt', 'kwh', 'monthly bill', 'go up'],
+      question: 'Will my electric bill go up?',
+      answer: `<strong>No — your electric bill won't increase because of a data center.</strong> Modern facilities increasingly generate their own power "behind the meter" using solar, wind, and battery storage. In Texas, <strong>SB 6</strong> gives ERCOT authority to curtail large industrial loads during grid stress. Major operators also signed a <strong>Ratepayer Protection Pledge</strong> (March 2026) committing to protect residential rates.`,
+      pageLink: '/energy-prices',
+      pageName: 'Energy Prices by State'
+    },
+    {
+      id: 'energy-grid',
+      keywords: ['grid', 'power grid', 'ercot', 'blackout', 'brownout', 'behind the meter', 'solar', 'wind', 'battery', 'renewable', 'generation', 'grid stress', 'overload', 'power outage', 'outage', 'strain', 'demand', 'power demand', 'megawatt', 'gigawatt', 'capacity', 'power supply', 'energy demand', 'nuclear', 'natural gas', 'generator', 'generators'],
+      question: 'Will it strain the power grid?',
+      answer: `Modern data centers are designed to <strong>help</strong> the grid, not strain it. Many build their own power generation "behind the meter" — solar farms, wind, battery storage. Their <strong>bidirectional power systems</strong> can actually supply electricity BACK to the grid during emergencies. Data centers provide stable, predictable baseload demand, which helps utilities plan and invest in infrastructure more efficiently.`,
+      pageLink: '/energy-prices',
+      pageName: 'Energy Prices by State'
+    },
+    {
+      id: 'energy-sb6',
+      keywords: ['sb 6', 'senate bill', 'legislation', 'regulation', 'kill switch', 'curtail', 'texas law', 'sb6', 'law', 'laws', 'rule', 'rules', 'ordinance', 'permit', 'permits', 'government protection', 'consumer protection'],
+      question: 'What protections does Texas SB 6 provide?',
+      answer: `Texas <strong>Senate Bill 6</strong> is a powerful consumer protection law. It gives ERCOT — the state's grid operator — explicit authority to curtail electricity to large industrial facilities (including data centers) during grid stress events. Think of it as a "kill switch" that ensures <strong>homes and hospitals always come first</strong>.`,
+      pageLink: '/energy-prices',
+      pageName: 'Energy Prices by State'
+    },
+    {
+      id: 'ratepayer-pledge',
+      keywords: ['ratepayer', 'pledge', 'promise', 'commitment', 'protect', 'residential rates', 'guarantee', 'assured', 'assurance'],
+      question: 'What is the Ratepayer Protection Pledge?',
+      answer: `In <strong>March 2026</strong>, major data center operators signed the <strong>Ratepayer Protection Pledge</strong> — a formal industry commitment that data center development will not increase residential electricity rates. This supplements government protections like Texas SB 6 with a private-sector accountability mechanism.`,
+      pageLink: '/energy-prices',
+      pageName: 'Energy Prices by State'
+    },
+    {
+      id: 'jobs-overview',
+      keywords: ['jobs', 'employment', 'hiring', 'work', 'careers', 'job creation', 'how many jobs', 'employ', 'workforce', 'job', 'hire', 'workers', 'employees', 'staff', 'staffing', 'labor', 'occupation', 'positions', 'openings', 'opportunity', 'opportunities', 'working', 'livelihood', 'local jobs', 'create jobs'],
+      question: 'How many jobs will it create?',
+      answer: `Data centers create far more jobs than most people expect. A typical large facility brings:<br>• <strong>1,000–3,000+ construction jobs</strong> over 2–4 years ($60K–$120K+)<br>• <strong>30–150 permanent operations</strong> positions ($75K–$130K)<br>• <strong>200–500+ indirect/ecosystem jobs</strong> (contractors, fiber, catering, security)<br>The <strong>6x multiplier effect</strong> means every direct job creates ~6 additional jobs in the local economy.`,
+      pageLink: '/careers',
+      pageName: 'Career Pathways'
+    },
+    {
+      id: 'jobs-salaries',
+      keywords: ['salary', 'salaries', 'pay', 'wages', 'income', 'how much', 'compensation', 'earnings', 'career', 'earn', 'earning', 'make money', 'paid', 'paycheck', 'benefits', 'hourly', 'annual', 'per year', 'degree', 'college', 'training', 'qualified', 'skills', 'experience'],
+      question: 'What do data center jobs pay?',
+      answer: `Data center jobs are <strong>high-paying careers</strong> that don't always require a 4-year degree:<br>• Construction phase: <strong>$60K–$120K+</strong> per year<br>• Permanent operations: <strong>$75K–$130K</strong> per year<br>In Prineville, Oregon, Meta's data center transformed wages from the lowest to the highest in the state. These are stable, well-compensated jobs offering training programs for local residents.`,
+      pageLink: '/careers',
+      pageName: 'Career Pathways'
+    },
+    {
+      id: 'jobs-indirect',
+      keywords: ['indirect', 'multiplier', 'ecosystem', 'spinoff', 'supply chain', 'contractors', 'service', 'local business', 'small business', 'vendor', 'vendors', 'subcontractor', 'ripple effect', 'economic multiplier', 'local economy'],
+      question: 'What about indirect and ecosystem jobs?',
+      answer: `The <strong>6x job multiplier</strong> is one of the most powerful economic benefits. For every direct data center position, approximately 6 additional jobs are created in the surrounding economy: electrical contractors, fiber optic crews, HVAC specialists, local vendors, and more. In Northern Virginia, data centers support over 50,000 ecosystem jobs.`,
+      pageLink: '/economic-impact',
+      pageName: 'Economic Impact'
+    },
+    {
+      id: 'tax-revenue',
+      keywords: ['tax', 'taxes', 'property tax', 'revenue', 'money', 'county budget', 'fiscal', 'tax base', 'assessment', 'tax rate', 'tax bill', 'taxable', 'assessed value', 'appraisal', 'property taxes', 'tax revenue', 'tax break', 'abatement', 'incentive', 'incentives', 'financial', 'economics', 'economic', 'fund', 'funds'],
+      question: 'How will it affect my property taxes?',
+      answer: `Data centers are a <strong>fiscal goldmine</strong> for communities. A $1 billion facility generates roughly <strong>$40 million annually</strong> in property taxes while requiring almost zero county services — no new students, no new roads, minimal utility demand. In a county of 25,000 households, that equals about <strong>$1,600 per household</strong> in property tax relief.`,
+      pageLink: '/your-tax-bill',
+      pageName: 'Your Tax Bill'
+    },
+    {
+      id: 'tax-schools',
+      keywords: ['school', 'schools', 'education', 'students', 'teachers', 'school district', 'school funding', 'children', 'kids', 'classroom', 'isd', 'curriculum', 'enrollment', 'overcrowded', 'overcrowding', 'bus', 'buses', 'schoolchildren', 'academic'],
+      question: 'How does it impact schools?',
+      answer: `This is one of the strongest benefits: data centers fund schools without adding a single student. A data center's property tax revenue can send <strong>$20 million annually</strong> to public schools — funding roughly 200 teacher salaries — while adding <strong>zero new students</strong> to the district. Compare that to a residential subdivision that adds hundreds of kids and requires new schools, buses, and staff.`,
+      pageLink: '/your-tax-bill',
+      pageName: 'Your Tax Bill'
+    },
+    {
+      id: 'tax-services',
+      keywords: ['fire', 'police', 'roads', 'infrastructure', 'parks', 'services', 'emergency', 'county services', 'spending', 'budget allocation', 'sheriff', 'ems', 'ambulance', 'first responders', 'library', 'recreation', 'sidewalks', 'maintenance', 'paving', 'repair'],
+      question: 'What does the tax revenue pay for?',
+      answer: `A $40M annual tax revenue model breaks down as:<br>• <strong>Schools: $20M</strong> (50%) — ~200 teacher salaries<br>• <strong>Roads: $6M</strong> — ~40 miles of repaving/year<br>• <strong>Fire & Emergency: $4M</strong> — 1–2 new fire stations<br>• <strong>Law Enforcement: $4M</strong><br>• <strong>Parks & Recreation: $2M</strong><br>• <strong>Water & Utilities: $2M</strong><br>• <strong>Admin & Reserves: $2M</strong><br>All of this while requiring <strong>almost zero county services</strong> in return.`,
+      pageLink: '/your-tax-bill',
+      pageName: 'Your Tax Bill'
+    },
+    {
+      id: 'noise',
+      keywords: ['noise', 'loud', 'sound', 'decibel', 'db', 'noisy', 'quiet', 'hear', 'volume', 'hum', 'buzz', 'rumble', 'vibration', 'annoying', 'sleep', 'night', 'nighttime', 'ear', 'ears', 'noise level', 'noise pollution', 'sound level', 'nuisance', 'disturb', 'peaceful', 'peace'],
+      question: 'How loud are data centers?',
+      answer: `Data centers are <strong>remarkably quiet</strong>. At the property line — typically 100–300 feet from the building — noise measures just <strong>45–55 decibels</strong>, comparable to a quiet conversation or a home HVAC system. Modern facilities use sound-dampening enclosures and directional cooling to minimize noise. You'd barely know it was there.`,
+      pageLink: '/inside-a-modern-facility',
+      pageName: 'Inside a Modern Facility'
+    },
+    {
+      id: 'appearance',
+      keywords: ['look', 'looks', 'ugly', 'eyesore', 'appearance', 'design', 'building', 'architecture', 'what does it look like', 'factory', 'industrial', 'aesthetic', 'beautiful', 'attractive', 'visual', 'see', 'visible', 'sight', 'view', 'scenic', 'scenery', 'curb appeal', 'warehouse', 'massive', 'huge', 'enormous'],
+      question: 'What does a data center look like?',
+      answer: `Modern data centers look like <strong>upscale corporate office parks</strong> — not factories. They're typically <strong>1–2 story buildings</strong> with earth-tone exteriors, manicured landscaping, and extensive buffer zones. Sited in commercial or industrial zones, they are designed to blend into the surrounding landscape.`,
+      pageLink: '/inside-a-modern-facility',
+      pageName: 'Inside a Modern Facility'
+    },
+    {
+      id: 'buffers',
+      keywords: ['buffer', 'setback', 'landscaping', 'trees', 'berm', 'distance', 'property line', 'neighbor', 'close', 'next to', 'near my house', 'nearby', 'adjacent', 'proximity', 'feet away', 'yards', 'far', 'how close', 'near me', 'my property', 'my land', 'my home', 'backyard', 'fence', 'border', 'boundary'],
+      question: 'How close will it be to homes?',
+      answer: `Data centers maintain <strong>100–300 foot landscaped buffer zones</strong> between their facilities and property lines. These buffers include mature trees, berms (earth mounds), and natural vegetation that provide both visual screening and additional sound dampening.`,
+      pageLink: '/inside-a-modern-facility',
+      pageName: 'Inside a Modern Facility'
+    },
+    {
+      id: 'traffic',
+      keywords: ['traffic', 'cars', 'trucks', 'road', 'congestion', 'commute', 'driving', 'transportation', 'vehicles', 'highway', 'roads', 'intersection', 'rush hour', 'semi', 'diesel', '18 wheeler', 'tractor trailer', 'delivery', 'deliveries', 'shipping', 'driveway', 'street', 'lane'],
+      question: 'Will there be more traffic?',
+      answer: `Data centers generate <strong>very little traffic</strong> once operational. A typical facility with ~50 employees produces about <strong>15–20 houses worth of traffic</strong> — far less than a shopping center, school, or residential development of comparable land area. During the construction phase (2–4 years), there will be temporary construction traffic, but operators typically work with the county to minimize impact on residential roads.`,
+      pageLink: '/inside-a-modern-facility',
+      pageName: 'Inside a Modern Facility'
+    },
+    {
+      id: 'property-values',
+      keywords: ['property value', 'property values', 'home value', 'house value', 'real estate', 'resale', 'depreciation', 'property worth', 'home price', 'house price', 'market value', 'appraisal', 'sell my house', 'sell my home', 'housing market', 'home values', 'hurt property', 'lower value', 'decrease value', 'neighborhood'],
+      question: 'Will it hurt my property values?',
+      answer: `Data centers are built in <strong>commercial/industrial zones</strong>, not residential neighborhoods, so they don't directly impact nearby home values. In fact, the economic growth they bring — jobs, tax revenue, infrastructure investment, and broadband expansion — typically <strong>supports or increases</strong> property values. Communities like Prineville, OR and New Albany, OH saw economic revitalization after data center development, which benefited the entire housing market.`,
+      pageLink: '/data-center-answers',
+      pageName: 'Data Center Answers'
+    },
+    {
+      id: 'bastrop-project',
+      keywords: ['bastrop', 'edgeconnex', 'cedar creek', 'bastrop county', 'our project', 'local', 'here', 'this project', 'this area', 'our community', 'our town', 'our county', 'this county', 'this community', 'where', 'location', 'site', 'campus', 'development', 'proposal', 'proposed', 'planned', 'plan'],
+      question: 'What is Bastrop\'s data center project?',
+      answer: `<strong>EdgeConneX</strong> is building a <strong>$1.44 billion</strong> data center campus in Bastrop County — four buildings on 140 acres near Cedar Creek. The first building alone is valued at <strong>$440 million (578,000 sq ft)</strong>. This is one of the largest infrastructure investments in the county's history, bringing massive property tax revenue, hundreds of construction jobs, and permanent high-paying positions to the community.`,
+      pageLink: '/bastrop-county-story',
+      pageName: 'The Bastrop Story'
+    },
+    {
+      id: 'bastrop-ecosystem',
+      keywords: ['tesla', 'xai', 'starlink', 'boring company', 'neuralink', 'elon', 'musk', 'tech hub', 'tech companies', 'silicon', 'innovation', 'gigafactory', 'spacex', 'austin', 'tech corridor', 'tech industry'],
+      question: 'What tech companies are in the area?',
+      answer: `Bastrop County is rapidly becoming a <strong>major technology hub</strong>. The area is home to Tesla, xAI, Starlink, The Boring Company, and Neuralink. EdgeConneX's data center campus adds critical digital infrastructure to this innovation corridor.`,
+      pageLink: '/bastrop-county-story',
+      pageName: 'The Bastrop Story'
+    },
+    {
+      id: 'bastrop-broadband',
+      keywords: ['broadband', 'internet', 'fiber', 'gigafiber', 'connectivity', 'wifi', 'wi-fi', 'online', 'download', 'speed', 'internet speed', 'slow internet', 'fast internet', 'internet access', 'digital divide', 'rural internet', 'connection', 'bandwidth', 'streaming', 'upload'],
+      question: 'Will we get better internet?',
+      answer: `<strong>Yes!</strong> Bastrop County has secured a <strong>$43 million broadband grant</strong> for countywide gigafiber internet. The data center ecosystem accelerates this because the fiber infrastructure needed for data centers also serves as the backbone for residential and business connectivity.`,
+      pageLink: '/bastrop-county-story',
+      pageName: 'The Bastrop Story'
+    },
+    {
+      id: 'opposition-overview',
+      keywords: ['opposition', 'opposed', 'against', 'protest', 'opponents', 'groups', 'fight', 'stop', 'nimby', 'activist', 'concern', 'concerned', 'concerns', 'worried', 'worry', 'angry', 'anger', 'upset', 'mad', 'afraid', 'complain', 'complaints', 'critics', 'criticism', 'objection', 'object', 'resist', 'resistance', 'petition', 'rally', 'demonstration', 'facebook group'],
+      question: 'Who is opposed to data centers?',
+      answer: `Opposition to data centers falls into four categories:<br>1. <strong>Environmental groups</strong> (Sierra Club, NAACP)<br>2. <strong>Concerned residents</strong> — often well-meaning but influenced by outdated information<br>3. <strong>Misinformation campaigners</strong> — conflating old designs (pre-2018) with modern technology<br>4. <strong>Competing developers</strong> — rivals for the same land/resources.`,
+      pageLink: '/who-is-opposed',
+      pageName: 'Who Is Opposed?'
+    },
+    {
+      id: 'opposition-funding',
+      keywords: ['funding', 'foreign', 'money', 'funded', 'organizations', 'dark money', 'follow the money', 'arabella', 'foundation', 'donors', 'donor', 'sponsor', 'sponsored', 'paid', 'astroturf', 'foreign money', 'foreign influence', 'lobbyist', 'lobbying', 'campaign'],
+      question: 'Who funds the opposition?',
+      answer: `An <strong>American Enterprise Institute (AEI)</strong> report found that 12 U.S. organizations opposing data centers received <strong>$39 million from foreign foundations</strong>. A Power the Future report revealed the Arabella/Sunflower network disbursed approximately <strong>$1 billion in grants in 2023</strong> to anti-energy advocacy. It's important to understand that much of the organized opposition is professionally funded and coordinated.`,
+      pageLink: '/who-is-opposed',
+      pageName: 'Who Is Opposed?'
+    },
+    {
+      id: 'opposition-misinfo',
+      keywords: ['misinformation', 'lies', 'fear', 'scare', 'myth', 'myths', 'false', 'fake', 'propaganda', 'misleading', 'disinformation', 'untrue', 'lie', 'lying', 'hoax', 'conspiracy', 'rumor', 'rumors', 'heard that', 'someone said', 'they say', 'people say', 'read that', 'saw online', 'article', 'fearmongering', 'scaremongering', 'alarmist'],
+      question: 'Is there misinformation about data centers?',
+      answer: `<strong>Yes — significantly.</strong> Much of the anti-data-center messaging conflates old evaporative cooling technology (pre-2018) with modern closed-loop systems. Polling shows support collapsed from 65% to 36% in just one year — not because data centers got worse, but because fear-based campaigns became more organized. Our site exists to counter that with <strong>verified facts and real data</strong>.`,
+      pageLink: '/myth-vs-reality',
+      pageName: 'Myth vs. Reality'
+    },
+    {
+      id: 'backlash',
+      keywords: ['backlash', 'canceled', 'cancelled', 'moratorium', 'ban', 'blocked', 'rejected', 'denied', 'defeat', 'voted down', 'stopped', 'other states', 'other communities', 'other towns', 'elsewhere', 'virginia', 'loudoun'],
+      question: 'What about the national data center backlash?',
+      answer: `The backlash is real but largely driven by misinformation. <strong>$85 billion</strong> in projects have been canceled over 3 years, and <strong>300+ anti-DC bills</strong> have been filed across 30+ states. However, communities that rejected data centers often later regretted losing the economic opportunity when they saw neighboring counties thrive.`,
+      pageLink: '/data-center-backlash',
+      pageName: 'Data Center Backlash'
+    },
+    {
+      id: 'success-prineville',
+      keywords: ['prineville', 'oregon', 'meta', 'facebook', 'timber', 'lumber'],
+      question: 'What happened in Prineville, Oregon?',
+      answer: `<strong>Prineville, Oregon (pop. ~10,500)</strong> was a struggling timber town before Meta built its first data center there in 2010. The transformation was remarkable: wages went from the <strong>lowest to the highest in the state</strong>. The tax revenue funded schools, infrastructure, and public services that the community couldn't have afforded otherwise.`,
+      pageLink: '/success-stories',
+      pageName: 'Success Stories'
+    },
+    {
+      id: 'success-quincy',
+      keywords: ['quincy', 'washington', 'microsoft'],
+      question: 'What happened in Quincy, Washington?',
+      answer: `<strong>Quincy, Washington (pop. ~8,000)</strong> welcomed Microsoft's data center in 2007 and was transformed. The tax revenue funded a <strong>new high school, library, police station, and hospital</strong>. Microsoft also created a Datacenter Academy partnership to train local residents for high-paying technical careers.`,
+      pageLink: '/success-stories',
+      pageName: 'Success Stories'
+    },
+    {
+      id: 'success-new-albany',
+      keywords: ['new albany', 'ohio', 'amazon', 'google', 'licking county'],
+      question: 'What happened in New Albany, Ohio?',
+      answer: `<strong>New Albany, Ohio (pop. ~12,000)</strong> attracted Amazon, Google, and Meta data centers starting in 2015. The result: a <strong>$1.4 billion GDP contribution</strong> to Licking County, with data center salaries averaging <strong>$85K–$100K+</strong>. The community maintained its small-town character while becoming one of the most prosperous areas in Ohio.`,
+      pageLink: '/success-stories',
+      pageName: 'Success Stories'
+    },
+    {
+      id: 'success-general',
+      keywords: ['success', 'other communities', 'other towns', 'other places', 'examples', 'example', 'case study', 'case studies', 'proof', 'proven', 'worked', 'experience', 'track record', 'history', 'results', 'outcomes', 'evidence', 'worked out', 'turned out', 'happen', 'happened'],
+      question: 'What happened in other communities?',
+      answer: `Multiple rural communities have been <strong>transformed</strong> by data centers:<br>• <strong>Prineville, OR</strong> (Meta) — Wages went from lowest to highest in the state<br>• <strong>Quincy, WA</strong> (Microsoft) — Funded a new high school, library, police station, and hospital<br>• <strong>New Albany, OH</strong> (Amazon/Google/Meta) — $1.4B GDP contribution; maintained small-town character.`,
+      pageLink: '/success-stories',
+      pageName: 'Success Stories'
+    },
+    {
+      id: 'what-is-dc',
+      keywords: ['what is', 'data center', 'define', 'definition', 'explain', 'basic', 'fundamentals', 'how does it work', 'server', 'servers', 'what are', 'tell me about', 'what exactly', 'meaning', 'concept', 'overview', 'introduction', 'intro', 'understand', 'learn'],
+      question: 'What is a data center?',
+      answer: `A data center is a physical facility that <strong>stores, processes, and transmits data</strong> powering the modern world. Every time you stream a movie, send an email, use a GPS, or ask a virtual assistant a question — a data center makes it possible. They are the backbone of the internet, cloud computing, AI, and the digital economy.`,
+      pageLink: '/what-is-a-data-center',
+      pageName: 'What Is a Data Center?'
+    },
+    {
+      id: 'company-leaves',
+      keywords: ['leave', 'leaves', 'abandon', 'close', 'shut down', 'what if', 'pull out', 'move', 'relocate', 'long term', 'commitment', 'go bankrupt', 'bankruptcy', 'fail', 'failure', 'empty', 'vacant', 'ghost town', 'permanent', 'temporary', 'how long', 'years', 'duration', 'lifespan', 'lifetime'],
+      question: 'What if the company leaves?',
+      answer: `Data center operators typically make <strong>20–30 year commitments</strong> to their locations. These facilities represent billions of dollars in infrastructure that can't easily be moved. Even in the unlikely event that an operator changes, the physical infrastructure (buildings, power, fiber) <strong>remains in the community</strong> and is highly valuable to other tech companies.`,
+      pageLink: '/data-center-answers',
+      pageName: 'Data Center Answers'
+    },
+    {
+      id: 'community-benefits',
+      keywords: ['benefits', 'community', 'advantage', 'good', 'positive', 'upside', 'help', 'improve', 'better', 'pros', 'why', 'worth', 'value', 'gain', 'win', 'winning', 'support', 'favor', 'pro', 'reason', 'reasons', 'argument', 'case for', 'in favor', 'why should'],
+      question: 'What are the overall benefits for our community?',
+      answer: `The benefits are <strong>comprehensive and transformative</strong>:<br>• <strong>$40M+ annual tax revenue</strong> with near-zero service costs<br>• <strong>$1,600/household</strong> in potential tax relief<br>• <strong>1,000+ construction</strong> and 200+ permanent high-paying jobs<br>• Schools funded without adding students<br>• <strong>$43M broadband grant</strong> for countywide gigafiber<br>• New fire stations, road improvements, parks<br>• Joining a world-class tech ecosystem (Tesla, xAI, Starlink).`,
+      pageLink: '/economic-impact',
+      pageName: 'Economic Impact'
+    },
+    {
+      id: 'advancing-mankind',
+      keywords: ['future', 'progress', 'mankind', 'humanity', 'innovation', 'technology', 'advancement', 'digital', 'transform', 'important', 'importance', 'matter', 'matters', 'necessary', 'need', 'essential', 'vital', 'critical', 'society', 'civilization', 'world'],
+      question: 'How do data centers advance human progress?',
+      answer: `Data centers are the <strong>invisible engine</strong> of modern civilization. They power:<br>• <strong>Healthcare</strong> — AI diagnostics, drug discovery, telemedicine<br>• <strong>Education</strong> — online learning, research databases, AI tutoring<br>• <strong>Science</strong> — climate modeling, genomics, space exploration<br>• <strong>Accessibility</strong> — assistive technology, translation, communication.`,
+      pageLink: '/advancing-mankind',
+      pageName: 'Advancing Mankind'
+    },
+    {
+      id: 'myth-reality',
+      keywords: ['myth', 'reality', 'true', 'truth', 'fact check', 'verify', 'debunk', 'actually', 'real', 'facts', 'fact', 'accurate', 'accuracy', 'correct', 'wrong', 'right', 'proof', 'prove', 'source', 'sources', 'evidence', 'data', 'research', 'studies', 'study'],
+      question: 'What are the biggest myths about data centers?',
+      answer: `The three biggest myths — all debunked by data:<br>• <strong>Myth:</strong> "They'll drain our water" → <strong>Fact:</strong> Less than 0.5% of national freshwater; closed-loop cooling uses near-zero<br>• <strong>Myth:</strong> "My electric bill will spike" → <strong>Fact:</strong> Behind-the-meter power; SB 6 protection; Ratepayer Pledge<br>• <strong>Myth:</strong> "Just 50 jobs" → <strong>Fact:</strong> 1,000+ construction, 150+ permanent, 500+ indirect.`,
+      pageLink: '/myth-vs-reality',
+      pageName: 'Myth vs. Reality'
+    },
+    {
+      id: 'about-site',
+      keywords: ['about', 'website', 'who are you', 'who made', 'mission', 'purpose', 'tomorrowbeginshere', 'this site', 'your site', 'organization', 'who runs', 'who created', 'who built', 'behind this', 'bot', 'chatbot', 'your name', 'who am i talking to'],
+      question: 'What is TomorrowBeginsHere.com?',
+      answer: `<strong>TomorrowBeginsHere.com</strong> is an independent educational resource dedicated to providing <strong>fact-based information</strong> about data center development in rural communities, with a focus on Bastrop County, Texas. Our mission is to empower residents with accurate, verifiable facts so they can make informed decisions.`,
+      pageLink: '/about',
+      pageName: 'About Us'
+    },
+    {
+      id: 'contact',
+      keywords: ['contact', 'email', 'reach', 'talk', 'speak', 'call', 'message', 'get in touch', 'connect', 'phone', 'address', 'social media', 'facebook', 'twitter', 'meeting', 'attend', 'join', 'sign up', 'subscribe', 'newsletter', 'mailing list', 'volunteer'],
+      question: 'How can I get in touch?',
+      answer: `You can reach us at <strong><a href="mailto:contact@tomorrowbeginshere.com" style="color:#0A369D;">contact@tomorrowbeginshere.com</a></strong>. We also have a community on <strong><a href="https://facebook.com/TomorrowBeginsHere" target="_blank" style="color:#0A369D;">Facebook</a></strong> where you can follow updates and join the conversation. We welcome all questions.`,
+      pageLink: '/about',
+      pageName: 'About Us'
+    },
+    {
+      id: 'data-new-oil',
+      keywords: ['data', 'oil', 'resource', 'valuable', 'economy', 'digital economy', 'data is', 'worth', 'gdp', 'trillion', 'billion', 'economic growth', 'industry', 'sector', 'market'],
+      question: 'Why is data so important?',
+      answer: `Data has been called the <strong>"new oil"</strong> of the 21st century. The global data economy drives trillions of dollars in GDP, creates millions of jobs, and powers innovations in every sector. AI alone is expected to add <strong>$15–20 trillion to global GDP by 2030</strong>. Communities that host data infrastructure are positioning themselves at the heart of this economic transformation.`,
+      pageLink: '/data-is-the-new-oil',
+      pageName: 'Data Is the New Oil'
+    },
+    {
+      id: 'construction',
+      keywords: ['construction', 'build', 'building', 'timeline', 'how long', 'when', 'start', 'finish', 'complete', 'schedule', 'phase', 'phases', 'duration', 'months', 'years', 'groundbreaking', 'breaking ground', 'begin', 'underway', 'progress', 'under construction', 'site prep', 'crane', 'cranes', 'bulldozer', 'dirt', 'excavation'],
+      question: 'How long does construction take?',
+      answer: `Data center construction typically takes <strong>2–4 years</strong>, depending on the size and number of phases. During this period, the project creates <strong>1,000–3,000+ construction jobs</strong> paying $60K–$120K+. Most large campuses are built in phases — the first building comes online while subsequent buildings are still under construction, bringing tax revenue and permanent jobs to the community early on.`,
+      pageLink: '/careers',
+      pageName: 'Career Pathways'
+    },
+    {
+      id: 'safety',
+      keywords: ['safe', 'safety', 'danger', 'dangerous', 'hazard', 'hazardous', 'risk', 'risky', 'threat', 'harm', 'harmful', 'health risk', 'health hazard', 'accident', 'explosion', 'fire risk', 'catch fire', 'radiation', 'radiate', 'electromagnetic', 'emf', 'cancer', 'sick', 'illness', 'disease', 'health concern', 'health impact', 'health effects', 'unsafe'],
+      question: 'Are data centers safe?',
+      answer: `<strong>Yes — data centers are among the safest industrial facilities.</strong> They have no combustion, no chemical processes, and no manufacturing byproducts. They don't emit radiation, pollutants, or hazardous materials. EMF levels at the property line are <strong>no different than a typical office building</strong>. They feature advanced fire suppression, security, and multiple redundant safety layers.`,
+      pageLink: '/data-center-answers',
+      pageName: 'Data Center Answers'
+    },
+    {
+      id: 'chemicals',
+      keywords: ['chemical', 'chemicals', 'toxic', 'toxins', 'hazardous material', 'hazmat', 'spill', 'leak', 'contaminate', 'contamination', 'fumes', 'gas', 'gases', 'runoff', 'groundwater contamination', 'poison', 'poisonous', 'carcinogen', 'carcinogenic', 'diesel', 'fuel'],
+      question: 'Do data centers use hazardous chemicals?',
+      answer: `<strong>No.</strong> Data centers don't use, produce, or store hazardous chemicals. There are no chemical processes, no smokestacks, and no industrial waste. The only fuel on-site is diesel for <strong>backup generators</strong> (emergency use only), stored in sealed, double-walled tanks with spill containment — the same systems used at hospitals. Modern cooling uses clean water in sealed loops or ambient air.`,
+      pageLink: '/inside-a-modern-facility',
+      pageName: 'Inside a Modern Facility'
+    },
+    {
+      id: 'size',
+      keywords: ['size', 'big', 'large', 'small', 'how big', 'acres', 'square feet', 'footprint', 'area', 'space', 'land', 'lot', 'parcel', 'acreage', 'massive', 'huge', 'enormous', 'giant', 'sprawling', 'tall', 'height', 'stories', 'floors'],
+      question: 'How big is a data center?',
+      answer: `Data centers are typically <strong>1–2 story buildings</strong> — much shorter than an apartment complex or hospital. The EdgeConneX Bastrop campus covers <strong>140 acres</strong>, with the first building at 578,000 sq ft. While that sounds large, most of the acreage is dedicated to landscaped buffer zones, access roads, and green space — not building footprint.`,
+      pageLink: '/inside-a-modern-facility',
+      pageName: 'Inside a Modern Facility'
+    },
+    {
+      id: 'zoning',
+      keywords: ['zoning', 'zone', 'zoned', 'land use', 'rezoning', 'rezone', 'commercial', 'industrial', 'residential', 'agricultural', 'permitted', 'special use', 'variance', 'comprehensive plan', 'planning', 'commissioners', 'county commissioners', 'city council', 'vote', 'approval', 'hearing', 'public hearing'],
+      question: 'What about zoning and land use?',
+      answer: `Data centers are built on land zoned for <strong>commercial or industrial use</strong> — not in residential neighborhoods. They go through the same permitting and public hearing process as any large development. Counties set conditions including setback requirements, buffer zones, noise limits, and landscaping standards. Data centers are among the most compatible industrial land uses near residential zones due to their low traffic and clean operations.`,
+      pageLink: '/data-center-answers',
+      pageName: 'Data Center Answers'
+    },
+    {
+      id: 'light-pollution',
+      keywords: ['light', 'lights', 'bright', 'brightness', 'glow', 'glare', 'light pollution', 'lit up', 'night sky', 'dark sky', 'floodlight', 'spotlight', 'illumination', 'lighting', 'led', 'neon', 'sign'],
+      question: 'Will there be light pollution at night?',
+      answer: `Modern data centers use <strong>downward-directed, shielded lighting</strong> designed to prevent light spillover beyond the property line. Most facilities are far less bright than a gas station, shopping center, or parking lot. Security lighting is motion-activated in many areas, and decorative lighting is kept to a minimum. Many operators are committed to <strong>dark-sky-friendly</strong> practices.`,
+      pageLink: '/inside-a-modern-facility',
+      pageName: 'Inside a Modern Facility'
+    },
+    {
+      id: 'wildlife',
+      keywords: ['wildlife', 'animals', 'birds', 'deer', 'habitat', 'ecosystem', 'nature', 'natural', 'species', 'endangered', 'protected', 'conservation', 'biodiversity', 'vegetation', 'plants', 'forest', 'woods', 'woodland', 'wetland', 'creek', 'stream', 'oak', 'pine', 'tree', 'trees', 'deforestation', 'clearing', 'clear cut'],
+      question: 'What about the impact on wildlife and nature?',
+      answer: `Data center developers conduct thorough <strong>environmental impact assessments</strong> before construction, identifying and protecting sensitive habitats. Buffer zones are typically planted with <strong>native vegetation</strong> that enhances wildlife corridors. Unlike residential developments, data centers have minimal human foot traffic, no pets, and no outdoor activity that disturbs wildlife.`,
+      pageLink: '/data-center-answers',
+      pageName: 'Data Center Answers'
+    },
+    {
+      id: 'air-quality',
+      keywords: ['smell', 'odor', 'stink', 'fumes', 'air quality', 'air pollution', 'exhaust', 'smokestack', 'smoke', 'smog', 'particulate', 'breathe', 'breathing', 'respiratory', 'lungs', 'asthma', 'allergies', 'air', 'emissions', 'emit'],
+      question: 'Will it affect air quality or produce smells?',
+      answer: `<strong>No.</strong> Data centers produce <strong>zero emissions during normal operations</strong> — no smokestacks, no exhaust, no odors. They're fundamentally different from manufacturing plants or factories. The only potential emissions are from backup diesel generators during rare emergency tests (typically a few hours per month), which produce less exhaust than a single busy intersection.`,
+      pageLink: '/inside-a-modern-facility',
+      pageName: 'Inside a Modern Facility'
+    },
+    {
+      id: 'hours',
+      keywords: ['hours', '24 7', '24/7', 'around the clock', 'night shift', 'overnight', 'always on', 'never close', 'operate', 'operations', 'open', 'shift', 'shifts', 'schedule', 'working hours', 'all day', 'all night', 'constant', 'continuous', 'nonstop', 'weekends'],
+      question: 'Do data centers run 24/7?',
+      answer: `Yes, data centers operate <strong>24/7/365</strong> because the internet never sleeps — but this is virtually unnoticeable to neighbors. The facilities are automated and remotely monitored, with only a small overnight crew on-site (typically 5-10 people). There are no shift changes with hundreds of workers, no truck deliveries at night, and noise at the property line remains at 45–55 dB around the clock.`,
+      pageLink: '/inside-a-modern-facility',
+      pageName: 'Inside a Modern Facility'
+    },
+    {
+      id: 'global-race',
+      keywords: ['china', 'global', 'international', 'race', 'compete', 'competition', 'national security', 'geopolitical', 'foreign', 'countries', 'country', 'overseas', 'abroad', 'europe', 'asia', 'india', 'japan', 'korea', 'strategic', 'defense', 'military', 'sovereignty', 'dominance', 'leadership', 'america first', 'american', 'usa', 'united states'],
+      question: 'Why does the global AI race matter?',
+      answer: `The U.S. is in a <strong>strategic competition</strong> with China and other nations for AI and data infrastructure dominance. Countries that control data processing capabilities will have enormous advantages in economic competitiveness, national security, and technological innovation. Every data center built in the U.S. is data infrastructure that <strong>stays under American control</strong> and American law.`,
+      pageLink: '/the-global-race',
+      pageName: 'The Global Race'
+    },
+    {
+      id: 'involvement',
+      keywords: ['involved', 'involvement', 'support', 'help', 'volunteer', 'contribute', 'participate', 'attend', 'meeting', 'meetings', 'coalition', 'advocate', 'advocacy', 'spread the word', 'share', 'do', 'action', 'what can i do', 'how can i help', 'get involved', 'make a difference'],
+      question: 'How can I get involved or show support?',
+      answer: `There are several ways to make a difference:<br>• <strong>Join our coalition</strong> — sign up at TomorrowBeginsHere.com to receive updates<br>• <strong>Share the facts</strong> — forward our articles to friends and neighbors<br>• <strong>Attend public meetings</strong> — show up at county commissioner hearings to voice support<br>• <strong>Follow us on Facebook</strong> for the latest updates<br>• <strong>Email us</strong> at contact@tomorrowbeginshere.com with questions or to connect.`,
+      pageLink: '/join',
+      pageName: 'Join the Coalition'
+    },
+    {
+      id: 'alternatives',
+      keywords: ['alternative', 'alternatives', 'instead', 'rather', 'better use', 'other options', 'something else', 'different', 'comparison', 'compare', 'versus', 'vs', 'compared to', 'subdivision', 'housing', 'retail', 'warehouse', 'factory', 'manufacturing', 'plant', 'mall', 'shopping center', 'amazon warehouse', 'distribution center', 'what else could'],
+      question: 'How does a data center compare to other development?',
+      answer: `Let's compare a data center to a <strong>1,000-home subdivision</strong> on the same land:<br>• <strong>Tax Revenue:</strong> Data center: ~$40M/yr vs. Subdivision: ~$8M/yr<br>• <strong>New Students:</strong> Data center: 0 vs. Subdivision: 400-800<br>• <strong>Daily Traffic:</strong> Data center: ~100 cars vs. Subdivision: 2,000+<br>• <strong>Water Usage:</strong> Data center: ~5M gal/yr vs. Subdivision: ~110M gal/yr<br>• <strong>County Services:</strong> Data center: near-zero vs. Subdivision: massive<br>Data centers deliver <strong>5x the revenue at 1/50th the service cost</strong>. No other land use comes close.`,
+      pageLink: '/economic-impact',
+      pageName: 'Economic Impact'
+    },
+    {
+      id: 'dont-want',
+      keywords: ['dont want', 'don\'t want', 'not want', 'not in', 'go away', 'leave us alone', 'we dont need', 'dont need', 'bad idea', 'terrible', 'horrible', 'ruin', 'destroy', 'wreck', 'ruining', 'destroying', 'wrecking', 'hate', 'dislike', 'disagree', 'wrong', 'bad', 'worst', 'stupid', 'dumb', 'scam', 'con', 'swindle', 'trick', 'foolish', 'no way', 'absolutely not', 'never'],
+      question: 'I don\'t want a data center in my community',
+      answer: `We completely understand the concern — major developments naturally raise questions. Siting in designated zones, modern technologies like closed-loop cooling, and robust Texas legal protections (like SB 6) help address local impact. Communities that welcomed data centers have experienced significant tax base growth and high-paying career paths. Skepticism is welcome; facts don't fear questions.`,
+      pageLink: '/myth-vs-reality',
+      pageName: 'Myth vs. Reality'
+    },
+    {
+      id: 'privacy',
+      keywords: ['privacy', 'surveillance', 'spy', 'spying', 'watching', 'cameras', 'camera', 'monitor', 'monitoring', 'track', 'tracking', 'data collection', 'personal data', 'my data', 'information', 'big brother', 'nsa', 'government'],
+      question: 'Does a data center mean more surveillance?',
+      answer: `<strong>No.</strong> A data center is simply a building hosting server hardware. It doesn't add surveillance cameras monitoring your neighborhood or compile personal data from residents. Security systems on-site are focused inward on physical facility security. Siting a data center nearby doesn't change your personal digital privacy.`,
+      pageLink: '/what-is-a-data-center',
+      pageName: 'What Is a Data Center?'
+    },
+    {
+      id: 'disasters',
+      keywords: ['storm', 'tornado', 'hurricane', 'flood', 'flooding', 'earthquake', 'wildfire', 'fire', 'disaster', 'natural disaster', 'severe weather', 'weather', 'ice storm', 'hail', 'lightning', 'resilient', 'resilience', 'withstand', 'survive', 'emergency', 'power failure'],
+      question: 'How do data centers handle natural disasters?',
+      answer: `Data centers are engineered to survive extreme weather. They are constructed with reinforced concrete structures designed to withstand high winds and seismic activity, include redundant backup battery/generator arrays for off-grid operations, elevated floor designs to prevent water damage, and advanced clean-agent fire suppression.`,
+      pageLink: '/inside-a-modern-facility',
+      pageName: 'Inside a Modern Facility'
+    }
+  ];
+
+  // Token Matching Engine
+  const STOP_WORDS = new Set([
+    'the', 'a', 'an', 'is', 'are', 'was', 'were', 'will', 'would', 'could',
+    'should', 'does', 'do', 'did', 'can', 'may', 'might', 'it', 'its',
+    'this', 'that', 'these', 'those', 'my', 'your', 'our', 'their', 'i',
+    'we', 'you', 'they', 'he', 'she', 'me', 'us', 'them', 'of', 'in',
+    'on', 'at', 'to', 'for', 'with', 'from', 'by', 'up', 'out', 'if',
+    'or', 'and', 'but', 'not', 'no', 'so', 'than', 'too', 'very', 'just',
+    'also', 'into', 'over', 'after', 'before', 'between', 'through',
+    'during', 'without', 'because', 'until', 'while', 'as', 'then',
+    'like', 'even', 'still', 'really', 'actually', 'about', 'am',
+    'been', 'being', 'have', 'has', 'had', 'having', 'get', 'got',
+    'going', 'gonna', 'wanna', 'there', 'here', 'when', 'where',
+    'which', 'whom', 'whose', 'any', 'some', 'all', 'each', 'every',
+    'both', 'few', 'many', 'much', 'more', 'most', 'other', 'own',
+    'same', 'such', 'only', 'im', 'ive', 'id', 'ill', 'dont',
+    'doesnt', 'didnt', 'wont', 'isnt', 'arent', 'wasnt', 'werent',
+    'hasnt', 'havent', 'hadnt', 'cant', 'couldnt', 'shouldnt',
+    'wouldnt', 'mustnt', 'neednt', 'lets', 'let', 'gonna', 'gotta',
+    'please', 'tell', 'know', 'think', 'want', 'need', 'question',
+    'ask', 'asking', 'answer', 'wondering', 'wonder', 'curious',
+    'information', 'info', 'explain', 'yeah', 'yes', 'ok', 'okay',
+  ]);
+
+  const SYNONYM_MAP: Record<string, string[]> = {
+    'h2o': ['water'], 'moisture': ['water'], 'hydro': ['water'],
+    'wells': ['well', 'wells'], 'pond': ['water', 'lake'],
+    'stream': ['creek', 'water'], 'creek': ['creek', 'water'],
+    'reservoir': ['water', 'supply'], 'pipe': ['leaky pipes'],
+    'pipes': ['leaky pipes'], 'plumbing': ['water'],
+    'drink': ['drinking water'], 'potable': ['drinking water'],
+    'power': ['electric', 'energy', 'grid', 'power'],
+    'electricity': ['electric', 'electricity'],
+    'electric': ['electric', 'electricity'],
+    'watt': ['megawatt', 'energy'], 'watts': ['megawatt', 'energy'],
+    'voltage': ['electric', 'grid'], 'amp': ['electric'],
+    'outage': ['blackout', 'outage'], 'surge': ['grid stress'],
+    'rolling blackout': ['blackout'], 'peak demand': ['grid stress'],
+    'employment': ['jobs', 'employment'], 'job': ['jobs', 'job'],
+    'hired': ['hiring'], 'worker': ['workers'], 'employee': ['employees'],
+    'profession': ['career'], 'occupation': ['career', 'job'],
+    'technician': ['career'], 'engineer': ['career'],
+    'electrician': ['career', 'construction'], 'plumber': ['career', 'construction'],
+    'taxation': ['tax', 'taxes'], 'levy': ['tax'],
+    'assessed': ['assessment'], 'mill': ['tax rate'],
+    'budget': ['county budget'], 'revenue': ['revenue', 'tax revenue'],
+    'funding': ['fund', 'funds'], 'finance': ['financial'],
+    'fiscal': ['fiscal', 'financial'],
+    'loudness': ['noise', 'loud'], 'racket': ['noise', 'loud'],
+    'din': ['noise'], 'roar': ['noise', 'loud'],
+    'drone': ['hum', 'buzz'], 'whir': ['hum', 'buzz'],
+    'rattle': ['noise', 'vibration'],
+    'ugly': ['ugly', 'eyesore'], 'hideous': ['ugly', 'eyesore'],
+    'unsightly': ['ugly', 'eyesore'], 'monstrosity': ['ugly', 'eyesore'],
+    'behemoth': ['massive', 'huge'], 'eyesore': ['eyesore', 'ugly'],
+    'blight': ['ugly', 'eyesore'], 'scar': ['ugly'],
+    'hazard': ['hazard', 'danger'], 'peril': ['danger'],
+    'unsafe': ['danger', 'unsafe'], 'injure': ['harm'],
+    'injury': ['harm'], 'kill': ['harm', 'danger'],
+    'lethal': ['danger'], 'deadly': ['danger'],
+    'pollute': ['pollution', 'pollute'], 'contaminate': ['contaminate', 'contamination'],
+    'poison': ['toxic', 'poison'], 'foul': ['pollution', 'smell'],
+    'smelly': ['smell', 'odor'], 'stench': ['smell', 'odor'],
+    'exhaust': ['emissions', 'exhaust'], 'smokestacks': ['smokestack'],
+    'greenhouse gas': ['greenhouse', 'emissions', 'carbon'],
+    'footprint': ['carbon footprint'],
+    'protest': ['protest', 'opposition'], 'rally': ['protest', 'rally'],
+    'petition': ['petition', 'opposition'], 'demonstrate': ['protest'],
+    'demonstration': ['protest', 'demonstration'],
+    'complaining': ['complain'], 'upset': ['angry', 'upset'],
+    'furious': ['angry'], 'outraged': ['angry'],
+    'skeptic': ['skeptical', 'concern'], 'skeptical': ['skeptical', 'concern'],
+    'suspicious': ['concern', 'skeptical'], 'doubt': ['concern', 'skeptical'],
+    'doubtful': ['concern', 'skeptical'],
+    'town': ['community', 'town'], 'city': ['community'],
+    'village': ['community', 'town'], 'county': ['county', 'bastrop county'],
+    'region': ['area', 'community'], 'neighborhood': ['neighborhood', 'community'],
+    'rural': ['rural', 'community'], 'resident': ['homeowner', 'resident'],
+    'residents': ['homeowner', 'resident'], 'citizen': ['resident'],
+    'citizens': ['residents'], 'taxpayer': ['homeowner', 'ratepayer'],
+    'taxpayers': ['homeowner', 'ratepayer'],
+    'benefit': ['benefits', 'advantage'], 'advantage': ['benefits', 'advantage'],
+    'downside': ['cons', 'risk'], 'drawback': ['cons', 'risk'],
+    'con': ['cons'], 'cons': ['cons', 'risk'],
+    'negative': ['cons', 'bad'], 'negatives': ['cons', 'bad'],
+    'problem': ['concern', 'risk'], 'problems': ['concerns', 'risk'],
+    'issue': ['concern'], 'issues': ['concerns'],
+    'worried': ['concern', 'worried'], 'scary': ['fear', 'scare'],
+    'frightening': ['fear', 'scare'], 'terrifying': ['fear', 'scare'],
+  };
+
+  function normalizeText(text: string) {
+    return text.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ').trim();
+  }
+
+  function tokenize(text: string) {
+    return normalizeText(text).split(/\s+/).filter(w => w.length > 0);
+  }
+
+  function removeStopWords(tokens: string[]) {
+    const meaningful = tokens.filter(t => !STOP_WORDS.has(t));
+    return meaningful.length > 0 ? meaningful : tokens;
+  }
+
+  function expandWithSynonyms(tokens: string[]) {
+    const expanded = new Set(tokens);
+    for (const token of tokens) {
+      if (SYNONYM_MAP[token]) {
+        for (const syn of SYNONYM_MAP[token]) {
+          expanded.add(syn);
+        }
+      }
+    }
+    return Array.from(expanded);
+  }
+
+  function levenshtein(a: string, b: string) {
+    if (a.length === 0) return b.length;
+    if (b.length === 0) return a.length;
+    const matrix = [];
+    for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+    for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+    for (let i = 1; i <= b.length; i++) {
+      for (let j = 1; j <= a.length; j++) {
+        const cost = b.charAt(i - 1) === a.charAt(j - 1) ? 0 : 1;
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j - 1] + cost
+        );
+      }
+    }
+    return matrix[b.length][a.length];
+  }
+
+  function fuzzyMatch(word: string, keyword: string) {
+    if (word === keyword) return 3; // Exact
+    if (word.length < 3 || keyword.length < 3) return 0;
+    if (word.startsWith(keyword) || keyword.startsWith(word)) return 2.5; // Prefix
+    const maxDist = word.length <= 4 ? 1 : 2;
+    const dist = levenshtein(word, keyword);
+    if (dist <= maxDist) return 2; // Fuzzy
+    if (word.includes(keyword) || keyword.includes(word)) return 1.5; // Substring
+    return 0;
+  }
+
+  function findBestMatch(input: string) {
+    const normalized = normalizeText(input);
+    const rawTokens = tokenize(input);
+
+    if (rawTokens.length === 0) return null;
+
+    const cleanTokens = removeStopWords(rawTokens);
+    const expandedTokens = expandWithSynonyms(cleanTokens);
+
+    let bestScore = 0;
+    let bestEntry = null;
+
+    for (const entry of KNOWLEDGE_BASE) {
+      let score = 0;
+      const matchedKeywords = new Set<string>();
+
+      for (const keyword of entry.keywords) {
+        const kwTokens = keyword.split(/\s+/);
+
+        if (kwTokens.length > 1) {
+          if (normalized.includes(keyword.toLowerCase())) {
+            score += kwTokens.length * 4; // Phrase match bonus
+            matchedKeywords.add(keyword);
+          }
+        } else {
+          const kw = keyword.toLowerCase();
+          let bestWordScore = 0;
+
+          for (const token of expandedTokens) {
+            const wordScore = fuzzyMatch(token, kw);
+            if (wordScore > bestWordScore) {
+              bestWordScore = wordScore;
+            }
+          }
+
+          if (bestWordScore > 0) {
+            score += bestWordScore;
+            matchedKeywords.add(keyword);
+          }
+        }
+      }
+
+      if (matchedKeywords.size >= 2) {
+        score += matchedKeywords.size * 1.5;
+      }
+
+      // Overlap with canonical question
+      const qTokens = removeStopWords(tokenize(entry.question));
+      let qOverlap = 0;
+      for (const qt of qTokens) {
+        if (expandedTokens.some(t => fuzzyMatch(t, qt) >= 2)) {
+          qOverlap++;
+        }
+      }
+      if (qOverlap > 0) {
+        score += qOverlap * 2;
+      }
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestEntry = entry;
+      }
+    }
+
+    const meaningfulCount = cleanTokens.length;
+    let threshold = 3.0;
+    if (meaningfulCount <= 1) {
+      threshold = 2.5;
+    } else if (meaningfulCount <= 3) {
+      threshold = 3.0;
+    } else {
+      threshold = 4.0;
+    }
+
+    if (bestScore >= threshold && bestEntry) {
+      return bestEntry;
+    }
+
+    return null;
+  }
+
+  // UI Event Binding
+  document.addEventListener('astro:page-load', () => {
+    const searchInput = document.getElementById('faq-search-input') as HTMLInputElement | null;
+    const clearBtn = document.getElementById('faq-clear-btn');
+    const aiBox = document.getElementById('ai-response-box');
+    const aiQuestion = document.getElementById('ai-response-question');
+    const aiAnswer = document.getElementById('ai-response-answer');
+    const aiCitationText = document.getElementById('ai-response-link-text');
+    const aiCitationLink = document.getElementById('ai-response-link') as HTMLAnchorElement | null;
+    const noResultsBox = document.getElementById('no-results-box');
+    
+    // Select accordion elements
+    const accordionItems = document.querySelectorAll('.faq-details-item');
+
+    if (!searchInput) return;
+
+    // Handle Input Events
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value;
+      
+      if (!query.trim()) {
+        resetSearch();
+        return;
+      }
+
+      // Show clear button
+      if (clearBtn) clearBtn.classList.remove('hidden');
+
+      // 1. Run AI Q&A Match
+      const matchedAI = findBestMatch(query);
+      
+      if (matchedAI) {
+        if (aiQuestion) aiQuestion.textContent = matchedAI.question;
+        if (aiAnswer) aiAnswer.innerHTML = matchedAI.answer;
+        if (aiCitationText) aiCitationText.textContent = matchedAI.pageName;
+        if (aiCitationLink) aiCitationLink.href = matchedAI.pageLink;
+        
+        // Show AI Box with slide-in
+        if (aiBox) {
+          aiBox.classList.remove('hidden');
+          setTimeout(() => {
+            aiBox.classList.remove('scale-95', 'opacity-0');
+            aiBox.classList.add('scale-100', 'opacity-100');
+          }, 10);
+        }
+      } else {
+        hideAIBox();
+      }
+
+      // 2. Filter Accordion List
+      const queryTokens = tokenize(query);
+      let visibleCount = 0;
+
+      accordionItems.forEach(item => {
+        const questionText = item.querySelector('.faq-question-text')?.textContent || "";
+        const answerText = item.querySelector('.faq-answer-text')?.textContent || "";
+        const combinedText = (questionText + " " + answerText).toLowerCase();
+
+        // Check if any query token matches the text
+        const isMatch = queryTokens.some(token => combinedText.includes(token));
+
+        if (isMatch) {
+          item.classList.remove('hidden');
+          (item as HTMLDetailsElement).open = true; // Auto-expand matching questions!
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+          (item as HTMLDetailsElement).open = false;
+        }
+      });
+
+      // 3. Handle No Results Fallback
+      if (visibleCount === 0 && !matchedAI) {
+        if (noResultsBox) noResultsBox.classList.remove('hidden');
+      } else {
+        if (noResultsBox) noResultsBox.classList.add('hidden');
+      }
+    });
+
+    // Handle Clear Action
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        resetSearch();
+      });
+    }
+
+    function resetSearch() {
+      if (clearBtn) clearBtn.classList.add('hidden');
+      hideAIBox();
+      if (noResultsBox) noResultsBox.classList.add('hidden');
+
+      // Reset all accordions to visible and closed
+      accordionItems.forEach(item => {
+        item.classList.remove('hidden');
+        (item as HTMLDetailsElement).open = false;
+      });
+    }
+
+    function hideAIBox() {
+      if (!aiBox) return;
+      aiBox.classList.remove('scale-100', 'opacity-100');
+      aiBox.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        if (aiBox.classList.contains('opacity-0')) {
+          aiBox.classList.add('hidden');
+        }
+      }, 300);
+    }
+  });
+</script>
