@@ -226,6 +226,71 @@ import BaseLayout from '../../components/BaseLayout.astro';
                         </div>
                     </div>
 
+                    <!-- Soundproof Comparison Player Card -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-6 reveal">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-sm font-bold text-slate-800 uppercase tracking-wider">Virtual Soundproof Player</h4>
+                            <span class="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-600 text-[10px] sm:text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-amber-500/20">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                Live Audio Demo
+                            </span>
+                        </div>
+                        
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            Generate a live, decibel-accurate audio simulation in your browser. Wear headphones for the best experience. The volume of the <strong>Data Center Hum</strong> adapts in real-time as you drag the property-line distance slider.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
+                            <!-- Play/Stop button -->
+                            <button 
+                                id="audio-toggle-btn" 
+                                class="flex-shrink-0 flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-95 cursor-pointer text-sm select-none"
+                            >
+                                <svg id="play-icon" class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                </svg>
+                                <svg id="stop-icon" class="w-5 h-5 text-white hidden" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H8a1 1 0 01-1-1V8z" clip-rule="evenodd" />
+                                </svg>
+                                <span id="audio-btn-text">Start Audio Demo</span>
+                            </button>
+
+                            <!-- Volume Info -->
+                            <div class="flex-grow flex items-center gap-3 px-4 py-3 bg-slate-50 border border-slate-100 rounded-2xl text-xs text-slate-500">
+                                <svg class="w-5 h-5 text-slate-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                                </svg>
+                                <div>
+                                    <span class="font-bold text-slate-800">Status: </span>
+                                    <span id="audio-status-text">Audio is stopped</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sound profiles selection -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <button type="button" class="profile-toggle-btn p-3 rounded-xl border-2 border-slate-200 hover:border-amber-400 bg-slate-50 transition-all text-center flex flex-col items-center gap-1 text-slate-600 disabled:opacity-50 cursor-pointer select-none" data-profile="data-center" disabled>
+                                <span class="font-bold text-xs sm:text-sm">Data Center</span>
+                                <span class="text-[10px] text-amber-600 font-bold" id="player-dc-db">42 dBA</span>
+                            </button>
+                            
+                            <button type="button" class="profile-toggle-btn p-3 rounded-xl border-2 border-slate-200 hover:border-amber-400 bg-slate-50 transition-all text-center flex flex-col items-center gap-1 text-slate-600 disabled:opacity-50 cursor-pointer select-none" data-profile="highway" disabled>
+                                <span class="font-bold text-xs sm:text-sm">Highway</span>
+                                <span class="text-[10px] text-slate-400 font-bold">70 dBA</span>
+                            </button>
+
+                            <button type="button" class="profile-toggle-btn p-3 rounded-xl border-2 border-slate-200 hover:border-amber-400 bg-slate-50 transition-all text-center flex flex-col items-center gap-1 text-slate-600 disabled:opacity-50 cursor-pointer select-none" data-profile="ac-unit" disabled>
+                                <span class="font-bold text-xs sm:text-sm">AC Unit</span>
+                                <span class="text-[10px] text-slate-400 font-bold">60 dBA</span>
+                            </button>
+
+                            <button type="button" class="profile-toggle-btn p-3 rounded-xl border-2 border-slate-200 hover:border-amber-400 bg-slate-50 transition-all text-center flex flex-col items-center gap-1 text-slate-600 disabled:opacity-50 cursor-pointer select-none" data-profile="crickets" disabled>
+                                <span class="font-bold text-xs sm:text-sm">Crickets</span>
+                                <span class="text-[10px] text-slate-400 font-bold">50 dBA</span>
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Informational Box -->
                     <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm prose prose-slate max-w-none">
                         <h4 class="text-slate-900 font-bold mb-2">How this Math works:</h4>
@@ -261,10 +326,392 @@ import BaseLayout from '../../components/BaseLayout.astro';
         background-color: #fffbeb;
         color: #b45309; /* amber-700 */
     }
+
+    .profile-toggle-btn.active-profile {
+        border-color: #f59e0b;
+        background-color: #fffbeb;
+        color: #b45309; /* amber-700 */
+    }
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    class AudioDemoManager {
+        ctx = null;
+        masterGain = null;
+        noiseBuffer = null;
+        currentProfile = 'data-center';
+        
+        // Sound Nodes
+        dcNodes = null;
+        acNodes = null;
+        highwayNodes = null;
+        cricketNodes = null;
+
+        init() {
+            if (this.ctx) return;
+            const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+            this.ctx = new AudioContextClass();
+            this.masterGain = this.ctx.createGain();
+            this.masterGain.gain.setValueAtTime(0, this.ctx.currentTime);
+            this.masterGain.connect(this.ctx.destination);
+
+            // Pre-compile White Noise
+            const bufferSize = 2 * this.ctx.sampleRate;
+            this.noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+            const output = this.noiseBuffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                output[i] = Math.random() * 2 - 1;
+            }
+        }
+
+        start(getCalculatedDB: () => number) {
+            this.init();
+            if (this.ctx.state === 'suspended') {
+                this.ctx.resume();
+            }
+            this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
+            this.masterGain.gain.setValueAtTime(0, this.ctx.currentTime);
+            this.masterGain.gain.linearRampToValueAtTime(0.7, this.ctx.currentTime + 0.3); // fade in 300ms
+
+            this.playProfile(this.currentProfile, getCalculatedDB);
+        }
+
+        stop() {
+            if (!this.ctx) return;
+            this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
+            this.masterGain.gain.setValueAtTime(this.masterGain.gain.value, this.ctx.currentTime);
+            this.masterGain.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 0.2); // fade out 200ms
+            
+            setTimeout(() => {
+                this.clearAllSources();
+                if (this.ctx && this.ctx.state === 'running') {
+                    this.ctx.suspend();
+                }
+            }, 220);
+        }
+
+        clearAllSources() {
+            if (this.dcNodes) {
+                this.dcNodes.stop();
+                this.dcNodes = null;
+            }
+            if (this.acNodes) {
+                this.acNodes.stop();
+                this.acNodes = null;
+            }
+            if (this.highwayNodes) {
+                this.highwayNodes.stop();
+                this.highwayNodes = null;
+            }
+            if (this.cricketNodes) {
+                this.cricketNodes.stop();
+                this.cricketNodes = null;
+            }
+        }
+
+        playProfile(profileName: string, getCalculatedDB: () => number) {
+            this.currentProfile = profileName;
+            if (!this.ctx || this.ctx.state === 'suspended') return;
+            
+            this.clearAllSources();
+            
+            if (profileName === 'data-center') {
+                this.dcNodes = this.createDataCenterHum(getCalculatedDB());
+                this.dcNodes.start();
+            } else if (profileName === 'ac-unit') {
+                this.acNodes = this.createACUnitHum();
+                this.acNodes.start();
+            } else if (profileName === 'highway') {
+                this.highwayNodes = this.createHighwayTraffic();
+                this.highwayNodes.start();
+            } else if (profileName === 'crickets') {
+                this.cricketNodes = this.createCrickets();
+                this.cricketNodes.start();
+            }
+        }
+
+        getGainFromDB(db: number) {
+            if (db <= 15) return 0;
+            const diff = db - 70; // 70 dBA calibrated as baseline max gain (0.5)
+            return 0.5 * Math.pow(10, diff / 20);
+        }
+
+        updateDataCenterVolume(db: number) {
+            if (!this.ctx || this.currentProfile !== 'data-center' || !this.dcNodes) return;
+            const targetGain = this.getGainFromDB(db);
+            this.dcNodes.gainNode.gain.cancelScheduledValues(this.ctx.currentTime);
+            this.dcNodes.gainNode.gain.setValueAtTime(this.dcNodes.gainNode.gain.value, this.ctx.currentTime);
+            this.dcNodes.gainNode.gain.linearRampToValueAtTime(targetGain, this.ctx.currentTime + 0.1);
+        }
+
+        createDataCenterHum(initialDB: number) {
+            const audioCtx = this.ctx;
+            
+            // Industrial sine wave layers
+            const osc60 = audioCtx.createOscillator();
+            osc60.type = 'sine';
+            osc60.frequency.setValueAtTime(60, audioCtx.currentTime);
+            const gain60 = audioCtx.createGain();
+            gain60.gain.setValueAtTime(0.5, audioCtx.currentTime);
+            osc60.connect(gain60);
+
+            const osc120 = audioCtx.createOscillator();
+            osc120.type = 'sine';
+            osc120.frequency.setValueAtTime(120, audioCtx.currentTime);
+            const gain120 = audioCtx.createGain();
+            gain120.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            osc120.connect(gain120);
+
+            const osc180 = audioCtx.createOscillator();
+            osc180.type = 'sine';
+            osc180.frequency.setValueAtTime(180, audioCtx.currentTime);
+            const gain180 = audioCtx.createGain();
+            gain180.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            osc180.connect(gain180);
+
+            // Fan blower noise (narrow bandpass filtered white noise)
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = this.noiseBuffer;
+            noise.loop = true;
+
+            const fanFilter = audioCtx.createBiquadFilter();
+            fanFilter.type = 'bandpass';
+            fanFilter.frequency.setValueAtTime(140, audioCtx.currentTime);
+            fanFilter.Q.setValueAtTime(1.2, audioCtx.currentTime);
+
+            const gainNoise = audioCtx.createGain();
+            gainNoise.gain.setValueAtTime(0.25, audioCtx.currentTime);
+            
+            noise.connect(fanFilter);
+            fanFilter.connect(gainNoise);
+
+            // Mix
+            const mixer = audioCtx.createGain();
+            gain60.connect(mixer);
+            gain120.connect(mixer);
+            gain180.connect(mixer);
+            gainNoise.connect(mixer);
+
+            const volumeNode = audioCtx.createGain();
+            volumeNode.gain.setValueAtTime(this.getGainFromDB(initialDB), audioCtx.currentTime);
+            mixer.connect(volumeNode);
+            volumeNode.connect(this.masterGain);
+
+            return {
+                gainNode: volumeNode,
+                start() {
+                    osc60.start();
+                    osc120.start();
+                    osc180.start();
+                    noise.start();
+                },
+                stop() {
+                    try {
+                        osc60.stop();
+                        osc120.stop();
+                        osc180.stop();
+                        noise.stop();
+                    } catch(e) {}
+                }
+            };
+        }
+
+        createACUnitHum() {
+            const audioCtx = this.ctx;
+            
+            // Compressor hum
+            const osc80 = audioCtx.createOscillator();
+            osc80.frequency.value = 80;
+            const gain80 = audioCtx.createGain();
+            gain80.gain.value = 0.45;
+            osc80.connect(gain80);
+
+            const osc240 = audioCtx.createOscillator();
+            osc240.frequency.value = 240;
+            const gain240 = audioCtx.createGain();
+            gain240.gain.value = 0.2;
+            osc240.connect(gain240);
+
+            // Condenser fan air flow (bandpass around 320Hz)
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = this.noiseBuffer;
+            noise.loop = true;
+            const fanFilter = audioCtx.createBiquadFilter();
+            fanFilter.type = 'bandpass';
+            fanFilter.frequency.value = 320;
+            const gainNoise = audioCtx.createGain();
+            gainNoise.gain.value = 0.25;
+            noise.connect(fanFilter);
+            fanFilter.connect(gainNoise);
+
+            // compressor metallic rattle (modulated at 12Hz)
+            const rattleNoise = audioCtx.createBufferSource();
+            rattleNoise.buffer = this.noiseBuffer;
+            rattleNoise.loop = true;
+            const rattleFilter = audioCtx.createBiquadFilter();
+            rattleFilter.type = 'bandpass';
+            rattleFilter.frequency.value = 950;
+            rattleFilter.Q.value = 3.0;
+            const rattleGain = audioCtx.createGain();
+            rattleGain.gain.value = 0.08;
+
+            const rattleLFO = audioCtx.createOscillator();
+            rattleLFO.frequency.value = 12; // 12Hz
+            const rattleLFOGain = audioCtx.createGain();
+            rattleLFOGain.gain.value = 0.05;
+            rattleLFO.connect(rattleLFOGain);
+            rattleLFOGain.connect(rattleGain.gain);
+
+            rattleNoise.connect(rattleFilter);
+            rattleFilter.connect(rattleGain);
+
+            // Mix
+            const mixer = audioCtx.createGain();
+            gain80.connect(mixer);
+            gain240.connect(mixer);
+            gainNoise.connect(mixer);
+            rattleGain.connect(mixer);
+
+            const volumeNode = audioCtx.createGain();
+            volumeNode.gain.setValueAtTime(this.getGainFromDB(60), audioCtx.currentTime); // fixed 60 dBA
+            mixer.connect(volumeNode);
+            volumeNode.connect(this.masterGain);
+
+            return {
+                start() {
+                    osc80.start();
+                    osc240.start();
+                    rattleLFO.start();
+                    noise.start();
+                    rattleNoise.start();
+                },
+                stop() {
+                    try {
+                        osc80.stop();
+                        osc240.stop();
+                        rattleLFO.stop();
+                        noise.stop();
+                        rattleNoise.stop();
+                    } catch(e) {}
+                }
+            };
+        }
+
+        createHighwayTraffic() {
+            const audioCtx = this.ctx;
+            
+            // Distant low rumble
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = this.noiseBuffer;
+            noise.loop = true;
+            const lowpass = audioCtx.createBiquadFilter();
+            lowpass.type = 'lowpass';
+            lowpass.frequency.value = 220;
+
+            const swellGain = audioCtx.createGain();
+            swellGain.gain.value = 0.25;
+
+            // Swell LFO 1: 8s cycle
+            const swellLFO1 = audioCtx.createOscillator();
+            swellLFO1.frequency.value = 0.125;
+            const swellGain1 = audioCtx.createGain();
+            swellGain1.gain.value = 0.15;
+            swellLFO1.connect(swellGain1);
+            swellGain1.connect(swellGain.gain);
+
+            // Swell LFO 2: 14s cycle
+            const swellLFO2 = audioCtx.createOscillator();
+            swellLFO2.frequency.value = 0.071;
+            const swellGain2 = audioCtx.createGain();
+            swellGain2.gain.value = 0.1;
+            swellLFO2.connect(swellGain2);
+            swellGain2.connect(swellGain.gain);
+
+            noise.connect(lowpass);
+            lowpass.connect(swellGain);
+
+            const volumeNode = audioCtx.createGain();
+            volumeNode.gain.setValueAtTime(this.getGainFromDB(70), audioCtx.currentTime); // fixed 70 dBA
+            swellGain.connect(volumeNode);
+            volumeNode.connect(this.masterGain);
+
+            return {
+                start() {
+                    noise.start();
+                    swellLFO1.start();
+                    swellLFO2.start();
+                },
+                stop() {
+                    try {
+                        noise.stop();
+                        swellLFO1.stop();
+                        swellLFO2.stop();
+                    } catch(e) {}
+                }
+            };
+        }
+
+        createCrickets() {
+            const audioCtx = this.ctx;
+            
+            // Cricket carrier pitch (~3750Hz)
+            const osc = audioCtx.createOscillator();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(3750, audioCtx.currentTime);
+
+            // FM Trill: 60Hz LFO
+            const trillLFO = audioCtx.createOscillator();
+            trillLFO.frequency.setValueAtTime(60, audioCtx.currentTime);
+            const trillGain = audioCtx.createGain();
+            trillGain.gain.setValueAtTime(120, audioCtx.currentTime); // 120Hz FM swing
+            trillLFO.connect(trillGain);
+            trillGain.connect(osc.frequency);
+
+            // Pulsed Chirp Gate
+            const chirpGate = audioCtx.createGain();
+            chirpGate.gain.setValueAtTime(0.5, audioCtx.currentTime);
+            
+            // Gate LFO: 2.5Hz square wave
+            const gateLFO = audioCtx.createOscillator();
+            gateLFO.type = 'square';
+            gateLFO.frequency.setValueAtTime(2.5, audioCtx.currentTime);
+            const gateGain = audioCtx.createGain();
+            gateGain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+            gateLFO.connect(gateGain);
+            gateGain.connect(chirpGate.gain);
+
+            // Bandpass filter to keep it clean and crisp
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.setValueAtTime(3750, audioCtx.currentTime);
+            filter.Q.setValueAtTime(2.0, audioCtx.currentTime);
+
+            osc.connect(chirpGate);
+            chirpGate.connect(filter);
+
+            const volumeNode = audioCtx.createGain();
+            volumeNode.gain.setValueAtTime(this.getGainFromDB(50), audioCtx.currentTime); // fixed 50 dBA
+            filter.connect(volumeNode);
+            volumeNode.connect(this.masterGain);
+
+            return {
+                start() {
+                    osc.start();
+                    trillLFO.start();
+                    gateLFO.start();
+                },
+                stop() {
+                    try {
+                        osc.stop();
+                        trillLFO.stop();
+                        gateLFO.stop();
+                    } catch(e) {}
+                }
+            };
+        }
+    }
+
+    document.addEventListener('astro:page-load', () => {
         const slider = document.getElementById('distance-slider') as HTMLInputElement;
         const distDisplay = document.getElementById('distance-display');
         const dbDisplay = document.getElementById('decibel-value');
@@ -275,10 +722,25 @@ import BaseLayout from '../../components/BaseLayout.astro';
         const barrierVisual = document.getElementById('barrier-visual');
         const houseVisual = document.getElementById('house-visual');
         const wavesContainer = document.getElementById('waves-container');
-        
+
+        // Audio Player Controls
+        const audioToggleBtn = document.getElementById('audio-toggle-btn');
+        const playIcon = document.getElementById('play-icon');
+        const stopIcon = document.getElementById('stop-icon');
+        const audioBtnText = document.getElementById('audio-btn-text');
+        const audioStatusText = document.getElementById('audio-status-text');
+        const profileBtns = document.querySelectorAll('.profile-toggle-btn');
+        const playerDCDb = document.getElementById('player-dc-db');
+
+        if (!slider) return;
+
         let mitigationValue = 0;
         let ambientCompareVal: number | null = null;
+        let isAudioPlaying = false;
         
+        // Initialize Audio manager
+        const audioManager = new AudioDemoManager();
+
         // Mitigation buttons
         const mitButtons = document.querySelectorAll('.mitigation-btn');
         mitButtons.forEach(btn => {
@@ -305,7 +767,11 @@ import BaseLayout from '../../components/BaseLayout.astro';
         // Ambient toggle buttons
         const ambToggles = document.querySelectorAll('.ambient-toggle');
         ambToggles.forEach(toggle => {
-            toggle.addEventListener('click', () => {
+            btnListener(toggle);
+        });
+
+        function btnListener(toggle: Element) {
+             toggle.addEventListener('click', () => {
                 const isActive = toggle.classList.contains('active-ambient');
                 ambToggles.forEach(t => t.classList.remove('active-ambient'));
                 
@@ -318,7 +784,94 @@ import BaseLayout from '../../components/BaseLayout.astro';
                 
                 calculate();
             });
+        }
+        
+        // Audio Toggle Button Listener
+        if (audioToggleBtn) {
+            audioToggleBtn.addEventListener('click', () => {
+                if (isAudioPlaying) {
+                    stopAudioDemo();
+                } else {
+                    startAudioDemo();
+                }
+            });
+        }
+
+        // Profile Toggle Listeners
+        profileBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const profile = btn.getAttribute('data-profile');
+                if (!profile || !isAudioPlaying) return;
+
+                profileBtns.forEach(b => b.classList.remove('active-profile'));
+                btn.classList.add('active-profile');
+
+                audioManager.playProfile(profile, getCalculatedDB);
+                updateAudioStatusText(profile);
+            });
         });
+
+        function startAudioDemo() {
+            isAudioPlaying = true;
+            audioManager.start(getCalculatedDB);
+
+            // UI updates
+            if (playIcon) playIcon.classList.add('hidden');
+            if (stopIcon) stopIcon.classList.remove('hidden');
+            if (audioBtnText) audioBtnText.textContent = "Stop Audio";
+            
+            profileBtns.forEach(btn => {
+                (btn as HTMLButtonElement).disabled = false;
+                if (btn.getAttribute('data-profile') === audioManager.currentProfile) {
+                    btn.classList.add('active-profile');
+                }
+            });
+
+            updateAudioStatusText(audioManager.currentProfile);
+        }
+
+        function stopAudioDemo() {
+            isAudioPlaying = false;
+            audioManager.stop();
+
+            // UI updates
+            if (playIcon) playIcon.classList.remove('hidden');
+            if (stopIcon) stopIcon.classList.add('hidden');
+            if (audioBtnText) audioBtnText.textContent = "Start Audio Demo";
+            if (audioStatusText) audioStatusText.textContent = "Audio is stopped";
+
+            profileBtns.forEach(btn => {
+                (btn as HTMLButtonElement).disabled = true;
+                btn.classList.remove('active-profile');
+            });
+        }
+
+        function updateAudioStatusText(profile: string) {
+            if (!audioStatusText) return;
+            let label = "";
+            let level = "";
+            if (profile === 'data-center') {
+                label = "Data Center Hum";
+                level = getCalculatedDB() + " dBA";
+            } else if (profile === 'highway') {
+                label = "Highway Traffic";
+                level = "70 dBA";
+            } else if (profile === 'ac-unit') {
+                label = "AC Unit Condenser";
+                level = "60 dBA";
+            } else if (profile === 'crickets') {
+                label = "Crickets/Insects background";
+                level = "50 dBA";
+            }
+            audioStatusText.innerHTML = `Playing <strong class="text-slate-800 font-bold">${label}</strong> at simulated <strong class="text-amber-600 font-black">${level}</strong>`;
+        }
+
+        function getCalculatedDB(): number {
+            const distance = parseInt(slider.value);
+            let db = 95 - 20 * Math.log10(distance) - mitigationValue;
+            db = Math.round(db);
+            return Math.max(db, 15);
+        }
 
         function getSoundComparison(db: number) {
             if (db <= 25) return "Completely silent bedroom / soft breeze.";
@@ -334,19 +887,22 @@ import BaseLayout from '../../components/BaseLayout.astro';
             if (!slider || !distDisplay || !dbDisplay || !gaugeBar || !soundComparator || !comparisonText) return;
             
             const distance = parseInt(slider.value);
-            
-            // Physical formula: dB = 95 - 20 * log10(R) - mitigation
-            let db = 95 - 20 * Math.log10(distance) - mitigationValue;
-            db = Math.round(db);
-            
-            // Floor decibels at typical absolute silent threshold
-            if (db < 15) db = 15;
+            let db = getCalculatedDB();
             
             // Update Slider Text
             distDisplay.textContent = distance + " feet";
             
             // Update Decibel output
             dbDisplay.textContent = db + " dB";
+            
+            // Update the live volume badge inside the player!
+            if (playerDCDb) playerDCDb.textContent = db + " dBA";
+
+            // If audio is playing and Data Center hum is selected, update synthesizer gain node volume
+            if (isAudioPlaying && audioManager.currentProfile === 'data-center') {
+                audioManager.updateDataCenterVolume(db);
+                updateAudioStatusText('data-center');
+            }
             
             // Update gauge percentage
             const percentage = Math.min(Math.max((db / 95) * 100, 10), 100);
@@ -366,8 +922,8 @@ import BaseLayout from '../../components/BaseLayout.astro';
 
             // Move house distance in visualizer
             if (houseVisual) {
-                // Map distance from 10-3000 to right-aligned percentage: from 10% right to 40% right
-                const maxShift = 45; // Max percent movement
+                // Map distance from 10-3000 to right-aligned percentage: from 10% right to 45% right
+                const maxShift = 45;
                 const shift = maxShift - ((distance - 10) / 2990) * 35;
                 houseVisual.style.right = shift + "%";
             }
@@ -380,7 +936,6 @@ import BaseLayout from '../../components/BaseLayout.astro';
                     const wave = document.createElement('div');
                     wave.className = 'sound-wave border-r border-amber-500/20 rounded-full h-80 w-80 absolute -left-12 pointer-events-none';
                     
-                    // Wave size and scaling
                     const scale = 0.3 + (i * 0.2);
                     const opacity = Math.max(0.02, 0.4 - (i * 0.08) - (mitigationValue / 50));
                     
@@ -407,7 +962,6 @@ import BaseLayout from '../../components/BaseLayout.astro';
                     comparisonText.textContent = `This is exactly matching your selected ambient comparison benchmark (${ambientCompareVal} dBA).`;
                 }
             } else {
-                // Standard default EPA reference
                 if (db <= 45) {
                     comparisonText.textContent = `This falls below the federal EPA daytime outdoor target of 45-55 dBA.`;
                 } else {
@@ -421,5 +975,11 @@ import BaseLayout from '../../components/BaseLayout.astro';
         
         // Initialize
         calculate();
+
+        // Cleanup audio on page transitions
+        document.addEventListener('astro:before-swap', () => {
+            stopAudioDemo();
+        }, { once: true });
     });
 </script>
+
