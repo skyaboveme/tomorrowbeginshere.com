@@ -1,0 +1,23 @@
+# Tomorrow Begins Here
+
+> Independent educational resource providing fact-based information on hyperscale data center development in rural communities, specifically Bastrop County, Texas.
+
+## Core Resources
+
+- [Full Context](/llm.txt): A single consolidated reference file for AI search engines and crawler agents containing key statistics, facts, and messaging guides.
+- [FAQ](/faq): Direct answers to common community questions about water, noise, power, and property values.
+- [Myth vs Reality](/myth-vs-reality): Detailed comparisons and research debunking data center opposition myths.
+- [Water Usage](/water-usage): Comprehensive breakdown of closed-loop cooling and water consumption statistics.
+- [Bastrop County Story](/bastrop-county-story): Projections of local economic impact, school funding contribution, and job pathways.
+- [Updates](/updates): Local news, rapid fact-checks, and industry updates.
+- [Success Stories](/success-stories): Historic precedents of data center communities such as Quincy, WA and Prineville, OR.
+- [Interactive Hub](/interactive): Dynamic simulators and calculators for interactive exploration of data center footprint and school funding.
+
+## Deep Dives
+
+- [What is a Data Center](/what-is-a-data-center): Clear overview of what these facilities do and how they function.
+- [Closed-Loop Cooling](/closed-loop-cooling): Technical explanation of how water-efficient closed-loop loops work.
+- [Energy Prices](/energy-prices): Analysis of how industrial rates and infrastructure upgrades affect local residential bills.
+- [Economic Impact](/economic-impact): Detailed breakdown of community tax windfalls and local multiplier effects.
+- [Data Center Backlash](/data-center-backlash): Insightful look into the origins of community concerns and how to build local trust.
+- [Your Tax Bill](/your-tax-bill): Step-by-step breakdown of how commercial tax assessments relieve individual homeowners.

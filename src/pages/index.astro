@@ -2,11 +2,42 @@
 import BaseLayout from '../components/BaseLayout.astro';
 import LeadCaptureForm from '../components/LeadCaptureForm.astro';
 import DataCenter100Things from '../components/100ThingsSlideshow.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tomorrowbeginshere.com/#website",
+      "url": "https://tomorrowbeginshere.com/",
+      "name": "Tomorrow Begins Here",
+      "description": "Discover how data centers are transforming rural communities like Bastrop County, Texas, with jobs, tax revenue, and next-generation infrastructure.",
+      "publisher": {
+        "@id": "https://tomorrowbeginshere.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://tomorrowbeginshere.com/#organization",
+      "name": "Tomorrow Begins Here",
+      "url": "https://tomorrowbeginshere.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tomorrowbeginshere.com/favicon.svg"
+      },
+      "sameAs": [
+        "https://www.facebook.com/TomorrowBeginsHere/"
+      ]
+    }
+  ]
+};
 ---
 
 <BaseLayout 
     title="Tomorrow Begins Here | Data Centers & Rural Prosperity"
     description="Discover how data centers are transforming rural communities like Bastrop County, Texas, with jobs, tax revenue, and next-generation infrastructure."
+    schema={schema}
 >
     <!-- Hero Section -->
     <section class="relative bg-slate-900 overflow-hidden">

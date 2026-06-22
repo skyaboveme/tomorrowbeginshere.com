@@ -4,7 +4,6 @@ pubDate: 2026-06-02
 description: "Forbes contributor David Blackmon reports on Poolside Infrastructure's 1.2 GW Project Horizon near Fort Stockton, TX—demonstrating how closed-loop cooling and behind-the-meter generation solve grid and water issues."
 author: "David Blackmon"
 tags: ["News & Opinion", "Case Studies", "Water & Grid", "Permian Basin"]
-externalUrl: "https://www.forbes.com/sites/davidblackmon/2026/06/02/west-texas-data-center-project-addresses-activist-concerns-head-on/"
 ---
 
 By David Blackmon, Senior Contributor. David Blackmon is a Texas-based public policy analyst/consultant.
