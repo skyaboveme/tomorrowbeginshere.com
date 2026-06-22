@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="Bastrop ISD Tax Calculator | TomorrowBeginsHere.com"
+    description="Calculate the direct impact of commercial data center tax investment on Bastrop ISD. Project funding increases for teachers, school buses, and student technology."
+>
+    <!-- Navigation Back Link -->
+    <div class="bg-slate-900 pt-8 pb-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="/interactive" class="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Simulators Hub
+            </a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-700/50 to-slate-900 z-0"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-indigo-500/20 text-indigo-300 font-bold tracking-widest uppercase text-xs mb-3 border border-indigo-500/30">Bastrop ISD Local Impact</span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Bastrop ISD Tax Calculator</h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                See how the proposed $1.44 Billion data center development campus near Cedar Creek contributes directly to our schools and funds educational resources for Bastrop children.
+            </p>
+        </div>
+    </div>
+
+    <!-- Simulator Body -->
+    <section class="py-12 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Controls Column (5 cols) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        
+                        <!-- Step 1: Capital Valuation -->
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-end">
+                                <label for="valuation-slider" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Project Phase / Valuation</label>
+                                <span class="text-xl font-black text-indigo-600 animate-pulse-subtle" id="valuation-display">$440 Million</span>
+                            </div>
+                            <p class="text-xs text-slate-400 leading-snug">Drag the slider to adjust the development phase, from Phase 1 building to the full planned campus.</p>
+                            <input 
+                                type="range" 
+                                id="valuation-slider" 
+                                min="440" 
+                                max="1440" 
+                                step="100" 
+                                value="440" 
+                                class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-500 hover:accent-indigo-500/80 transition-all"
+                            >
+                            <div class="flex justify-between text-[10px] font-bold text-slate-400">
+                                <span>$440M (Phase 1)</span>
+                                <span>$1.0 Billion</span>
+                                <span>$1.44B (Full Build)</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Rate Lock Info -->
+                        <div class="pt-4 border-t border-slate-100 space-y-3">
+                            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">Fixed Local Metrics</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">Bastrop ISD Tax Rate</span>
+                                    <span class="font-bold text-slate-800">1.077% ($1.077 per $100)</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">Student Enrollment</span>
+                                    <span class="font-bold text-slate-800">~12,000 students</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">Avg Teacher Compensation</span>
+                                    <span class="font-bold text-slate-800">$60,000 / year</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">School Bus Cost</span>
+                                    <span class="font-bold text-slate-800">$150,000 / bus</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">Classroom Tech Package</span>
+                                    <span class="font-bold text-slate-800">$3,000 / package</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Outputs and Visualizations Column (7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- Grand Total Banner -->
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div>
+                                <span class="inline-block px-2.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-bold uppercase text-[10px] tracking-wider mb-2 border border-indigo-500/30">Bastrop ISD Annual Revenue</span>
+                                <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-teal-300 tracking-tight" id="total-revenue-value">
+                                    $4,738,800
+                                </div>
+                                <p class="text-slate-400 text-xs mt-1">Paid directly by the facility operator into the local school district budget.</p>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl p-4 border border-white/10 text-center flex-shrink-0">
+                                <div class="text-3xl font-black text-teal-400" id="student-funding-val">+$395</div>
+                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Added Per Student / Yr</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Impact Breakdown Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <!-- Teachers Funded -->
+                        <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-4 shadow-sm flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-500">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                    </svg>
+                                </div>
+                                <h4 class="font-bold text-slate-500 text-xs uppercase tracking-wider">Teacher Salaries</h4>
+                                <div class="text-3xl font-black text-indigo-600" id="teachers-val">78</div>
+                            </div>
+                            <p class="text-[11px] text-slate-400 leading-snug">Average compensation packages funded annually.</p>
+                        </div>
+
+                        <!-- School Buses -->
+                        <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-4 shadow-sm flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-500">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                                    </svg>
+                                </div>
+                                <h4 class="font-bold text-slate-500 text-xs uppercase tracking-wider">School Buses</h4>
+                                <div class="text-3xl font-black text-teal-600" id="buses-val">31</div>
+                            </div>
+                            <p class="text-[11px] text-slate-400 leading-snug">New modern transit vehicles funded for local routes.</p>
+                        </div>
+
+                        <!-- Classroom Tech -->
+                        <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-4 shadow-sm flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <h4 class="font-bold text-slate-500 text-xs uppercase tracking-wider">Classroom Kits</h4>
+                                <div class="text-3xl font-black text-amber-600" id="tech-val">1,579</div>
+                            </div>
+                            <p class="text-[11px] text-slate-400 leading-snug">Classroom technology packages ($3k laptops/equipment).</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Comparison Box -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+                        <h4 class="font-bold text-slate-800 text-base">Funding Without Adding Students</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            A major advantage of commercial data centers compared to residential subdivisions is that **they fund local schools while adding zero new students to the district**. 
+                        </p>
+                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex flex-col sm:flex-row justify-between gap-4 text-center sm:text-left">
+                            <div>
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">Data Center Facility</span>
+                                <div class="text-lg font-bold text-slate-800 mt-1">Generates $15.5M/yr</div>
+                                <div class="text-xs text-indigo-600 font-semibold mt-0.5">Adds 0 new students</div>
+                            </div>
+                            <div class="w-full sm:w-px h-px sm:h-auto bg-slate-200"></div>
+                            <div>
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">1,000-Home Subdivision</span>
+                                <div class="text-lg font-bold text-slate-800 mt-1">Generates ~$3M/yr</div>
+                                <div class="text-xs text-red-600 font-semibold mt-0.5">Adds ~1,500+ new students</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footnote -->
+                    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+                        <p class="text-xs text-slate-400 leading-relaxed text-center">
+                            * Projections are based on current Bastrop ISD tax rates and planned EdgeConneX project valuation phases. Actual tax distributions depend on tax abatement agreements and district asset valuations.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>
+
+<script>
+    function calculate() {
+        const valSlider = document.getElementById('valuation-slider');
+        const valDisplay = document.getElementById('valuation-display');
+        const revenueDisplay = document.getElementById('total-revenue-value');
+        const studentFundingDisplay = document.getElementById('student-funding-val');
+        
+        const teachersVal = document.getElementById('teachers-val');
+        const busesVal = document.getElementById('buses-val');
+        const techVal = document.getElementById('tech-val');
+
+        if (!valSlider || !revenueDisplay || !studentFundingDisplay || !teachersVal || !busesVal || !techVal) return;
+
+        const valMillions = parseFloat((valSlider as HTMLInputElement).value);
+        const isdRate = 0.01077; // 1.077% Bastrop ISD tax rate
+        const enrollment = 12000;
+        const avgTeacherCompensation = 60000;
+        const busCost = 150000;
+        const techCost = 3000;
+
+        const valuationDollars = valMillions * 1000000;
+
+        // Revenues
+        const totalRevenue = valuationDollars * isdRate;
+
+        // Split Calculations
+        const studentFunding = Math.round(totalRevenue / enrollment);
+        const teachers = Math.floor(totalRevenue / avgTeacherCompensation);
+        const buses = Math.floor(totalRevenue / busCost);
+        const techKits = Math.floor(totalRevenue / techCost);
+
+        // UI updates
+        if (valDisplay) {
+            if (valMillions >= 1000) {
+                valDisplay.textContent = "$" + (valMillions / 1000).toFixed(2) + " Billion";
+            } else {
+                valDisplay.textContent = "$" + valMillions + " Million";
+            }
+        }
+
+        const formatCurrency = (num) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(num);
+
+        revenueDisplay.textContent = formatCurrency(totalRevenue);
+        studentFundingDisplay.textContent = "+$" + new Intl.NumberFormat('en-US').format(studentFunding);
+
+        teachersVal.textContent = new Intl.NumberFormat('en-US').format(teachers);
+        busesVal.textContent = new Intl.NumberFormat('en-US').format(buses);
+        techVal.textContent = new Intl.NumberFormat('en-US').format(techKits);
+    }
+
+    // Set up listeners on load
+    function init() {
+        const valSlider = document.getElementById('valuation-slider');
+        if (valSlider) {
+            valSlider.addEventListener('input', calculate);
+        }
+        calculate();
+    }
+
+    // Support standard DOM load and Astro view transitions
+    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('astro:page-load', init);
+</script>

@@ -1,0 +1,281 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="24-Hour Operations Timeline | TomorrowBeginsHere.com"
+    description="Explore the environmental and community footprint of a modern rural data center over a 24-hour cycle. See noise, traffic, and emissions in real time."
+>
+    <!-- Navigation Back Link -->
+    <div class="bg-slate-950 pt-8 pb-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="/interactive" class="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Simulators Hub
+            </a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="bg-slate-950 border-b border-slate-900 relative overflow-hidden">
+        <!-- Radial tech glows -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.15),transparent_40%),radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.15),transparent_40%)] pointer-events-none"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center text-white">
+            <span class="inline-block px-4 py-1 rounded-full bg-blue-500/20 text-blue-300 font-bold tracking-widest uppercase text-xs mb-3 border border-blue-500/30 animate-pulse-subtle">Operations Timeline</span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">24-Hour Operations Timeline</h1>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto font-light leading-relaxed mt-2">
+                Slide through a typical day to see how modern data centers operate silently and safely—with zero emissions, minimal traffic, and quiet fence-line volumes.
+            </p>
+        </div>
+    </div>
+
+    <!-- Timeline Body -->
+    <section class="py-12 bg-slate-900 text-white relative min-h-[600px]">
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Timeline Slider Box (5 cols) -->
+                <div class="lg:col-span-5 flex flex-col justify-between bg-slate-950/80 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Time Control</h3>
+                            <p class="text-xs text-slate-400 mt-1">Slide or tap the indicators below to step through a full 24-hour cycle.</p>
+                        </div>
+
+                        <!-- Time display badge -->
+                        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center shadow-inner">
+                            <span class="text-slate-400 text-xs font-bold uppercase tracking-widest block mb-1" id="time-period-display">Morning</span>
+                            <h2 class="text-5xl font-black text-blue-400 tracking-tight" id="time-clock-display">06:00 AM</h2>
+                        </div>
+
+                        <!-- Slider Input -->
+                        <div class="space-y-2 pt-4">
+                            <input 
+                                type="range" 
+                                id="timeline-slider" 
+                                min="0" 
+                                max="7" 
+                                step="1" 
+                                value="0" 
+                                class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500 hover:accent-blue-400 transition-all"
+                            >
+                            <div class="grid grid-cols-8 text-[9px] font-bold text-slate-500 text-center">
+                                <span>6am</span>
+                                <span>9am</span>
+                                <span>12pm</span>
+                                <span>3pm</span>
+                                <span>6pm</span>
+                                <span>9pm</span>
+                                <span>12am</span>
+                                <span>3am</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Callout -->
+                    <div class="mt-8 pt-6 border-t border-slate-800/80 text-xs text-slate-400 space-y-2">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                            <span>**Low Traffic**: Max 15 vehicles on shift swap.</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                            <span>**Zero Emissions**: 0 lbs CO2 produced on-site.</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-amber-500"></div>
+                            <span>**Whisper Quiet**: 45-53 dBA at property border.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footprint Dashboard Card (7 cols) -->
+                <div class="lg:col-span-7 bg-slate-950/80 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between">
+                    
+                    <!-- Metrics Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        
+                        <!-- Emissions -->
+                        <div class="bg-slate-900 border border-slate-800/60 rounded-2xl p-5 text-center flex flex-col justify-between">
+                            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">On-Site Emissions</div>
+                            <div class="text-3xl font-black text-emerald-400" id="emissions-display">0 lbs CO2</div>
+                            <p class="text-[9px] text-slate-400 mt-2 leading-relaxed">No combustion or exhaust. Powered purely by grid electricity.</p>
+                        </div>
+
+                        <!-- Traffic -->
+                        <div class="bg-slate-900 border border-slate-800/60 rounded-2xl p-5 text-center flex flex-col justify-between">
+                            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">On-Site Traffic</div>
+                            <div class="text-3xl font-black text-blue-400" id="traffic-display">12 vehicles</div>
+                            <p class="text-[9px] text-slate-400 mt-2 leading-relaxed" id="traffic-desc">Operations day-shift staff handoff.</p>
+                        </div>
+
+                        <!-- Noise -->
+                        <div class="bg-slate-900 border border-slate-800/60 rounded-2xl p-5 text-center flex flex-col justify-between">
+                            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Property Border Noise</div>
+                            <div class="text-3xl font-black text-amber-400 font-mono" id="noise-display">48 dBA</div>
+                            <p class="text-[9px] text-slate-400 mt-2 leading-relaxed" id="noise-compare">Comparable to a quiet conversation.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Highlight Card -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 relative overflow-hidden flex-grow flex flex-col justify-center">
+                        <div class="absolute -top-12 -right-12 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl pointer-events-none"></div>
+                        <div class="relative z-10 space-y-3">
+                            <h4 class="text-base font-bold text-blue-400 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
+                                <span id="highlight-title">Shift Handoff & Commute</span>
+                            </h4>
+                            <p class="text-slate-300 text-sm font-light leading-relaxed" id="highlight-desc">
+                                The morning shift begins. About 12 operations engineers and technicians arrive quietly at the facility. Since data centers run on highly automated software, they require very few physical staff, preventing neighborhood traffic gridlock.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footnote / Reference -->
+                    <div class="text-center text-[10px] text-slate-500 mt-6 pt-4 border-t border-slate-900">
+                        * Noise values represent estimates at a 100-300 foot property setback line. Traffic refers strictly to facility operators and delivery vans, excluding transient construction vehicles.
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</BaseLayout>
+
+<script>
+    const timelineData = [
+        {
+            clock: "06:00 AM",
+            period: "Morning Shift Handoff",
+            emissions: "0 lbs CO2",
+            traffic: "12 vehicles",
+            trafficDesc: "Day-shift technician arrival.",
+            noise: "48 dBA",
+            noiseCompare: "Quieter than a home AC unit.",
+            title: "Day-Shift Transition",
+            desc: "The morning shift begins. About 12 operations engineers and systems technicians arrive quietly at the facility. Because the site is highly automated, staffing is minimal, producing less traffic than a small cul-de-sac of houses."
+        },
+        {
+            clock: "09:00 AM",
+            period: "Active Workday",
+            emissions: "0 lbs CO2",
+            traffic: "4 vehicles",
+            trafficDesc: "Minimal transient traffic.",
+            noise: "51 dBA",
+            noiseCompare: "Quiet office hum at border.",
+            title: "Security & Diagnostic Checks",
+            desc: "Tech staff conduct routine infrastructure walks. The server halls are securely locked down. Inside, quiet closed-loop water cooling lines recirculate heat without consuming groundwater."
+        },
+        {
+            clock: "12:00 PM",
+            period: "Midday Workload Spike",
+            emissions: "0 lbs CO2",
+            traffic: "2 vehicles",
+            trafficDesc: "Zero congestion on local roads.",
+            noise: "52 dBA",
+            noiseCompare: "Quieter than residential highway.",
+            title: "Renewable Grid Balancing",
+            desc: "Computers digest massive data loads. Many modern sites sync workloads with regional solar farms during peak sun hours, drawing 100% clean Texas power without taxing the evening residential baseload."
+        },
+        {
+            clock: "03:00 PM",
+            period: "Afternoon Maintenance",
+            emissions: "0 lbs CO2",
+            traffic: "3 vehicles",
+            trafficDesc: "No heavy truck distribution.",
+            noise: "53 dBA",
+            noiseCompare: "Comparable to light wind rustling.",
+            title: "Generator Health Diagnostics",
+            desc: "Emergency backup generators undergo brief, zero-load maintenance checks. These systems are kept on standby to ensure continuous digital uptime, keeping regional internet connections active in a storm."
+        },
+        {
+            clock: "06:00 PM",
+            period: "Evening Shift Handoff",
+            emissions: "0 lbs CO2",
+            traffic: "10 vehicles",
+            trafficDesc: "Night-shift technician arrival.",
+            noise: "49 dBA",
+            noiseCompare: "Quieter than typical evening wind.",
+            title: "Night-Shift Transition",
+            desc: "Night operations staff arrive to monitor the servers. The outgoing day shift departs. Traffic is brief, low-impact, and fully contained within the facility's driveway system."
+        },
+        {
+            clock: "09:00 PM",
+            period: "Night Computing",
+            emissions: "0 lbs CO2",
+            traffic: "1 vehicle",
+            trafficDesc: "Secured facility entrance.",
+            noise: "46 dBA",
+            noiseCompare: "Quieter than evening crickets (50 dBA).",
+            title: "Low-Noise Chillers",
+            desc: "Cooler evening air reduces heat exchange loads. Fan blowers adjust automatically to lower speeds, pushing fence-line noise levels down. The facility is quieter than the local ambient insect noises."
+        },
+        {
+            clock: "12:00 AM",
+            period: "Midnight Workloads",
+            emissions: "0 lbs CO2",
+            traffic: "0 vehicles",
+            trafficDesc: "Zero road traffic.",
+            noise: "45 dBA",
+            noiseCompare: "Quiet whisper at property border.",
+            title: "Server Backups & Security",
+            desc: "While the surrounding county sleeps, the data center processes automated database backups, cloud security syncs, and digital traffic routing for global platforms. On-site security personnel monitor the perimeter."
+        },
+        {
+            clock: "03:00 AM",
+            period: "Dawn Workloads",
+            emissions: "0 lbs CO2",
+            traffic: "0 vehicles",
+            trafficDesc: "Zero road traffic.",
+            noise: "45 dBA",
+            noiseCompare: "Barely audible over natural wind.",
+            title: "Autonomous Thermal Control",
+            desc: "Cool dawn breezes keep server temperatures low. Closed-loop water cooling channels operate at maximum efficiency, requiring almost zero power to exchange heat with the cool Texas morning air."
+        }
+    ];
+
+    function updateTimeline() {
+        const slider = document.getElementById('timeline-slider');
+        const clockDisplay = document.getElementById('time-clock-display');
+        const periodDisplay = document.getElementById('time-period-display');
+        const emissionsDisplay = document.getElementById('emissions-display');
+        const trafficDisplay = document.getElementById('traffic-display');
+        const trafficDesc = document.getElementById('traffic-desc');
+        const noiseDisplay = document.getElementById('noise-display');
+        const noiseCompare = document.getElementById('noise-compare');
+        const highlightTitle = document.getElementById('highlight-title');
+        const highlightDesc = document.getElementById('highlight-desc');
+
+        if (!slider || !clockDisplay || !periodDisplay || !emissionsDisplay || !trafficDisplay || !trafficDesc || !noiseDisplay || !noiseCompare || !highlightTitle || !highlightDesc) return;
+
+        const index = parseInt((slider as HTMLInputElement).value);
+        const data = timelineData[index];
+
+        clockDisplay.textContent = data.clock;
+        periodDisplay.textContent = data.period;
+        emissionsDisplay.textContent = data.emissions;
+        trafficDisplay.textContent = data.traffic;
+        trafficDesc.textContent = data.trafficDesc;
+        noiseDisplay.textContent = data.noise;
+        noiseCompare.textContent = data.noiseCompare;
+        highlightTitle.textContent = data.title;
+        highlightDesc.textContent = data.desc;
+    }
+
+    function init() {
+        const slider = document.getElementById('timeline-slider');
+        if (slider) {
+            slider.addEventListener('input', updateTimeline);
+        }
+        updateTimeline();
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('astro:page-load', init);
+</script>
