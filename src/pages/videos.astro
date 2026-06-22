@@ -6,61 +6,71 @@ const reels = [
     id: "1570309334686120",
     title: "Data Centers: The Unsung Heroes of Your Everyday Life",
     views: "2",
-    description: "The data center industry needs to tell its story about how positively they impact communities."
+    description: "The data center industry needs to tell its story about how positively they impact communities.",
+    cover: "/images/reels/reel-1.png"
   },
   {
     id: "1493287908729676",
     title: "Texas Data Centers: Economic Boom vs. Community Concerns",
     views: "4",
-    description: "There's a whole lot of people that care about data centers right now."
+    description: "There's a whole lot of people that care about data centers right now.",
+    cover: "/images/reels/reel-2.jpg"
   },
   {
     id: "1666699351110736",
     title: "You use a Data Center everyday",
     views: "315",
-    description: "How data centers power your everyday activities and are essential to modern life."
+    description: "How data centers power your everyday activities and are essential to modern life.",
+    cover: "/images/reels/reel-3.png"
   },
   {
     id: "1494288135223802",
     title: "AI Infrastructure: Why Countries Need It NOW!",
     views: "3.1K",
-    description: "The global race for artificial intelligence capability and computational infrastructure."
+    description: "The global race for artificial intelligence capability and computational infrastructure.",
+    cover: "/images/reels/reel-4.jpg"
   },
   {
     id: "1010118884834825",
     title: "Bezos: AI Creates Labor Shortage, Not Redundancy!",
     views: "920",
-    description: "Jeff Bezos discusses how artificial intelligence will shift and expand the workforce."
+    description: "Jeff Bezos discusses how artificial intelligence will shift and expand the workforce.",
+    cover: "/images/reels/reel-5.jpg"
   },
   {
     id: "1908793196464329",
     title: "Man has $1,650 invested in Data Centers",
     views: "307",
-    description: "A deep dive into local infrastructure investment and personal portfolio allocation."
+    description: "A deep dive into local infrastructure investment and personal portfolio allocation.",
+    cover: "/images/reels/reel-6.png"
   },
   {
     id: "911428118630221",
     title: "Data Center Protest",
     views: "524",
-    description: "Analyzing the arguments and key figures behind data center opposition."
+    description: "Analyzing the arguments and key figures behind data center opposition.",
+    cover: "/images/reels/reel-7.jpg"
   },
   {
     id: "2743214442726743",
     title: "Google soundproofing inside the server room",
     views: "454",
-    description: "Listening to the sound levels and intense dampening measures inside Google's server room."
+    description: "Listening to the sound levels and intense dampening measures inside Google's server room.",
+    cover: "/images/reels/reel-8.jpg"
   },
   {
     id: "1646085856853103",
     title: "Efficient use of power & water resources",
     views: "15K",
-    description: "How modern sites optimize power, cooling, and water conservation systems."
+    description: "How modern sites optimize power, cooling, and water conservation systems.",
+    cover: "/images/reels/reel-9.jpg"
   },
   {
     id: "1040938515549734",
     title: "Google Data Center - This is out of sci-fi",
     views: "1.6K",
-    description: "A rare exclusive look inside the server room of Google's AI-focused data centers."
+    description: "A rare exclusive look inside the server room of Google's AI-focused data centers.",
+    cover: "/images/reels/reel-10.png"
   }
 ];
 
@@ -232,15 +242,23 @@ const videos = [
                             rel="noopener noreferrer"
                             class="group/reel bg-slate-900 border border-slate-800 rounded-2xl relative overflow-hidden aspect-[9/16] shadow-md hover:shadow-xl hover:border-tech-blue/40 transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-end"
                         >
-                            <!-- Decorative background glow / tech lines -->
-                            <div class="absolute inset-0 bg-gradient-to-br from-tech-blue/10 via-slate-950 to-slate-900 z-0"></div>
+                            <!-- Cover Image -->
+                            <img 
+                                src={reel.cover} 
+                                alt={reel.title} 
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/reel:scale-105" 
+                                loading="lazy"
+                            />
                             
-                            <!-- Neon mesh grid element -->
-                            <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none z-0"></div>
+                            <!-- Dark scrim overlay for text contrast -->
+                            <div class="absolute inset-0 bg-slate-950/40 group-hover/reel:bg-slate-950/20 transition-colors duration-300 z-10"></div>
+                            
+                            <!-- Neon mesh overlay grid -->
+                            <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none z-10"></div>
                             
                             <!-- Background accent glow -->
-                            <div class="absolute -top-10 -left-10 w-24 h-24 bg-tech-blue/20 rounded-full blur-2xl group-hover/reel:bg-tech-blue/30 transition-colors duration-500 z-0"></div>
-                            <div class="absolute -bottom-10 -right-10 w-24 h-24 bg-pine-green/10 rounded-full blur-2xl group-hover/reel:bg-pine-green/20 transition-colors duration-500 z-0"></div>
+                            <div class="absolute -top-10 -left-10 w-24 h-24 bg-tech-blue/10 rounded-full blur-2xl group-hover/reel:bg-tech-blue/20 transition-colors duration-500 z-10"></div>
+                            <div class="absolute -bottom-10 -right-10 w-24 h-24 bg-pine-green/5 rounded-full blur-2xl group-hover/reel:bg-pine-green/10 transition-colors duration-500 z-10"></div>
 
                             <!-- Top Reels Badge -->
                             <div class="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-black/40 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-full">
