@@ -127,6 +127,7 @@ const slides = [
           <div
             class={`dc-story-slide absolute inset-0 flex flex-col justify-end p-6 sm:p-8 md:p-12 transition-opacity duration-500 ${i === 0 ? 'opacity-100 z-30' : 'opacity-0 z-10'}`}
             data-slide-idx={i}
+            data-slide-id={slide.id}
           >
             <!-- Background Image with Gradient Overlay -->
             <div class="absolute inset-0 z-0">
@@ -171,14 +172,7 @@ const slides = [
               </p>
 
               {slide.id === 'usa' && (
-                <a
-                  href="/what-is-a-data-center"
-                  class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-white text-slate-900 font-bold rounded-xl text-sm hover:bg-slate-100 transition-colors shadow-lg"
-                  onclick="event.stopPropagation();"
-                >
-                  Read the Full Article
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                </a>
+                <div class="mt-6 h-12 pointer-events-none"></div>
               )}
             </div>
           </div>
@@ -201,6 +195,18 @@ const slides = [
         <!-- Slide Counter -->
         <div class="absolute top-4 right-4 z-50 bg-black/30 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">
           <span id="dc-story-counter">1</span> / {slides.length}
+        </div>
+
+        <!-- CTA Overlay (Sits at z-50, above the z-40 tap zones, visible only on the final slide) -->
+        <div id="dc-story-cta-overlay" class="absolute bottom-6 sm:bottom-8 md:bottom-12 left-6 sm:left-8 md:left-12 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
+          <a
+            href="/what-is-a-data-center"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-900 font-bold rounded-xl text-sm hover:bg-slate-100 transition-all shadow-lg pointer-events-auto hover:scale-[1.02]"
+            onclick="event.stopPropagation();"
+          >
+            Read the Full Article
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </a>
         </div>
       </div>
 
@@ -266,6 +272,7 @@ const slides = [
     const prevBtn = document.getElementById('dc-story-prev-btn');
     const nextBtn = document.getElementById('dc-story-next-btn');
     const pauseIndicator = document.getElementById('dc-story-pause-indicator');
+    const ctaOverlay = document.getElementById('dc-story-cta-overlay');
 
     if (!viewer || !slides.length) return;
 
@@ -312,6 +319,18 @@ const slides = [
 
       // Update counter
       if (counter) counter.textContent = String(current + 1);
+
+      // Handle CTA button overlay visibility
+      if (ctaOverlay) {
+        const activeSlide = slides[current];
+        if (activeSlide && activeSlide.getAttribute('data-slide-id') === 'usa') {
+          ctaOverlay.classList.remove('opacity-0', 'pointer-events-none');
+          ctaOverlay.classList.add('opacity-100');
+        } else {
+          ctaOverlay.classList.remove('opacity-100');
+          ctaOverlay.classList.add('opacity-0', 'pointer-events-none');
+        }
+      }
 
       // Start fill animation for current progress bar
       startFill();
