@@ -92,6 +92,383 @@ import BaseLayout from '../components/BaseLayout.astro';
         </div>
     </section>
 
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- HISTORY: From Room-Sized Machines to the Engine of the Internet   -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+    <!-- Section Header -->
+    <section class="py-20 lg:py-28 bg-slate-50 relative overflow-hidden" id="history">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-tech-blue via-pine-green to-amber-warm"></div>
+        <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-tech-blue/5 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+        <div class="absolute top-0 left-0 w-[400px] h-[400px] bg-pine-green/5 rounded-full blur-[100px] -translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto mb-20">
+                <span class="inline-block px-5 py-2 rounded-full bg-tech-blue/10 text-tech-blue font-bold tracking-widest uppercase text-xs mb-6 border border-tech-blue/20">The Full Story</span>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6 heading-display">From Room-Sized Machines to the Engine of the Internet</h2>
+                <p class="text-xl text-slate-600 leading-relaxed font-light max-w-3xl mx-auto">
+                    Almost everything you did online today passed through a data center. The text you sent, the payment you made, the show you streamed, the search you ran, the map that found your route home. These buildings are the quiet infrastructure of modern life, and most people have never seen one.
+                </p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="max-w-5xl mx-auto">
+                <!-- Timeline spine (desktop only) -->
+                <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-tech-blue/20 to-transparent" style="margin-left: -0.5px;"></div>
+
+                <!-- Era 1: 1940s -->
+                <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-16 lg:mb-24">
+                    <div class="lg:text-right">
+                        <div class="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 px-4 py-1.5 rounded-full text-sm font-bold tracking-wide mb-6">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            1940s – 1960s
+                        </div>
+                        <h3 class="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 tracking-tight">Where It All Started: The First Computer Rooms</h3>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            The story begins in the 1940s with machines like ENIAC, completed in 1945. ENIAC filled a large room, weighed about 30 tons, and used thousands of vacuum tubes. It needed dedicated power, constant cooling, and a controlled, secured space just to function. That special-purpose room was the ancestor of the modern data center: a place built around the machine rather than the people.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            Through the 1950s and 1960s, the mainframe era took hold. Businesses, banks, universities, and government agencies installed large IBM and competitor systems in purpose-built computer rooms. This is when many of the design ideas we still use were born: raised floors to route cabling and push cool air, tight climate control, backup power, and restricted access. Computing was centralized because the machines were rare, enormous, and expensive.
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm w-full relative overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">🖥️</div>
+                                <div>
+                                    <p class="text-4xl font-black text-amber-600">30 tons</p>
+                                    <p class="text-sm text-slate-500 font-medium">Weight of ENIAC (1945)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">💡</div>
+                                <div>
+                                    <p class="text-4xl font-black text-amber-600">18,000</p>
+                                    <p class="text-sm text-slate-500 font-medium">Vacuum tubes in one machine</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Era 2: 1980s–1990s -->
+                <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-16 lg:mb-24">
+                    <div class="lg:order-2">
+                        <div class="inline-flex items-center gap-2 bg-tech-blue/10 border border-tech-blue/20 text-tech-blue px-4 py-1.5 rounded-full text-sm font-bold tracking-wide mb-6">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                            1980s – 1990s
+                        </div>
+                        <h3 class="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 tracking-tight">The Detour and the Comeback</h3>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            When the personal computer arrived in the 1980s, computing scattered. Power moved out of the central room and onto millions of desktops. For a while, the big centralized computer room looked like yesterday's idea.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            The internet changed everything back. As the 1990s progressed and the World Wide Web went mainstream, all those desktops and businesses needed somewhere to connect, host websites, and exchange data reliably around the clock. The modern term "data center" took hold in this period. Companies that could not afford to build and staff their own facilities began renting space in shared "colocation" centers, and a whole industry of internet hosting was born. The dot-com boom of the late 1990s drove a massive buildout of server farms.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            By the mid-2000s the industry had matured enough to need standards. Design and reliability frameworks such as the TIA-942 standard and the Uptime Institute's Tier classifications gave operators a common language for how resilient a facility was, from basic setups to fully fault-tolerant designs that aim for near-continuous uptime.
+                        </p>
+                    </div>
+                    <div class="flex items-center lg:order-1">
+                        <div class="bg-gradient-to-br from-tech-blue to-blue-800 rounded-3xl p-8 shadow-xl w-full text-white relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                            <h4 class="text-lg font-bold text-blue-200 uppercase tracking-wider mb-6 relative z-10">Key Milestones</h4>
+                            <div class="space-y-5 relative z-10">
+                                <div class="flex items-start gap-3">
+                                    <span class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0 text-sm font-bold">🌐</span>
+                                    <div>
+                                        <p class="font-bold text-white">World Wide Web Goes Mainstream</p>
+                                        <p class="text-sm text-blue-200">Every business needed somewhere to host</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0 text-sm font-bold">🏢</span>
+                                    <div>
+                                        <p class="font-bold text-white">Colocation Centers Born</p>
+                                        <p class="text-sm text-blue-200">Shared facilities for companies of every size</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0 text-sm font-bold">📊</span>
+                                    <div>
+                                        <p class="font-bold text-white">TIA-942 & Tier Standards</p>
+                                        <p class="text-sm text-blue-200">Common language for reliability & resilience</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Era 3: 2006 to Today -->
+                <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-16 lg:mb-24">
+                    <div class="lg:text-right">
+                        <div class="inline-flex items-center gap-2 bg-pine-green/10 border border-pine-green/20 text-pine-green px-4 py-1.5 rounded-full text-sm font-bold tracking-wide mb-6">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                            2006 – Today
+                        </div>
+                        <h3 class="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 tracking-tight">The Cloud and Hyperscale Era</h3>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            The next leap was the cloud. When Amazon Web Services launched in 2006, followed by Google and Microsoft Azure, the model flipped again. Instead of every company owning servers, they could rent computing power on demand from a handful of giant providers. Those providers built "hyperscale" data centers: enormous, highly automated, extremely efficient campuses that can span millions of square feet.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            Then came artificial intelligence. Training and running modern AI models requires unprecedented amounts of specialized computing, and that demand has set off the largest infrastructure expansion the industry has ever seen. Statista and other market trackers describe data centers as the heart of the AI revolution, and the world now has an estimated 11,000 to 12,000 of them across more than 170 countries.
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm w-full relative overflow-hidden group hover:shadow-lg transition-shadow duration-300">
+                            <div class="absolute bottom-0 left-0 w-32 h-32 bg-pine-green/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
+                            <div class="space-y-6 relative z-10">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-14 h-14 bg-pine-green/10 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">☁️</div>
+                                    <div>
+                                        <p class="text-3xl font-black text-pine-green">2006</p>
+                                        <p class="text-sm text-slate-500 font-medium">AWS launched the cloud era</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-14 h-14 bg-pine-green/10 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">🌍</div>
+                                    <div>
+                                        <p class="text-3xl font-black text-pine-green">12,000+</p>
+                                        <p class="text-sm text-slate-500 font-medium">Data centers worldwide today</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-14 h-14 bg-pine-green/10 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">🤖</div>
+                                    <div>
+                                        <p class="text-3xl font-black text-pine-green">170+</p>
+                                        <p class="text-sm text-slate-500 font-medium">Countries with facilities</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Data Centers Actually Do -->
+    <section class="py-20 lg:py-28 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block px-5 py-2 rounded-full bg-pine-green/10 text-pine-green font-bold tracking-widest uppercase text-xs mb-6 border border-pine-green/20">Core Functions</span>
+                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-6">What Data Centers Actually Do</h2>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Strip away the jargon and a data center is a highly reliable building full of servers, storage systems, and networking gear, supported by robust power, cooling, and security. Its job is to store, process, and move digital information without interruption. When these facilities work well, you never think about them. <strong class="text-slate-900">That invisibility is the point.</strong>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Everyday Internet -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl hover:border-tech-blue/40 transition-all duration-300 group cursor-default relative overflow-hidden">
+                    <div class="w-14 h-14 bg-tech-blue/10 rounded-2xl flex items-center justify-center mb-5 text-tech-blue group-hover:bg-tech-blue group-hover:text-white transition-colors duration-300">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">The Everyday Internet</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Websites, email, search, social media, and streaming video — every click and scroll passes through a data center.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-tech-blue to-blue-400 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
+                </div>
+                <!-- Cloud Computing -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl hover:border-blue-500/40 transition-all duration-300 group cursor-default relative overflow-hidden">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-5 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Cloud Computing</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">The software, storage, and tools that businesses of every size now rent instead of owning — all hosted in data centers.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
+                </div>
+                <!-- Commerce & Finance -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl hover:border-emerald-500/40 transition-all duration-300 group cursor-default relative overflow-hidden">
+                    <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-5 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Commerce & Finance</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Online shopping, card payments, banking, and systems that clear trillions of dollars in transactions every day.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-green-400 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
+                </div>
+                <!-- Critical Services -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl hover:border-amber-500/40 transition-all duration-300 group cursor-default relative overflow-hidden">
+                    <div class="w-14 h-14 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-5 text-amber-500 group-hover:bg-amber-500 group-hover:text-white transition-colors duration-300">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Critical Services</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Hospital records, logistics, utilities, emergency systems, and government services that communities depend on.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-amber-500 to-yellow-400 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
+                </div>
+                <!-- Artificial Intelligence -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl hover:border-purple-500/40 transition-all duration-300 group cursor-default relative overflow-hidden md:col-span-2 lg:col-span-2">
+                    <div class="flex flex-col md:flex-row md:items-center gap-6">
+                        <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Artificial Intelligence</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">The training and operation of the AI tools rapidly entering work and daily life — from language models to autonomous vehicles to drug discovery. This is the fastest-growing demand driver in the industry.</p>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-fuchsia-400 transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Data Centers Matter -->
+    <section class="py-20 lg:py-28 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-tech-blue/30 z-0"></div>
+        <div class="absolute top-0 left-0 w-[700px] h-[700px] bg-tech-blue/15 rounded-full blur-[150px] -translate-x-1/3 -translate-y-1/3"></div>
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-pine-green/10 rounded-full blur-[120px] translate-x-1/4 translate-y-1/4"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block px-5 py-2 rounded-full bg-white/10 text-blue-200 font-bold tracking-widest uppercase text-xs mb-6 border border-white/20 backdrop-blur-sm">Critical Infrastructure</span>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">Why Data Centers Matter</h2>
+                <p class="text-xl text-slate-300 leading-relaxed font-light">
+                    Data centers are now as fundamental to a functioning economy as roads, water systems, and the power grid. The difference is how new this dependence is and how fast it is growing.
+                </p>
+            </div>
+
+            <!-- Big stat callouts -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl text-center backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+                    <p class="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-teal-300 mb-3">$430B</p>
+                    <p class="text-sm text-slate-300 leading-relaxed">Global data center market in 2026</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl text-center backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+                    <p class="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-green-300 mb-3">$1T+</p>
+                    <p class="text-sm text-slate-300 leading-relaxed">Projected market size within the decade</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl text-center backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+                    <p class="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-300 mb-3">3×</p>
+                    <p class="text-sm text-slate-300 leading-relaxed">Demand projected to triple by 2030</p>
+                </div>
+            </div>
+
+            <!-- Economic impact prose -->
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 lg:p-12 backdrop-blur-sm">
+                    <p class="text-lg text-slate-200 leading-relaxed mb-6">
+                        This is not a niche tech sector. It is becoming core national infrastructure. Data centers also carry real economic weight where they are built. In Virginia, the heart of the U.S. industry, the data center sector supports <strong class="text-white">tens of thousands of jobs each year</strong> and <strong class="text-white">billions of dollars in labor income</strong>.
+                    </p>
+                    <p class="text-lg text-slate-200 leading-relaxed">
+                        States with significant data center activity see substantial additions to annual economic output, along with property tax revenue that funds schools and local services well beyond what most other commercial development provides.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why It Matters That Data Centers Are in the USA -->
+    <section class="py-20 lg:py-28 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-white to-red-600"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[100px] translate-x-1/4 -translate-y-1/4 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto mb-16">
+                <span class="inline-block px-5 py-2 rounded-full bg-blue-600/10 text-blue-700 font-bold tracking-widest uppercase text-xs mb-6 border border-blue-600/20">🇺🇸 National Interest</span>
+                <h2 class="text-3xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-6">Why It Matters That Data Centers Are in the USA</h2>
+                <p class="text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
+                    It is not enough for data centers to exist somewhere in the world. Where they are built has economic and strategic consequences, and there are strong reasons to build them in the United States.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
+                <!-- U.S. Leads -->
+                <div class="bg-slate-50 border border-slate-200 p-8 lg:p-10 rounded-3xl hover:shadow-lg transition-shadow duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-tech-blue/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="w-14 h-14 bg-tech-blue/10 rounded-2xl flex items-center justify-center mb-6 text-tech-blue group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm0 0h18" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">The U.S. Leads, and Leadership Is Worth Keeping</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm mb-4">
+                        The United States hosts more data centers than any other country, with more than <strong class="text-slate-900">4,000 facilities as of 2026</strong>, far ahead of any single competitor. North America accounts for roughly 40 percent of the entire global market.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        That lead translates into jobs, investment, and influence over the standards and technology the rest of the world adopts.
+                    </p>
+                </div>
+
+                <!-- AI Leadership -->
+                <div class="bg-slate-50 border border-slate-200 p-8 lg:p-10 rounded-3xl hover:shadow-lg transition-shadow duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6 text-purple-500 group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">AI Leadership Runs Through American Data Centers</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm mb-4">
+                        Analysts at Brookings are blunt about the stakes: if the United States is to sustain its global lead in AI, the buildout of domestic data centers is the limiting factor. Competition with China has sharpened, and decisions about where this infrastructure sits now carry national security implications.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        The computing that trains advanced AI is strategic capacity, and a nation that depends on rivals or distant partners for it is in a weaker position.
+                    </p>
+                </div>
+
+                <!-- Data Security -->
+                <div class="bg-slate-50 border border-slate-200 p-8 lg:p-10 rounded-3xl hover:shadow-lg transition-shadow duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-pine-green/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="w-14 h-14 bg-pine-green/10 rounded-2xl flex items-center justify-center mb-6 text-pine-green group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Data on Home Soil Is More Secure</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        Keeping American data inside American borders means it falls under U.S. law and oversight rather than the rules of another government. For sensitive financial, medical, defense, and personal information, domestic data centers reduce exposure and keep control closer to home.
+                    </p>
+                </div>
+
+                <!-- Closer Is Faster -->
+                <div class="bg-slate-50 border border-slate-200 p-8 lg:p-10 rounded-3xl hover:shadow-lg transition-shadow duration-300 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="w-14 h-14 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6 text-amber-500 group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Closer Is Faster and More Reliable</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        Physical distance adds delay. Hosting data near the people and businesses that use it means faster, more dependable service for American users, and resilience that does not hinge on undersea cables or foreign infrastructure during a crisis.
+                    </p>
+                </div>
+            </div>
+
+            <!-- American Economic Capacity -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="bg-gradient-to-br from-tech-blue to-blue-800 p-8 lg:p-12 rounded-3xl shadow-xl text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">It Builds American Economic Capacity</h3>
+                        </div>
+                        <p class="text-blue-100 leading-relaxed text-lg mb-4">
+                            A domestic data center industry creates skilled jobs, drives investment in the power grid and local infrastructure, expands the tax base that funds public services, and anchors high-value technology work in American communities — including rural and smaller markets that have historically been passed over.
+                        </p>
+                        <p class="text-blue-200 leading-relaxed font-medium">
+                            Texas is a leading example of this shift, with analysts describing it as the industry's next major hub.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Bottom Line -->
+            <div class="max-w-4xl mx-auto bg-slate-50 border border-slate-200 p-8 lg:p-12 rounded-3xl text-center">
+                <h3 class="text-2xl lg:text-3xl font-bold text-slate-900 mb-6 tracking-tight heading-display">The Bottom Line</h3>
+                <p class="text-slate-700 text-lg leading-relaxed mb-6">
+                    In roughly 80 years, the data center went from a single room built to hold one experimental machine to a global network of facilities that quietly runs the modern world. What started as a place to keep a computer cool has become the foundation of commerce, communication, public services, and the AI economy.
+                </p>
+                <p class="text-slate-700 text-lg leading-relaxed mb-6">
+                    The question is no longer whether societies will rely on data centers. They already do, completely. The real question is <strong class="text-slate-900">where this critical infrastructure gets built and who benefits from it</strong>.
+                </p>
+                <div class="bg-tech-blue/5 border border-tech-blue/20 rounded-xl p-6 inline-block">
+                    <p class="text-tech-blue font-bold text-lg">
+                        For the United States, the answer carries weight far beyond technology: economic strength, national security, and the ability to lead the next era of innovation depend on building it here, in American communities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- What is an AI Data Center (Breakout Section) -->
     <section class="py-20 lg:py-32 bg-slate-900 text-white relative overflow-hidden">
         <!-- Abstract background -->

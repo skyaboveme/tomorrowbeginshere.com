@@ -1,0 +1,457 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="Data Center vs. Subdivision Calculator | TomorrowBeginsHere.com"
+    description="Compare the community impact: What if this land becomes 500 homes vs. a modern data center? See taxes, water, schools, jobs, and more side by side."
+>
+    <!-- Navigation Back Link -->
+    <div class="bg-slate-900 pt-8 pb-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="/interactive" class="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Simulators Hub
+            </a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-red-900/40 via-slate-900 to-emerald-900/40 z-0"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-white/10 text-white font-bold tracking-widest uppercase text-xs mb-3 backdrop-blur-sm">Side-by-Side Comparison</span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">Data Center <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-300">vs.</span> Subdivision</h1>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                What happens when the same land becomes 500 homes vs. a modern data center? Adjust the sliders and let the math speak for itself.
+            </p>
+        </div>
+    </div>
+
+    <!-- Simulator Body -->
+    <section class="py-12 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Controls -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-end">
+                            <label for="homes-slider" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Number of Homes in Subdivision</label>
+                            <span class="text-xl font-black text-red-600" id="homes-display">500</span>
+                        </div>
+                        <input 
+                            type="range" 
+                            id="homes-slider" 
+                            min="100" 
+                            max="2000" 
+                            step="50" 
+                            value="500" 
+                            class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-red-500 transition-all"
+                        >
+                        <div class="flex justify-between text-[10px] font-bold text-slate-400">
+                            <span>100 Homes</span>
+                            <span>1,000</span>
+                            <span>2,000</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-end">
+                            <label for="value-slider" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Average Home Value</label>
+                            <span class="text-xl font-black text-slate-800" id="value-display">$350,000</span>
+                        </div>
+                        <input 
+                            type="range" 
+                            id="value-slider" 
+                            min="200000" 
+                            max="750000" 
+                            step="25000" 
+                            value="350000" 
+                            class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-700 transition-all"
+                        >
+                        <div class="flex justify-between text-[10px] font-bold text-slate-400">
+                            <span>$200K</span>
+                            <span>$475K</span>
+                            <span>$750K</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+                    <p class="text-xs text-slate-400">Equivalent data center valuation scales automatically based on land use comparison. Tax rate: 1.55% combined (Bastrop County baseline).</p>
+                </div>
+            </div>
+
+            <!-- Column Headers -->
+            <div class="grid grid-cols-12 gap-4 mb-4 px-2">
+                <div class="col-span-4 hidden md:block"></div>
+                <div class="col-span-6 md:col-span-4 text-center">
+                    <div class="inline-flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-1.5">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <span class="text-xs font-bold text-red-700 uppercase tracking-wider">Subdivision</span>
+                    </div>
+                </div>
+                <div class="col-span-6 md:col-span-4 text-center">
+                    <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-1.5">
+                        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                        <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Data Center</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Rows -->
+            <div class="space-y-4" id="comparison-grid">
+
+                <!-- Row 1: Annual Property Tax Revenue -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-12 items-center">
+                        <div class="col-span-12 md:col-span-4 p-5 md:p-6 md:border-r border-b md:border-b-0 border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500 flex-shrink-0">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Annual Property Tax Revenue</h3>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Paid into local treasuries each year</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center border-r border-slate-100 bg-red-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-red-600" id="tax-sub">$2,712,500</div>
+                            <div class="mt-2 w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="h-full bg-red-400 rounded-full transition-all duration-500" id="tax-sub-bar" style="width: 17%"></div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center bg-emerald-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-emerald-600" id="tax-dc">$15,500,000</div>
+                            <div class="mt-2 w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="h-full bg-emerald-400 rounded-full transition-all duration-500" id="tax-dc-bar" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: New Students Added to ISD -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-12 items-center">
+                        <div class="col-span-12 md:col-span-4 p-5 md:p-6 md:border-r border-b md:border-b-0 border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-500 flex-shrink-0">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">New Students Added to ISD</h3>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Additional students requiring public school seats</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center border-r border-slate-100 bg-red-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-red-600" id="students-sub">650</div>
+                            <div class="text-[10px] text-slate-400 mt-1">kids needing schools</div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center bg-emerald-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-emerald-600">0</div>
+                            <div class="text-[10px] text-slate-400 mt-1">zero students added</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: Annual Cost to ISD -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-12 items-center">
+                        <div class="col-span-12 md:col-span-4 p-5 md:p-6 md:border-r border-b md:border-b-0 border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center text-red-500 flex-shrink-0">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Annual Cost to ISD</h3>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">~$12,000/student education cost per year</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center border-r border-slate-100 bg-red-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-red-600" id="isd-cost-sub">$7,800,000</div>
+                            <div class="text-[10px] text-red-400 mt-1 font-bold">NET DRAIN on schools</div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center bg-emerald-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-emerald-600">$0</div>
+                            <div class="text-[10px] text-emerald-500 mt-1 font-bold">ZERO burden on schools</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 4: Daily Water Consumption -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-12 items-center">
+                        <div class="col-span-12 md:col-span-4 p-5 md:p-6 md:border-r border-b md:border-b-0 border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-500 flex-shrink-0">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Daily Water Consumption</h3>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Gallons drawn from local supply per day</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center border-r border-slate-100 bg-red-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-red-600" id="water-sub">300,000</div>
+                            <div class="text-[10px] text-slate-400 mt-1">gallons/day</div>
+                            <div class="mt-2 w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="h-full bg-red-400 rounded-full transition-all duration-500" id="water-sub-bar" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center bg-emerald-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-emerald-600" id="water-dc">14,000</div>
+                            <div class="text-[10px] text-slate-400 mt-1">gallons/day</div>
+                            <div class="mt-2 w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                                <div class="h-full bg-emerald-400 rounded-full transition-all duration-500" id="water-dc-bar" style="width: 5%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 5: Annual Emergency Calls -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-12 items-center">
+                        <div class="col-span-12 md:col-span-4 p-5 md:p-6 md:border-r border-b md:border-b-0 border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500 flex-shrink-0">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Annual Emergency Calls</h3>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Fire, EMS, and police responses per year</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center border-r border-slate-100 bg-red-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-red-600" id="emer-sub">2,500</div>
+                            <div class="text-[10px] text-slate-400 mt-1">calls/year</div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center bg-emerald-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-emerald-600">~12</div>
+                            <div class="text-[10px] text-slate-400 mt-1">calls/year (on-site teams)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 6: Daily Vehicle Trips (Road Wear) -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-12 items-center">
+                        <div class="col-span-12 md:col-span-4 p-5 md:p-6 md:border-r border-b md:border-b-0 border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 flex-shrink-0">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Daily Vehicle Trips</h3>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Traffic load on county roads each day</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center border-r border-slate-100 bg-red-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-red-600" id="trips-sub">5,000</div>
+                            <div class="text-[10px] text-slate-400 mt-1">trips/day</div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center bg-emerald-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-emerald-600" id="trips-dc">~150</div>
+                            <div class="text-[10px] text-slate-400 mt-1">trips/day (shift workers)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 7: New Jobs Created -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-12 items-center">
+                        <div class="col-span-12 md:col-span-4 p-5 md:p-6 md:border-r border-b md:border-b-0 border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 flex-shrink-0">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Permanent Jobs Created</h3>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Full-time positions after construction</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center border-r border-slate-100 bg-red-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-red-600" id="jobs-sub">~50</div>
+                            <div class="text-[10px] text-slate-400 mt-1">retail / service jobs</div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center bg-emerald-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-emerald-600" id="jobs-dc">~150</div>
+                            <div class="text-[10px] text-slate-400 mt-1">high-paying tech jobs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 8: Average Salary -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-12 items-center">
+                        <div class="col-span-12 md:col-span-4 p-5 md:p-6 md:border-r border-b md:border-b-0 border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 flex-shrink-0">
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Average Salary of New Jobs</h3>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Mean annual compensation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center border-r border-slate-100 bg-red-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-red-600">~$35,000</div>
+                            <div class="text-[10px] text-slate-400 mt-1">retail / service sector avg</div>
+                        </div>
+                        <div class="col-span-6 md:col-span-4 p-5 md:p-6 text-center bg-emerald-50/30">
+                            <div class="text-2xl sm:text-3xl font-black text-emerald-600">~$78,000</div>
+                            <div class="text-[10px] text-emerald-500 mt-1 font-bold">No degree required</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Verdict Banner -->
+            <div class="mt-8 bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 text-center">
+                    <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold uppercase text-[10px] tracking-wider mb-4 border border-emerald-500/30">The Verdict</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">A data center generates <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300" id="verdict-multiplier">5.7×</span> more tax revenue while consuming <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300" id="verdict-water">95%</span> less water and adding <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-300">zero</span> students to local schools.</h2>
+                    <p class="text-slate-400 text-sm max-w-2xl mx-auto mt-4">The math isn't close. A single data center delivers more community revenue, fewer municipal costs, and better-paying jobs than an equivalent residential development.</p>
+                </div>
+            </div>
+
+            <!-- Deep Dive Links -->
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <a href="/your-tax-bill" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group text-center">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Deep Dive</span>
+                    <h4 class="font-bold text-slate-900 mt-1 group-hover:text-tech-blue transition-colors">Your Tax Bill →</h4>
+                </a>
+                <a href="/water-usage" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group text-center">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Deep Dive</span>
+                    <h4 class="font-bold text-slate-900 mt-1 group-hover:text-tech-blue transition-colors">Water Usage Data →</h4>
+                </a>
+                <a href="/economic-impact" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group text-center">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Deep Dive</span>
+                    <h4 class="font-bold text-slate-900 mt-1 group-hover:text-tech-blue transition-colors">Economic Impact →</h4>
+                </a>
+            </div>
+
+            <!-- Footnote -->
+            <div class="mt-6 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm text-center">
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    * Subdivision estimates based on ITE Trip Generation Manual (10 trips/home/day), EPA WaterSense household averages (600 gal/home/day), NFPA emergency response rates (5 calls/home/yr), and national per-pupil cost averages ($12,000/student). Data center figures based on modern closed-loop facilities and industry employment benchmarks. Tax rate: 1.55% combined (Bastrop County baseline).
+                </p>
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const homesSlider = document.getElementById('homes-slider') as HTMLInputElement;
+        const valueSlider = document.getElementById('value-slider') as HTMLInputElement;
+
+        const homesDisplay = document.getElementById('homes-display');
+        const valueDisplay = document.getElementById('value-display');
+
+        const taxSub = document.getElementById('tax-sub');
+        const taxDc = document.getElementById('tax-dc');
+        const taxSubBar = document.getElementById('tax-sub-bar');
+        const taxDcBar = document.getElementById('tax-dc-bar');
+
+        const studentsSub = document.getElementById('students-sub');
+        const isdCostSub = document.getElementById('isd-cost-sub');
+
+        const waterSub = document.getElementById('water-sub');
+        const waterDc = document.getElementById('water-dc');
+        const waterSubBar = document.getElementById('water-sub-bar');
+        const waterDcBar = document.getElementById('water-dc-bar');
+
+        const emerSub = document.getElementById('emer-sub');
+        const tripsSub = document.getElementById('trips-sub');
+        const tripsDc = document.getElementById('trips-dc');
+        const jobsSub = document.getElementById('jobs-sub');
+        const jobsDc = document.getElementById('jobs-dc');
+
+        const verdictMultiplier = document.getElementById('verdict-multiplier');
+        const verdictWater = document.getElementById('verdict-water');
+
+        function fmt(n: number) {
+            return new Intl.NumberFormat('en-US').format(Math.round(n));
+        }
+        function fmtCurrency(n: number) {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+        }
+
+        function calculate() {
+            if (!homesSlider || !valueSlider) return;
+
+            const homes = parseInt(homesSlider.value);
+            const homeValue = parseInt(valueSlider.value);
+            const taxRate = 0.0155; // 1.55% combined Bastrop baseline
+
+            // Data center valuation scales with homes: 500 homes ≈ $1B DC
+            const dcValuation = (homes / 500) * 1_000_000_000;
+
+            // === Subdivision Calculations ===
+            const subTax = homes * homeValue * taxRate;
+            const students = Math.round(homes * 1.3); // ~1.3 school-age children per household
+            const isdCost = students * 12000;
+            const waterSubVal = homes * 600; // 600 gal/home/day
+            const emerSubVal = homes * 5; // 5 calls per home per year
+            const tripsSubVal = homes * 10; // ITE: ~10 trips/home/day
+            const jobsSubVal = Math.round(homes * 0.1); // ~1 retail job per 10 homes
+
+            // === Data Center Calculations ===
+            const dcTax = dcValuation * taxRate;
+            const waterDcVal = Math.round(14000 * (homes / 500)); // scales proportionally
+            const tripsDcVal = Math.round(150 * (homes / 500));
+            const jobsDcVal = Math.round(150 * (homes / 500));
+
+            // === Update UI ===
+            if (homesDisplay) homesDisplay.textContent = fmt(homes);
+            if (valueDisplay) valueDisplay.textContent = fmtCurrency(homeValue);
+
+            if (taxSub) taxSub.textContent = fmtCurrency(subTax);
+            if (taxDc) taxDc.textContent = fmtCurrency(dcTax);
+
+            // Bar widths (percentage relative to max)
+            const maxTax = Math.max(subTax, dcTax);
+            if (taxSubBar) taxSubBar.style.width = (subTax / maxTax * 100) + '%';
+            if (taxDcBar) taxDcBar.style.width = (dcTax / maxTax * 100) + '%';
+
+            if (studentsSub) studentsSub.textContent = fmt(students);
+            if (isdCostSub) isdCostSub.textContent = fmtCurrency(isdCost);
+
+            if (waterSub) waterSub.textContent = fmt(waterSubVal);
+            if (waterDc) waterDc.textContent = fmt(waterDcVal);
+            const maxWater = Math.max(waterSubVal, waterDcVal);
+            if (waterSubBar) waterSubBar.style.width = (waterSubVal / maxWater * 100) + '%';
+            if (waterDcBar) waterDcBar.style.width = (waterDcVal / maxWater * 100) + '%';
+
+            if (emerSub) emerSub.textContent = fmt(emerSubVal);
+            if (tripsSub) tripsSub.textContent = fmt(tripsSubVal);
+            if (tripsDc) tripsDc.textContent = '~' + fmt(tripsDcVal);
+            if (jobsSub) jobsSub.textContent = '~' + fmt(jobsSubVal);
+            if (jobsDc) jobsDc.textContent = '~' + fmt(jobsDcVal);
+
+            // Verdict
+            const multiplier = (dcTax / subTax).toFixed(1);
+            const waterPct = Math.round((1 - waterDcVal / waterSubVal) * 100);
+            if (verdictMultiplier) verdictMultiplier.textContent = multiplier + '×';
+            if (verdictWater) verdictWater.textContent = waterPct + '%';
+        }
+
+        if (homesSlider) homesSlider.addEventListener('input', calculate);
+        if (valueSlider) valueSlider.addEventListener('input', calculate);
+
+        calculate();
+    });
+</script>

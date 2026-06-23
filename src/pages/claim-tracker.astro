@@ -1,0 +1,501 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="Opposition Claim Tracker | Every Claim Fact-Checked | TomorrowBeginsHere.com"
+    description="Track every major opposition claim about data centers — debunked, fact-checked, and sourced. The definitive reference for journalists, officials, and informed residents."
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-red-950/60 to-slate-900 z-0"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center z-0 opacity-10 mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-red-500/15 text-red-300 font-bold tracking-widest uppercase text-xs mb-6 border border-red-500/25">Transparency Dashboard</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">Opposition Claim Tracker</h1>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light">
+                Every major opposition claim—tracked, sourced, and fact-checked against verifiable data. Click any claim to see the evidence.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-5 py-3 text-center">
+                    <div class="text-2xl font-black text-white">15</div>
+                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Claims Tracked</div>
+                </div>
+                <div class="bg-red-500/10 backdrop-blur-sm border border-red-500/20 rounded-xl px-5 py-3 text-center">
+                    <div class="text-2xl font-black text-red-400">10</div>
+                    <div class="text-[10px] font-bold text-red-300/70 uppercase tracking-wider">Debunked (False)</div>
+                </div>
+                <div class="bg-amber-500/10 backdrop-blur-sm border border-amber-500/20 rounded-xl px-5 py-3 text-center">
+                    <div class="text-2xl font-black text-amber-400">5</div>
+                    <div class="text-[10px] font-bold text-amber-300/70 uppercase tracking-wider">Misleading</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="bg-white border-b border-slate-200 sticky top-20 z-40 shadow-sm" id="filter-bar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2" id="category-filters">
+                    <button data-category="all" class="filter-pill active px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200 cursor-pointer">All</button>
+                    <button data-category="water" class="filter-pill px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200 cursor-pointer">💧 Water</button>
+                    <button data-category="power" class="filter-pill px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200 cursor-pointer">⚡ Power</button>
+                    <button data-category="economy" class="filter-pill px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200 cursor-pointer">💰 Economy</button>
+                    <button data-category="environment" class="filter-pill px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200 cursor-pointer">🌿 Environment</button>
+                    <button data-category="health" class="filter-pill px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200 cursor-pointer">🏥 Health</button>
+                    <button data-category="influence" class="filter-pill px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200 cursor-pointer">🌐 Influence</button>
+                    <button data-category="community" class="filter-pill px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-200 cursor-pointer">🏘️ Community</button>
+                </div>
+                <!-- Status Filters -->
+                <div class="flex gap-2" id="status-filters">
+                    <button data-status="all" class="status-pill active px-3 py-1.5 rounded-full text-xs font-bold border transition-all duration-200 cursor-pointer">All</button>
+                    <button data-status="false" class="status-pill px-3 py-1.5 rounded-full text-xs font-bold border transition-all duration-200 cursor-pointer">❌ False</button>
+                    <button data-status="misleading" class="status-pill px-3 py-1.5 rounded-full text-xs font-bold border transition-all duration-200 cursor-pointer">⚠️ Misleading</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Claims Grid -->
+    <section class="py-12 lg:py-16 bg-slate-50 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-4" id="claims-container">
+
+                <!-- Claim 1 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="water" data-status="false">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200 flex-shrink-0 mt-0.5">❌ False</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"Data centers will drain our water supply."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">💧 Water</span>
+                                <span class="text-[10px] text-slate-400">Common opposition talking point</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">All U.S. data centers combined account for <strong class="text-slate-900">less than 0.5%</strong> of national freshwater consumption. Modern hyperscale facilities use closed-loop cooling systems that recirculate water rather than evaporating it. A single 18-hole golf course uses roughly <strong>23× more water</strong> per year than a modern data center campus.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/water-usage" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Water Usage Data →</a>
+                            <a href="/closed-loop-cooling" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Closed-Loop Cooling →</a>
+                            <a href="/myth-vs-reality" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Myth vs. Reality →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 2 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="power" data-status="false">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200 flex-shrink-0 mt-0.5">❌ False</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"They'll raise our electricity bills."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">⚡ Power</span>
+                                <span class="text-[10px] text-slate-400">Common fear-based claim</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">Texas (ERCOT) industrial rate structures ensure large industrial users pay for their own infrastructure upgrades. Modern data centers increasingly build behind-the-meter generation (solar, wind, battery storage) and can act as <strong class="text-slate-900">bidirectional power suppliers</strong>, sending stored electricity back to the grid during peak demand and severe weather emergencies.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/energy-prices" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Energy Prices by State →</a>
+                            <a href="/myth-vs-reality" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Myth vs. Reality →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 3 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="economy" data-status="false">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200 flex-shrink-0 mt-0.5">❌ False</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"Data centers create no jobs."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">💰 Economy</span>
+                                <span class="text-[10px] text-slate-400">Frequently repeated by opposition groups</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">A single hyperscale campus creates <strong class="text-slate-900">100–200+ permanent, high-paying positions</strong> that do not require a four-year degree: Data Center Technicians ($55K–$85K), Critical Facilities Engineers ($75K–$120K), Security Operations Analysts ($65K–$95K), Fiber Splicers ($60K–$90K). This does not include the thousands of construction jobs during the multi-year build phase.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/careers" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Career Pathways →</a>
+                            <a href="/economic-impact" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Economic Impact →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 4 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="community" data-status="misleading">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-700 border border-amber-200 flex-shrink-0 mt-0.5">⚠️ Misleading</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"They'll crash property values."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">🏘️ Community</span>
+                                <span class="text-[10px] text-slate-400">Common homeowner concern</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">In every documented case study — Loudoun County, VA; Prineville, OR; Quincy, WA; New Albany, OH — <strong class="text-slate-900">property values increased</strong> after data center development due to massively improved school funding, infrastructure upgrades, and increased economic activity. The tax base expansion often leads to <strong>lower effective residential tax rates</strong>.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/loudoun-county-model" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Loudoun County Model →</a>
+                            <a href="/success-stories" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Success Stories →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 5 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="environment" data-status="misleading">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-700 border border-amber-200 flex-shrink-0 mt-0.5">⚠️ Misleading</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"The noise will be unbearable for neighbors."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">🌿 Environment</span>
+                                <span class="text-[10px] text-slate-400">Adjacent resident concern</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">At typical setback distances (500–1,000 ft), a modern data center with sound shrouds and landscaping produces <strong class="text-slate-900">35–45 dB at the property line</strong> — quieter than a typical suburban neighborhood (50–60 dB) and comparable to a quiet library. Use our interactive Noise Simulator to test this with real physics.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/interactive/noise-simulator" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Noise Simulator →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 6 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="environment" data-status="misleading">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-700 border border-amber-200 flex-shrink-0 mt-0.5">⚠️ Misleading</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"Data centers are bad for the environment."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">🌿 Environment</span>
+                                <span class="text-[10px] text-slate-400">Broad environmental activist claim</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">Modern data centers are increasingly carbon-neutral or carbon-negative. They use closed-loop air cooling (zero water evaporation), on-site solar and wind generation, and massive battery storage. The environmental footprint of a data center on a given parcel of land is <strong class="text-slate-900">dramatically smaller</strong> than a residential subdivision's impact on the same land (impervious cover, runoff, wastewater, etc.).</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/closed-loop-cooling" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Closed-Loop Cooling →</a>
+                            <a href="/interactive/water-simulator" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Water Simulator →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 7 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="economy" data-status="false">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200 flex-shrink-0 mt-0.5">❌ False</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"They don't pay their fair share of taxes."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">💰 Economy</span>
+                                <span class="text-[10px] text-slate-400">Tax abatement misconception</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">Even with temporary tax incentive agreements (Chapter 312/313), a $1B data center adds <strong class="text-slate-900">$15.5 million per year</strong> to local treasuries at full valuation. This revenue funds schools, roads, fire engines, and EMS stations — without adding a single student or emergency call to the system. Compare this to a 500-home subdivision that generates $2.7M in taxes while demanding $7.8M in school costs alone.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/economic-impact" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Economic Impact →</a>
+                            <a href="/your-tax-bill" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Your Tax Bill →</a>
+                            <a href="/interactive/comparison-calculator" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Comparison Calculator →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 8 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="water" data-status="false">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200 flex-shrink-0 mt-0.5">❌ False</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"AI training wastes as much water as an entire city."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">💧 Water</span>
+                                <span class="text-[10px] text-slate-400">Viral social media claim</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">Training the largest AI model (Grok 4) uses <strong class="text-slate-900">less water than 1 square mile of farmland</strong> uses in a year. The total water use of all U.S. data centers combined is less than 0.5% of national freshwater — roughly 15× less than what leaks out of aging municipal pipes nationwide (~3 trillion gallons/year lost).</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/myth-vs-reality" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Myth vs. Reality →</a>
+                            <a href="/ai-doesnt-run-on-wishes" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">AI Doesn't Run on Wishes →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 9 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="influence" data-status="false">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200 flex-shrink-0 mt-0.5">❌ False</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"There's no foreign interference in the data center debate."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">🌐 Influence</span>
+                                <span class="text-[10px] text-slate-400">Denial of documented foreign ops</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">OpenAI's June 2026 threat report documented two PRC-linked operations — <strong class="text-slate-900">"Data Center Bandwagon"</strong> and <strong class="text-slate-900">"Tech and Tariffs"</strong> — that used ChatGPT to generate anti–data center propaganda targeting U.S. audiences. Separately, the AEI report documented <strong>$39 million</strong> in foreign funding flowing to 12 U.S. organizations campaigning against American data center expansion.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/data-center-backlash" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Data Center Backlash →</a>
+                            <a href="/follow-the-money" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Follow the Money →</a>
+                            <a href="/who-is-opposed" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Who Is Opposed? →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 10 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="economy" data-status="misleading">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-700 border border-amber-200 flex-shrink-0 mt-0.5">⚠️ Misleading</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"Only Big Tech benefits — not local communities."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">💰 Economy</span>
+                                <span class="text-[10px] text-slate-400">Anti-corporate sentiment</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">In Prineville, Oregon, Meta's data center rescued a declining timber town, moving average wages from the <strong class="text-slate-900">lowest in the state to the highest</strong>. In Quincy, WA, Microsoft's tax revenue fully funded a new high school, library, and hospital. In New Albany, OH, Amazon alone contributed <strong>$1.4 billion</strong> to local GDP between 2015–2024.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/success-stories" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Success Stories →</a>
+                            <a href="/bastrop-county-story" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">The Bastrop Story →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 11 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="community" data-status="false">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200 flex-shrink-0 mt-0.5">❌ False</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"There's no oversight or regulation of data centers."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">🏘️ Community</span>
+                                <span class="text-[10px] text-slate-400">Legislative awareness gap</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">Texas Senate Bill 6 (SB6) and a growing wave of state legislation across 20+ states are creating comprehensive regulatory frameworks for data center development. These include <strong class="text-slate-900">water usage reporting requirements, noise ordinances, setback mandates, environmental impact reviews, and community benefit agreements</strong>.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/regulatory-wave" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">The Regulatory Wave →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 12 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="health" data-status="misleading">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-700 border border-amber-200 flex-shrink-0 mt-0.5">⚠️ Misleading</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"Data centers cause health problems for nearby residents."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">🏥 Health</span>
+                                <span class="text-[10px] text-slate-400">EHP-sourced claim</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">The widely-cited EHP "Dangers of Data Centers" paper relies on <strong class="text-slate-900">Pennsylvania-centric utility rate structures and outdated evaporative cooling data</strong> that does not apply to modern air-cooled Texas facilities built under SB6. Data centers produce no emissions, no chemical runoff, and no airborne pollutants. Their noise at property-line distances is below ambient suburban levels.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/refuting-ehp-dangers-of-data-centers" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Refuting EHP →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 13 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="water" data-status="false">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200 flex-shrink-0 mt-0.5">❌ False</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"Data centers use more water than agriculture."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">💧 Water</span>
+                                <span class="text-[10px] text-slate-400">Wildly inaccurate comparison</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">Agricultural irrigation accounts for approximately <strong class="text-slate-900">50% of all U.S. freshwater</strong> — over 100× the amount used by all data centers combined. All U.S. data centers use less than 0.5% of national freshwater. This claim inverts reality by a factor of 100.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/myth-vs-reality" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Myth vs. Reality →</a>
+                            <a href="/water-usage" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Water Usage Data →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 14 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="influence" data-status="false">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200 flex-shrink-0 mt-0.5">❌ False</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"The opposition movement is purely grassroots."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">🌐 Influence</span>
+                                <span class="text-[10px] text-slate-400">Funding transparency issue</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">The AEI report revealed that 12 U.S. organizations actively campaigning against data centers have collectively received over <strong class="text-slate-900">$39 million from foreign foundations</strong> based in Switzerland, the UK, and Denmark. While individual community concerns are genuine, much of the organized, state-level opposition is funded and coordinated by well-resourced national advocacy networks.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/follow-the-money" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Follow the Money →</a>
+                            <a href="/who-is-opposed" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Who Is Opposed? →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Claim 15 -->
+                <div class="claim-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-category="community" data-status="false">
+                    <button class="claim-toggle w-full text-left p-6 flex items-start gap-4 cursor-pointer hover:bg-slate-50/50 transition-colors">
+                        <span class="claim-status-badge inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700 border border-red-200 flex-shrink-0 mt-0.5">❌ False</span>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg leading-snug">"A residential subdivision would be better for the community."</h3>
+                            <div class="flex flex-wrap items-center gap-2 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">🏘️ Community</span>
+                                <span class="text-[10px] text-slate-400">Most common alternative proposal</span>
+                            </div>
+                        </div>
+                        <svg class="claim-chevron w-5 h-5 text-slate-400 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="claim-content hidden border-t border-slate-100 bg-slate-50/50 p-6">
+                        <p class="text-slate-600 leading-relaxed mb-4">A 500-home subdivision generates ~$2.7M in property taxes while costing the ISD ~$7.8M in new student education costs alone — a <strong class="text-slate-900">net drain of $5.1 million</strong>. It also adds 300,000 gal/day of water demand, 5,000 daily vehicle trips, and 2,500 annual emergency calls. A data center generates 5.7× more revenue with zero students, 95% less water, and near-zero emergency burden. Use our calculator to see for yourself.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/interactive/comparison-calculator" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Comparison Calculator →</a>
+                            <a href="/economic-impact" class="inline-flex items-center gap-1 text-xs font-bold text-tech-blue hover:underline">Economic Impact →</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="hidden text-center py-16">
+                <div class="text-4xl mb-4">🔍</div>
+                <h3 class="text-xl font-bold text-slate-700 mb-2">No claims match your filters</h3>
+                <p class="text-slate-500">Try selecting a different category or status.</p>
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+    .filter-pill {
+        background: white;
+        color: #64748b;
+        border-color: #e2e8f0;
+    }
+    .filter-pill:hover, .filter-pill.active {
+        background: #0f172a;
+        color: white;
+        border-color: #0f172a;
+    }
+    .status-pill {
+        background: white;
+        color: #64748b;
+        border-color: #e2e8f0;
+    }
+    .status-pill:hover, .status-pill.active {
+        background: #0f172a;
+        color: white;
+        border-color: #0f172a;
+    }
+    .claim-card.hidden-by-filter {
+        display: none;
+    }
+    .claim-card .claim-chevron.rotated {
+        transform: rotate(180deg);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.claim-card') as NodeListOf<HTMLElement>;
+        const categoryBtns = document.querySelectorAll('.filter-pill') as NodeListOf<HTMLElement>;
+        const statusBtns = document.querySelectorAll('.status-pill') as NodeListOf<HTMLElement>;
+        const noResults = document.getElementById('no-results');
+
+        let activeCategory = 'all';
+        let activeStatus = 'all';
+
+        // Accordion toggle
+        cards.forEach(card => {
+            const toggle = card.querySelector('.claim-toggle');
+            const content = card.querySelector('.claim-content');
+            const chevron = card.querySelector('.claim-chevron');
+            if (toggle && content && chevron) {
+                toggle.addEventListener('click', () => {
+                    content.classList.toggle('hidden');
+                    chevron.classList.toggle('rotated');
+                });
+            }
+        });
+
+        function applyFilters() {
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const cat = card.dataset.category || '';
+                const status = card.dataset.status || '';
+
+                const catMatch = activeCategory === 'all' || cat === activeCategory;
+                const statusMatch = activeStatus === 'all' || status === activeStatus;
+
+                if (catMatch && statusMatch) {
+                    card.classList.remove('hidden-by-filter');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden-by-filter');
+                }
+            });
+
+            if (noResults) {
+                noResults.classList.toggle('hidden', visibleCount > 0);
+            }
+        }
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeCategory = btn.dataset.category || 'all';
+                applyFilters();
+            });
+        });
+
+        statusBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                statusBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeStatus = btn.dataset.status || 'all';
+                applyFilters();
+            });
+        });
+    });
+</script>

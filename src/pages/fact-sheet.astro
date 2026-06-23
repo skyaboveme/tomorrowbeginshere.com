@@ -1,0 +1,308 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="Printable Fact Sheet | Data Center Facts for Bastrop County | TomorrowBeginsHere.com"
+    description="Download and print a one-page fact sheet with key data center statistics. Perfect for town halls, HOA meetings, and sharing with neighbors."
+>
+    <!-- Screen-Only Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden print-hide">
+        <div class="absolute inset-0 bg-gradient-to-br from-pine-green/80 to-tech-blue/80 z-0 mix-blend-multiply"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white font-bold tracking-widest uppercase text-xs mb-4 backdrop-blur-sm">Free Community Resource</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">Printable Fact Sheet</h1>
+            <p class="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light mb-8">
+                A one-page summary of key data center facts. Print it, bring it to a town hall, share it with your neighbors.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="window.print()" class="inline-flex items-center justify-center gap-2 bg-white text-tech-blue px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-slate-50 hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
+                    Print This Fact Sheet
+                </button>
+                <div class="flex items-center gap-2 text-slate-400 text-sm">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span>Tip: Choose "Save as PDF" in your print dialog to create a PDF file</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fact Sheet Document -->
+    <section class="py-12 bg-slate-100 print-bg-white">
+        <div class="max-w-[8.5in] mx-auto px-4 sm:px-6">
+
+            <!-- The Printable Document -->
+            <div class="fact-sheet-page bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden print-no-shadow print-no-border print-no-rounded">
+
+                <!-- Document Header -->
+                <div class="fact-sheet-header bg-gradient-to-r from-slate-900 to-slate-800 text-white px-8 py-6 print-px-6 print-py-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-2xl font-bold tracking-tight print-text-xl">TomorrowBeginsHere.com</div>
+                            <div class="text-xs text-slate-300 uppercase tracking-widest mt-0.5 font-semibold">Empowering Rural Prosperity</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-slate-400 uppercase tracking-wider font-bold">Community Fact Sheet</div>
+                            <div class="text-xs text-slate-500">June 2026 Edition</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/10">
+                        <h2 class="text-xl font-bold tracking-tight print-text-lg">Data Center Facts for Bastrop County, Texas</h2>
+                        <p class="text-sm text-slate-300 mt-1 font-light">Verified statistics. Transparent sources. Your community, your decision.</p>
+                    </div>
+                </div>
+
+                <!-- Document Body -->
+                <div class="px-8 py-6 print-px-6 print-py-4">
+
+                    <!-- 4-Stat Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <div class="bg-cyan-50 border border-cyan-100 rounded-xl p-4 text-center print-rounded-lg">
+                            <div class="text-2xl mb-1">💧</div>
+                            <div class="text-xl font-black text-cyan-700 print-text-lg">&lt; 0.5%</div>
+                            <div class="text-[10px] font-bold text-cyan-600 uppercase tracking-wider mt-1 leading-tight">of U.S. freshwater used by ALL data centers</div>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-100 rounded-xl p-4 text-center print-rounded-lg">
+                            <div class="text-2xl mb-1">⚡</div>
+                            <div class="text-xl font-black text-amber-700 print-text-lg">Behind-the-Meter</div>
+                            <div class="text-[10px] font-bold text-amber-600 uppercase tracking-wider mt-1 leading-tight">Self-powered solar, wind, and battery storage</div>
+                        </div>
+                        <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-4 text-center print-rounded-lg">
+                            <div class="text-2xl mb-1">💰</div>
+                            <div class="text-xl font-black text-emerald-700 print-text-lg">$15.5M/yr</div>
+                            <div class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider mt-1 leading-tight">Tax revenue per $1 billion invested</div>
+                        </div>
+                        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-center print-rounded-lg">
+                            <div class="text-2xl mb-1">🎓</div>
+                            <div class="text-xl font-black text-indigo-700 print-text-lg">$0</div>
+                            <div class="text-[10px] font-bold text-indigo-600 uppercase tracking-wider mt-1 leading-tight">Added student burden on local schools</div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Section -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-6 h-0.5 bg-tech-blue rounded-full"></span>
+                            Data Center vs. 500-Home Subdivision
+                        </h3>
+                        <div class="border border-slate-200 rounded-xl overflow-hidden print-rounded-lg">
+                            <table class="w-full text-left border-collapse text-sm">
+                                <thead>
+                                    <tr class="bg-slate-50 border-b border-slate-200">
+                                        <th class="py-2.5 px-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-2/5">Metric</th>
+                                        <th class="py-2.5 px-4 text-xs font-bold text-red-500 uppercase tracking-wider text-center w-[30%]">500 Homes</th>
+                                        <th class="py-2.5 px-4 text-xs font-bold text-emerald-600 uppercase tracking-wider text-center w-[30%]">Data Center</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    <tr>
+                                        <td class="py-2 px-4 text-slate-700 font-medium">Annual Tax Revenue</td>
+                                        <td class="py-2 px-4 text-center text-red-600 font-bold">$2.7M</td>
+                                        <td class="py-2 px-4 text-center text-emerald-600 font-bold">$15.5M</td>
+                                    </tr>
+                                    <tr class="bg-slate-50/50">
+                                        <td class="py-2 px-4 text-slate-700 font-medium">Students Added to ISD</td>
+                                        <td class="py-2 px-4 text-center text-red-600 font-bold">~650</td>
+                                        <td class="py-2 px-4 text-center text-emerald-600 font-bold">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-4 text-slate-700 font-medium">Daily Water Use</td>
+                                        <td class="py-2 px-4 text-center text-red-600 font-bold">300K gal</td>
+                                        <td class="py-2 px-4 text-center text-emerald-600 font-bold">14K gal</td>
+                                    </tr>
+                                    <tr class="bg-slate-50/50">
+                                        <td class="py-2 px-4 text-slate-700 font-medium">Daily Vehicle Trips</td>
+                                        <td class="py-2 px-4 text-center text-red-600 font-bold">5,000</td>
+                                        <td class="py-2 px-4 text-center text-emerald-600 font-bold">~150</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-4 text-slate-700 font-medium">Emergency Calls/Year</td>
+                                        <td class="py-2 px-4 text-center text-red-600 font-bold">2,500</td>
+                                        <td class="py-2 px-4 text-center text-emerald-600 font-bold">~12</td>
+                                    </tr>
+                                    <tr class="bg-slate-50/50">
+                                        <td class="py-2 px-4 text-slate-700 font-medium">Avg. Job Salary</td>
+                                        <td class="py-2 px-4 text-center text-red-600 font-bold">~$35K</td>
+                                        <td class="py-2 px-4 text-center text-emerald-600 font-bold">~$78K</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Two-Column Info -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+
+                        <!-- Success Stories -->
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                <span class="w-6 h-0.5 bg-emerald-500 rounded-full"></span>
+                                Verified Success Stories
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="bg-slate-50 rounded-xl p-3 border border-slate-100 print-rounded-lg">
+                                    <div class="font-bold text-slate-900 text-sm">Prineville, Oregon (Meta)</div>
+                                    <p class="text-xs text-slate-500 mt-0.5">Rescued a declining timber town. Moved average wages from the lowest in Oregon to the highest.</p>
+                                </div>
+                                <div class="bg-slate-50 rounded-xl p-3 border border-slate-100 print-rounded-lg">
+                                    <div class="font-bold text-slate-900 text-sm">Quincy, Washington (Microsoft)</div>
+                                    <p class="text-xs text-slate-500 mt-0.5">Tax revenue fully funded a new high school, public library, and community hospital.</p>
+                                </div>
+                                <div class="bg-slate-50 rounded-xl p-3 border border-slate-100 print-rounded-lg">
+                                    <div class="font-bold text-slate-900 text-sm">New Albany, Ohio (Amazon/Google/Meta)</div>
+                                    <p class="text-xs text-slate-500 mt-0.5">Amazon alone contributed $1.4 billion to local GDP between 2015–2024.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Career Pathways -->
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                <span class="w-6 h-0.5 bg-tech-blue rounded-full"></span>
+                                Careers — No Degree Required
+                            </h3>
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center bg-slate-50 rounded-xl px-4 py-2.5 border border-slate-100 print-rounded-lg">
+                                    <span class="text-sm font-medium text-slate-700">Data Center Technician</span>
+                                    <span class="text-sm font-bold text-emerald-600">$55K – $85K</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-50 rounded-xl px-4 py-2.5 border border-slate-100 print-rounded-lg">
+                                    <span class="text-sm font-medium text-slate-700">Critical Facilities Engineer</span>
+                                    <span class="text-sm font-bold text-emerald-600">$75K – $120K</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-50 rounded-xl px-4 py-2.5 border border-slate-100 print-rounded-lg">
+                                    <span class="text-sm font-medium text-slate-700">SOC Analyst</span>
+                                    <span class="text-sm font-bold text-emerald-600">$65K – $95K</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-50 rounded-xl px-4 py-2.5 border border-slate-100 print-rounded-lg">
+                                    <span class="text-sm font-medium text-slate-700">Fiber / Network Tech</span>
+                                    <span class="text-sm font-bold text-emerald-600">$60K – $90K</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Water Comparison Callout -->
+                    <div class="bg-cyan-50 border border-cyan-100 rounded-xl p-4 mb-6 print-rounded-lg">
+                        <h3 class="text-sm font-bold text-cyan-800 uppercase tracking-wider mb-2">Water Usage Reality Check</h3>
+                        <div class="grid grid-cols-3 gap-3 text-center">
+                            <div>
+                                <div class="text-lg font-black text-red-600">114M</div>
+                                <div class="text-[10px] font-bold text-slate-500 uppercase">gal/yr · 18-hole golf course</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-black text-red-500">109M</div>
+                                <div class="text-[10px] font-bold text-slate-500 uppercase">gal/yr · 500-home subdivision</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-black text-emerald-600">5M</div>
+                                <div class="text-[10px] font-bold text-slate-500 uppercase">gal/yr · modern data center</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Document Footer -->
+                <div class="fact-sheet-footer bg-slate-900 text-white px-8 py-4 print-px-6 print-py-3">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-2">
+                        <div class="text-center sm:text-left">
+                            <div class="text-sm font-bold">tomorrowbeginshere.com/myth-vs-reality</div>
+                            <div class="text-[10px] text-slate-400">Get the facts. Shape the future.</div>
+                        </div>
+                        <div class="text-center sm:text-right">
+                            <div class="text-[10px] text-slate-400">An independent educational resource for Bastrop County, Texas</div>
+                            <div class="text-[10px] text-slate-500">© 2026 TomorrowBeginsHere.com · contact@tomorrowbeginshere.com</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Screen-only secondary actions -->
+            <div class="mt-8 text-center print-hide">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/myth-vs-reality" class="inline-flex items-center gap-2 bg-white text-slate-700 px-6 py-3 rounded-xl font-bold border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                        Read the Full Facts →
+                    </a>
+                    <a href="/interactive/comparison-calculator" class="inline-flex items-center gap-2 bg-white text-slate-700 px-6 py-3 rounded-xl font-bold border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                        Try the Comparison Calculator →
+                    </a>
+                    <a href="/claim-tracker" class="inline-flex items-center gap-2 bg-white text-slate-700 px-6 py-3 rounded-xl font-bold border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                        View Claim Tracker →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+    /* Print Styles */
+    @media print {
+        /* Hide site chrome */
+        .print-hide,
+        header,
+        footer,
+        .header-accent,
+        nav {
+            display: none !important;
+        }
+
+        /* Reset backgrounds */
+        body, html {
+            background: white !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .print-bg-white {
+            background: white !important;
+            padding: 0 !important;
+        }
+
+        .print-no-shadow {
+            box-shadow: none !important;
+        }
+        .print-no-border {
+            border: none !important;
+        }
+        .print-no-rounded {
+            border-radius: 0 !important;
+        }
+
+        .fact-sheet-page {
+            margin: 0 !important;
+            max-width: 100% !important;
+            box-shadow: none !important;
+            border: none !important;
+            border-radius: 0 !important;
+        }
+
+        .print-px-6 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+        .print-py-4 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+        .print-py-3 { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+        .print-text-xl { font-size: 1.25rem !important; }
+        .print-text-lg { font-size: 1.125rem !important; }
+        .print-rounded-lg { border-radius: 0.5rem !important; }
+
+        /* Force colors to print */
+        .fact-sheet-header,
+        .fact-sheet-footer {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* Ensure it fits on one page */
+        .fact-sheet-page {
+            page-break-inside: avoid;
+        }
+
+        @page {
+            margin: 0.25in;
+            size: letter;
+        }
+    }
+</style>

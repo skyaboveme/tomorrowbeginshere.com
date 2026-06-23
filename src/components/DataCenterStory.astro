@@ -1,0 +1,480 @@
+---
+/**
+ * DataCenterStory.astro
+ * An interactive, full-screen "story" presentation embedded in the home page.
+ * Instagram/TikTok-style tap-through slides covering the history of data centers.
+ */
+const slides = [
+  {
+    id: 'intro',
+    era: 'Introduction',
+    badge: 'The Story of Data Centers',
+    title: 'The Engine of the Modern World',
+    body: 'Almost everything you did online today — every text, payment, stream, and search — passed through a data center. These facilities are the quiet, critical foundation of our digital lives.',
+    stat: '',
+    statLabel: '',
+    gradient: 'from-slate-950 via-slate-900/60 to-slate-950/40',
+    accent: 'tech-blue',
+    image: '/images/story/story_intro.png',
+  },
+  {
+    id: 'vintage',
+    era: '1940s–1960s',
+    badge: 'The First Rooms',
+    title: 'Birth of the Machine Room',
+    body: 'In 1945, ENIAC filled an entire room and weighed 30 tons. Mainframe computers in the 50s and 60s required dedicated spaces with raised floors, heavy power systems, and specialized cooling to run.',
+    stat: '30',
+    statLabel: 'Tons (ENIAC Weight)',
+    gradient: 'from-amber-950/70 via-slate-900/60 to-slate-950/40',
+    accent: 'amber',
+    image: '/images/story/story_vintage.png',
+  },
+  {
+    id: 'telecom',
+    era: '1990s',
+    badge: 'The Internet Comeback',
+    title: 'Rise of the World Wide Web',
+    body: 'The PC era scattered computing, but the internet pulled it back. Businesses needed high-speed connections and 24/7 uptime to host websites, sparking the birth of colocation data hubs.',
+    stat: '1990s',
+    statLabel: 'Colocation Era Born',
+    gradient: 'from-blue-950/70 via-slate-900/60 to-slate-950/40',
+    accent: 'blue',
+    image: '/images/story/story_telecom.png',
+  },
+  {
+    id: 'hyperscale',
+    era: '2000s–2010s',
+    badge: 'The Cloud Era',
+    title: 'Sprawling Hyperscale Campuses',
+    body: 'Amazon, Google, and Microsoft began renting computing capacity on demand. To power the global cloud, they built enormous campuses measuring millions of square feet with ultra-efficient cooling.',
+    stat: '2006',
+    statLabel: 'Year the Cloud Launched',
+    gradient: 'from-emerald-950/70 via-slate-900/60 to-slate-950/40',
+    accent: 'green',
+    image: '/images/story/story_hyperscale.png',
+  },
+  {
+    id: 'ai-era',
+    era: 'Today',
+    badge: 'The AI Frontier',
+    title: 'Unprecedented AI Expansion',
+    body: 'Training modern AI networks requires massive clusters of specialized processors. The world has built over 12,000 data centers, and demand is projected to triple by 2030.',
+    stat: '12K+',
+    statLabel: 'Facilities Worldwide',
+    gradient: 'from-purple-950/70 via-slate-900/60 to-slate-950/40',
+    accent: 'purple',
+    image: '/images/story/story_ai.png',
+  },
+  {
+    id: 'usa',
+    era: 'The Future',
+    badge: '🇺🇸 Built in America',
+    title: 'Securing Our Infrastructure',
+    body: 'The U.S. leads with 4,000+ facilities. Ensuring data centers are built on home soil keeps our data secure, powers local economies, and guarantees leadership in the AI-driven technological future.',
+    stat: '4,000+',
+    statLabel: 'U.S. Data Centers',
+    gradient: 'from-blue-950/70 via-slate-900/60 to-red-950/40',
+    accent: 'blue',
+    image: '/images/story/story_america.png',
+  },
+];
+---
+
+<!-- Interactive Data Center Story Presentation -->
+<section class="py-24 bg-slate-950 text-white relative overflow-hidden" id="dc-story-section">
+  <!-- Ambient Background -->
+  <div class="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-tech-blue/8 rounded-full blur-[150px] pointer-events-none"></div>
+  <div class="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-pine-green/8 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+      <span class="inline-flex items-center gap-1.5 bg-tech-blue/10 text-blue-300 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-tech-blue/20 mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+        Interactive Presentation
+      </span>
+      <h2 class="heading-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+        The Story of <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-teal-300">Data Centers</span>
+      </h2>
+      <p class="text-lg text-slate-400 font-light">
+        Tap or click through the story. From room-sized machines to the engine of the modern world.
+      </p>
+    </div>
+
+    <!-- Story Viewer -->
+    <div class="max-w-4xl mx-auto">
+      <div
+        id="dc-story-viewer"
+        class="relative aspect-[3/4] md:aspect-[16/10] rounded-[2rem] overflow-hidden shadow-2xl border border-slate-800/80 cursor-pointer select-none bg-slate-900"
+        role="region"
+        aria-label="Data Center History Story"
+        tabindex="0"
+      >
+        <!-- Progress Bars -->
+        <div class="absolute top-0 left-0 right-0 z-50 flex gap-1 px-3 pt-3" id="dc-story-progress">
+          {slides.map((_, i) => (
+            <div class="flex-1 h-[3px] rounded-full bg-white/20 overflow-hidden">
+              <div
+                class="dc-prog-fill h-full rounded-full bg-white/90 w-0 transition-none"
+                data-prog-idx={i}
+              ></div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Slide Panels -->
+        {slides.map((slide, i) => (
+          <div
+            class={`dc-story-slide absolute inset-0 flex flex-col justify-end p-6 sm:p-8 md:p-12 transition-opacity duration-500 ${i === 0 ? 'opacity-100 z-30' : 'opacity-0 z-10'}`}
+            data-slide-idx={i}
+          >
+            <!-- Background Image with Gradient Overlay -->
+            <div class="absolute inset-0 z-0">
+              <img
+                src={slide.image}
+                alt={slide.title}
+                class="w-full h-full object-cover opacity-60 select-none pointer-events-none scale-100 transition-transform duration-[6000ms] ease-out"
+                loading={i === 0 ? "eager" : "lazy"}
+              />
+              <!-- Mobile Gradient: Bottom-to-Top -->
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/75 to-slate-950/30 md:hidden"></div>
+              <!-- Desktop Gradient: Left-to-Right + subtle Bottom-to-Top -->
+              <div class="absolute inset-0 hidden md:block bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
+              <div class="absolute inset-0 hidden md:block bg-gradient-to-t from-slate-950/45 via-transparent to-transparent"></div>
+            </div>
+
+            <!-- Content Container (Capped width on desktop for perfect readability) -->
+            <div class="relative z-20 w-full md:max-w-xl md:mb-4">
+              {slide.era && (
+                <span class="inline-block text-xs font-bold uppercase tracking-[0.25em] text-white/50 mb-2">
+                  {slide.era}
+                </span>
+              )}
+              <span class={`inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4 bg-white/10 border border-white/20 text-white/80`}>
+                {slide.badge}
+              </span>
+
+              {slide.stat && (
+                <div class="mb-4">
+                  <p class="text-5xl sm:text-6xl font-black text-white leading-none tracking-tight dc-story-stat">
+                    {slide.stat}
+                  </p>
+                  <p class="text-sm text-white/60 font-medium mt-1">{slide.statLabel}</p>
+                </div>
+              )}
+
+              <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight tracking-tight">
+                {slide.title}
+              </h3>
+              <p class="text-sm sm:text-base text-white/70 leading-relaxed font-light">
+                {slide.body}
+              </p>
+
+              {slide.id === 'usa' && (
+                <a
+                  href="/what-is-a-data-center"
+                  class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-white text-slate-900 font-bold rounded-xl text-sm hover:bg-slate-100 transition-colors shadow-lg"
+                  onclick="event.stopPropagation();"
+                >
+                  Read the Full Article
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+
+        <!-- Invisible Tap Zones -->
+        <div class="absolute inset-0 z-40 flex">
+          <div class="w-1/3 h-full" id="dc-story-tap-prev"></div>
+          <div class="w-1/3 h-full"></div>
+          <div class="w-2/3 h-full" id="dc-story-tap-next" style="margin-left: -33.33%"></div>
+        </div>
+
+        <!-- Pause Indicator -->
+        <div id="dc-story-pause-indicator" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 opacity-0 transition-opacity duration-200 pointer-events-none">
+          <div class="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1" /><rect x="14" y="4" width="4" height="16" rx="1" /></svg>
+          </div>
+        </div>
+
+        <!-- Slide Counter -->
+        <div class="absolute top-4 right-4 z-50 bg-black/30 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">
+          <span id="dc-story-counter">1</span> / {slides.length}
+        </div>
+      </div>
+
+      <!-- Controls below viewer -->
+      <div class="flex items-center justify-between mt-4 px-2">
+        <div class="flex items-center gap-2">
+          <button id="dc-story-play-pause" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-white transition-all cursor-pointer" aria-label="Pause story">
+            <svg id="dc-story-pause-icon" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1" /><rect x="14" y="4" width="4" height="16" rx="1" /></svg>
+            <svg id="dc-story-play-icon" class="w-4 h-4 hidden ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <span class="text-xs text-slate-500 font-medium">Auto-advances</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <button id="dc-story-prev-btn" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-white transition-all cursor-pointer" aria-label="Previous slide">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+          </button>
+          <button id="dc-story-next-btn" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-white transition-all cursor-pointer" aria-label="Next slide">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Stat number entrance animation */
+  @keyframes dc-stat-pop {
+    0% { transform: scale(0.5) translateY(20px); opacity: 0; }
+    60% { transform: scale(1.05) translateY(-4px); }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+  }
+  .dc-story-slide[data-active] .dc-story-stat {
+    animation: dc-stat-pop 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Slow Ken Burns style zoom animation on background image when slide is active */
+  @keyframes dc-bg-zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
+  }
+  .dc-story-slide[data-active] img {
+    animation: dc-bg-zoom 6.2s ease-out forwards;
+  }
+
+  /* Progress bar fill animation */
+  .dc-prog-fill[data-filling] {
+    transition: width linear;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const viewer = document.getElementById('dc-story-viewer');
+    const slides = document.querySelectorAll('.dc-story-slide');
+    const progFills = document.querySelectorAll('.dc-prog-fill');
+    const counter = document.getElementById('dc-story-counter');
+    const tapPrev = document.getElementById('dc-story-tap-prev');
+    const tapNext = document.getElementById('dc-story-tap-next');
+    const playPauseBtn = document.getElementById('dc-story-play-pause');
+    const pauseIcon = document.getElementById('dc-story-pause-icon');
+    const playIcon = document.getElementById('dc-story-play-icon');
+    const prevBtn = document.getElementById('dc-story-prev-btn');
+    const nextBtn = document.getElementById('dc-story-next-btn');
+    const pauseIndicator = document.getElementById('dc-story-pause-indicator');
+
+    if (!viewer || !slides.length) return;
+
+    const SLIDE_DURATION = 6000; // 6 seconds per slide
+    const TOTAL = slides.length;
+    let current = 0;
+    let isPaused = false;
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    let fillStart: number | null = null;
+    let fillRaf: number | null = null;
+
+    function goTo(idx: number) {
+      // Clamp
+      if (idx < 0) idx = 0;
+      if (idx >= TOTAL) idx = TOTAL - 1;
+      current = idx;
+
+      // Update slides
+      slides.forEach((s, i) => {
+        const el = s as HTMLElement;
+        if (i === current) {
+          el.classList.remove('opacity-0', 'z-10');
+          el.classList.add('opacity-100', 'z-30');
+          el.setAttribute('data-active', '');
+        } else {
+          el.classList.remove('opacity-100', 'z-30');
+          el.classList.add('opacity-0', 'z-10');
+          el.removeAttribute('data-active');
+        }
+      });
+
+      // Update progress bars
+      progFills.forEach((p, i) => {
+        const el = p as HTMLElement;
+        el.removeAttribute('data-filling');
+        if (i < current) {
+          el.style.width = '100%';
+        } else if (i > current) {
+          el.style.width = '0%';
+        } else {
+          el.style.width = '0%';
+        }
+      });
+
+      // Update counter
+      if (counter) counter.textContent = String(current + 1);
+
+      // Start fill animation for current progress bar
+      startFill();
+    }
+
+    function startFill() {
+      stopFill();
+      if (isPaused) return;
+
+      const fill = progFills[current] as HTMLElement;
+      if (!fill) return;
+
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      fill.setAttribute('data-filling', '');
+
+      // Force reflow
+      void fill.offsetWidth;
+
+      fill.style.transition = `width ${SLIDE_DURATION}ms linear`;
+      fill.style.width = '100%';
+
+      fillStart = Date.now();
+
+      timer = setTimeout(() => {
+        if (current < TOTAL - 1) {
+          goTo(current + 1);
+        }
+        // Stay on last slide
+      }, SLIDE_DURATION);
+    }
+
+    function stopFill() {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      if (fillRaf) {
+        cancelAnimationFrame(fillRaf);
+        fillRaf = null;
+      }
+    }
+
+    function togglePause() {
+      isPaused = !isPaused;
+
+      if (isPaused) {
+        stopFill();
+        // Freeze progress bar at current position
+        const fill = progFills[current] as HTMLElement;
+        if (fill) {
+          const computed = getComputedStyle(fill);
+          fill.style.transition = 'none';
+          fill.style.width = computed.width;
+        }
+        pauseIcon?.classList.add('hidden');
+        playIcon?.classList.remove('hidden');
+        if (pauseIndicator) {
+          pauseIndicator.style.opacity = '1';
+          setTimeout(() => { pauseIndicator.style.opacity = '0'; }, 800);
+        }
+      } else {
+        pauseIcon?.classList.remove('hidden');
+        playIcon?.classList.add('hidden');
+        // Resume fill from current position
+        const fill = progFills[current] as HTMLElement;
+        if (fill && fillStart) {
+          const elapsed = Date.now() - fillStart;
+          const remaining = Math.max(SLIDE_DURATION - elapsed, 500);
+          fill.style.transition = `width ${remaining}ms linear`;
+          fill.style.width = '100%';
+
+          timer = setTimeout(() => {
+            if (current < TOTAL - 1) {
+              goTo(current + 1);
+            }
+          }, remaining);
+        } else {
+          startFill();
+        }
+      }
+    }
+
+    // Tap zones
+    tapPrev?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (isPaused) { isPaused = false; pauseIcon?.classList.remove('hidden'); playIcon?.classList.add('hidden'); }
+      goTo(current - 1);
+    });
+    tapNext?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (isPaused) { isPaused = false; pauseIcon?.classList.remove('hidden'); playIcon?.classList.add('hidden'); }
+      if (current < TOTAL - 1) {
+        goTo(current + 1);
+      }
+    });
+
+    // External buttons
+    prevBtn?.addEventListener('click', () => {
+      if (isPaused) { isPaused = false; pauseIcon?.classList.remove('hidden'); playIcon?.classList.add('hidden'); }
+      goTo(current - 1);
+    });
+    nextBtn?.addEventListener('click', () => {
+      if (isPaused) { isPaused = false; pauseIcon?.classList.remove('hidden'); playIcon?.classList.add('hidden'); }
+      if (current < TOTAL - 1) goTo(current + 1);
+    });
+
+    // Play/Pause button
+    playPauseBtn?.addEventListener('click', togglePause);
+
+    // Keyboard support
+    viewer.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        if (isPaused) { isPaused = false; pauseIcon?.classList.remove('hidden'); playIcon?.classList.add('hidden'); }
+        if (current < TOTAL - 1) goTo(current + 1);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        if (isPaused) { isPaused = false; pauseIcon?.classList.remove('hidden'); playIcon?.classList.add('hidden'); }
+        goTo(current - 1);
+      } else if (e.key === 'p' || e.key === 'P') {
+        togglePause();
+      }
+    });
+
+    // Long press to pause (mobile pattern)
+    let longPressTimer: ReturnType<typeof setTimeout> | null = null;
+    let wasLongPress = false;
+
+    viewer.addEventListener('pointerdown', () => {
+      wasLongPress = false;
+      longPressTimer = setTimeout(() => {
+        wasLongPress = true;
+        if (!isPaused) togglePause();
+      }, 500);
+    });
+    viewer.addEventListener('pointerup', () => {
+      if (longPressTimer) clearTimeout(longPressTimer);
+      // If it was a long press release, resume
+      if (wasLongPress && isPaused) {
+        togglePause();
+      }
+    });
+    viewer.addEventListener('pointerleave', () => {
+      if (longPressTimer) clearTimeout(longPressTimer);
+    });
+
+    // Touch swipe
+    let touchStartX = 0;
+    viewer.addEventListener('touchstart', (e: TouchEvent) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    viewer.addEventListener('touchend', (e: TouchEvent) => {
+      if (wasLongPress) return;
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) {
+        if (isPaused) { isPaused = false; pauseIcon?.classList.remove('hidden'); playIcon?.classList.add('hidden'); }
+        if (diff > 0 && current < TOTAL - 1) goTo(current + 1);
+        else if (diff < 0) goTo(current - 1);
+      }
+    }, { passive: true });
+
+    // Initialize
+    goTo(0);
+  });
+</script>
