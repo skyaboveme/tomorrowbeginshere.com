@@ -1,0 +1,208 @@
+---
+---
+
+<!-- YouTube Shorts / Reels Section -->
+<section class="py-20 bg-slate-950 text-white relative overflow-hidden">
+    <!-- Ambient grid and background accents -->
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-950 z-0"></div>
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-red-600/10 rounded-full blur-3xl z-0"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-tech-blue/10 rounded-full blur-3xl z-0"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <span class="inline-flex items-center gap-1.5 bg-red-500/15 text-red-400 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-red-500/30 mb-4">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                    YouTube Stories
+                </span>
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-white">Watch Our Reels</h2>
+                <p class="text-slate-400 mt-2 text-lg font-light max-w-xl">
+                    Rapid-fire facts, local community stories, and debunked myths straight from our YouTube channel.
+                </p>
+            </div>
+            <a 
+                href="https://www.youtube.com/@TomorrowBeginsHere" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="no-external-icon mt-4 md:mt-0 inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition-all duration-300 shadow-lg hover:shadow-red-600/20 hover:scale-105"
+            >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                Subscribe on YouTube
+            </a>
+        </div>
+
+        <!-- Reels Horizontal Scroll -->
+        <div class="relative group/scroll">
+            <!-- Navigation buttons (hidden on mobile) -->
+            <button id="scroll-prev-btn" class="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-white items-center justify-center z-20 cursor-pointer shadow-lg transition-all hover:scale-110 active:scale-95" aria-label="Scroll left">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button id="scroll-next-btn" class="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-white items-center justify-center z-20 cursor-pointer shadow-lg transition-all hover:scale-110 active:scale-95" aria-label="Scroll right">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
+            </button>
+
+            <!-- Scroll Wrapper -->
+            <div 
+                id="reels-container" 
+                class="flex gap-6 overflow-x-auto pb-6 scroll-smooth scroll-snap-x snap-mandatory"
+                style="scrollbar-width: none; -ms-overflow-style: none;"
+            >
+                <!-- Loading Skeletons (Shimmer) -->
+                {Array.from({ length: 5 }).map(() => (
+                    <div class="flex-shrink-0 w-[240px] sm:w-[260px] aspect-[9/16] rounded-3xl border border-slate-800 flex flex-col justify-end p-6 skeleton-shimmer">
+                        <div class="w-12 h-12 rounded-full bg-slate-700/50 mb-4 mx-auto"></div>
+                        <div class="h-4 bg-slate-700/50 rounded w-3/4 mb-2 mx-auto"></div>
+                        <div class="h-3 bg-slate-700/50 rounded w-1/2 mx-auto"></div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div 
+    id="reels-lightbox" 
+    class="fixed inset-0 z-[9999] bg-slate-950/90 backdrop-blur-md opacity-0 pointer-events-none flex items-center justify-center p-4 transition-all duration-300"
+    role="dialog" 
+    aria-modal="true"
+>
+    <button id="lightbox-close-btn" class="absolute top-6 right-6 w-12 h-12 rounded-full bg-slate-800/80 hover:bg-slate-700 text-white flex items-center justify-center cursor-pointer transition-transform hover:scale-110" aria-label="Close video">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+
+    <div class="relative w-full max-w-[390px] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-2xl border border-slate-800 bg-black">
+        <iframe 
+            id="lightbox-iframe" 
+            class="absolute inset-0 w-full h-full"
+            src="" 
+            title="YouTube Video Player"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen
+        ></iframe>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const reelsContainer = document.getElementById('reels-container');
+        const prevBtn = document.getElementById('scroll-prev-btn');
+        const nextBtn = document.getElementById('scroll-next-btn');
+        const lightbox = document.getElementById('reels-lightbox');
+        const lightboxIframe = document.getElementById('lightbox-iframe') as HTMLIFrameElement;
+        const closeBtn = document.getElementById('lightbox-close-btn');
+
+        if (!reelsContainer) return;
+
+        // Fetch dynamic YouTube stories from the custom hybrid endpoint
+        fetch('/api/shorts.json')
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.videos && data.videos.length > 0) {
+                    reelsContainer.innerHTML = '';
+                    
+                    const videos = data.videos;
+                    
+                    videos.forEach((video: any) => {
+                        const isShort = video.isShort;
+                        
+                        // Create button-card element
+                        const card = document.createElement('button');
+                        card.className = "flex-shrink-0 w-[240px] sm:w-[260px] aspect-[9/16] rounded-3xl overflow-hidden relative group/card cursor-pointer border border-slate-900 hover:border-red-500/50 shadow-lg hover:shadow-red-500/10 hover:scale-[1.02] transition-all duration-300 snap-start text-left";
+                        
+                        const embedUrl = `https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0`;
+                        card.setAttribute('data-embed-url', embedUrl);
+
+                        const thumbUrl = video.thumbnail || `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+
+                        card.innerHTML = `
+                            <!-- Thumbnail -->
+                            <img src="${thumbUrl}" alt="${video.title.replace(/"/g, '&quot;')}" class="absolute inset-0 w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500" loading="lazy" />
+                            
+                            <!-- Vignette Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10 opacity-90 group-hover/card:opacity-95 transition-opacity"></div>
+                            
+                            <!-- Red Play button for Reels -->
+                            <div class="absolute inset-0 flex items-center justify-center z-20">
+                                <div class="w-12 h-12 rounded-full bg-red-600/90 group-hover/card:bg-red-600 flex items-center justify-center shadow-lg transform transition-transform duration-300 group-hover/card:scale-110 group-hover/card:rotate-6">
+                                    <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
+                            
+                            <!-- Title Overlay -->
+                            <div class="absolute bottom-0 left-0 right-0 p-5 z-20">
+                                <div class="flex items-center gap-1.5 mb-2">
+                                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                                    <span class="text-[0.6rem] font-bold uppercase tracking-widest text-red-400">
+                                        ${isShort ? 'YouTube Short' : 'Video Story'}
+                                    </span>
+                                </div>
+                                <h3 class="text-xs sm:text-sm font-bold text-white leading-snug line-clamp-3 group-hover/card:text-red-200 transition-colors">
+                                    ${video.title}
+                                </h3>
+                            </div>
+                        `;
+                        
+                        // Lightbox trigger click handler
+                        card.addEventListener('click', () => {
+                            if (lightboxIframe && lightbox) {
+                                lightboxIframe.src = embedUrl;
+                                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                                document.body.style.overflow = 'hidden';
+                            }
+                        });
+
+                        reelsContainer.appendChild(card);
+                    });
+
+                    // Button scroll actions
+                    if (prevBtn && nextBtn) {
+                        prevBtn.addEventListener('click', () => {
+                            reelsContainer.scrollBy({ left: -280, behavior: 'smooth' });
+                        });
+                        nextBtn.addEventListener('click', () => {
+                            reelsContainer.scrollBy({ left: 280, behavior: 'smooth' });
+                        });
+                    }
+                } else {
+                    renderFallback();
+                }
+            })
+            .catch(err => {
+                console.error("Error loading Shorts:", err);
+                renderFallback();
+            });
+
+        function renderFallback() {
+            if (reelsContainer) {
+                reelsContainer.innerHTML = `
+                    <div class="col-span-full w-full py-12 text-center text-slate-400">
+                        <p>Unable to load stories directly. Visit our <a href="https://www.youtube.com/@TomorrowBeginsHere" target="_blank" class="text-red-400 underline font-semibold">YouTube Channel</a> to view them.</p>
+                    </div>
+                `;
+            }
+        }
+
+        const closeLightbox = () => {
+            if (lightbox && lightboxIframe) {
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+                lightboxIframe.src = '';
+                document.body.style.overflow = '';
+            }
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+        if (lightbox) {
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    });
+</script>
