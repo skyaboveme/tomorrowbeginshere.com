@@ -1,0 +1,476 @@
+---
+// DataFlowSimulator.astro
+// Interactive packet journey and latency simulator.
+---
+
+<div class="my-16 bg-white border border-slate-200 rounded-[2rem] p-6 lg:p-12 shadow-xl relative overflow-hidden" id="data-flow-simulator">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-tech-blue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-pine-green/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+    
+    <div class="relative z-10 max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-tech-blue/10 text-tech-blue font-bold tracking-widest uppercase text-xs mb-4 border border-tech-blue/20">Speed & Latency Simulator</span>
+            <h3 class="text-3xl font-black text-slate-900 mb-4 tracking-tight">The Split-Second Journey of a Single Click</h3>
+            <p class="text-slate-600 max-w-2xl mx-auto text-base">
+                Choose a digital action below and transmit a packet. Watch how local infrastructure reduces the latency from a frustrating lag to an instantaneous response.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            <!-- Left Side: Simulator Controls (5 cols) -->
+            <div class="lg:col-span-5 flex flex-col justify-between bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-2xl">
+                <div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">1. Select a Digital Action</h4>
+                    <div class="space-y-3" id="simulator-actions">
+                        <!-- Action 1 -->
+                        <button class="action-btn w-full p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-tech-blue/50 text-left flex items-center gap-4 transition-all duration-300 active-action shadow-sm" data-action="stream" data-label="HD Streaming" data-local="11.2 ms" data-remote="78.5 ms">
+                            <div class="w-10 h-10 rounded-lg bg-tech-blue/10 text-tech-blue flex items-center justify-center flex-shrink-0 text-xl font-bold">🎬</div>
+                            <div>
+                                <div class="font-bold text-slate-800 text-sm">Stream 4K Video</div>
+                                <div class="text-xs text-slate-500">Retrieves 12.4 MB video block</div>
+                            </div>
+                        </button>
+                        
+                        <!-- Action 2 -->
+                        <button class="action-btn w-full p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-tech-blue/50 text-left flex items-center gap-4 transition-all duration-300 shadow-sm" data-action="ai" data-label="AI Prompt" data-local="14.8 ms" data-remote="94.2 ms">
+                            <div class="w-10 h-10 rounded-lg bg-tech-blue/10 text-tech-blue flex items-center justify-center flex-shrink-0 text-xl font-bold">🧠</div>
+                            <div>
+                                <div class="font-bold text-slate-800 text-sm">Ask AI Assistant</div>
+                                <div class="text-xs text-slate-500">Requires massive GPU compute cluster</div>
+                            </div>
+                        </button>
+
+                        <!-- Action 3 -->
+                        <button class="action-btn w-full p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-tech-blue/50 text-left flex items-center gap-4 transition-all duration-300 shadow-sm" data-action="bank" data-label="Secure Banking" data-local="9.5 ms" data-remote="72.1 ms">
+                            <div class="w-10 h-10 rounded-lg bg-tech-blue/10 text-tech-blue flex items-center justify-center flex-shrink-0 text-xl font-bold">💳</div>
+                            <div>
+                                <div class="font-bold text-slate-800 text-sm">Process Payment</div>
+                                <div class="text-xs text-slate-500">Secures transaction with 256-bit hash</div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Host Selector -->
+                    <div class="mt-8 pt-6 border-t border-slate-200">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">2. Choose Server Location</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="location-label border-2 border-tech-blue/20 bg-tech-blue/5 text-tech-blue rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer font-bold text-sm transition-all duration-300">
+                                <input type="radio" name="server-location" value="local" checked class="sr-only" />
+                                <span class="w-3 h-3 rounded-full border border-tech-blue flex items-center justify-center bg-tech-blue"><span class="w-1 h-1 rounded-full bg-white"></span></span>
+                                Local (Texas)
+                            </label>
+                            <label class="location-label border border-slate-200 bg-white text-slate-600 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer font-bold text-sm transition-all duration-300">
+                                <input type="radio" name="server-location" value="remote" class="sr-only" />
+                                <span class="w-3 h-3 rounded-full border border-slate-300 flex items-center justify-center bg-white"><span class="w-1 h-1 rounded-full bg-transparent"></span></span>
+                                Remote (Virginia)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-slate-200">
+                    <button type="button" id="simulate-btn" class="w-full py-4 text-white bg-tech-blue hover:bg-slate-900 font-bold rounded-xl shadow-md transition-all duration-300 text-base flex items-center justify-center gap-2 group cursor-pointer">
+                        <span>Transmit Packet Request</span>
+                        <svg class="w-5 h-5 text-teal-300 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side: Live Visualizer Screen (7 cols) -->
+            <div class="lg:col-span-7 bg-slate-950 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between relative overflow-hidden shadow-inner text-white min-h-[400px]">
+                <!-- Grid background overlay -->
+                <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 20px 20px;"></div>
+                
+                <!-- Screen Header -->
+                <div class="flex justify-between items-start z-10">
+                    <div>
+                        <span class="inline-block px-2 py-0.5 rounded bg-tech-blue/40 border border-tech-blue/50 text-[10px] uppercase font-bold tracking-wider text-blue-200 mb-1" id="screen-status-badge">Awaiting Packet</span>
+                        <h5 class="text-sm font-black text-slate-300 uppercase tracking-wider" id="screen-task-title">HD Streaming Request</h5>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">Real-time Ping</div>
+                        <div class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 tracking-tight" id="visualizer-latency">
+                            0.0 ms
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animated Canvas Area -->
+                <div class="my-8 relative flex items-center justify-center z-10 w-full h-44">
+                    <svg viewBox="0 0 500 150" class="w-full h-full">
+                        <!-- Path backdrops -->
+                        <path d="M 50 75 Q 125 25, 250 75 T 450 75" fill="none" stroke="#1e293b" stroke-width="3" />
+                        
+                        <!-- Transmitting pulses (Outbound) -->
+                        <path id="outbound-pulse" d="M 50 75 Q 125 25, 250 75 T 450 75" fill="none" stroke="url(#blue-gradient)" stroke-width="4" stroke-linecap="round" class="pulse-line" />
+                        
+                        <!-- Transmitting pulses (Inbound) -->
+                        <path id="inbound-pulse" d="M 450 75 Q 375 125, 250 75 T 50 75" fill="none" stroke="url(#teal-gradient)" stroke-width="4" stroke-linecap="round" class="pulse-line" />
+
+                        <!-- Device Node -->
+                        <g transform="translate(50, 75)">
+                            <circle r="22" fill="#0f172a" stroke="#334155" stroke-width="2" id="node-device-ring" class="transition-colors duration-300" />
+                            <circle r="14" fill="#1e293b" id="node-device-pulse" class="transition-colors duration-300" />
+                            <text y="5" text-anchor="middle" font-size="16">📱</text>
+                            <text y="38" text-anchor="middle" font-size="9" fill="#94a3b8" font-weight="bold">YOUR DEVICE</text>
+                        </g>
+
+                        <!-- Network Node -->
+                        <g transform="translate(250, 75)">
+                            <circle r="20" fill="#0f172a" stroke="#334155" stroke-width="2" id="node-network-ring" class="transition-colors duration-300" />
+                            <text y="5" text-anchor="middle" font-size="14">📡</text>
+                            <text y="35" text-anchor="middle" font-size="9" fill="#94a3b8" font-weight="bold">FIBER HUB</text>
+                        </g>
+
+                        <!-- Server Node -->
+                        <g transform="translate(450, 75)">
+                            <circle r="22" fill="#0f172a" stroke="#334155" stroke-width="2" id="node-server-ring" class="transition-colors duration-300" />
+                            <circle r="14" fill="#1e293b" id="node-server-pulse" class="transition-colors duration-300" />
+                            <text y="5" text-anchor="middle" font-size="16">🏢</text>
+                            <text y="38" text-anchor="middle" font-size="9" fill="#94a3b8" font-weight="bold" id="server-node-label">TEXAS DC</text>
+                        </g>
+
+                        <!-- Gradients definition -->
+                        <defs>
+                            <linearGradient id="blue-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0" />
+                                <stop offset="50%" stop-color="#60a5fa" stop-opacity="1" />
+                                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+                            </linearGradient>
+                            <linearGradient id="teal-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#0d9488" stop-opacity="0" />
+                                <stop offset="50%" stop-color="#2dd4bf" stop-opacity="1" />
+                                <stop offset="100%" stop-color="#0d9488" stop-opacity="0" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <!-- Info Log Box -->
+                <div class="bg-white/5 border border-white/10 rounded-xl p-4 min-h-[96px] flex flex-col justify-center transition-all duration-300 z-10" id="visualizer-log">
+                    <p class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1" id="log-step-badge">Diagnostics Ready</p>
+                    <p class="text-sm text-slate-200 leading-relaxed font-light" id="log-text">
+                        Select your digital operation and click the transmit button to analyze network flow and server speeds.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Styling for the action buttons */
+    .action-btn.active-action {
+        border-color: var(--color-tech-blue);
+        background-color: var(--color-tech-blue-light);
+        box-shadow: 0 4px 6px -1px rgba(10, 54, 157, 0.1), 0 2px 4px -1px rgba(10, 54, 157, 0.06);
+    }
+    
+    /* Outbound and inbound SVG pulse lines default state */
+    .pulse-line {
+        stroke-dasharray: 600;
+        stroke-dashoffset: 600;
+        visibility: hidden;
+    }
+
+    /* Outbound animation */
+    .animate-outbound {
+        visibility: visible;
+        animation: stroke-run 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    /* Inbound animation */
+    .animate-inbound {
+        visibility: visible;
+        animation: stroke-run-back 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    @keyframes stroke-run {
+        0% {
+            stroke-dashoffset: 600;
+        }
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    @keyframes stroke-run-back {
+        0% {
+            stroke-dashoffset: -600;
+        }
+        100% {
+            stroke-dashoffset: 0;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const actions = {
+            stream: {
+                title: "HD Streaming Request (12.4 MB)",
+                local: 11.2,
+                remote: 78.5,
+                steps: {
+                    outbound: "Outbound: Data request packet leaves device, routed down regional fiber networks to the local data center (Transit time: 4.8ms).",
+                    compute: "Processing: Server locates 12.4 MB HD video block in storage array. Read buffer latency is minimized via solid-state drive clusters.",
+                    inbound: "Inbound: High-bandwidth video packet is compressed and transmitted back to your phone, arriving ready to buffer."
+                }
+            },
+            ai: {
+                title: "AI Neural Prompt Analysis",
+                local: 14.8,
+                remote: 94.2,
+                steps: {
+                    outbound: "Outbound: Query tokenized and sent via fiber transit under local roadways to the compute cluster.",
+                    compute: "Processing: Request hits specialized GPU/accelerator nodes. Trillions of parallel arithmetic calculations execute instantly inside the halls.",
+                    inbound: "Inbound: Structured response token stream is formatted and piped directly back to your local client browser."
+                }
+            },
+            bank: {
+                title: "Secure Payment Verification",
+                local: 9.5,
+                remote: 72.1,
+                steps: {
+                    outbound: "Outbound: Encrypted transaction packet transmits to secure gateway server.",
+                    compute: "Processing: Core database verifies keys, runs compliance audits, updates Ledger tables, and triggers bank verification logs.",
+                    inbound: "Inbound: Verification confirmation token is signed and returned to complete the transaction."
+                }
+            }
+        };
+
+        const actionButtons = document.querySelectorAll('.action-btn');
+        const simulateBtn = document.getElementById('simulate-btn');
+        const latencyDisplay = document.getElementById('visualizer-latency');
+        const logBadge = document.getElementById('log-step-badge');
+        const logText = document.getElementById('log-text');
+        const screenStatus = document.getElementById('screen-status-badge');
+        const screenTitle = document.getElementById('screen-task-title');
+        
+        // Radios
+        const radioLabels = document.querySelectorAll('.location-label');
+        const radios = document.getElementsByName('server-location') as NodeListOf<HTMLInputElement>;
+        
+        // SVG elements
+        const outboundPulse = document.getElementById('outbound-pulse');
+        const inboundPulse = document.getElementById('inbound-pulse');
+        
+        const deviceRing = document.getElementById('node-device-ring');
+        const devicePulse = document.getElementById('node-device-pulse');
+        const networkRing = document.getElementById('node-network-ring');
+        const serverRing = document.getElementById('node-server-ring');
+        const serverPulse = document.getElementById('node-server-pulse');
+        const serverNodeLabel = document.getElementById('server-node-label');
+
+        let selectedAction = 'stream';
+        let serverLocation = 'local'; // 'local' or 'remote'
+        let simulating = false;
+
+        // Action selection handler
+        actionButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (simulating) return;
+                actionButtons.forEach(b => b.classList.remove('active-action'));
+                btn.classList.add('active-action');
+                selectedAction = btn.getAttribute('data-action') || 'stream';
+                
+                // Update Screen Title
+                if (screenTitle) {
+                    screenTitle.textContent = actions[selectedAction].title;
+                }
+                
+                // Reset latency screen display
+                if (latencyDisplay) {
+                    latencyDisplay.textContent = '0.0 ms';
+                }
+            });
+        });
+
+        // Server Location Radios Change handler
+        radios.forEach((radio, index) => {
+            radio.addEventListener('change', (e) => {
+                if (simulating) return;
+                
+                serverLocation = (e.target as HTMLInputElement).value;
+                
+                // Update Label classes
+                radioLabels.forEach(label => {
+                    label.className = "location-label border border-slate-200 bg-white text-slate-600 rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer font-bold text-sm transition-all duration-300";
+                    const span = label.querySelector('span');
+                    if (span) {
+                        span.className = "w-3 h-3 rounded-full border border-slate-300 flex items-center justify-center bg-white";
+                        const innerSpan = span.querySelector('span');
+                        if (innerSpan) innerSpan.className = "w-1 h-1 rounded-full bg-transparent";
+                    }
+                });
+                
+                const activeLabel = radio.closest('.location-label');
+                if (activeLabel) {
+                    activeLabel.className = "location-label border-2 border-tech-blue/20 bg-tech-blue/5 text-tech-blue rounded-xl p-3 flex items-center justify-center gap-2 cursor-pointer font-bold text-sm transition-all duration-300";
+                    const span = activeLabel.querySelector('span');
+                    if (span) {
+                        span.className = "w-3 h-3 rounded-full border border-tech-blue flex items-center justify-center bg-tech-blue";
+                        const innerSpan = span.querySelector('span');
+                        if (innerSpan) innerSpan.className = "w-1 h-1 rounded-full bg-white";
+                    }
+                }
+
+                // Update server label in SVG
+                if (serverNodeLabel) {
+                    serverNodeLabel.textContent = serverLocation === 'local' ? 'TEXAS DC' : 'EAST COAST DC';
+                }
+            });
+        });
+
+        // Simulation Loop
+        simulateBtn?.addEventListener('click', () => {
+            if (simulating) return;
+            simulating = true;
+            simulateBtn.setAttribute('disabled', 'true');
+            simulateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            
+            // Clean up old classes
+            outboundPulse?.classList.remove('animate-outbound');
+            inboundPulse?.classList.remove('animate-inbound');
+            
+            // Nodes active glow state reset
+            deviceRing?.setAttribute('stroke', '#334155');
+            devicePulse?.setAttribute('fill', '#1e293b');
+            networkRing?.setAttribute('stroke', '#334155');
+            serverRing?.setAttribute('stroke', '#334155');
+            serverPulse?.setAttribute('fill', '#1e293b');
+
+            const actionData = actions[selectedAction];
+            const targetLatency = serverLocation === 'local' ? actionData.local : actionData.remote;
+            
+            // Step 1: Outbound Transit
+            if (screenStatus) {
+                screenStatus.textContent = "TRANSMITTING OUTBOUND";
+                screenStatus.className = "inline-block px-2 py-0.5 rounded bg-blue-500/20 border border-blue-500/30 text-[10px] uppercase font-bold tracking-wider text-blue-400 mb-1";
+            }
+            if (logBadge) logBadge.textContent = "Step 1: Network Ingress";
+            if (logText) logText.textContent = actionData.steps.outbound;
+            
+            // Glow device
+            deviceRing?.setAttribute('stroke', '#3b82f6');
+            devicePulse?.setAttribute('fill', '#3b82f6');
+            
+            // Trigger SVG animation
+            setTimeout(() => {
+                outboundPulse?.classList.add('animate-outbound');
+            }, 50);
+
+            // Animate Latency counter ticking up
+            let currentLatency = 0;
+            const outboundTarget = targetLatency * 0.45; // takes 45% of total time
+            const tickRate = outboundTarget / 20; // 20 ticks
+            let tickCount = 0;
+            
+            const outboundInterval = setInterval(() => {
+                currentLatency += tickRate;
+                if (currentLatency >= outboundTarget) {
+                    currentLatency = outboundTarget;
+                    clearInterval(outboundInterval);
+                }
+                if (latencyDisplay) latencyDisplay.textContent = currentLatency.toFixed(1) + ' ms';
+            }, 25);
+
+            // Outbound finishes, hits network -> server
+            setTimeout(() => {
+                networkRing?.setAttribute('stroke', '#3b82f6');
+                
+                setTimeout(() => {
+                    // Step 2: Compute
+                    if (screenStatus) {
+                        screenStatus.textContent = "PROCESSING COMPUTE";
+                        screenStatus.className = "inline-block px-2 py-0.5 rounded bg-purple-500/20 border border-purple-500/30 text-[10px] uppercase font-bold tracking-wider text-purple-400 mb-1";
+                    }
+                    if (logBadge) logBadge.textContent = "Step 2: Server Processing";
+                    if (logText) logText.textContent = actionData.steps.compute;
+                    
+                    serverRing?.setAttribute('stroke', '#a855f7');
+                    serverPulse?.setAttribute('fill', '#a855f7');
+                    
+                    // Tick latency during processing
+                    const processingTarget = targetLatency * 0.55; // up to 55%
+                    const procTickRate = (processingTarget - currentLatency) / 10;
+                    let procTicks = 0;
+                    
+                    const processingInterval = setInterval(() => {
+                        currentLatency += procTickRate;
+                        procTicks++;
+                        if (procTicks >= 10) {
+                            currentLatency = processingTarget;
+                            clearInterval(processingInterval);
+                        }
+                        if (latencyDisplay) latencyDisplay.textContent = currentLatency.toFixed(1) + ' ms';
+                    }, 40);
+
+                    setTimeout(() => {
+                        // Step 3: Inbound Return
+                        if (screenStatus) {
+                            screenStatus.textContent = "TRANSMITTING RETURN";
+                            screenStatus.className = "inline-block px-2 py-0.5 rounded bg-teal-500/20 border border-teal-500/30 text-[10px] uppercase font-bold tracking-wider text-teal-400 mb-1";
+                        }
+                        if (logBadge) logBadge.textContent = "Step 3: Network Egress";
+                        if (logText) logText.textContent = actionData.steps.inbound;
+                        
+                        // Glow server for response
+                        serverRing?.setAttribute('stroke', '#14b8a6');
+                        serverPulse?.setAttribute('fill', '#14b8a6');
+                        
+                        // Trigger inbound SVG animation
+                        setTimeout(() => {
+                            inboundPulse?.classList.add('animate-inbound');
+                        }, 50);
+                        
+                        // Tick latency to completion
+                        const finalTickRate = (targetLatency - currentLatency) / 20;
+                        let finalTicks = 0;
+                        
+                        const finalInterval = setInterval(() => {
+                            currentLatency += finalTickRate;
+                            finalTicks++;
+                            if (finalTicks >= 20) {
+                                currentLatency = targetLatency;
+                                clearInterval(finalInterval);
+                            }
+                            if (latencyDisplay) latencyDisplay.textContent = currentLatency.toFixed(1) + ' ms';
+                        }, 25);
+
+                        setTimeout(() => {
+                            // Finish
+                            if (screenStatus) {
+                                screenStatus.textContent = "OPERATION COMPLETE";
+                                screenStatus.className = "inline-block px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-500/30 text-[10px] uppercase font-bold tracking-wider text-emerald-400 mb-1";
+                            }
+                            if (logBadge) logBadge.textContent = "Transaction Successful";
+                            
+                            const distanceNote = serverLocation === 'local' 
+                                ? "Data was processed locally in Texas, resulting in lag-free real-time response."
+                                : "Data was processed on the East Coast, adding over 5x latency due to physical distance.";
+                            
+                            if (logText) logText.textContent = `Completed round-trip in ${targetLatency.toFixed(1)} ms. ${distanceNote}`;
+                            
+                            // Return glow to active device
+                            deviceRing?.setAttribute('stroke', '#10b981');
+                            devicePulse?.setAttribute('fill', '#10b981');
+                            
+                            simulating = false;
+                            simulateBtn.removeAttribute('disabled');
+                            simulateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        }, 500); // end of inbound transit (500ms)
+
+                    }, 500); // end of processing time (500ms)
+
+                }, 150); // network to server delay
+
+            }, 500); // end of outbound transit (500ms)
+
+        });
+    });
+</script>

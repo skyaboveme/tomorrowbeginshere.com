@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+---
+
+<BaseLayout 
+    title="The Grid Stabilizer: Supporting Texas Power | TomorrowBeginsHere.com"
+    description="Discover how Texas data centers act as stabilizing reserves for the ERCOT grid through behind-the-meter generation and demand response."
+>
+    <!-- Page Header -->
+    <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-950/80 via-slate-900/95 to-tech-blue/80 z-0 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('/images/texas-data-centers-network.png')] bg-cover bg-center z-0 opacity-15 mix-blend-overlay"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-blue-500/20 text-blue-300 font-bold tracking-widest uppercase text-sm mb-6 border border-blue-500/30 backdrop-blur-sm">Pillar 05 • Grid Stabilization</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+                The Grid Story is a Strength:<br><span class="text-tech-blue">Actively Balancing ERCOT</span>
+            </h1>
+            <p class="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-light">
+                Modern data centers do not cause grid instability. When integrated correctly, they function as massive virtual shock-absorbers that help keep the lights on for residential communities.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="py-16 lg:py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="prose prose-lg prose-slate max-w-none">
+                
+                <p class="text-xl leading-relaxed text-slate-700 font-medium">
+                    The question of electrical capacity is often raised as a concern regarding data center expansion. But when examined through modern engineering realities and Texas regulatory structures, the power story flips from a liability into a key grid asset.
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">1. Large Flexible Loads: The Grid's Safety Valve</h2>
+                <p class="text-slate-600 leading-relaxed mb-6">
+                    Unlike standard manufacturing plants or residential neighborhoods, data center workloads are highly modular and digital. Operators can easily shift compute jobs to other regions or temporarily pause non-critical operations in a matter of seconds.
+                </p>
+                <p class="text-slate-600 leading-relaxed mb-6">
+                    Under **Texas Senate Bill 6 (SB 6)**, these facilities operate as **flexible loads** under ERCOT's direct oversight. During severe winter freezes or peak summer heatwaves when residential demand spikes, ERCOT can trigger **curtailment agreements**. The data centers instantly dial back their electricity draw, releasing hundreds of megawatts back into the state network to keep residential neighborhoods and hospitals powered.
+                </p>
+
+                <!-- Stabilizing Reserve Card -->
+                <div class="bg-blue-50 border border-blue-200 rounded-3xl p-8 lg:p-10 my-12 shadow-sm">
+                    <h3 class="text-xl font-bold text-blue-950 mb-3">Reframe: From Power Consumer to Stabilizing Reserve</h3>
+                    <p class="text-slate-700 text-sm leading-relaxed mb-0">
+                        Think of a data center as a giant, responsive grid sponge. During periods of abundant wind and solar generation, the facility absorbs excess power, helping stabilize wholesale energy markets. When the grid is stressed, the sponge squeezes shut instantly. This rapid curtailment response provides a buffer that is far faster and cleaner than firing up legacy backup coal or gas plants.
+                    </p>
+                </div>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">2. Behind-the-Meter Generation</h2>
+                <p class="text-slate-600 leading-relaxed mb-6">
+                    Hyperscale operators are increasingly building their own dedicated power plants directly on-site (behind-the-meter). For example, Pecos County's **Project Horizon** features localized natural gas combined with carbon capture, solar arrays, and battery reserves.
+                </p>
+                <p class="text-slate-600 leading-relaxed mb-6">
+                    By generating their own electricity and operating independently from public transmission lines during peak hours, these facilities bring net-new power capacity into the region rather than drawing from existing community reserves.
+                </p>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">3. Long-Term Demand Planning</h2>
+                <p class="text-slate-600 leading-relaxed mb-6">
+                    ERCOT plans grid transmission capacity years in advance. Because data center projects require several years of planning and permitting, utilities can accurately model these hookups and finance grid modernization using connection fees paid entirely by the developers. The result is a stronger, more resilient transmission network funded by commercial capital at zero cost to residential ratepayers.
+                </p>
+
+                <!-- CT Link -->
+                <div class="mt-12 text-center bg-slate-50 border border-slate-200 rounded-3xl p-8 max-w-2xl mx-auto">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Want to simulate a grid curtailment event?</h4>
+                    <p class="text-sm text-slate-600 mb-6">Use our interactive Grid Simulator to experience how ERCOT curtails industrial loads to safeguard residential neighborhoods during summer spikes.</p>
+                    <a href="/interactive/grid-simulator" class="inline-flex items-center gap-1.5 px-6 py-3 bg-tech-blue hover:bg-tech-blue/90 text-white font-bold rounded-xl transition-colors">
+                        Open Grid Simulator
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <hr class="border-slate-200 my-12">
+
+                <div class="text-center bg-slate-50 border border-slate-200 rounded-3xl p-8 max-w-2xl mx-auto">
+                    <p class="text-slate-500 mb-4 uppercase tracking-widest text-xs font-bold">Explore the next pillar</p>
+                    <h4 class="text-lg font-bold text-slate-900 mb-6">Pillar 06: The Halo Effect — Attracting the Next Employer</h4>
+                    <a href="/texas-data-centers/halo-effect" class="inline-flex items-center gap-1.5 px-6 py-3 bg-tech-blue hover:bg-tech-blue/90 text-white font-bold rounded-xl transition-colors">
+                        Next: The Halo Effect
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</BaseLayout>

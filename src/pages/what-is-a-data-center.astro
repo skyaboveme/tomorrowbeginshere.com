@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../components/BaseLayout.astro';
+import DataFlowSimulator from '../components/DataFlowSimulator.astro';
+import ComputeCompactor from '../components/ComputeCompactor.astro';
+import MythBusterQuiz from '../components/MythBusterQuiz.astro';
 ---
 
 <BaseLayout 
@@ -32,53 +35,8 @@ import BaseLayout from '../components/BaseLayout.astro';
                 </p>
             </div>
 
-            <!-- Infographic Placeholder Section -->
-            <div class="my-20 bg-slate-50 border border-slate-200 rounded-[2rem] p-8 lg:p-16 shadow-lg text-center relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-tech-blue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                <div class="absolute bottom-0 left-0 w-64 h-64 bg-pine-green/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-                
-                <div class="relative z-10">
-                    <div class="w-20 h-20 bg-white shadow-md rounded-2xl flex items-center justify-center mx-auto mb-8 text-tech-blue ring-1 ring-slate-100">
-                        <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 tracking-tight">The Invisible Flow of Innovation</h3>
-                    <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-12">
-                        Data travels continuously from your device, across vast fiber optic networks, directly into the servers housed in secure data centers, and back again in a fraction of a second.
-                    </p>
-                    
-                    <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-6">
-                        <!-- Workflow visualization -->
-                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 w-full flex-1">
-                            <span class="block text-5xl mb-4">📱</span>
-                            <h4 class="font-bold text-slate-900 text-lg">Your Devices</h4>
-                            <p class="text-sm text-slate-500 mt-2">Streaming, Banking, Medical</p>
-                        </div>
-                        
-                        <div class="text-tech-blue/40 flex flex-col items-center">
-                            <svg class="w-10 h-10 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                            <span class="text-xs font-bold tracking-widest uppercase my-2 text-slate-400">Milliseconds</span>
-                            <svg class="w-10 h-10 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-                            </svg>
-                            
-                            <svg class="w-8 h-8 md:hidden my-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                            </svg>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-tech-blue to-blue-800 p-8 rounded-2xl shadow-lg border border-transparent w-full flex-1 text-white relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-                            <span class="block text-5xl mb-4 relative z-10">🏢</span>
-                            <h4 class="font-bold text-white text-lg relative z-10">Secure Data Center</h4>
-                            <p class="text-sm text-blue-200 mt-2 relative z-10">Instant Processing & Storage</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Data Flow Simulator Component -->
+            <DataFlowSimulator /></div>
 
             <div class="prose prose-lg prose-slate max-w-none">
                 <h2 class="text-3xl font-bold mb-6 text-slate-900 tracking-tight">The Infrastructure of the 21st Century</h2>
@@ -134,6 +92,9 @@ import BaseLayout from '../components/BaseLayout.astro';
                     <div class="flex items-center">
                         <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm w-full relative overflow-hidden group hover:shadow-lg transition-shadow duration-300">
                             <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                            <div class="aspect-video w-full rounded-2xl overflow-hidden mb-6 bg-slate-100 border border-slate-200/60 relative group-hover:scale-[1.02] transition-transform duration-300">
+                                <img src="/images/history/eniac.png" alt="ENIAC Room-Sized Computer" class="w-full h-full object-cover" />
+                            </div>
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0 group-hover:scale-110 transition-transform">🖥️</div>
                                 <div>
@@ -173,6 +134,9 @@ import BaseLayout from '../components/BaseLayout.astro';
                     <div class="flex items-center lg:order-1">
                         <div class="bg-gradient-to-br from-tech-blue to-blue-800 rounded-3xl p-8 shadow-xl w-full text-white relative overflow-hidden group">
                             <div class="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                            <div class="aspect-video w-full rounded-2xl overflow-hidden mb-6 bg-white/10 border border-white/10 relative group-hover:scale-[1.02] transition-transform duration-300">
+                                <img src="/images/history/pc.png" alt="Vintage 1980s PC detour" class="w-full h-full object-cover" />
+                            </div>
                             <h4 class="text-lg font-bold text-blue-200 uppercase tracking-wider mb-6 relative z-10">Key Milestones</h4>
                             <div class="space-y-5 relative z-10">
                                 <div class="flex items-start gap-3">
@@ -219,6 +183,9 @@ import BaseLayout from '../components/BaseLayout.astro';
                     <div class="flex items-center">
                         <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm w-full relative overflow-hidden group hover:shadow-lg transition-shadow duration-300">
                             <div class="absolute bottom-0 left-0 w-32 h-32 bg-pine-green/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
+                            <div class="aspect-video w-full rounded-2xl overflow-hidden mb-6 bg-slate-100 border border-slate-200/60 relative group-hover:scale-[1.02] transition-transform duration-300">
+                                <img src="/images/history/cloud.png" alt="Cloud Server Racks" class="w-full h-full object-cover" />
+                            </div>
                             <div class="space-y-6 relative z-10">
                                 <div class="flex items-center gap-4">
                                     <div class="w-14 h-14 bg-pine-green/10 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">☁️</div>
@@ -246,6 +213,9 @@ import BaseLayout from '../components/BaseLayout.astro';
                     </div>
                 </div>
             </div>
+            
+            <!-- Compute Compactor Component -->
+            <ComputeCompactor />
         </div>
     </section>
 
@@ -660,16 +630,21 @@ import BaseLayout from '../components/BaseLayout.astro';
                 </p>
             </div>
 
-            <!-- Next CTA from previously -->
-            <div class="mt-24 pt-10 border-t border-slate-200 flex justify-center">
-                <a href="/advancing-mankind" class="inline-flex items-center justify-center px-8 py-4 text-white bg-tech-blue hover:bg-slate-900 font-bold rounded-xl shadow-md transition-all duration-300 hover:shadow-xl text-lg group">
-                    Next: Read How This Advances Humanity
-                    <svg class="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-            </div>
-            
+        </div>
+    </section>
+
+    <!-- MythBuster Quiz Section -->
+    <MythBusterQuiz />
+
+    <!-- Next CTA Section -->
+    <section class="py-16 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
+            <a href="/advancing-mankind" class="inline-flex items-center justify-center px-8 py-4 text-white bg-tech-blue hover:bg-slate-900 font-bold rounded-xl shadow-md transition-all duration-300 hover:shadow-xl text-lg group">
+                Next: Read How This Advances Humanity
+                <svg class="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </a>
         </div>
     </section>
 
