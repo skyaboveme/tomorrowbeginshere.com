@@ -10,8 +10,9 @@
 - [Water Usage](/water-usage): Comprehensive breakdown of closed-loop cooling and water consumption statistics.
 - [Bastrop County Story](/bastrop-county-story): Projections of local economic impact, school funding contribution, and job pathways.
 - [Updates](/updates): Local news, rapid fact-checks, and industry updates.
-- [Success Stories](/success-stories): Historic precedents of data center communities such as Quincy, WA and Prineville, OR.
-- [Interactive Hub](/interactive): Dynamic simulators and calculators for interactive exploration of data center footprint and school funding.
+- [Texas Data Centers](/texas-data-centers): Overview of Texas momentum, ERCOT grid protections, and the 7 Pillars of Texas Compute.
+- [Pro-Data Center Sites](/pro-data-center-sites): Pre-verified directory of community agreements, sustainability initiatives, and research studies from leading organizations.
+- [Interactive Hub](/interactive): Dynamic simulators and calculators for interactive exploration of data center footprint, energy flow, and school funding.
 
 ## Deep Dives
 
