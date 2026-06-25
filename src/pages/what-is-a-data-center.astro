@@ -3,11 +3,28 @@ import BaseLayout from '../components/BaseLayout.astro';
 import DataFlowSimulator from '../components/DataFlowSimulator.astro';
 import ComputeCompactor from '../components/ComputeCompactor.astro';
 import MythBusterQuiz from '../components/MythBusterQuiz.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Is a Data Center? Infrastructure of the 21st Century",
+  "description": "Learn how data centers power everyday life, from healthcare to AI, and why they are the essential infrastructure of the 21st century.",
+  "image": "https://tomorrowbeginshere.com/images/og-image.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TomorrowBeginsHere.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tomorrowbeginshere.com/favicon.svg"
+    }
+  }
+};
 ---
 
 <BaseLayout 
     title="What Is a Data Center? The Engine of the Modern World"
     description="Learn how data centers power everyday life, from healthcare to AI, and why they are the essential infrastructure of the 21st century."
+    schema={schema}
 >
     <!-- Page Header -->
     <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">

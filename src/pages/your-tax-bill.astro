@@ -1,10 +1,28 @@
 ---
 import BaseLayout from '../components/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Your School, Your Roads, Your Tax Bill: Where Data Center Revenue Actually Goes",
+  "description": "A line-by-line breakdown of what $40 million in annual data center property tax revenue buys your family: teacher salaries, road repaving, fire stations, and parks.",
+  "image": "https://tomorrowbeginshere.com/images/og-image.png",
+  "datePublished": "2026-05-07T08:00:00Z",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TomorrowBeginsHere.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tomorrowbeginshere.com/favicon.svg"
+    }
+  }
+};
 ---
 
 <BaseLayout 
     title="Your School, Your Roads, Your Tax Bill: Where Data Center Revenue Actually Goes | TomorrowBeginsHere.com"
     description="A line-by-line breakdown of what $40 million in annual data center property tax revenue buys your family: teacher salaries, road repaving, fire stations, and parks."
+    schema={schema}
 >
     <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-pine-green/70 to-slate-900/90 z-0 mix-blend-multiply"></div>

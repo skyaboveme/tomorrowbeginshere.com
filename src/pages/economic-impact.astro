@@ -33,11 +33,27 @@ const impactData = [
   }
 ];
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Economic Impact of Hyperscale Data Centers",
+  "description": "Discover the massive financial value and tax relief modern data centers bring to local communities, schools, and emergency services without straining municipal resources.",
+  "image": "https://tomorrowbeginshere.com/images/og-image.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TomorrowBeginsHere.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tomorrowbeginshere.com/favicon.svg"
+    }
+  }
+};
 ---
 
 <BaseLayout 
     title="Local Economic Impact | Financial Benefits for Our Community"
     description="Discover the massive financial value and tax relief modern data centers bring to local communities, schools, and emergency services without straining municipal resources."
+    schema={schema}
 >
     <!-- Page Header -->
     <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">

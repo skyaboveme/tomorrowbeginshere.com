@@ -1,11 +1,28 @@
 ---
 import BaseLayout from '../components/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Energy Prices: How Data Centers Interact with the Electric Grid",
+  "description": "Explore the rapid growth of residential electricity and methane gas prices across the U.S. from 2019 to 2024, and why efficient infrastructure is critical.",
+  "image": "https://tomorrowbeginshere.com/images/og-image.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TomorrowBeginsHere.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tomorrowbeginshere.com/favicon.svg"
+    }
+  }
+};
 ---
 
 <BaseLayout
     title="Energy Prices By State | Surging Residential Costs"
     description="Explore the rapid growth of residential electricity and methane gas prices across the U.S. from 2019 to 2024, and why efficient infrastructure is critical."
+    schema={schema}
 >
     <!-- Hero Section -->
     <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-900 border-b border-tech-blue/20">

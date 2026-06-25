@@ -1,11 +1,28 @@
 ---
 import BaseLayout from '../components/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Closed-Loop Cooling Technology in Modern Data Centers",
+  "description": "Understanding the science behind closed-loop cooling and how modern data centers minimize water consumption.",
+  "image": "https://tomorrowbeginshere.com/images/og-image.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TomorrowBeginsHere.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tomorrowbeginshere.com/favicon.svg"
+    }
+  }
+};
 ---
 
 <BaseLayout 
     title="How Closed-Loop Cooling Works | TomorrowBeginsHere.com"
     description="Understanding the science behind closed-loop cooling and how modern data centers minimize water consumption."
+    schema={schema}
 >
     <!-- Page Header -->
     <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">

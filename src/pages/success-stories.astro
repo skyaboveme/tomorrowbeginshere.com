@@ -99,11 +99,28 @@ const caseStudies = [
     ]
   }
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Data Center Success Stories",
+  "description": "See the real-world results: how rural towns like Prineville, Quincy, and New Albany were transformed by data center investment with new schools, hospitals, and high-paying jobs.",
+  "image": "https://tomorrowbeginshere.com/images/og-image.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TomorrowBeginsHere.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tomorrowbeginshere.com/favicon.svg"
+    }
+  }
+};
 ---
 
 <BaseLayout 
     title="Success Stories | Rural Communities Transformed by Data Centers"
     description="See the real-world results: how rural towns like Prineville, Quincy, and New Albany were transformed by data center investment with new schools, hospitals, and high-paying jobs."
+    schema={schema}
 >
     <!-- Page Header -->
     <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">

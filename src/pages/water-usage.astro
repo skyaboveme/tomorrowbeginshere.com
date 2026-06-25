@@ -57,11 +57,28 @@ const broaderContextData = [
   { name: "U.S. Residential Lawns", value: "Thousands of Billions", note: "" },
   { name: "Agriculture Overall", value: "Tens of Trillions", note: "(largest user by far)" }
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Water Usage Data: Data Centers vs. Subdivisions and Agriculture",
+  "description": "Explore interactive data comparing the minimal water requirements of modern, closed-loop data centers against traditional heavy users.",
+  "image": "https://tomorrowbeginshere.com/images/og-image.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TomorrowBeginsHere.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tomorrowbeginshere.com/favicon.svg"
+    }
+  }
+};
 ---
 
 <BaseLayout 
     title="Annual Water Usage | Interactive Comparison"
     description="Explore interactive data comparing the minimal water requirements of modern, closed-loop data centers against traditional heavy users."
+    schema={schema}
 >
     <!-- Page Header -->
     <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">

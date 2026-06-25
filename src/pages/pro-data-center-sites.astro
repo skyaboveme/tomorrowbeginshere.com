@@ -167,11 +167,28 @@ const resources = [
         </svg>`
     }
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Pro-Data Center Resources & Sites",
+  "description": "Explore curated resources, industry sustainability frameworks, independent economic policy studies, and community benefit guidelines from leading data center organizations.",
+  "image": "https://tomorrowbeginshere.com/images/og-image.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TomorrowBeginsHere.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tomorrowbeginshere.com/favicon.svg"
+    }
+  }
+};
 ---
 
 <BaseLayout 
     title="Pro-Data Center Sites & Community Resources | TomorrowBeginsHere.com"
     description="Explore curated resources, industry sustainability frameworks, independent economic policy studies, and community benefit guidelines from leading data center organizations."
+    schema={schema}
 >
     <!-- Page Header -->
     <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-slate-900 border-b border-tech-blue/20">

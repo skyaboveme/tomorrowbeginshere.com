@@ -100,11 +100,28 @@ const localResources = [
   { name: "CompTIA Certifications", url: "https://www.comptia.org", description: "Industry-standard IT certifications (A+, Network+, Security+)" },
   { name: "Cisco Networking Academy", url: "https://www.netacad.com", description: "Free and low-cost networking training and CCNA prep" }
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Data Center Career Pathways",
+  "description": "Explore the high-paying careers created by data centers, from HVAC technicians to network engineers. Most roles require no four-year degree.",
+  "image": "https://tomorrowbeginshere.com/images/og-image.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TomorrowBeginsHere.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tomorrowbeginshere.com/favicon.svg"
+    }
+  }
+};
 ---
 
 <BaseLayout 
     title="Career Pathways | High-Paying Data Center Jobs"
     description="Explore the high-paying careers created by data centers, from HVAC technicians to network engineers. Most roles require no four-year degree."
+    schema={schema}
 >
     <!-- Page Header -->
     <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden">
