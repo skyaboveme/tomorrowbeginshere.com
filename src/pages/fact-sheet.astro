@@ -1,10 +1,27 @@
 ---
 import BaseLayout from '../components/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Printable Fact Sheet",
+  "description": "Download and print a one-page fact sheet with key data center statistics. Perfect for town halls, HOA meetings, and sharing with neighbors.",
+  "image": "https://tomorrowbeginshere.com/images/og-image.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TomorrowBeginsHere.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tomorrowbeginshere.com/favicon.svg"
+    }
+  }
+};
 ---
 
 <BaseLayout 
     title="Printable Fact Sheet | Data Center Facts for Bastrop County | TomorrowBeginsHere.com"
     description="Download and print a one-page fact sheet with key data center statistics. Perfect for town halls, HOA meetings, and sharing with neighbors."
+    schema={schema}
 >
     <!-- Screen-Only Header -->
     <div class="bg-slate-900 border-b border-tech-blue/20 relative overflow-hidden print-hide">
@@ -75,7 +92,7 @@ import BaseLayout from '../components/BaseLayout.astro';
                         </div>
                         <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-center print-rounded-lg">
                             <div class="text-2xl mb-1">🎓</div>
-                            <div class="text-xl font-black text-indigo-700 print-text-lg">$0</div>
+                            <div class="text-xl font-black text-indigo-700 print-text-lg">Less than 50</div>
                             <div class="text-[10px] font-bold text-indigo-600 uppercase tracking-wider mt-1 leading-tight">Added student burden on local schools</div>
                         </div>
                     </div>
@@ -104,7 +121,7 @@ import BaseLayout from '../components/BaseLayout.astro';
                                     <tr class="bg-slate-50/50">
                                         <td class="py-2 px-4 text-slate-700 font-medium">Students Added to ISD</td>
                                         <td class="py-2 px-4 text-center text-red-600 font-bold">~650</td>
-                                        <td class="py-2 px-4 text-center text-emerald-600 font-bold">0</td>
+                                        <td class="py-2 px-4 text-center text-emerald-600 font-bold">Less than 50</td>
                                     </tr>
                                     <tr>
                                         <td class="py-2 px-4 text-slate-700 font-medium">Daily Water Use</td>
